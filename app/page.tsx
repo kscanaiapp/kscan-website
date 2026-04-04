@@ -218,12 +218,49 @@ function PhoneScreen({ size }: { size: "sm" | "lg" }) {
 
 export default function Home() {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [submissionState, setSubmissionState] = useState<"idle" | "loading" | "success" | "duplicate" | "error">("idle");
+  const [submissionMessage, setSubmissionMessage] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
-    setSubmitted(true);
+
+    setSubmissionState("loading");
+    setSubmissionMessage("");
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          source: "homepage",
+          referrer: typeof window !== "undefined" ? window.location.href : undefined,
+        }),
+      });
+
+      const result = (await response.json()) as { status?: string; message?: string };
+
+      if (result.status === "success") {
+        setSubmissionState("success");
+        setSubmissionMessage("");
+        return;
+      }
+
+      if (result.status === "duplicate") {
+        setSubmissionState("duplicate");
+        setSubmissionMessage("");
+        return;
+      }
+
+      setSubmissionState("error");
+      setSubmissionMessage(result.message ?? "Something went wrong. Please try again.");
+    } catch {
+      setSubmissionState("error");
+      setSubmissionMessage("Something went wrong. Please try again.");
+    }
   }
 
   return (
@@ -240,6 +277,9 @@ export default function Home() {
             </a>
             <a href="#features" className="transition-colors hover:text-stone-900">
               Features
+            </a>
+            <a href="/investors" className="transition-colors hover:text-stone-900">
+              Investors
             </a>
             <a href="#waitlist" className="transition-colors hover:text-stone-900">
               Waitlist
@@ -557,8 +597,10 @@ export default function Home() {
               Be among the first. One email when your access is ready, and nothing before then.
             </p>
 
-            {submitted ? (
+            {submissionState === "success" ? (
               <p className="font-display text-[22px] italic text-stone-600">You&apos;re on the list.</p>
+            ) : submissionState === "duplicate" ? (
+              <p className="font-display text-[22px] italic text-stone-600">You&apos;re already on the list.</p>
             ) : (
               <form onSubmit={handleSubmit} className="mx-auto flex max-w-sm flex-col gap-2.5 sm:flex-row lg:mx-0">
                 <input
@@ -571,14 +613,17 @@ export default function Home() {
                 />
                 <button
                   type="submit"
+                  disabled={submissionState === "loading"}
                   className="rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.16)] transition-colors hover:bg-violet-700"
                 >
-                  Join Waitlist
+                  {submissionState === "loading" ? "Joining..." : "Join Waitlist"}
                 </button>
               </form>
             )}
 
-            <p className="mt-6 text-[11px] tracking-wide text-stone-300">No credit card. No commitment.</p>
+            <p className={`mt-6 text-[11px] tracking-wide ${submissionState === "error" ? "text-stone-400" : "text-stone-300"}`}>
+              {submissionState === "error" ? submissionMessage : "No credit card. No commitment."}
+            </p>
           </div>
         </div>
       </section>
