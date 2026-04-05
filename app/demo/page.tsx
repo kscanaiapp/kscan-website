@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const DEMO_VIDEO_URL = "/demo/kscan%20demo%20v1.mp4";
 const DEMO_POSTER_URL = "/demo/Gemini_Generated_Image_5bvaqm5bvaqm5bva.png";
+const DEMO_LEAD_IMAGE_URL = "/demo/kscan%20demo%20image%201.jpeg";
 
 export default function DemoPage() {
   const [copied, setCopied] = useState(false);
@@ -84,7 +86,7 @@ export default function DemoPage() {
             Private product view
           </p>
           <h1 className="font-display text-[42px] leading-[1.02] text-stone-900 md:text-[58px]">
-            Product Demo
+            Sighting to checkout. Instantaneous.
           </h1>
           <p className="mt-6 max-w-2xl text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
             A direct look at how K Scan moves from visual inspiration to purchase-ready output across the fashion workflow.
@@ -94,10 +96,35 @@ export default function DemoPage() {
 
       <section className="mx-auto max-w-6xl px-6 pb-10 md:px-10 md:pb-14">
         <div className="rounded-[34px] border border-stone-200/80 bg-white p-4 shadow-[0_24px_60px_rgba(35,28,22,0.07)] md:p-6">
+          <div className="mb-5">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Live Product Vision</p>
+            <p className="mt-1 text-[14px] text-stone-500">A grounded view of how K Scan appears in the real world before the full demo begins.</p>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#F2EEE7] shadow-2xl">
+            <div className="relative aspect-[16/10] w-full bg-[#F2EEE7] sm:aspect-[16/9]">
+              <Image
+                src={DEMO_LEAD_IMAGE_URL}
+                alt="K Scan real-world product vision with AR-style fashion commerce overlays"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 80vw"
+                className="object-cover object-[center_22%] sm:object-[center_20%] lg:object-center"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-10 md:px-10 md:pb-14">
+        <div className="rounded-[34px] border border-stone-200/80 bg-white p-4 shadow-[0_24px_60px_rgba(35,28,22,0.07)] md:p-6">
           <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Demo Film</p>
               <p className="mt-1 text-[14px] text-stone-500">Private review copy for product, partner, and investor conversations.</p>
+              <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-400">
+                [ LIVE CAPTURE · RESOLVES IN ~5S ]
+              </p>
             </div>
             <div className="flex items-center gap-3">
               <button

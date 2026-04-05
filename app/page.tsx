@@ -506,25 +506,30 @@ export default function Home() {
             className="mb-5 max-w-[10ch] font-display text-[46px] leading-[1.01] text-stone-900 sm:text-[52px] md:mb-6 md:text-[66px] lg:text-[78px]"
             variants={staggerChild}
           >
-            Own what you see.
+            See it. Scan it. Own it.
           </motion.h1>
           <motion.p
             className="mb-8 max-w-[90%] text-[15px] leading-[1.85] text-stone-500 sm:max-w-[27rem] md:mb-9 md:text-[16px]"
             variants={staggerChild}
           >
-            K Scan identifies fashion items from photos or video and takes you straight to where to buy them.
+            K Scan turns real-world fashion into instant purchase in seconds.
           </motion.p>
           <motion.div
             className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5"
             variants={staggerChild}
           >
-            <motion.a
-              href="#waitlist"
-              className="rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
-              {...btnMotion}
-            >
-              Get Early Access
-            </motion.a>
+            <div className="flex flex-col items-start gap-2.5">
+              <motion.a
+                href="#waitlist"
+                className="rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
+                {...btnMotion}
+              >
+                Get Early Access
+              </motion.a>
+              <p className="text-[11px] tracking-[0.04em] text-stone-400">
+                No search. No guesswork. Just results.
+              </p>
+            </div>
             <motion.a
               href="#how-it-works"
               className="text-[13px] text-stone-400 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
@@ -609,6 +614,18 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="border-y border-black/5 bg-[#FAFAF8]">
+        <div className="mx-auto max-w-7xl px-6 py-4 md:px-10">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-600 md:text-xs">
+            <span>AVG SCAN TIME: 1.4S</span>
+            <span className="hidden h-3 w-px bg-neutral-200 md:inline-block" aria-hidden="true" />
+            <span>NEURAL MATCH ACCURACY</span>
+            <span className="hidden h-3 w-px bg-neutral-200 md:inline-block" aria-hidden="true" />
+            <span>10+ INTEGRATED RETAILERS</span>
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-stone-100 bg-white py-8 md:py-12">
         <FadeUp>
           <div className="mx-auto max-w-7xl px-6 md:px-10">
@@ -637,6 +654,30 @@ export default function Home() {
             <br />
             Buy it.
           </h2>
+        </FadeUp>
+
+        <FadeUp className="mb-8 md:mb-14">
+          <div className="grid gap-5 md:grid-cols-[0.95fr_1.05fr] md:items-end md:gap-8">
+            <div className="overflow-hidden rounded-[28px] border border-white/10 bg-[#F2EEE7] shadow-[0_18px_46px_rgba(35,28,22,0.08)]">
+              <div className="relative aspect-[16/10] w-full bg-[#F2EEE7]">
+                <Image
+                  src="/demo/How%20It%20Works%201.png"
+                  alt="K Scan real-world capture to conversion flow"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 46vw"
+                  className="object-cover object-[center_18%] md:object-center"
+                />
+              </div>
+            </div>
+            <div className="max-w-md">
+              <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+                Live Product Flow
+              </p>
+              <p className="text-[14px] leading-[1.78] text-stone-500">
+                From live capture to purchase-ready output.
+              </p>
+            </div>
+          </div>
         </FadeUp>
 
         <div className="grid divide-y divide-stone-100 md:grid-cols-3 md:divide-x md:divide-y-0">
