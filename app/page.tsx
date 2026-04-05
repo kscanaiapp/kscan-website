@@ -1,53 +1,60 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  type Variants,
+  motion,
+  useInView,
+  useReducedMotion,
+} from "framer-motion";
 
 const coreFlow = [
   {
     step: "01",
     title: "Point",
     description:
-      "Aim K Scan at any outfit on the street, on a magazine page, or paused inside a clip. Live camera or still frame, the intake stays effortless.",
+      "Point K Scan at any outfit on the street, in a photo, or inside a video. The product starts with whatever caught your eye.",
   },
   {
     step: "02",
     title: "Parse",
     description:
-      "The engine reads fabric behavior, silhouette, tonal story, and styling intent. It understands the outfit as a composed look, not a loose pile of pixels.",
+      "K Scan identifies the pieces, reads the styling, and separates the look into clear purchase paths. It understands fashion, not just objects.",
   },
   {
     step: "03",
     title: "Purchase",
     description:
-      "Every identified piece surfaces with live retailer links, exact pricing, and refined alternatives when the original is gone. Desire moves cleanly to checkout.",
+      "Buy the exact piece when it is available, or move straight to the closest alternative. No screenshots, no manual search, no dead ends.",
   },
 ];
 
 const featureList = [
   {
     title: "Live Parsing",
-    body: "K Scan works in motion or stillness, reading passing crowds, paused reels, and editorial flat lays with the same composure.",
+    body: "K Scan works on moving footage, paused video, and still images with the same speed and clarity.",
   },
   {
     title: "Outfit-Level Intelligence",
-    body: "We model proportion, layering, and intent so the full look resolves with fashion logic instead of generic object detection.",
+    body: "It reads the look as fashion: proportion, layering, silhouette, and intent resolved together.",
   },
   {
     title: "Cross-Retailer Coverage",
-    body: "Luxury boutiques and high-street retailers are checked together, with exact matches and tasteful substitutes surfaced in the same view.",
+    body: "Exact matches and refined alternatives appear across retailers in one view, ready for purchase.",
   },
   {
     title: "Price Tier Awareness",
-    body: "Find the designer original or the sharpest adjacent option at a lower tier without losing the integrity of the look.",
+    body: "See the designer original or the closest lower-tier option without losing the look.",
   },
   {
     title: "Style Memory",
-    body: "K Scan remembers what you have scanned, saved, and bought so recommendations evolve with your wardrobe instead of repeating it.",
+    body: "Saved scans and purchases build a sharper profile, so recommendations improve instead of repeating.",
   },
   {
     title: "Trend Signal Layer",
-    body: "Inventory pressure, velocity, and resale heat add context so you know whether a piece is rising, peaking, or already disappearing.",
+    body: "Stock movement and demand signals add context before you commit to the piece.",
   },
 ];
 
@@ -66,6 +73,53 @@ const benchmarkStats = [
 ];
 
 const parseTags = ["Monochromatic Leather", "Tailored Blazer", "Sheer Mesh"];
+
+// ─── Motion primitives ────────────────────────────────────────────────────
+
+/** Fade + slide-up on first viewport entry. Fires once. */
+function FadeUp({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-6% 0px" });
+  const reduced = useReducedMotion();
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      initial={reduced ? false : { opacity: 0, y: 16 }}
+      animate={inView ? { opacity: 1, y: 0 } : undefined}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/** Container that staggers its direct FadeUp children. */
+const staggerContainer = {
+  visible: { transition: { staggerChildren: 0.07 } },
+};
+const staggerChild: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+/** Button / link with spring scale on hover + tap. */
+const btnMotion = {
+  whileHover: { scale: 1.025 },
+  whileTap: { scale: 0.97 },
+  transition: { type: "spring", stiffness: 300, damping: 30 },
+} as const;
+
+// ──────────────────────────────────────────────────────────────────────────
 
 function PhoneScreen({ size }: { size: "sm" | "lg" }) {
   const s = {
@@ -216,10 +270,124 @@ function PhoneScreen({ size }: { size: "sm" | "lg" }) {
   );
 }
 
+function LockIcon() {
+  return (
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 13 13"
+      fill="none"
+      aria-hidden="true"
+      className="flex-shrink-0"
+    >
+      <rect x="2" y="5.5" width="9" height="6.5" rx="1.5" stroke="currentColor" strokeWidth="1.2" />
+      <path
+        d="M4.5 5.5V4a2 2 0 0 1 4 0v1.5"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function InvestorSheet({ onClose }: { onClose: () => void }) {
+  const reduced = useReducedMotion();
+  return (
+    <>
+      {/* Backdrop */}
+      <motion.div
+        className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+        aria-hidden="true"
+        onClick={onClose}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.22 }}
+      />
+
+      {/* Sheet */}
+      <motion.div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Investor portal access"
+        className="fixed bottom-0 left-0 right-0 z-50 rounded-t-[28px] border-t border-white/10 bg-[#0E0E10] px-6 pb-10 pt-6 shadow-[0_-24px_64px_rgba(0,0,0,0.36)]"
+        initial={reduced ? false : { y: "100%" }}
+        animate={{ y: 0 }}
+        exit={{ y: "100%" }}
+        transition={{ type: "spring", stiffness: 280, damping: 32 }}
+      >
+        {/* Drag handle */}
+        <div className="mx-auto mb-6 h-1 w-10 rounded-full bg-white/15" />
+
+        {/* Close */}
+        <button
+          onClick={onClose}
+          aria-label="Close investor panel"
+          className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full bg-white/8 text-white/50 transition-colors hover:bg-white/14 hover:text-white"
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M1 1l10 10M11 1 1 11" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+          </svg>
+        </button>
+
+        {/* Content */}
+        <div className="space-y-1 mb-7">
+          <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-stone-500">
+            Private access
+          </p>
+          <h2 className="font-display text-[26px] font-medium leading-snug text-white">
+            Investor Portal
+          </h2>
+        </div>
+
+        <p className="mb-7 text-[14px] leading-[1.78] text-stone-400">
+          The K Scan deck and supporting materials are shared privately. Tap below to continue to the protected portal, or reach us directly if you haven&apos;t received access credentials.
+        </p>
+
+        <div className="space-y-3">
+          <motion.a
+            href="/investors"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex w-full items-center justify-center gap-2.5 rounded-full bg-white px-7 py-4 text-[14px] font-medium text-stone-900 transition-colors hover:bg-stone-100"
+            {...btnMotion}
+          >
+            <LockIcon />
+            Enter Investor Portal
+          </motion.a>
+          <motion.a
+            href="mailto:invest@kscan.ai"
+            className="block w-full rounded-full border border-white/12 px-7 py-4 text-center text-[13px] text-stone-400 transition-colors hover:border-white/24 hover:text-stone-200"
+            {...btnMotion}
+          >
+            Request access by email
+          </motion.a>
+        </div>
+
+        <p className="mt-6 text-center text-[11px] text-stone-600">
+          Confidential. Not for public distribution.
+        </p>
+      </motion.div>
+    </>
+  );
+}
+
 export default function Home() {
   const [email, setEmail] = useState("");
   const [submissionState, setSubmissionState] = useState<"idle" | "loading" | "success" | "duplicate" | "error">("idle");
   const [submissionMessage, setSubmissionMessage] = useState("");
+  const [investorOpen, setInvestorOpen] = useState(false);
+
+  // Prevent background scroll while sheet is open
+  useEffect(() => {
+    if (investorOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [investorOpen]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -285,43 +453,61 @@ export default function Home() {
               Waitlist
             </a>
           </nav>
-          <a
+          <motion.a
             href="#waitlist"
             className="rounded-full bg-violet-600 px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-violet-700"
+            {...btnMotion}
           >
             Join Waitlist
-          </a>
+          </motion.a>
         </div>
       </header>
 
-      <section className="mx-auto flex max-w-7xl flex-col gap-12 px-6 pb-24 pt-12 md:px-10 md:pb-40 md:pt-24 lg:flex-row lg:items-center lg:gap-16 lg:pt-28">
-        <div className="relative z-20 w-full max-w-[540px] flex-1">
-          <p className="mb-8 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400">
-            Early access - 2026
-          </p>
-          <h1 className="mb-6 max-w-[10ch] font-display text-[46px] leading-[1.01] text-stone-900 sm:text-[52px] md:text-[66px] lg:text-[78px]">
-            See it anywhere.
-            <br />
-            <em className="italic">Own it</em> by tonight.
-          </h1>
-          <p className="mb-9 max-w-[27rem] text-[15px] leading-[1.85] text-stone-500 md:text-[16px]">
-            K Scan turns a fashion sighting into a shoppable result in seconds.
-          </p>
-          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5">
-            <a
+      <section className="mx-auto flex max-w-7xl flex-col gap-12 px-6 pb-16 pt-12 md:px-10 md:pb-40 md:pt-24 lg:flex-row lg:items-center lg:gap-16 lg:pt-28">
+        <motion.div
+          className="relative z-20 w-full max-w-[540px] flex-1"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          <motion.p
+            className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400 md:mb-8"
+            variants={staggerChild}
+          >
+            Private beta - 2026
+          </motion.p>
+          <motion.h1
+            className="mb-5 max-w-[10ch] font-display text-[46px] leading-[1.01] text-stone-900 sm:text-[52px] md:mb-6 md:text-[66px] lg:text-[78px]"
+            variants={staggerChild}
+          >
+            Own what you see.
+          </motion.h1>
+          <motion.p
+            className="mb-8 max-w-[90%] text-[15px] leading-[1.85] text-stone-500 sm:max-w-[27rem] md:mb-9 md:text-[16px]"
+            variants={staggerChild}
+          >
+            K Scan identifies fashion items from photos or video and takes you straight to where to buy them.
+          </motion.p>
+          <motion.div
+            className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5"
+            variants={staggerChild}
+          >
+            <motion.a
               href="#waitlist"
               className="rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
+              {...btnMotion}
             >
-              Join Waitlist
-            </a>
-            <a
+              Get Early Access
+            </motion.a>
+            <motion.a
               href="#how-it-works"
               className="text-[13px] text-stone-400 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
+              {...btnMotion}
             >
               See how it works
-            </a>
-          </div>
-        </div>
+            </motion.a>
+          </motion.div>
+        </motion.div>
 
         <div className="w-full flex-shrink-0 lg:w-[48%]">
           <div className="relative mx-auto max-w-[600px] md:mr-0">
@@ -329,6 +515,12 @@ export default function Home() {
 
             <div className="relative overflow-hidden rounded-[28px] bg-[#f3efe8] shadow-[0_30px_80px_rgba(28,22,16,0.12)] ring-1 ring-black/5">
               <div className="relative aspect-[5/6] md:aspect-[11/10]">
+                <motion.div
+                  className="absolute inset-0"
+                  initial={{ scale: 1.05 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                >
                 <Image
                   src="/kathleen-hero.jpeg"
                   alt="Kathleen in the red dress anchoring the K Scan hero composition"
@@ -337,11 +529,13 @@ export default function Home() {
                   sizes="(max-width: 768px) 92vw, 46vw"
                   className="object-cover object-[center_12%] md:object-[center_16%]"
                 />
+                </motion.div>
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,248,244,0.06),rgba(29,20,16,0.16))]" />
 
                 <div className="absolute inset-x-4 bottom-4 h-20 rounded-[22px] bg-[linear-gradient(180deg,rgba(250,248,244,0),rgba(250,248,244,0.95))] md:hidden" />
 
                 <div className="absolute -bottom-1 left-0 right-0 hidden h-32 bg-[linear-gradient(180deg,rgba(244,240,233,0),rgba(244,240,233,0.98))] md:block" />
+
 
                 <div className="absolute right-3 bottom-5 z-20 md:right-6 md:bottom-7 lg:right-7">
                   <div className="animate-float relative h-[278px] w-[134px] overflow-hidden rounded-[28px] border-[3px] border-stone-700 bg-stone-900 shadow-[0_20px_50px_rgba(0,0,0,0.24)] md:h-[344px] md:w-[166px]">
@@ -350,14 +544,19 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="absolute left-2 top-3 z-10 max-w-[170px] rounded-[20px] border border-white/45 bg-white/68 px-4 py-3 shadow-[0_18px_36px_rgba(30,23,17,0.08)] backdrop-blur-sm md:left-3 md:top-4 md:max-w-[210px] md:px-5 md:py-4 lg:left-4 lg:top-5">
-                  <p className="mb-1 text-[10px] font-medium uppercase tracking-[0.2em] text-stone-400">
+                <motion.div
+                  className="absolute bottom-4 left-3 max-w-[160px] p-3 sm:bottom-auto sm:top-[30%] sm:max-w-[180px] sm:p-3.5 md:top-4 md:left-3 md:max-w-[210px] md:px-5 md:py-4 lg:left-4 lg:top-5 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl z-20"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <p className="mb-1 text-[9px] font-medium uppercase tracking-[0.2em] text-stone-400 md:text-[10px]">
                     Editorial signal
                   </p>
-                  <p className="font-display text-[18px] leading-[1.06] text-stone-900 md:text-[22px]">
+                  <p className="text-[14px] leading-[1.15] sm:text-[16px] md:text-[22px] font-serif text-stone-900">
                     One image, one parse, one immediate path to purchase.
                   </p>
-                </div>
+                </motion.div>
               </div>
             </div>
 
@@ -384,64 +583,67 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-stone-100 bg-white py-10 md:py-12">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <div className="grid grid-cols-2 gap-x-4 gap-y-7 md:flex md:items-center md:justify-between md:gap-0">
-            {trustMetrics.map(({ label, value }, i) => (
-              <div key={label} className="flex items-center gap-8 md:gap-12">
-                <div className="text-left">
-                  <div className="font-display text-xl text-stone-900">{value}</div>
-                  <div className="mt-0.5 text-[10px] uppercase tracking-wider text-stone-400">{label}</div>
+      <section className="border-y border-stone-100 bg-white py-8 md:py-12">
+        <FadeUp>
+          <div className="mx-auto max-w-7xl px-6 md:px-10">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-5 md:flex md:items-center md:justify-between md:gap-0">
+              {trustMetrics.map(({ label, value }, i) => (
+                <div key={label} className="flex items-center gap-8 md:gap-12">
+                  <div className="text-left">
+                    <div className="font-display text-2xl font-semibold text-stone-900 md:text-xl md:font-medium">{value}</div>
+                    <div className="mt-0.5 text-[10px] uppercase tracking-wider text-stone-400">{label}</div>
+                  </div>
+                  {i < trustMetrics.length - 1 && <div className="hidden h-8 w-px flex-shrink-0 bg-stone-100 md:block" />}
                 </div>
-                {i < trustMetrics.length - 1 && <div className="hidden h-8 w-px flex-shrink-0 bg-stone-100 md:block" />}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </FadeUp>
       </section>
 
-      <section id="how-it-works" className="mx-auto max-w-7xl px-6 py-32 md:px-10 md:py-44">
-        <div className="mb-20 md:mb-28">
-          <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
+      <section id="how-it-works" className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-44">
+        <FadeUp className="mb-12 md:mb-28">
+          <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 md:mb-5">
             The Core Flow
           </p>
           <h2 className="font-display text-4xl font-medium text-stone-900 md:text-[52px]">
-            Three moments.
+            See it.
             <br />
-            One seamless experience.
+            Buy it.
           </h2>
-        </div>
+        </FadeUp>
 
         <div className="grid divide-y divide-stone-100 md:grid-cols-3 md:divide-x md:divide-y-0">
           {coreFlow.map(({ step, title, description }, idx) => (
-            <div
+            <FadeUp
               key={step}
-              className={`pb-12 md:px-12 md:pb-0 first:md:pl-0 last:md:pr-0 ${idx === 0 ? "pt-0" : "pt-12 md:pt-0"}`}
+              delay={idx * 0.08}
+              className={`pb-10 md:px-12 md:pb-0 first:md:pl-0 last:md:pr-0 ${idx === 0 ? "pt-0" : "pt-10 md:pt-0"}`}
             >
-              <span className="mb-6 block select-none font-display text-[72px] leading-none text-stone-100">
+              <span className="mb-4 block select-none font-display text-[64px] leading-none text-stone-100 md:mb-6 md:text-[72px]">
                 {step}
               </span>
-              <h3 className="mb-5 font-display text-[30px] font-medium text-stone-900">{title}</h3>
+              <h3 className="mb-4 font-display text-[28px] font-medium text-stone-900 md:mb-5 md:text-[30px]">{title}</h3>
               <p className="text-[15px] leading-[1.82] text-stone-500">{description}</p>
-            </div>
+            </FadeUp>
           ))}
         </div>
       </section>
 
-      <section id="features" className="bg-white py-32 md:py-44">
+      <section id="features" className="bg-white py-20 md:py-44">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <div className="mb-20 max-w-lg md:mb-28">
-            <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
+          <FadeUp className="mb-12 max-w-lg md:mb-28">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 md:mb-5">
               What Sets It Apart
             </p>
             <h2 className="font-display text-4xl font-medium text-stone-900 md:text-[52px]">
               Built for fashion.
               <br />
-              Not for search.
+              Built to convert.
             </h2>
-          </div>
+          </FadeUp>
 
-          <div className="mb-12 grid gap-10 md:mb-16 md:grid-cols-[1.15fr_0.85fr] md:items-end">
+          <FadeUp className="mb-10 grid gap-8 md:mb-16 md:grid-cols-[1.15fr_0.85fr] md:items-end md:gap-10">
             <div className="relative overflow-hidden rounded-[30px] bg-[#F5F1EB] shadow-[0_18px_50px_rgba(28,22,16,0.07)] ring-1 ring-black/5">
               <div className="relative aspect-[5/4]">
                 <Image
@@ -459,36 +661,37 @@ export default function Home() {
                 Fashion-first signal
               </p>
               <p className="font-display text-[30px] leading-[1.15] text-stone-900 md:text-[36px]">
-                A visual system grounded in garments, tailoring, and taste, not generic commerce UI.
+                A commerce layer for fashion, not another browse-and-search workflow.
               </p>
             </div>
-          </div>
+          </FadeUp>
 
           <div className="grid gap-x-12 md:grid-cols-2 md:gap-x-16 lg:grid-cols-3">
-            {featureList.map(({ title, body }) => (
-              <div key={title} className="border-t border-stone-100 py-9 md:py-10">
+            {featureList.map(({ title, body }, idx) => (
+              <FadeUp key={title} delay={idx * 0.05} className="border-t border-stone-100 py-9 md:py-10">
                 <h3 className="mb-3 text-[15px] font-medium text-stone-900">{title}</h3>
                 <p className="text-[14px] leading-[1.82] text-stone-400">{body}</p>
-              </div>
+              </FadeUp>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-32 md:px-10 md:py-44">
-        <div className="flex flex-col gap-14 rounded-3xl bg-[#F5F3EF] px-8 py-16 md:rounded-[44px] md:px-16 md:py-24 lg:flex-row lg:items-start lg:gap-20">
+      <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-44">
+        <FadeUp>
+        <div className="flex flex-col gap-10 rounded-3xl bg-[#F5F3EF] px-6 py-10 md:rounded-[44px] md:px-16 md:py-24 md:gap-14 lg:flex-row lg:items-start lg:gap-20">
           <div className="max-w-lg flex-1">
-            <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 md:mb-6">
               Under the Hood
             </p>
-            <h2 className="mb-7 font-display text-3xl font-medium leading-[1.1] text-stone-900 md:text-[42px]">
-              Fashion AI that reads context, not just pixels.
+            <h2 className="mb-5 font-display text-3xl font-medium leading-[1.1] text-stone-900 md:mb-7 md:text-[42px]">
+              Fashion intelligence built for purchase, not lookup.
             </h2>
-            <p className="mb-5 text-[15px] leading-[1.88] text-stone-500">
-              Most visual search stops at surface similarity. K Scan was trained on fashion language, from construction and proportion to brand signatures and styling intent.
+            <p className="mb-4 text-[15px] leading-[1.88] text-stone-500 md:mb-5">
+              Most visual search stops at rough similarity. K Scan reads construction, silhouette, material, and styling intent to surface better buying matches.
             </p>
             <p className="text-[15px] leading-[1.88] text-stone-500">
-              The result feels less like search and more like informed fashion direction with retailer precision underneath it.
+              The result feels direct: see the look, understand the pieces, and move to purchase.
             </p>
           </div>
 
@@ -545,30 +748,64 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </FadeUp>
       </section>
 
-      <section className="border-y border-stone-100 bg-[#F5F3EF] py-[4.5rem] md:py-20">
-        <div className="mx-auto flex max-w-7xl flex-col gap-7 px-6 md:flex-row md:items-end md:justify-between md:px-10">
-          <div>
-            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
-              K Scan AI
-            </p>
-            <h3 className="max-w-xl font-display text-[26px] font-medium leading-snug text-stone-900 md:text-[32px]">
-              Building the commerce layer
-              <br className="hidden md:block" /> fashion has been missing.
-            </h3>
+      <section className="border-y border-stone-100 bg-[#F5F3EF] py-10 md:py-20">
+        <FadeUp>
+          <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 md:flex-row md:items-end md:justify-between md:gap-7 md:px-10">
+            <div className="space-y-3">
+              <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
+                K Scan AI
+              </p>
+              <h3 className="max-w-xl font-display text-[26px] font-medium leading-snug text-stone-900 md:text-[32px]">
+                Private materials for
+                <br className="hidden md:block" /> qualified investors.
+              </h3>
+              <p className="max-w-sm text-[13px] leading-[1.72] text-stone-500 md:hidden">
+                The deck and supporting materials are available to qualified investors under private access.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 md:items-end">
+              {/* Mobile: opens bottom sheet */}
+              <motion.button
+                onClick={() => setInvestorOpen(true)}
+                className="flex w-full items-center justify-center gap-2.5 rounded-full bg-stone-900 px-7 py-4 text-[14px] font-medium text-white transition-colors hover:bg-stone-800 md:hidden"
+                {...btnMotion}
+              >
+                <LockIcon />
+                Access Investor Materials
+              </motion.button>
+
+              {/* Desktop: direct link */}
+              <motion.a
+                href="/investors"
+                className="hidden items-center gap-2 rounded-full bg-stone-900 px-7 py-3.5 text-center text-[14px] font-medium text-white transition-colors hover:bg-stone-800 md:flex"
+                {...btnMotion}
+              >
+                <LockIcon />
+                Enter Secure Portal
+              </motion.a>
+
+              <a
+                href="mailto:invest@kscan.ai"
+                className="text-center text-[12px] text-stone-400 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400 md:text-right"
+              >
+                or request credentials
+              </a>
+            </div>
           </div>
-          <a
-            href="mailto:invest@kscan.ai"
-            className="whitespace-nowrap text-[13px] text-stone-400 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
-          >
-            Investor inquiries
-          </a>
-        </div>
+        </FadeUp>
       </section>
 
-      <section id="waitlist" className="bg-white py-36 md:py-52">
-        <div className="mx-auto grid max-w-5xl items-center gap-12 px-6 md:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      {/* Investor bottom sheet — AnimatePresence for smooth exit */}
+      <AnimatePresence>
+        {investorOpen && <InvestorSheet onClose={() => setInvestorOpen(false)} />}
+      </AnimatePresence>
+
+      <section id="waitlist" className="bg-white py-14 md:py-40">
+        <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 md:px-10 md:gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div className="order-2 mx-auto hidden w-full max-w-sm lg:order-1 lg:block lg:max-w-none">
             <div className="relative overflow-hidden rounded-[28px] bg-[#f6f2ec] shadow-[0_16px_38px_rgba(34,28,24,0.06)] ring-1 ring-black/5">
               <div className="relative aspect-[4/5]">
@@ -584,74 +821,97 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="order-1 text-center lg:order-2 lg:max-w-[34rem] lg:text-left">
-            <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
-              Early Access
+          <FadeUp className="order-1 text-center lg:order-2 lg:max-w-[34rem] lg:text-left">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 md:mb-6">
+              Priority Beta Access
             </p>
-            <h2 className="mb-6 font-display text-[40px] font-medium leading-[1.02] text-stone-900 sm:text-[44px] md:text-[58px]">
-              The waitlist
-              <br />
-              is open.
+            <h2 className="mb-5 font-display text-[40px] font-medium leading-[1.02] text-stone-900 sm:text-[44px] md:mb-6 md:text-[58px]">
+              Request access.
             </h2>
-            <p className="mx-auto mb-10 max-w-xs text-[15px] leading-[1.82] text-stone-400 lg:mx-0">
-              Be among the first. One email when your access is ready, and nothing before then.
+            <p className="mx-auto mb-8 max-w-xs text-[15px] leading-[1.82] text-stone-400 md:mb-10 lg:mx-0">
+              Apply for early access to the private beta. Invitations are released in limited waves.
             </p>
 
             {submissionState === "success" ? (
-              <p className="font-display text-[22px] italic text-stone-600">You&apos;re on the list.</p>
+              <motion.p
+                className="font-display text-[22px] italic text-stone-600"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                Your access request is in.
+              </motion.p>
             ) : submissionState === "duplicate" ? (
-              <p className="font-display text-[22px] italic text-stone-600">You&apos;re already on the list.</p>
+              <motion.p
+                className="font-display text-[22px] italic text-stone-600"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              >
+                You&apos;ve already requested access.
+              </motion.p>
             ) : (
-              <form onSubmit={handleSubmit} className="mx-auto flex max-w-sm flex-col gap-2.5 sm:flex-row lg:mx-0">
+              <form onSubmit={handleSubmit} className="mx-auto flex max-w-sm flex-col gap-3 sm:flex-row sm:gap-2.5 lg:mx-0">
                 <input
                   type="email"
                   required
                   placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 rounded-full border border-stone-200 bg-[#FAFAF8] px-6 py-4 text-[14px] text-stone-900 placeholder:text-stone-300 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-violet-200"
+                  className="w-full flex-1 rounded-full border border-stone-200 bg-white px-6 py-4 text-[14px] text-stone-900 placeholder:text-stone-400 focus:border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-100 sm:w-auto"
                 />
-                <button
+                <motion.button
                   type="submit"
                   disabled={submissionState === "loading"}
-                  className="rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.16)] transition-colors hover:bg-violet-700"
+                  className="w-full rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.16)] transition-colors hover:bg-violet-700 disabled:opacity-60 sm:w-auto"
+                  {...btnMotion}
                 >
-                  {submissionState === "loading" ? "Joining..." : "Join Waitlist"}
-                </button>
+                  {submissionState === "loading" ? "Requesting..." : "Request Access"}
+                </motion.button>
               </form>
             )}
 
             <p className={`mt-6 text-[11px] tracking-wide ${submissionState === "error" ? "text-stone-400" : "text-stone-300"}`}>
               {submissionState === "error" ? submissionMessage : "No credit card. No commitment."}
             </p>
-          </div>
+          </FadeUp>
         </div>
       </section>
 
-      <footer className="border-t border-stone-100 bg-[#FAFAF8] py-14">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-7 px-6 md:flex-row md:px-10">
-          <div>
-            <div className="mb-1 flex items-center gap-1.5">
-              <span className="font-display text-base font-medium text-stone-900">K Scan</span>
-              <span className="text-[9px] uppercase tracking-widest text-stone-300">AI</span>
+      <footer className="border-t border-stone-100 bg-[#FAFAF8] py-12 md:py-14">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          {/* Top row: wordmark + nav */}
+          <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:justify-between md:gap-0">
+            <div className="text-center md:text-left">
+              <div className="mb-1 flex items-center justify-center gap-1.5 md:justify-start">
+                <span className="font-display text-base font-medium text-stone-900">K Scan</span>
+                <span className="text-[9px] uppercase tracking-widest text-stone-300">AI</span>
+              </div>
+              <p className="text-[11px] text-stone-400">Fashion, made shoppable.</p>
             </div>
-            <p className="text-[11px] text-stone-400">Fashion, made shoppable.</p>
+
+            <nav className="grid grid-cols-2 gap-x-8 gap-y-1 md:flex md:gap-7">
+              {[
+                { href: "#how-it-works", label: "How It Works" },
+                { href: "#features", label: "Features" },
+                { href: "#waitlist", label: "Waitlist" },
+                { href: "mailto:hello@kscan.ai", label: "Contact" },
+              ].map(({ href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  className="flex items-center justify-center py-3 text-[13px] text-stone-400 transition-colors hover:text-stone-800 md:py-0 md:justify-start"
+                >
+                  {label}
+                </a>
+              ))}
+            </nav>
           </div>
-          <nav className="flex flex-wrap justify-center gap-7 text-[13px] text-stone-400">
-            <a href="#how-it-works" className="transition-colors hover:text-stone-700">
-              How It Works
-            </a>
-            <a href="#features" className="transition-colors hover:text-stone-700">
-              Features
-            </a>
-            <a href="#waitlist" className="transition-colors hover:text-stone-700">
-              Waitlist
-            </a>
-            <a href="mailto:hello@kscan.ai" className="transition-colors hover:text-stone-700">
-              Contact
-            </a>
-          </nav>
-          <p className="text-[11px] text-stone-300">(c) 2026 K Scan AI. All rights reserved.</p>
+
+          {/* Bottom row: copyright */}
+          <p className="mt-8 text-center text-[11px] text-stone-300 md:mt-6 md:text-right">
+            © 2026 K Scan AI. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
