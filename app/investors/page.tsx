@@ -92,11 +92,27 @@ export default function InvestorsPage() {
           <Link href="/" className="text-[12px] uppercase tracking-[0.18em] text-stone-400 transition-colors hover:text-stone-700">
             K Scan AI
           </Link>
-          <nav className="flex items-center gap-6 text-[12px] uppercase tracking-[0.16em] text-stone-400">
+          <nav className="hidden items-center gap-6 text-[12px] uppercase tracking-[0.16em] text-stone-400 md:flex">
+            <Link href="/demo" className="transition-colors hover:text-stone-700">
+              Demo
+            </Link>
             <Link href="/investors" className="transition-colors hover:text-stone-700">
               Investors
             </Link>
           </nav>
+        </div>
+        <div className="border-t border-stone-100/80 md:hidden">
+          <div className="mx-auto flex max-w-6xl items-center gap-6 overflow-x-auto px-6 text-[12px] uppercase tracking-[0.16em] text-stone-400 [&::-webkit-scrollbar]:hidden">
+            <Link href="/" className="whitespace-nowrap py-4 transition-colors hover:text-stone-700">
+              Home
+            </Link>
+            <Link href="/demo" className="whitespace-nowrap py-4 transition-colors hover:text-stone-700">
+              Demo
+            </Link>
+            <Link href="/investors" className="whitespace-nowrap py-4 transition-colors hover:text-stone-700">
+              Investors
+            </Link>
+          </div>
         </div>
       </section>
 

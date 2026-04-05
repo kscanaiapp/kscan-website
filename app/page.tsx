@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
@@ -446,9 +447,12 @@ export default function Home() {
             <a href="#features" className="transition-colors hover:text-stone-900">
               Features
             </a>
-            <a href="/investors" className="transition-colors hover:text-stone-900">
+            <Link href="/demo" className="transition-colors hover:text-stone-900">
+              Demo
+            </Link>
+            <Link href="/investors" className="transition-colors hover:text-stone-900">
               Investors
-            </a>
+            </Link>
             <a href="#waitlist" className="transition-colors hover:text-stone-900">
               Waitlist
             </a>
@@ -460,6 +464,28 @@ export default function Home() {
           >
             Join Waitlist
           </motion.a>
+        </div>
+        <div className="border-t border-stone-100/80 md:hidden">
+          <div className="mx-auto flex max-w-7xl items-center gap-6 overflow-x-auto px-6 text-[12px] uppercase tracking-[0.16em] text-stone-400 [&::-webkit-scrollbar]:hidden">
+            <Link href="/" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
+              Home
+            </Link>
+            <a href="#how-it-works" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
+              How It Works
+            </a>
+            <a href="#features" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
+              Features
+            </a>
+            <Link href="/demo" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
+              Demo
+            </Link>
+            <Link href="/investors" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
+              Investors
+            </Link>
+            <a href="#waitlist" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
+              Waitlist
+            </a>
+          </div>
         </div>
       </header>
 
