@@ -1,20 +1,18 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
+import { z } from "zod";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const WAITLIST_TABLE = "waitlist_signups";
 
-type WaitlistPayload = {
-  email?: string;
-  name?: string;
-  referrer?: string;
-  source?: string;
-};
-
-function isValidEmail(email: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+const bodySchema = z.object({
+  email: z.string().trim().toLowerCase().email("Please enter a valid email address."),
+  source: z.string().trim().min(1).default("homepage"),
+  page: z.string().trim().optional(),
+  name: z.string().trim().min(1).optional(),
+  referrer: z.string().trim().optional(),
+});
 
 function isDuplicateError(status: number, errorBody: unknown) {
   if (status === 409) return true;
@@ -22,7 +20,7 @@ function isDuplicateError(status: number, errorBody: unknown) {
 
   const error = errorBody as Record<string, unknown>;
   const parts = [error.code, error.message, error.details, error.hint]
-    .filter((value): value is string => typeof value === "string")
+    .filter((v): v is string => typeof v === "string")
     .join(" ")
     .toLowerCase();
 
@@ -37,10 +35,9 @@ export async function POST(request: Request) {
     );
   }
 
-  let body: WaitlistPayload;
-
+  let rawBody: unknown;
   try {
-    body = (await request.json()) as WaitlistPayload;
+    rawBody = await request.json();
   } catch {
     return NextResponse.json(
       { status: "error", message: "Invalid request body." },
@@ -48,28 +45,22 @@ export async function POST(request: Request) {
     );
   }
 
-  const normalizedEmail = body.email?.trim().toLowerCase() ?? "";
-
-  if (!normalizedEmail || !isValidEmail(normalizedEmail)) {
-    return NextResponse.json(
-      { status: "error", message: "Please enter a valid email address." },
-      { status: 400 },
-    );
+  const parsed = bodySchema.safeParse(rawBody);
+  if (!parsed.success) {
+    const message = parsed.error.issues[0]?.message ?? "Invalid request.";
+    return NextResponse.json({ status: "error", message }, { status: 400 });
   }
 
+  const { email, source, page, name, referrer: bodyReferrer } = parsed.data;
+
   const headerStore = await headers();
-  const referrerHeader = headerStore.get("referer");
-  const source = typeof body.source === "string" && body.source.trim() ? body.source.trim() : "homepage";
-  const name = typeof body.name === "string" && body.name.trim() ? body.name.trim() : null;
-  const referrer =
-    typeof body.referrer === "string" && body.referrer.trim()
-      ? body.referrer.trim()
-      : referrerHeader;
+  const referrer = bodyReferrer || headerStore.get("referer") || null;
 
   const insertPayload = {
-    email: normalizedEmail,
+    email,
     source,
-    name,
+    page: page ?? null,
+    name: name ?? null,
     referrer,
   };
 
@@ -91,7 +82,6 @@ export async function POST(request: Request) {
     }
 
     let errorBody: unknown = null;
-
     try {
       errorBody = await response.json();
     } catch {

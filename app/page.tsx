@@ -406,7 +406,8 @@ export default function Home() {
         body: JSON.stringify({
           email,
           source: "homepage",
-          referrer: typeof window !== "undefined" ? window.location.href : undefined,
+          page: window.location.pathname,
+          referrer: window.location.href,
         }),
       });
 
@@ -714,7 +715,7 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-[30px] bg-[#F5F1EB] shadow-[0_18px_50px_rgba(28,22,16,0.07)] ring-1 ring-black/5">
               <div className="relative aspect-[5/4]">
                 <Image
-                  src="/kathleen-leisure.jpg"
+                  src="/group-street.png"
                   alt="Kathleen in a white leisure set illustrating K Scan's fashion-first feature system"
                   fill
                   sizes="(max-width: 768px) 92vw, 48vw"
