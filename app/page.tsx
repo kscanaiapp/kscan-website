@@ -889,6 +889,21 @@ export default function Home() {
           </div>
 
           <FadeUp className="order-1 text-center lg:order-2 lg:max-w-[34rem] lg:text-left">
+            {/* Mobile image — hidden at lg and above where the sidebar image takes over */}
+            <div className="mx-auto mb-8 w-full max-w-xs lg:hidden">
+              <div className="relative overflow-hidden rounded-[28px] bg-[#f6f2ec] shadow-[0_16px_38px_rgba(34,28,24,0.06)] ring-1 ring-black/5">
+                <div className="relative aspect-[4/5]">
+                  <Image
+                    src="/katlike-glam.png"
+                    alt="Editorial pink gown portrait beside the K Scan beta waitlist call to action"
+                    fill
+                    sizes="80vw"
+                    className="object-cover object-[center_20%] opacity-88"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(246,241,236,0.18),rgba(31,23,23,0.08))]" />
+                </div>
+              </div>
+            </div>
             <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 md:mb-6">
               Priority Beta Access
             </p>
