@@ -116,6 +116,7 @@ export default function InvestorsPage() {
         </div>
       </section>
 
+      {/* ─── Intro ──────────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-14 md:px-10 md:py-20">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="max-w-2xl">
@@ -149,6 +150,204 @@ export default function InvestorsPage() {
         </div>
       </section>
 
+      {/* ─── Executive Summary ──────────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 pb-14 md:px-10 md:pb-20">
+        <div className="max-w-2xl">
+          <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400">
+            Executive Summary
+          </p>
+          <h2 className="font-display text-[30px] leading-[1.08] text-stone-900 md:text-[38px]">
+            K Scan is building the commerce layer for fashion discovery.
+          </h2>
+          <p className="mt-6 text-[15px] leading-[1.9] text-stone-500">
+            K Scan turns real-world inspiration into purchase-ready intent. When consumers see a look they want—in the street, on a screen, or in a social feed—traditional search breaks down. K Scan bridges that gap with fashion-specific visual intelligence designed to identify the look, interpret the styling context, and move the user toward purchase faster.
+          </p>
+          <p className="mt-5 text-[15px] leading-[1.9] text-stone-500">
+            The long-term opportunity is to become the infrastructure layer connecting fashion discovery, product matching, and commerce conversion across consumer and enterprise channels.
+          </p>
+        </div>
+      </section>
+
+      {/* ─── Why Now ────────────────────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 pb-14 md:px-10 md:pb-20">
+        <div className="rounded-[30px] border border-stone-200/80 bg-white px-6 py-8 md:px-10 md:py-10">
+          <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400">
+            Market Opportunity
+          </p>
+          <h2 className="font-display text-[30px] leading-[1.08] text-stone-900 md:text-[38px]">
+            Why Now
+          </h2>
+          <p className="mt-6 max-w-2xl text-[15px] leading-[1.9] text-stone-500">
+            Fashion discovery increasingly starts outside traditional ecommerce search. Consumers discover products in social feeds, video, real-world settings, and creator-driven environments, yet the path from inspiration to checkout remains fragmented. K Scan is built to solve that conversion gap.
+          </p>
+          <ul className="mt-7 space-y-3">
+            {[
+              "Fashion commerce is large, global, and highly visual",
+              "Discovery behavior is shifting toward image, video, and real-world inspiration",
+              "Legacy search tools are not built for outfit-level fashion intent",
+              "K Scan is positioned at the intersection of visual AI, commerce infrastructure, and next-generation shopping behavior",
+            ].map((item) => (
+              <li key={item} className="flex gap-3 text-[14px] leading-[1.82] text-stone-500">
+                <span aria-hidden className="mt-[0.48em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-stone-300" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ─── Proprietary Advantage ──────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 pb-14 md:px-10 md:pb-20">
+        <div className="rounded-[30px] border border-stone-200/80 bg-[#F5F3EF] px-6 py-8 md:px-10 md:py-10">
+          <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400">
+            Competitive Positioning
+          </p>
+          <h2 className="font-display text-[30px] leading-[1.08] text-stone-900 md:text-[38px]">
+            Style-Parse™: Intelligence Beyond Generic Search
+          </h2>
+          <p className="mt-6 max-w-2xl text-[15px] leading-[1.9] text-stone-500">
+            Generic visual search identifies objects. K Scan is built to understand fashion. Our proprietary Style-Parse™ engine evaluates silhouette, material, styling context, and brand cues to produce more relevant shopping matches and better alternatives.
+          </p>
+
+          <div className="mt-8 grid gap-8 md:grid-cols-2">
+            <div>
+              <p className="mb-4 text-[11px] uppercase tracking-[0.18em] text-stone-400">Positioning</p>
+              <ul className="space-y-3">
+                {[
+                  "Built for fashion, not general image recognition",
+                  "Understands the full look, not just isolated objects",
+                  "Designed for purchase conversion, not passive search",
+                  "Built to support both consumer utility and API-based enterprise applications",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3 text-[14px] leading-[1.82] text-stone-500">
+                    <span aria-hidden className="mt-[0.48em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-stone-300" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="mb-4 text-[11px] uppercase tracking-[0.18em] text-stone-400">Proof Points</p>
+              <ul className="space-y-0 border-t border-stone-200">
+                {[
+                  { stat: "94%", label: "Silhouette recognition in internal benchmark testing" },
+                  { stat: "1.4s", label: "Average parse time" },
+                  { stat: "500k+", label: "Fashion reference images and signals across the K Scan matching system" },
+                ].map(({ stat, label }) => (
+                  <li key={stat} className="flex items-baseline gap-4 border-b border-stone-200 py-4">
+                    <span className="w-14 flex-shrink-0 font-display text-[26px] leading-none text-stone-900">{stat}</span>
+                    <span className="text-[13px] leading-[1.75] text-stone-500">{label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Business Model ─────────────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 pb-14 md:px-10 md:pb-20">
+        <div className="max-w-2xl">
+          <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400">
+            Business Model
+          </p>
+          <h2 className="font-display text-[30px] leading-[1.08] text-stone-900 md:text-[38px]">
+            Business Model
+          </h2>
+          <p className="mt-6 text-[15px] leading-[1.9] text-stone-500">
+            K Scan is designed as a multi-layer commerce business. The initial consumer product drives discovery and purchase intent, while longer-term monetization expands through retailer and enterprise integrations.
+          </p>
+          <ul className="mt-7 space-y-3">
+            {[
+              "Affiliate and commerce-driven transaction revenue",
+              "Premium subscription opportunities for advanced users",
+              "API and infrastructure revenue for retailer and enterprise integrations",
+            ].map((item) => (
+              <li key={item} className="flex gap-3 text-[14px] leading-[1.82] text-stone-500">
+                <span aria-hidden className="mt-[0.48em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-stone-300" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ─── Traction Snapshot ──────────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 pb-14 md:px-10 md:pb-20">
+        <div className="rounded-[30px] border border-stone-200/80 bg-white px-6 py-8 md:px-10 md:py-10">
+          <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400">
+            Traction Snapshot
+          </p>
+          <h2 className="font-display text-[30px] leading-[1.08] text-stone-900 md:text-[38px]">
+            Traction Snapshot
+          </h2>
+          <p className="mt-6 max-w-2xl text-[15px] leading-[1.9] text-stone-500">
+            K Scan is early, but the product and narrative are being built toward a category-defining opportunity in visual commerce.
+          </p>
+          <ul className="mt-7 space-y-0 border-t border-stone-200">
+            {[
+              "Prototype and brand system developed",
+              "Investor materials and product narrative in active refinement",
+              "Private beta positioning underway",
+              "Initial waitlist and early-interest acquisition infrastructure in place",
+            ].map((item) => (
+              <li key={item} className="flex items-center gap-4 border-b border-stone-200 py-4 text-[14px] leading-[1.8] text-stone-500">
+                <span aria-hidden className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-stone-300" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ─── Strategic Roadmap ──────────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 pb-14 md:px-10 md:pb-20">
+        <div className="max-w-2xl">
+          <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400">
+            Strategic Roadmap
+          </p>
+          <h2 className="font-display text-[30px] leading-[1.08] text-stone-900 md:text-[38px]">
+            Strategic Roadmap
+          </h2>
+        </div>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {[
+            {
+              phase: "Phase I",
+              title: "Private Beta",
+              period: "Q2 2026",
+              description: "Launch with a curated early-access cohort and refine the core Style-Parse™ experience.",
+            },
+            {
+              phase: "Phase II",
+              title: "Commerce Infrastructure",
+              period: "Q4 2026",
+              description: "Expand matching, indexing, and retailer-ready integration capabilities.",
+            },
+            {
+              phase: "Phase III",
+              title: "Enterprise & Wearables",
+              period: "2027",
+              description: "Extend K Scan into API-based enterprise use cases and smart-glasses experiences.",
+            },
+          ].map(({ phase, title, period, description }) => (
+            <div key={phase} className="rounded-[24px] border border-stone-200/80 bg-white p-6">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">{phase}</p>
+              <p className="mt-3 font-display text-[22px] leading-[1.1] text-stone-900">{title}</p>
+              <p className="mt-1 text-[12px] uppercase tracking-[0.14em] text-stone-400">{period}</p>
+              <p className="mt-4 text-[13px] leading-[1.82] text-stone-500">{description}</p>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-8 max-w-2xl text-[14px] leading-[1.85] text-stone-500">
+          Each phase is designed to de-risk the product, strengthen the data advantage, and expand monetization pathways.
+        </p>
+      </section>
+
+      {/* ─── Access Gate ────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 pb-10 md:px-10 md:pb-14">
         <div className="rounded-[34px] border border-stone-200/80 bg-white p-6 shadow-[0_18px_40px_rgba(35,28,22,0.05)] md:p-8">
           <div className="grid gap-8 lg:grid-cols-[0.44fr_0.56fr] lg:gap-10">
@@ -157,10 +356,10 @@ export default function InvestorsPage() {
                 Access Gate
               </p>
               <h2 className="font-display text-[30px] leading-[1.08] text-stone-900 md:text-[36px]">
-                Controlled access to deck materials.
+                Confidential Investor Materials
               </h2>
               <p className="mt-4 text-[14px] leading-[1.85] text-stone-500">
-                Enter the current investor password to view the presentation. Access is intentionally quiet and limited while materials remain in private circulation.
+                Secure access to deck materials, market framing, and company overview.
               </p>
 
               <form onSubmit={handleSubmit} className="mt-8 space-y-3">
@@ -223,6 +422,10 @@ export default function InvestorsPage() {
                   </p>
                 )}
               </div>
+
+              <p className="mt-6 text-[11px] leading-[1.75] text-stone-400">
+                Confidentiality Notice: Investor materials are intended for qualified recipients only and are provided for evaluation purposes.
+              </p>
             </div>
 
             <div className="rounded-[28px] bg-[#F7F4EF] p-3 ring-1 ring-stone-200/70 md:p-4">
@@ -291,6 +494,7 @@ export default function InvestorsPage() {
         </div>
       </section>
 
+      {/* ─── Contact ────────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
         <div className="rounded-[30px] border border-stone-200/80 bg-[#F5F3EF] px-6 py-8 md:px-8 md:py-10">
           <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Investor Contact</p>
