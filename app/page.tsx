@@ -34,16 +34,16 @@ const coreFlow = [
 
 const featureList = [
   {
-    title: "Live Parsing",
-    body: "K Scan works on moving footage, paused video, and still images with the same speed and clarity.",
+    title: "Fashion-First Intelligence",
+    body: "We don’t just identify objects. We understand fashion—proportion, layering, silhouette, and intent—so each piece is read in context.",
   },
   {
-    title: "Outfit-Level Intelligence",
-    body: "It reads the look as fashion: proportion, layering, silhouette, and intent resolved together.",
+    title: "Faster Than Reverse Image Search",
+    body: "Built for live video and still images, K Scan delivers results in seconds so you can capture the look and move on.",
   },
   {
-    title: "Cross-Retailer Coverage",
-    body: "Exact matches and refined alternatives appear across retailers in one view, ready for purchase.",
+    title: "One View, Multiple Retailers",
+    body: "See the exact match or the best alternative across indexed retailers. No tab-switching. No dead ends.",
   },
   {
     title: "Price Tier Awareness",
@@ -60,17 +60,16 @@ const featureList = [
 ];
 
 const trustMetrics = [
-  { label: "Brands indexed", value: "40,000+" },
-  { label: "Avg. parse time", value: "< 2s" },
-  { label: "Retailer coverage", value: "200+ stores" },
-  { label: "Beta cohort", value: "NYFW '26" },
+  { label: "Avg. Parse Time", value: "1.4s" },
+  { label: "Silhouette Recognition", value: "94%" },
+  { label: "Retailers Indexed", value: "200+" },
 ];
 
 const benchmarkStats = [
-  { label: "Silhouette recognition", pct: 94 },
-  { label: "Brand identification", pct: 89 },
-  { label: "Fabric classification", pct: 81 },
-  { label: "Styling context read", pct: 76 },
+  { label: "500k+ Outfit Images", pct: 94 },
+  { label: "Real-Time Material Detection", pct: 89 },
+  { label: "Cross-Retailer Product Sync", pct: 81 },
+  { label: "Custom Silhouette Recognition", pct: 76 },
 ];
 
 const parseTags = ["Monochromatic Leather", "Tailored Blazer", "Sheer Mesh"];
@@ -507,13 +506,13 @@ export default function Home() {
             className="mb-5 max-w-[10ch] font-display text-[46px] leading-[1.01] text-stone-900 sm:text-[52px] md:mb-6 md:text-[66px] lg:text-[78px]"
             variants={staggerChild}
           >
-            See it. Scan it. Own it.
+            See it. Say it. Get it.
           </motion.h1>
           <motion.p
             className="mb-8 max-w-[90%] text-[15px] leading-[1.85] text-stone-500 sm:max-w-[27rem] md:mb-9 md:text-[16px]"
             variants={staggerChild}
           >
-            K Scan turns real-world fashion into instant purchase in seconds.
+            The fashion you spot in real life - shoppable in seconds.
           </motion.p>
           <motion.div
             className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5"
@@ -528,7 +527,7 @@ export default function Home() {
                 Get Early Access
               </motion.a>
               <p className="text-[11px] tracking-[0.04em] text-stone-400">
-                No search. No guesswork. Just results.
+                No screenshots. No guessing. Just the exact piece (or your perfect alternative).
               </p>
             </div>
             <motion.a
@@ -651,9 +650,9 @@ export default function Home() {
             The Core Flow
           </p>
           <h2 className="font-display text-4xl font-medium text-stone-900 md:text-[52px]">
-            See it.
+            From spotted
             <br />
-            Buy it.
+            to shoppable.
           </h2>
         </FadeUp>
 
@@ -675,7 +674,7 @@ export default function Home() {
                 Live Product Flow
               </p>
               <p className="text-[14px] leading-[1.78] text-stone-500">
-                From live capture to purchase-ready output.
+                No more “I’ll find it later.” K Scan closes the gap between inspiration and action in seconds.
               </p>
             </div>
           </div>
@@ -753,13 +752,10 @@ export default function Home() {
               Under the Hood
             </p>
             <h2 className="mb-5 font-display text-3xl font-medium leading-[1.1] text-stone-900 md:mb-7 md:text-[42px]">
-              Fashion intelligence built for purchase, not lookup.
+              The Fashion Intelligence Engine
             </h2>
-            <p className="mb-4 text-[15px] leading-[1.88] text-stone-500 md:mb-5">
-              Most visual search stops at rough similarity. K Scan reads construction, silhouette, material, and styling intent to surface better buying matches.
-            </p>
             <p className="text-[15px] leading-[1.88] text-stone-500">
-              The result feels direct: see the look, understand the pieces, and move to purchase.
+              Built for real-world fashion discovery. K Scan reads silhouette, material, layering, and context in seconds.
             </p>
           </div>
 
@@ -894,10 +890,10 @@ export default function Home() {
               Priority Beta Access
             </p>
             <h2 className="mb-5 font-display text-[40px] font-medium leading-[1.02] text-stone-900 sm:text-[44px] md:mb-6 md:text-[58px]">
-              Request access.
+              Beta Waitlist
             </h2>
             <p className="mx-auto mb-8 max-w-xs text-[15px] leading-[1.82] text-stone-400 md:mb-10 lg:mx-0">
-              Apply for early access to the private beta. Invitations are released in limited waves.
+              Private beta access. Invitations are sent in limited waves. Be among the first to try K Scan.
             </p>
 
             {submissionState === "success" ? (
@@ -934,13 +930,13 @@ export default function Home() {
                   className="w-full rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.16)] transition-colors hover:bg-violet-700 disabled:opacity-60 sm:w-auto"
                   {...btnMotion}
                 >
-                  {submissionState === "loading" ? "Requesting..." : "Request Access"}
+                  {submissionState === "loading" ? "Requesting..." : "Get Early Access"}
                 </motion.button>
               </form>
             )}
 
             <p className={`mt-6 text-[11px] tracking-wide ${submissionState === "error" ? "text-stone-400" : "text-stone-300"}`}>
-              {submissionState === "error" ? submissionMessage : "No credit card. No commitment."}
+              {submissionState === "error" ? submissionMessage : "No credit card. No spam. Unsubscribe anytime."}
             </p>
           </FadeUp>
         </div>
