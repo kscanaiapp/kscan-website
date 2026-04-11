@@ -14,21 +14,21 @@ import {
 const coreFlow = [
   {
     step: "01",
-    title: "Point",
+    title: "Capture",
     description:
-      "Point K Scan at any outfit on the street, in a photo, or inside a video. The product starts with whatever caught your eye.",
+      "Point your phone at any look—on the street, on a screen, or in your social feed. K Scan captures the full outfit in context.",
   },
   {
     step: "02",
-    title: "Parse",
+    title: "Identify",
     description:
-      "K Scan identifies the pieces, reads the styling, and separates the look into clear purchase paths. It understands fashion, not just objects.",
+      "K Scan identifies the key pieces—silhouette, material, and brand cues—then finds the exact match or the best alternative.",
   },
   {
     step: "03",
-    title: "Purchase",
+    title: "Shop",
     description:
-      "Buy the exact piece when it is available, or move straight to the closest alternative. No screenshots, no manual search, no dead ends.",
+      "Shop the exact piece or the best alternative across 200+ indexed retailers. No tab-switching. No search bars. No dead ends.",
   },
 ];
 
