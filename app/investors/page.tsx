@@ -2,7 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, Fragment, useState } from "react";
+import { FormEvent, Fragment, useEffect, useState } from "react";
+
+// ─── Password gate constants (restored exactly) ───────────────────────────────
+const INVESTOR_PASSWORD = "KSCAN2026";
+const DECK_URL = "/docs/k-scan-pitch-deck-2026.pdf";
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
@@ -91,9 +95,69 @@ const inputBase =
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function InvestorsPage() {
+  // ── Password gate state (restored exactly) ──────────────────────────────────
+  const [password, setPassword] = useState("");
+  const [unlocked, setUnlocked] = useState(false);
+  const [error, setError] = useState("");
+  const [shakeField, setShakeField] = useState(false);
+  const [visibleCharIndex, setVisibleCharIndex] = useState<number | null>(null);
+  const [deckState, setDeckState] = useState<"idle" | "checking" | "ready" | "missing">("idle");
+
+  const maskedDisplay = password
+    .split("")
+    .map((char, index) => (index === visibleCharIndex ? char : "•"))
+    .join("");
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (password === INVESTOR_PASSWORD) {
+      setUnlocked(true);
+      setError("");
+      setShakeField(false);
+      return;
+    }
+
+    setUnlocked(false);
+    setDeckState("idle");
+    setShakeField(true);
+    setError("Access could not be verified. Please check the password and try again.");
+  }
+
+  useEffect(() => {
+    if (!shakeField) return;
+    const timeout = window.setTimeout(() => { setShakeField(false); }, 460);
+    return () => { window.clearTimeout(timeout); };
+  }, [shakeField]);
+
+  useEffect(() => {
+    if (visibleCharIndex === null) return;
+    const timeout = window.setTimeout(() => { setVisibleCharIndex(null); }, 700);
+    return () => { window.clearTimeout(timeout); };
+  }, [visibleCharIndex, password]);
+
+  useEffect(() => {
+    if (!unlocked) return;
+    let active = true;
+    async function checkDeck() {
+      setDeckState("checking");
+      try {
+        const response = await fetch(DECK_URL, { method: "HEAD" });
+        if (!active) return;
+        setDeckState(response.ok ? "ready" : "missing");
+      } catch {
+        if (!active) return;
+        setDeckState("missing");
+      }
+    }
+    checkDeck();
+    return () => { active = false; };
+  }, [unlocked]);
+
+  // ── Inquiry form state ───────────────────────────────────────────────────────
   const [form, setForm] = useState({ name: "", email: "", firm: "", message: "" });
-  const [submitState, setSubmitState] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [submitError, setSubmitError] = useState("");
+  const [inquiryState, setInquiryState] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [inquiryError, setInquiryError] = useState("");
 
   function handleChange(key: keyof typeof form) {
     return (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -104,11 +168,11 @@ export default function InvestorsPage() {
     document.getElementById("investor-access")?.scrollIntoView({ behavior: "smooth" });
   }
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleInquirySubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (submitState === "loading") return;
-    setSubmitState("loading");
-    setSubmitError("");
+    if (inquiryState === "loading") return;
+    setInquiryState("loading");
+    setInquiryError("");
 
     try {
       const res = await fetch("/api/investor-inquiry", {
@@ -119,15 +183,15 @@ export default function InvestorsPage() {
       const data = (await res.json()) as { status: string; message?: string };
 
       if (data.status === "success") {
-        setSubmitState("success");
+        setInquiryState("success");
         setForm({ name: "", email: "", firm: "", message: "" });
       } else {
-        setSubmitState("error");
-        setSubmitError(data.message ?? "Something went wrong. Please try again.");
+        setInquiryState("error");
+        setInquiryError(data.message ?? "Something went wrong. Please try again.");
       }
     } catch {
-      setSubmitState("error");
-      setSubmitError("Something went wrong. Please try again.");
+      setInquiryState("error");
+      setInquiryError("Something went wrong. Please try again.");
     }
   }
 
@@ -144,25 +208,15 @@ export default function InvestorsPage() {
             K Scan AI
           </Link>
           <nav className="hidden items-center gap-6 text-[12px] uppercase tracking-[0.16em] text-stone-400 md:flex">
-            <Link href="/demo" className="transition-colors hover:text-stone-700">
-              Demo
-            </Link>
-            <Link href="/investors" className="text-stone-700">
-              Investors
-            </Link>
+            <Link href="/demo" className="transition-colors hover:text-stone-700">Demo</Link>
+            <Link href="/investors" className="text-stone-700">Investors</Link>
           </nav>
         </div>
         <div className="border-t border-stone-100/80 md:hidden">
           <div className="mx-auto flex max-w-6xl items-center gap-6 overflow-x-auto px-6 text-[12px] uppercase tracking-[0.16em] text-stone-400 [&::-webkit-scrollbar]:hidden">
-            <Link href="/" className="whitespace-nowrap py-4 transition-colors hover:text-stone-700">
-              Home
-            </Link>
-            <Link href="/demo" className="whitespace-nowrap py-4 transition-colors hover:text-stone-700">
-              Demo
-            </Link>
-            <Link href="/investors" className="whitespace-nowrap py-4 text-stone-700">
-              Investors
-            </Link>
+            <Link href="/" className="whitespace-nowrap py-4 transition-colors hover:text-stone-700">Home</Link>
+            <Link href="/demo" className="whitespace-nowrap py-4 transition-colors hover:text-stone-700">Demo</Link>
+            <Link href="/investors" className="whitespace-nowrap py-4 text-stone-700">Investors</Link>
           </div>
         </div>
       </header>
@@ -423,112 +477,243 @@ export default function InvestorsPage() {
         </div>
       </section>
 
-      {/* ─── 12 Investor Access ───────────────────────────────────────────── */}
-      <section id="investor-access" className="border-t border-stone-100 bg-white">
-        <div className="mx-auto max-w-6xl px-6 py-14 pb-20 md:px-10 md:py-20 md:pb-28">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-
-            <div>
-              <SectionLabel n="12" text="Investor Access" />
-              <h2 className="font-display text-[28px] leading-[1.1] text-stone-900 md:text-[36px]">
-                Investor Access
-              </h2>
-              <p className="mt-5 text-[15px] leading-[1.9] text-stone-500">
-                Additional materials are available for qualified investors and strategic partners. Materials are shared
-                selectively as K Scan prepares for broader external circulation.
+      {/* ─── 12 Access Gate (restored exactly from prior version) ─────────── */}
+      <section id="investor-access" className="mx-auto max-w-6xl px-6 pb-10 md:px-10 md:pb-14">
+        <div className="rounded-[34px] border border-stone-200/80 bg-white p-6 shadow-[0_18px_40px_rgba(35,28,22,0.05)] md:p-8">
+          <div className="grid gap-8 lg:grid-cols-[0.44fr_0.56fr] lg:gap-10">
+            <div className="max-w-md">
+              <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+                Access Gate
               </p>
-              <p className="mt-8 text-[12px] leading-[1.75] text-stone-400">
-                Prefer email?{" "}
-                <a
-                  href="mailto:investors@kscan.ai"
-                  className="text-stone-600 underline decoration-stone-300 underline-offset-4 hover:decoration-stone-500"
+              <h2 className="font-display text-[30px] leading-[1.08] text-stone-900 md:text-[36px]">
+                Confidential Investor Materials
+              </h2>
+              <p className="mt-4 text-[14px] leading-[1.85] text-stone-500">
+                Secure access to deck materials, market framing, and company overview.
+              </p>
+
+              <form onSubmit={handleSubmit} className="mt-8 space-y-3">
+                <label className="block">
+                  <span className="mb-2 block text-[11px] uppercase tracking-[0.16em] text-stone-400">
+                    Password
+                  </span>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      autoComplete="current-password"
+                      autoCapitalize="none"
+                      autoCorrect="off"
+                      spellCheck={false}
+                      aria-label="Investor password"
+                      value={password}
+                      onChange={(e) => {
+                        const nextValue = e.target.value;
+                        if (nextValue.length > password.length) {
+                          setVisibleCharIndex(nextValue.length - 1);
+                        } else {
+                          setVisibleCharIndex(null);
+                        }
+                        setPassword(nextValue);
+                      }}
+                      className={`w-full rounded-full border bg-[#FAFAF8] px-5 py-4 text-[14px] text-transparent caret-stone-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-violet-200 ${shakeField ? "animate-subtle-shake border-stone-300" : "border-stone-200"}`}
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 flex items-center rounded-full px-5 text-[14px]"
+                    >
+                      {password ? (
+                        <span className="tracking-[0.02em] text-stone-900">{maskedDisplay}</span>
+                      ) : (
+                        <span className="text-stone-300">Enter investor password</span>
+                      )}
+                    </div>
+                  </div>
+                </label>
+                <button
+                  type="submit"
+                  className="rounded-full bg-stone-900 px-6 py-3 text-[13px] font-medium text-white transition-colors hover:bg-stone-800"
                 >
-                  investors@kscan.ai
-                </a>
+                  View Materials
+                </button>
+              </form>
+
+              <div className="mt-4 min-h-6">
+                {error ? (
+                  <p className="text-[12px] leading-relaxed text-stone-500">{error}</p>
+                ) : unlocked ? (
+                  <p className="text-[12px] leading-relaxed text-stone-400">
+                    Access confirmed. Deck materials are now visible below.
+                  </p>
+                ) : null}
+              </div>
+
+              <p className="mt-6 text-[11px] leading-[1.75] text-stone-400">
+                Confidentiality Notice: Investor materials are intended for qualified recipients only and are provided for evaluation purposes.
               </p>
             </div>
 
-            <div className="rounded-[28px] border border-stone-200/80 bg-[#F5F3EF] p-6 md:p-8">
-              {submitState === "success" ? (
-                <div className="flex min-h-[300px] flex-col justify-center">
-                  <p className="font-display text-[26px] text-stone-900">Request received.</p>
-                  <p className="mt-3 text-[14px] leading-[1.85] text-stone-500">
-                    Thank you. We review all inquiries and will follow up with you shortly.
+            <div className="rounded-[28px] bg-[#F7F4EF] p-3 ring-1 ring-stone-200/70 md:p-4">
+              {!unlocked ? (
+                <div className="flex min-h-[420px] flex-col items-center justify-center rounded-[24px] border border-dashed border-stone-200 bg-white/70 px-8 text-center">
+                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-stone-200 bg-[#FAFAF8]">
+                    <div className="relative h-5 w-4 rounded-sm border border-stone-500/70">
+                      <div className="absolute -top-3 left-1/2 h-3 w-3 -translate-x-1/2 rounded-t-full border border-b-0 border-stone-500/70" />
+                    </div>
+                  </div>
+                  <p className="font-display text-[28px] text-stone-900">Materials remain locked.</p>
+                  <p className="mt-3 max-w-sm text-[14px] leading-[1.8] text-stone-500">
+                    Investor materials will appear here once access is verified. The presentation area is intentionally understated while private review is in progress.
                   </p>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="block">
-                      <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">
-                        Name
-                      </span>
-                      <input
-                        type="text"
-                        required
-                        placeholder="Your name"
-                        value={form.name}
-                        onChange={handleChange("name")}
-                        className={inputBase}
-                      />
-                    </label>
-                    <label className="block">
-                      <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">
-                        Email
-                      </span>
-                      <input
-                        type="email"
-                        required
-                        placeholder="you@firm.com"
-                        value={form.email}
-                        onChange={handleChange("email")}
-                        className={inputBase}
-                      />
-                    </label>
+              ) : deckState === "ready" ? (
+                <div className="overflow-hidden rounded-[24px] border border-stone-200/80 bg-white shadow-[0_22px_50px_rgba(35,28,22,0.08)]">
+                  <div className="flex items-center justify-between border-b border-stone-100 px-5 py-4">
+                    <div>
+                      <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Pitch Deck</p>
+                      <p className="mt-1 text-[13px] text-stone-500">Embedded private review copy</p>
+                    </div>
+                    <a
+                      href={DECK_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[12px] uppercase tracking-[0.16em] text-stone-500 transition-colors hover:text-stone-900"
+                    >
+                      Open PDF
+                    </a>
                   </div>
+                  <div className="relative aspect-[4/5] w-full bg-[#F3EFE8] md:aspect-[5/4]">
+                    <iframe
+                      src={`${DECK_URL}#view=FitH`}
+                      title="K Scan investor deck"
+                      className="absolute inset-0 h-full w-full"
+                    />
+                  </div>
+                </div>
+              ) : deckState === "checking" ? (
+                <div className="flex min-h-[420px] items-center justify-center rounded-[24px] border border-stone-200 bg-white/75 px-8 text-center">
+                  <p className="text-[14px] tracking-[0.08em] text-stone-500">Preparing deck materials...</p>
+                </div>
+              ) : (
+                <div className="flex min-h-[420px] flex-col justify-between rounded-[24px] border border-stone-200 bg-white p-8">
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Deck Placeholder</p>
+                    <h3 className="mt-4 font-display text-[30px] leading-[1.08] text-stone-900">
+                      The embed is ready once the deck file is added.
+                    </h3>
+                    <p className="mt-4 max-w-lg text-[14px] leading-[1.85] text-stone-500">
+                      This page is configured to display a high-fidelity PDF embed from{" "}
+                      <span className="font-medium text-stone-700">/docs/k-scan-pitch-deck-2026.pdf</span>.
+                      That file is not present in the current workspace, so the live deck cannot be shown yet.
+                    </p>
+                  </div>
+                  <div className="mt-8 rounded-[22px] bg-[#F7F4EF] p-5">
+                    <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Next step</p>
+                    <p className="mt-2 text-[14px] leading-[1.8] text-stone-500">
+                      Ensure the final PDF is available at{" "}
+                      <span className="font-medium text-stone-700">/docs/k-scan-pitch-deck-2026.pdf</span>{" "}
+                      and this stage will automatically switch from placeholder to embedded presentation after access is granted.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* ─── Inquiry form (for those without the password) ────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
+        <div className="grid gap-8 rounded-[30px] border border-stone-200/80 bg-[#F5F3EF] p-6 md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-12">
+          <div>
+            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+              Investor Contact
+            </p>
+            <h2 className="font-display text-[26px] leading-[1.1] text-stone-900">
+              Don&apos;t have access yet?
+            </h2>
+            <p className="mt-4 text-[14px] leading-[1.85] text-stone-500">
+              Submit an inquiry and we&apos;ll follow up with credentials and materials. All inquiries are reviewed personally.
+            </p>
+            <p className="mt-6 text-[12px] leading-[1.75] text-stone-400">
+              Prefer email?{" "}
+              <a
+                href="mailto:investors@kscan.ai"
+                className="text-stone-600 underline decoration-stone-300 underline-offset-4 hover:decoration-stone-500"
+              >
+                investors@kscan.ai
+              </a>
+            </p>
+          </div>
+
+          <div>
+            {inquiryState === "success" ? (
+              <div className="rounded-[22px] border border-stone-200/80 bg-white p-6">
+                <p className="font-display text-[22px] text-stone-900">Request received.</p>
+                <p className="mt-3 text-[13px] leading-[1.85] text-stone-500">
+                  Thank you. We review all inquiries and will follow up with you shortly.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleInquirySubmit} className="space-y-3">
+                <div className="grid gap-3 sm:grid-cols-2">
                   <label className="block">
-                    <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">
-                      Firm{" "}
-                      <span className="normal-case tracking-normal text-stone-300">(optional)</span>
-                    </span>
+                    <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">Name</span>
                     <input
                       type="text"
-                      placeholder="Fund or firm name"
-                      value={form.firm}
-                      onChange={handleChange("firm")}
+                      required
+                      placeholder="Your name"
+                      value={form.name}
+                      onChange={handleChange("name")}
                       className={inputBase}
                     />
                   </label>
-
                   <label className="block">
-                    <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">
-                      Message
-                    </span>
-                    <textarea
-                      rows={4}
+                    <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">Email</span>
+                    <input
+                      type="email"
                       required
-                      placeholder="Tell us about your interest or what you'd like to receive."
-                      value={form.message}
-                      onChange={handleChange("message")}
-                      className={`${inputBase} resize-none`}
+                      placeholder="you@firm.com"
+                      value={form.email}
+                      onChange={handleChange("email")}
+                      className={inputBase}
                     />
                   </label>
-
-                  {submitState === "error" && (
-                    <p className="text-[12px] text-stone-500">{submitError}</p>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={submitState === "loading"}
-                    className="rounded-full bg-stone-900 px-7 py-3.5 text-[13px] font-medium text-white transition-colors hover:bg-stone-800 disabled:opacity-60"
-                  >
-                    {submitState === "loading" ? "Sending…" : "Request Deck Access"}
-                  </button>
-                </form>
-              )}
-            </div>
+                </div>
+                <label className="block">
+                  <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">
+                    Firm <span className="normal-case tracking-normal text-stone-300">(optional)</span>
+                  </span>
+                  <input
+                    type="text"
+                    placeholder="Fund or firm name"
+                    value={form.firm}
+                    onChange={handleChange("firm")}
+                    className={inputBase}
+                  />
+                </label>
+                <label className="block">
+                  <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">Message</span>
+                  <textarea
+                    rows={3}
+                    required
+                    placeholder="Tell us about your interest or what you'd like to receive."
+                    value={form.message}
+                    onChange={handleChange("message")}
+                    className={`${inputBase} resize-none`}
+                  />
+                </label>
+                {inquiryState === "error" && (
+                  <p className="text-[12px] text-stone-500">{inquiryError}</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={inquiryState === "loading"}
+                  className="rounded-full bg-stone-900 px-7 py-3 text-[13px] font-medium text-white transition-colors hover:bg-stone-800 disabled:opacity-60"
+                >
+                  {inquiryState === "loading" ? "Sending…" : "Request Access"}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>
