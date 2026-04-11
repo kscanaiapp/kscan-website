@@ -133,7 +133,7 @@ export default function InvestorsPage() {
           <div className="relative overflow-hidden rounded-[30px] border border-stone-200/80 bg-[#F4F0EA] p-4 shadow-[0_20px_50px_rgba(35,28,22,0.06)] md:p-5">
             <div className="relative aspect-[5/4] overflow-hidden rounded-[24px]">
               <Image
-                src="/group-street.png"
+                src="/group-street.jpeg"
                 alt="Editorial fashion still for K Scan investor materials"
                 fill
                 priority
