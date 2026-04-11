@@ -876,13 +876,13 @@ export default function Home() {
           <div className="order-2 mx-auto hidden w-full max-w-sm lg:order-1 lg:block lg:max-w-none">
             <div className="relative overflow-hidden rounded-[28px] bg-[#f6f2ec] shadow-[0_16px_38px_rgba(34,28,24,0.06)] ring-1 ring-black/5">
               <div className="relative aspect-[4/5]">
-                <Image
-                  src="/katlike-glam.png"
-                  alt="Kathleen in a pink gown beside the K Scan waitlist call to action"
-                  fill
-                  sizes="(max-width: 1024px) 80vw, 32vw"
-                  className="object-cover object-[center_20%] opacity-88"
-                />
+                  <Image
+                    src="/katlike-glam.png"
+                    alt="Editorial pink gown portrait beside the K Scan beta waitlist call to action"
+                    fill
+                    sizes="(max-width: 1024px) 80vw, 32vw"
+                    className="object-cover object-[center_20%] opacity-88"
+                  />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(246,241,236,0.18),rgba(31,23,23,0.08))]" />
               </div>
             </div>
