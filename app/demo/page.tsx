@@ -197,7 +197,7 @@ export default function DemoPage() {
                 playsInline
                 preload="metadata"
                 poster={DEMO_POSTER_URL}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
                 onLoadedData={() => setVideoReady(true)}
               >
                 <source src={DEMO_VIDEO_URL} type="video/mp4" />
