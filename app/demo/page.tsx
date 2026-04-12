@@ -149,7 +149,7 @@ function DemoCard({
         ease: [0.22, 1, 0.36, 1],
         // repeat:0 is the default — pulse fires exactly once, no looping
       }}
-      className="scroll-mt-28 rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(22,24,29,0.98),rgba(12,13,16,0.98))] p-5 shadow-[0_28px_80px_rgba(0,0,0,0.34)] sm:p-6 md:p-8"
+      className="scroll-mt-28 rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(16,18,28,0.82),rgba(10,11,18,0.90))] p-5 shadow-[0_28px_80px_rgba(0,0,0,0.38)] backdrop-blur-sm sm:p-6 md:p-8"
     >
       <div className="mb-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
@@ -173,7 +173,7 @@ function DemoCard({
             <span className="h-2.5 w-2.5 rounded-full bg-zinc-800" />
           </div>
         </div>
-        <div className="aspect-video w-full bg-[radial-gradient(circle_at_top,rgba(84,104,150,0.18),transparent_42%),linear-gradient(180deg,#121318,#08090c)]">
+        <div className="aspect-video w-full bg-[radial-gradient(circle_at_top,rgba(50,72,130,0.22),transparent_44%),linear-gradient(180deg,#0D0F18,#080910)]">
           <video
             controls
             playsInline
@@ -376,9 +376,16 @@ export default function DemoPage() {
   }, [setupObserver]);
 
   return (
-    <main className="min-h-screen bg-[#090A0D] text-white">
+    <main
+      className="relative min-h-screen text-white"
+      style={{
+        backgroundColor: "#0B0C12",
+        backgroundImage:
+          "radial-gradient(ellipse 90% 52% at 50% 0%, rgba(30,41,59,0.44) 0%, rgba(20,28,50,0.18) 40%, transparent 62%)",
+      }}
+    >
       {/* ─── Nav ──────────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-50 border-b border-white/8 bg-[#090A0D]/88 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/8 bg-[#0B0C12]/85 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-10">
           <Link href="/" className="flex items-center gap-1.5">
             <span className="font-display text-lg font-medium text-white">K Scan</span>
@@ -409,9 +416,8 @@ export default function DemoPage() {
         initial="hidden"
         animate="visible"
         variants={pageReveal}
-        className="relative overflow-hidden"
+        className="relative"
       >
-        <div className="absolute inset-x-0 top-0 h-[600px] bg-[radial-gradient(ellipse_at_top_center,rgba(30,41,59,0.40),transparent_52%),radial-gradient(circle_at_18%_20%,rgba(88,102,139,0.12),transparent_32%)]" />
         <div className="mx-auto max-w-6xl px-6 pb-16 pt-16 md:px-10 md:pb-24 md:pt-24">
           <motion.div variants={sectionReveal} className="max-w-3xl">
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500">Demo</p>
@@ -427,7 +433,7 @@ export default function DemoPage() {
           {/* ─── Live Product Vision ──────────────────────────────────── */}
           <motion.section
             variants={sectionReveal}
-            className="group mt-14 overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(22,24,29,0.98),rgba(12,13,16,0.98))] shadow-[0_28px_80px_rgba(0,0,0,0.34)] md:mt-16"
+            className="group mt-14 overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(16,18,28,0.82),rgba(10,11,18,0.90))] shadow-[0_28px_80px_rgba(0,0,0,0.38)] backdrop-blur-sm md:mt-16"
           >
             <div className="px-5 pb-5 pt-6 sm:px-6 sm:pb-6 md:px-8 md:pt-8">
               <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">Product</p>
@@ -470,7 +476,7 @@ export default function DemoPage() {
           {/* ─── Next step ────────────────────────────────────────────────── */}
           <motion.section
             variants={sectionReveal}
-            className="mt-10 rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(20,22,27,0.9),rgba(10,11,14,0.96))] px-6 py-8 shadow-[0_28px_70px_rgba(0,0,0,0.34)] md:mt-12 md:px-8 md:py-10"
+            className="mt-10 rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(16,18,28,0.82),rgba(10,11,18,0.90))] px-6 py-8 shadow-[0_28px_70px_rgba(0,0,0,0.38)] backdrop-blur-sm md:mt-12 md:px-8 md:py-10"
           >
             <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Next Step</p>
             <h2 className="mt-4 font-display text-[34px] leading-[1.06] text-white md:text-[42px]">
