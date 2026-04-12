@@ -545,7 +545,7 @@ export default function Home() {
             <div className="absolute inset-x-[10%] top-[12%] hidden h-[78%] rounded-[40px] bg-[radial-gradient(circle_at_top,rgba(167,139,250,0.09),transparent_58%)] blur-3xl md:block" />
 
             <div className="relative overflow-hidden rounded-[28px] bg-[#f3efe8] shadow-[0_30px_80px_rgba(28,22,16,0.12)] ring-1 ring-black/5">
-              <div className="relative aspect-[5/6] md:aspect-[11/10]">
+              <div className="relative aspect-[5/6] md:aspect-[11/10] lg:aspect-[3/4]">
                 <motion.div
                   className="absolute inset-0"
                   initial={{ scale: 1.05 }}
@@ -553,15 +553,15 @@ export default function Home() {
                   transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                 >
                 <Image
-                  src="/kathleen-hero.jpeg"
-                  alt="Kathleen in the red dress anchoring the K Scan hero composition"
+                  src="/k2-cafe.png"
+                  alt="Fashion editorial at a Parisian café anchoring the K Scan hero composition"
                   fill
                   priority
                   sizes="(max-width: 768px) 92vw, 46vw"
-                  className="object-cover object-[center_12%] md:object-[center_16%]"
+                  className="object-cover object-[center_20%] md:object-[center_18%] lg:object-[center_20%]"
                 />
                 </motion.div>
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,248,244,0.06),rgba(29,20,16,0.16))]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,248,244,0.15),rgba(29,20,16,0.16))]" />
 
                 <div className="absolute inset-x-4 bottom-4 h-20 rounded-[22px] bg-[linear-gradient(180deg,rgba(250,248,244,0),rgba(250,248,244,0.95))] md:hidden" />
 
@@ -576,7 +576,7 @@ export default function Home() {
                 </div>
 
                 <motion.div
-                  className="absolute bottom-4 left-3 max-w-[160px] p-3 sm:bottom-auto sm:top-[30%] sm:max-w-[180px] sm:p-3.5 md:top-4 md:left-3 md:max-w-[210px] md:px-5 md:py-4 lg:left-4 lg:top-5 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl z-20"
+                  className="absolute bottom-4 left-3 max-w-[160px] p-3 sm:bottom-auto sm:top-[42%] sm:max-w-[180px] sm:p-3.5 md:top-4 md:left-3 md:max-w-[210px] md:px-5 md:py-4 lg:left-4 lg:top-5 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl z-20"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
