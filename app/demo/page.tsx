@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const DEMO_VIDEO_URL = "/demo/kscan%20demo%20v1.mp4";
+const DEMO_VIDEO_URL = "/demo/KScan-Demo-V12.mp4";
 const DEMO_POSTER_URL = "/demo/Gemini_Generated_Image_5bvaqm5bvaqm5bva.png";
 const DEMO_LEAD_IMAGE_URL = "/demo/kscan%20demo%20image%201.jpeg";
 
