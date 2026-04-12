@@ -411,7 +411,7 @@ export default function DemoPage() {
         variants={pageReveal}
         className="relative overflow-hidden"
       >
-        <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(circle_at_top,rgba(98,111,169,0.18),transparent_48%),radial-gradient(circle_at_20%_18%,rgba(88,102,139,0.14),transparent_30%)]" />
+        <div className="absolute inset-x-0 top-0 h-[600px] bg-[radial-gradient(ellipse_at_top_center,rgba(30,41,59,0.40),transparent_52%),radial-gradient(circle_at_18%_20%,rgba(88,102,139,0.12),transparent_32%)]" />
         <div className="mx-auto max-w-6xl px-6 pb-16 pt-16 md:px-10 md:pb-24 md:pt-24">
           <motion.div variants={sectionReveal} className="max-w-3xl">
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500">Demo</p>
@@ -439,18 +439,16 @@ export default function DemoPage() {
               </p>
             </div>
             <div className="relative mx-5 mb-5 overflow-hidden rounded-[20px] border border-white/8 bg-black sm:mx-6 md:mx-8 md:mb-8">
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src="/demo/kscan-demo-image-1.jpeg"
-                  alt="K Scan live product view"
-                  fill
-                  sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1024px) calc(100vw - 48px), 1072px"
-                  className="object-contain"
-                  priority
-                />
-                {/* Subtle dark overlay at rest, softens on hover */}
-                <div className="pointer-events-none absolute inset-0 bg-black/[0.08] transition-opacity duration-500 group-hover:opacity-0" />
-              </div>
+              <Image
+                src="/demo/kscan-demo-image-1.jpeg"
+                alt="K Scan live product view"
+                width={1600}
+                height={1067}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              {/* Subtle dark overlay at rest, softens on hover */}
+              <div className="pointer-events-none absolute inset-0 bg-black/[0.08] transition-opacity duration-500 group-hover:opacity-0" />
             </div>
           </motion.section>
 
