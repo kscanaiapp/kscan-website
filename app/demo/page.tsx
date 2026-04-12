@@ -125,18 +125,22 @@ function DemoCard({
 }: DemoCardProps) {
   // Pulse fires once when isTargeted becomes true, then stops.
   // With reducedMotion=true, animate stays on the resting value.
+  // Chrome-glint inset is baked into every box-shadow state so it persists
+  // through the cyan pulse and remains at rest.
+  const glint = "inset 0 1px 0 rgba(255,255,255,0.09)";
+  const baseShadow = `0 24px 72px rgba(0,0,0,0.60), ${glint}`;
   const pulseAnimate = isTargeted && !reducedMotion
     ? {
-        borderColor: ["rgba(255,255,255,0.10)", "rgba(103,232,249,0.34)", "rgba(255,255,255,0.10)"],
+        borderColor: ["rgba(255,255,255,0.08)", "rgba(103,232,249,0.38)", "rgba(255,255,255,0.08)"],
         boxShadow: [
-          "0 28px 80px rgba(0,0,0,0.34)",
-          "0 30px 90px rgba(6,182,212,0.10), 0 28px 80px rgba(0,0,0,0.34)",
-          "0 28px 80px rgba(0,0,0,0.34)",
+          baseShadow,
+          `0 30px 90px rgba(6,182,212,0.14), 0 24px 72px rgba(0,0,0,0.60), ${glint}`,
+          baseShadow,
         ],
       }
     : {
-        borderColor: "rgba(255,255,255,0.10)",
-        boxShadow: "0 28px 80px rgba(0,0,0,0.34)",
+        borderColor: "rgba(255,255,255,0.08)",
+        boxShadow: baseShadow,
       };
 
   return (
@@ -149,7 +153,7 @@ function DemoCard({
         ease: [0.22, 1, 0.36, 1],
         // repeat:0 is the default — pulse fires exactly once, no looping
       }}
-      className="scroll-mt-28 rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(16,18,28,0.82),rgba(10,11,18,0.90))] p-5 shadow-[0_28px_80px_rgba(0,0,0,0.38)] backdrop-blur-sm sm:p-6 md:p-8"
+      className="scroll-mt-28 rounded-[32px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,12,22,0.94),rgba(6,7,14,0.98))] p-5 backdrop-blur-sm sm:p-6 md:p-8"
     >
       <div className="mb-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
@@ -165,15 +169,15 @@ function DemoCard({
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-[24px] border border-white/10 bg-black shadow-[0_30px_90px_rgba(0,0,0,0.45)]">
-        <div className="border-b border-white/10 px-5 py-4">
-          <div className="flex items-center gap-2.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-zinc-600" />
-            <span className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
-            <span className="h-2.5 w-2.5 rounded-full bg-zinc-800" />
+      <div className="overflow-hidden rounded-[24px] border border-white/[0.07] bg-[#04050A] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_90px_rgba(0,0,0,0.65)]">
+        <div className="border-b border-white/[0.06] px-5 py-3.5">
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-zinc-600/45 ring-1 ring-white/[0.06]" />
+            <span className="h-2 w-2 rounded-full bg-zinc-700/32 ring-1 ring-white/[0.04]" />
+            <span className="h-2 w-2 rounded-full bg-zinc-800/28 ring-1 ring-white/[0.03]" />
           </div>
         </div>
-        <div className="aspect-video w-full bg-[radial-gradient(circle_at_top,rgba(50,72,130,0.22),transparent_44%),linear-gradient(180deg,#0D0F18,#080910)]">
+        <div className="relative aspect-video w-full bg-[radial-gradient(ellipse_70%_48%_at_50%_0%,rgba(20,35,95,0.32),transparent_58%),linear-gradient(180deg,#07080F,#04050A)]">
           <video
             controls
             playsInline
@@ -185,6 +189,11 @@ function DemoCard({
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
+          {/* Cinematic lens vignette — edges darken subtly, center stays clear */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(2,3,8,0.50)_100%)]"
+          />
         </div>
       </div>
     </motion.section>
@@ -377,15 +386,19 @@ export default function DemoPage() {
 
   return (
     <main
-      className="relative min-h-screen text-white"
+      className="relative min-h-screen overflow-x-hidden text-white"
       style={{
-        backgroundColor: "#0B0C12",
-        backgroundImage:
-          "radial-gradient(ellipse 90% 52% at 50% 0%, rgba(30,41,59,0.44) 0%, rgba(20,28,50,0.18) 40%, transparent 62%)",
+        backgroundColor: "#060709",
+        backgroundImage: [
+          // Wide hero glow — strong enough to read on mobile
+          "radial-gradient(ellipse 130% 58% at 50% -2%, rgba(28,40,80,0.65) 0%, rgba(14,20,48,0.32) 42%, transparent 62%)",
+          // Vertical tonal depth: dark top → slightly lifted obsidian-indigo mid → deep base
+          "linear-gradient(180deg, #060709 0%, #07080E 22%, #090B14 55%, #080A12 80%, #060709 100%)",
+        ].join(", "),
       }}
     >
       {/* ─── Nav ──────────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-50 border-b border-white/8 bg-[#0B0C12]/85 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#08090F]/88 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-10">
           <Link href="/" className="flex items-center gap-1.5">
             <span className="font-display text-lg font-medium text-white">K Scan</span>
@@ -433,7 +446,7 @@ export default function DemoPage() {
           {/* ─── Live Product Vision ──────────────────────────────────── */}
           <motion.section
             variants={sectionReveal}
-            className="group mt-14 overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(16,18,28,0.82),rgba(10,11,18,0.90))] shadow-[0_28px_80px_rgba(0,0,0,0.38)] backdrop-blur-sm md:mt-16"
+            className="group mt-14 overflow-hidden rounded-[32px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,12,22,0.94),rgba(6,7,14,0.98))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_80px_rgba(0,0,0,0.60)] backdrop-blur-sm md:mt-16"
           >
             <div className="px-5 pb-5 pt-6 sm:px-6 sm:pb-6 md:px-8 md:pt-8">
               <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">Product</p>
@@ -444,7 +457,7 @@ export default function DemoPage() {
                 A grounded look at how K Scan appears in the real world before the full demo begins. This snapshot captures the product at its most important moment: turning visual inspiration into commerce-ready output without breaking the flow of discovery. Below, explore how that experience extends into the mobile product today and the wearable interface shaping what comes next.
               </p>
             </div>
-            <div className="relative mx-5 mb-5 overflow-hidden rounded-[20px] border border-white/8 bg-black sm:mx-6 md:mx-8 md:mb-8">
+            <div className="relative mx-5 mb-5 overflow-hidden rounded-[20px] border border-white/[0.07] bg-[#04050A] shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] sm:mx-6 md:mx-8 md:mb-8">
               <Image
                 src="/demo/kscan-demo-image-1.jpeg"
                 alt="K Scan live product view"
@@ -476,7 +489,7 @@ export default function DemoPage() {
           {/* ─── Next step ────────────────────────────────────────────────── */}
           <motion.section
             variants={sectionReveal}
-            className="mt-10 rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(16,18,28,0.82),rgba(10,11,18,0.90))] px-6 py-8 shadow-[0_28px_70px_rgba(0,0,0,0.38)] backdrop-blur-sm md:mt-12 md:px-8 md:py-10"
+            className="mt-10 rounded-[30px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,12,22,0.94),rgba(6,7,14,0.98))] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_28px_70px_rgba(0,0,0,0.60)] backdrop-blur-sm md:mt-12 md:px-8 md:py-10"
           >
             <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Next Step</p>
             <h2 className="mt-4 font-display text-[34px] leading-[1.06] text-white md:text-[42px]">
