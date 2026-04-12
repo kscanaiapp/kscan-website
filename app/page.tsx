@@ -553,7 +553,7 @@ export default function Home() {
                   transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                 >
                 <Image
-                  src="/k2-cafe.png"
+                  src="/k2-cafe2.png"
                   alt="Fashion editorial at a Parisian café anchoring the K Scan hero composition"
                   fill
                   priority
