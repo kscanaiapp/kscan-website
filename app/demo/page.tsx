@@ -40,7 +40,6 @@ type DemoCardData = {
   highlight: string;   // bold editorial statement line
   description: string; // supporting sentence
   videoSrc: string;
-  posterSrc: string;
   signal: string;
 };
 
@@ -117,7 +116,6 @@ function DemoCard({
   highlight,
   description,
   videoSrc,
-  posterSrc,
   signal,
   reversed = false,
   copied,
@@ -155,7 +153,7 @@ function DemoCard({
         duration: isTargeted && !reducedMotion ? 1.6 : 0.45,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="scroll-mt-28 rounded-[32px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,12,22,0.94),rgba(6,7,14,0.98))] p-5 backdrop-blur-sm sm:p-6 md:p-8 lg:p-10"
+      className="scroll-mt-28 rounded-[32px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,11,14,0.95),rgba(6,7,9,0.98))] p-5 backdrop-blur-sm sm:p-6 md:p-8 lg:p-10"
     >
       {/* Alternating 60/40 editorial grid — text/video or video/text on desktop */}
       <div
@@ -191,12 +189,11 @@ function DemoCard({
                 <span className="h-2 w-2 rounded-full bg-zinc-800/28 ring-1 ring-white/[0.03]" />
               </div>
             </div>
-            <div className="relative aspect-video w-full bg-[radial-gradient(ellipse_70%_48%_at_50%_0%,rgba(20,35,95,0.32),transparent_58%),linear-gradient(180deg,#07080F,#04050A)]">
+            <div className="relative aspect-video w-full bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(14,15,18,0.20),transparent_52%),linear-gradient(180deg,#070709,#040506)]">
               <video
                 controls
                 playsInline
                 preload="metadata"
-                poster={posterSrc}
                 ref={(node) => registerVideo(id, node)}
                 onPlay={() => onVideoFocus(id)}
                 className="h-full w-full object-contain"
@@ -237,7 +234,6 @@ export default function DemoPage() {
       description:
         "Bridging the gap between visual inspiration and immediate acquisition through our Style-Parse engine.",
       videoSrc: "/demo/KScan-demo-v16.mp4",
-      posterSrc: "/demo/poster-mobile.jpg",
       signal: "[ MOBILE PRODUCT · PURCHASE PATHS LIVE ]",
     },
     {
@@ -248,7 +244,6 @@ export default function DemoPage() {
       description:
         "A near-instant wearable interface designed for the luxury retail environment.",
       videoSrc: "/demo/KScan-demo-smartglasses-groupstreet.mp4",
-      posterSrc: "/demo/poster-smartglasses.jpg",
       signal: "[ WEARABLE VISION · HANDS-FREE DISCOVERY ]",
     },
   ];
@@ -406,17 +401,17 @@ export default function DemoPage() {
     <main
       className="relative min-h-screen overflow-x-hidden text-white"
       style={{
-        backgroundColor: "#060709",
+        backgroundColor: "#060708",
         backgroundImage: [
-          // Wide hero glow — strong enough to read on mobile
-          "radial-gradient(ellipse 130% 58% at 50% -2%, rgba(28,40,80,0.65) 0%, rgba(14,20,48,0.32) 42%, transparent 62%)",
-          // Vertical tonal depth: dark top → slightly lifted obsidian-indigo mid → deep base
-          "linear-gradient(180deg, #060709 0%, #07080E 22%, #090B14 55%, #080A12 80%, #060709 100%)",
+          // Restrained hero depth — tighter spread, desaturated, adds dimension without blue wash
+          "radial-gradient(ellipse 90% 42% at 50% -2%, rgba(20,22,28,0.38) 0%, rgba(12,13,16,0.14) 36%, transparent 54%)",
+          // Neutral obsidian vertical tone — R≈G≈B across all stops
+          "linear-gradient(180deg, #060708 0%, #07080A 22%, #08090C 55%, #070809 80%, #060708 100%)",
         ].join(", "),
       }}
     >
       {/* ─── Nav ──────────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#08090F]/88 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#07080A]/88 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-10">
           <Link href="/" className="flex items-center gap-1.5">
             <span className="font-display text-lg font-medium text-white">K Scan</span>
@@ -523,7 +518,7 @@ export default function DemoPage() {
           {/* ─── Next step ────────────────────────────────────────────────── */}
           <motion.section
             variants={sectionReveal}
-            className="mt-10 rounded-[30px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,12,22,0.94),rgba(6,7,14,0.98))] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_28px_70px_rgba(0,0,0,0.60)] backdrop-blur-sm md:mt-12 md:px-8 md:py-10"
+            className="mt-10 rounded-[30px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,11,14,0.95),rgba(6,7,9,0.98))] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_28px_70px_rgba(0,0,0,0.60)] backdrop-blur-sm md:mt-12 md:px-8 md:py-10"
           >
             <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Next Step</p>
             <h2 className="mt-4 font-display text-[34px] leading-[1.06] text-white md:text-[42px]">
