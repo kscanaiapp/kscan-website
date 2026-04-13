@@ -37,13 +37,15 @@ type DemoCardData = {
   id: string;
   label: string;
   title: string;
-  description: string;
+  highlight: string;   // bold editorial statement line
+  description: string; // supporting sentence
   videoSrc: string;
   posterSrc: string;
   signal: string;
 };
 
 type DemoCardProps = DemoCardData & {
+  reversed?: boolean;  // flip to video-left / text-right on desktop
   copied: boolean;
   onCopy: () => void;
   isTargeted: boolean;
@@ -112,10 +114,12 @@ function DemoCard({
   id,
   label,
   title,
+  highlight,
   description,
   videoSrc,
   posterSrc,
   signal,
+  reversed = false,
   copied,
   onCopy,
   isTargeted,
@@ -124,7 +128,6 @@ function DemoCard({
   onVideoFocus,
 }: DemoCardProps) {
   // Pulse fires once when isTargeted becomes true, then stops.
-  // With reducedMotion=true, animate stays on the resting value.
   // Chrome-glint inset is baked into every box-shadow state so it persists
   // through the cyan pulse and remains at rest.
   const glint = "inset 0 1px 0 rgba(255,255,255,0.09)";
@@ -151,49 +154,62 @@ function DemoCard({
       transition={{
         duration: isTargeted && !reducedMotion ? 1.6 : 0.45,
         ease: [0.22, 1, 0.36, 1],
-        // repeat:0 is the default — pulse fires exactly once, no looping
       }}
-      className="scroll-mt-28 rounded-[32px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,12,22,0.94),rgba(6,7,14,0.98))] p-5 backdrop-blur-sm sm:p-6 md:p-8"
+      className="scroll-mt-28 rounded-[32px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,12,22,0.94),rgba(6,7,14,0.98))] p-5 backdrop-blur-sm sm:p-6 md:p-8 lg:p-10"
     >
-      <div className="mb-6 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-2xl">
+      {/* Alternating 60/40 editorial grid — text/video or video/text on desktop */}
+      <div
+        className={`flex flex-col gap-8 lg:grid lg:items-start lg:gap-12 ${
+          reversed ? "lg:grid-cols-[3fr_2fr]" : "lg:grid-cols-[2fr_3fr]"
+        }`}
+      >
+        {/* ── Text column ───────────────────────────────────── */}
+        <div className={`flex flex-col ${reversed ? "lg:order-2" : "lg:order-1"}`}>
           <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">{label}</p>
-          <h2 className="mt-3 font-display text-[30px] leading-[1.04] text-white sm:text-[36px] md:text-[42px]">
+          <h2 className="mt-3 font-display text-[28px] leading-[1.05] text-white sm:text-[32px] lg:text-[34px]">
             {title}
           </h2>
-          <p className="mt-4 max-w-xl text-[15px] leading-[1.85] text-zinc-300 md:text-[16px]">{description}</p>
-        </div>
-        <div className="flex flex-col items-start gap-3 lg:items-end">
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">{signal}</p>
-          <CopyButton copied={copied} onClick={onCopy} />
-        </div>
-      </div>
-
-      <div className="overflow-hidden rounded-[24px] border border-white/[0.07] bg-[#04050A] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_90px_rgba(0,0,0,0.65)]">
-        <div className="border-b border-white/[0.06] px-5 py-3.5">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-zinc-600/45 ring-1 ring-white/[0.06]" />
-            <span className="h-2 w-2 rounded-full bg-zinc-700/32 ring-1 ring-white/[0.04]" />
-            <span className="h-2 w-2 rounded-full bg-zinc-800/28 ring-1 ring-white/[0.03]" />
+          <p className="mt-5 text-[15px] font-medium leading-[1.5] text-zinc-100">
+            {highlight}
+          </p>
+          <p className="mt-2.5 text-[14px] leading-[1.78] text-zinc-400">
+            {description}
+          </p>
+          <div className="mt-8 flex flex-col items-start gap-3">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">{signal}</p>
+            <CopyButton copied={copied} onClick={onCopy} />
           </div>
         </div>
-        <div className="relative aspect-video w-full bg-[radial-gradient(ellipse_70%_48%_at_50%_0%,rgba(20,35,95,0.32),transparent_58%),linear-gradient(180deg,#07080F,#04050A)]">
-          <video
-            controls
-            playsInline
-            preload="metadata"
-            poster={posterSrc}
-            ref={(node) => registerVideo(id, node)}
-            onPlay={() => onVideoFocus(id)}
-            className="h-full w-full object-contain"
-          >
-            <source src={videoSrc} type="video/mp4" />
-          </video>
-          {/* Cinematic lens vignette — edges darken subtly, center stays clear */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(2,3,8,0.50)_100%)]"
-          />
+
+        {/* ── Video column ──────────────────────────────────── */}
+        <div className={reversed ? "lg:order-1" : "lg:order-2"}>
+          <div className="overflow-hidden rounded-[24px] border border-white/[0.07] bg-[#04050A] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_90px_rgba(0,0,0,0.65)]">
+            <div className="border-b border-white/[0.06] px-5 py-3.5">
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-zinc-600/45 ring-1 ring-white/[0.06]" />
+                <span className="h-2 w-2 rounded-full bg-zinc-700/32 ring-1 ring-white/[0.04]" />
+                <span className="h-2 w-2 rounded-full bg-zinc-800/28 ring-1 ring-white/[0.03]" />
+              </div>
+            </div>
+            <div className="relative aspect-video w-full bg-[radial-gradient(ellipse_70%_48%_at_50%_0%,rgba(20,35,95,0.32),transparent_58%),linear-gradient(180deg,#07080F,#04050A)]">
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                poster={posterSrc}
+                ref={(node) => registerVideo(id, node)}
+                onPlay={() => onVideoFocus(id)}
+                className="h-full w-full object-contain"
+              >
+                <source src={videoSrc} type="video/mp4" />
+              </video>
+              {/* Cinematic lens vignette */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(2,3,8,0.50)_100%)]"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </motion.section>
@@ -217,8 +233,9 @@ export default function DemoPage() {
       id: "mobile-experience",
       label: "Today",
       title: "Demo 01 — Mobile Experience",
+      highlight: "Conversion-Focused Mobile Search.",
       description:
-        "See how K Scan turns fashion inspiration into ranked matches, live pricing, and purchase paths from your phone.",
+        "Bridging the gap between visual inspiration and immediate acquisition through our Style-Parse engine.",
       videoSrc: "/demo/KScan-demo-v16.mp4",
       posterSrc: "/demo/poster-mobile.jpg",
       signal: "[ MOBILE PRODUCT · PURCHASE PATHS LIVE ]",
@@ -227,8 +244,9 @@ export default function DemoPage() {
       id: "smart-glasses-vision",
       label: "Next",
       title: "Demo 02 — Smart Glasses Vision",
+      highlight: "Hands-Free Agentic Commerce.",
       description:
-        "A future-state look at hands-free fashion discovery and commerce through wearable interfaces.",
+        "A near-instant wearable interface designed for the luxury retail environment.",
       videoSrc: "/demo/KScan-demo-smartglasses-groupstreet.mp4",
       posterSrc: "/demo/poster-smartglasses.jpg",
       signal: "[ WEARABLE VISION · HANDS-FREE DISCOVERY ]",
@@ -431,7 +449,7 @@ export default function DemoPage() {
         variants={pageReveal}
         className="relative"
       >
-        <div className="mx-auto max-w-6xl px-6 pb-16 pt-16 md:px-10 md:pb-24 md:pt-24">
+        <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-32 md:pt-24">
           <motion.div variants={sectionReveal} className="max-w-3xl">
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500">Demo</p>
             <h1 className="font-display text-[42px] leading-[1.02] text-white sm:text-[52px] md:text-[68px]">
@@ -443,48 +461,64 @@ export default function DemoPage() {
             </p>
           </motion.div>
 
-          {/* ─── Live Product Vision ──────────────────────────────────── */}
-          <motion.section
-            variants={sectionReveal}
-            className="group mt-14 overflow-hidden rounded-[32px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,12,22,0.94),rgba(6,7,14,0.98))] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_28px_80px_rgba(0,0,0,0.60)] backdrop-blur-sm md:mt-16"
-          >
-            <div className="px-5 pb-5 pt-6 sm:px-6 sm:pb-6 md:px-8 md:pt-8">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-zinc-500">Product</p>
-              <h2 className="mt-3 font-display text-[28px] leading-[1.04] text-white sm:text-[34px] md:text-[40px]">
+          {/* ─── Live Product Vision — editorial bridge ──────────────── */}
+          <motion.section variants={sectionReveal} className="mt-0">
+            {/* Chapter transition marker */}
+            <div className="mb-8 flex items-center gap-5 md:mb-10">
+              <div aria-hidden="true" className="h-px flex-1 bg-white/[0.06]" />
+              <p className="shrink-0 text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-600">
                 Live Product Vision
-              </h2>
-              <p className="mt-4 max-w-2xl text-[15px] leading-[1.72] text-zinc-400 md:text-[16px]">
-                A grounded look at how K Scan appears in the real world before the full demo begins. This snapshot captures the product at its most important moment: turning visual inspiration into commerce-ready output without breaking the flow of discovery. Below, explore how that experience extends into the mobile product today and the wearable interface shaping what comes next.
               </p>
+              <div aria-hidden="true" className="h-px flex-1 bg-white/[0.06]" />
             </div>
-            <div className="relative mx-5 mb-5 overflow-hidden rounded-[20px] border border-white/[0.07] bg-[#04050A] shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] sm:mx-6 md:mx-8 md:mb-8">
+
+            {/* Full-column image — no card framing, image is the hero */}
+            <div className="group relative overflow-hidden rounded-[24px] border border-white/[0.06] shadow-[0_32px_90px_rgba(0,0,0,0.55)]">
               <Image
                 src="/demo/kscan-demo-image-1.jpeg"
-                alt="K Scan live product view"
+                alt="K Scan in the real world — visual inspiration to commerce-ready output"
                 width={1600}
                 height={1067}
                 className="w-full h-auto object-cover"
                 priority
               />
-              {/* Subtle dark overlay at rest, softens on hover */}
-              <div className="pointer-events-none absolute inset-0 bg-black/[0.08] transition-opacity duration-500 group-hover:opacity-0" />
+              <div className="pointer-events-none absolute inset-0 bg-black/[0.06] transition-opacity duration-500 group-hover:opacity-0" />
             </div>
+
+            {/* Editorial caption */}
+            <p className="mt-5 text-[13px] leading-[1.8] text-zinc-500 md:mt-6 md:max-w-2xl">
+              A grounded look at how K Scan appears in the real world — turning visual inspiration into
+              commerce-ready output without breaking the flow of discovery.
+            </p>
           </motion.section>
 
-          <div className="mt-14 space-y-8 md:mt-16 md:space-y-10">
-            {demoCards.map((card) => (
-              <DemoCard
-                key={card.id}
-                {...card}
-                copied={copiedId === card.id}
-                onCopy={() => void handleCopyLink(card.id)}
-                isTargeted={targetedId === card.id}
-                reducedMotion={reducedMotion}
-                registerVideo={registerVideo}
-                onVideoFocus={handleVideoFocus}
-              />
-            ))}
+          {/* ─── Demo 01 ─────────────────────────────────────────────── */}
+          <div className="mt-20 md:mt-24">
+            <DemoCard
+              {...demoCards[0]}
+              copied={copiedId === demoCards[0].id}
+              onCopy={() => void handleCopyLink(demoCards[0].id)}
+              isTargeted={targetedId === demoCards[0].id}
+              reducedMotion={reducedMotion}
+              registerVideo={registerVideo}
+              onVideoFocus={handleVideoFocus}
+            />
           </div>
+
+          {/* Narrative separator — creates chapter break between the two demos */}
+          <div aria-hidden="true" className="my-10 h-px bg-white/[0.05] md:my-14" />
+
+          {/* ─── Demo 02 ─────────────────────────────────────────────── */}
+          <DemoCard
+            {...demoCards[1]}
+            reversed
+            copied={copiedId === demoCards[1].id}
+            onCopy={() => void handleCopyLink(demoCards[1].id)}
+            isTargeted={targetedId === demoCards[1].id}
+            reducedMotion={reducedMotion}
+            registerVideo={registerVideo}
+            onVideoFocus={handleVideoFocus}
+          />
 
           {/* ─── Next step ────────────────────────────────────────────────── */}
           <motion.section
