@@ -129,18 +129,18 @@ function DemoCard({
   // Chrome-glint inset is baked into every box-shadow state so it persists
   // through the cyan pulse and remains at rest.
   const glint = "inset 0 1px 0 rgba(255,255,255,0.09)";
-  const baseShadow = `0 24px 72px rgba(0,0,0,0.60), ${glint}`;
+  const baseShadow = `0 24px 60px rgba(0,0,0,0.45), ${glint}`;
   const pulseAnimate = isTargeted && !reducedMotion
     ? {
-        borderColor: ["rgba(255,255,255,0.08)", "rgba(103,232,249,0.38)", "rgba(255,255,255,0.08)"],
+        borderColor: ["rgba(255,255,255,0.10)", "rgba(103,232,249,0.38)", "rgba(255,255,255,0.10)"],
         boxShadow: [
           baseShadow,
-          `0 30px 90px rgba(6,182,212,0.14), 0 24px 72px rgba(0,0,0,0.60), ${glint}`,
+          `0 28px 72px rgba(6,182,212,0.12), 0 24px 60px rgba(0,0,0,0.45), ${glint}`,
           baseShadow,
         ],
       }
     : {
-        borderColor: "rgba(255,255,255,0.08)",
+        borderColor: "rgba(255,255,255,0.10)",
         boxShadow: baseShadow,
       };
 
@@ -153,7 +153,7 @@ function DemoCard({
         duration: isTargeted && !reducedMotion ? 1.6 : 0.45,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="scroll-mt-28 rounded-[32px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,11,14,0.95),rgba(6,7,9,0.98))] p-5 backdrop-blur-sm sm:p-6 md:p-8 lg:p-10"
+      className="scroll-mt-28 rounded-[32px] border border-white/10 bg-[#0E0E10] p-5 sm:p-6 md:p-8 lg:p-10"
     >
       {/* Alternating 60/40 editorial grid — text/video or video/text on desktop */}
       <div
@@ -181,15 +181,15 @@ function DemoCard({
 
         {/* ── Video column ──────────────────────────────────── */}
         <div className={reversed ? "lg:order-1" : "lg:order-2"}>
-          <div className="overflow-hidden rounded-[24px] border border-white/[0.07] bg-[#04050A] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_30px_90px_rgba(0,0,0,0.65)]">
-            <div className="border-b border-white/[0.06] px-5 py-3.5">
+          <div className="overflow-hidden rounded-[24px] border border-white/10 bg-[#0C0C0F] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_24px_60px_rgba(0,0,0,0.45)]">
+            <div className="border-b border-white/10 px-5 py-3.5">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-zinc-600/45 ring-1 ring-white/[0.06]" />
                 <span className="h-2 w-2 rounded-full bg-zinc-700/32 ring-1 ring-white/[0.04]" />
                 <span className="h-2 w-2 rounded-full bg-zinc-800/28 ring-1 ring-white/[0.03]" />
               </div>
             </div>
-            <div className="relative aspect-video w-full bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(14,15,18,0.20),transparent_52%),linear-gradient(180deg,#070709,#040506)]">
+            <div className="relative aspect-video w-full bg-zinc-950">
               <video
                 controls
                 playsInline
@@ -203,7 +203,7 @@ function DemoCard({
               {/* Cinematic lens vignette */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(2,3,8,0.50)_100%)]"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.45)_100%)]"
               />
             </div>
           </div>
@@ -399,19 +399,15 @@ export default function DemoPage() {
 
   return (
     <main
-      className="relative min-h-screen overflow-x-hidden text-white"
+      className="relative min-h-screen overflow-x-hidden bg-[#0C0C0F] text-white"
       style={{
-        backgroundColor: "#060708",
-        backgroundImage: [
-          // Restrained hero depth — tighter spread, desaturated, adds dimension without blue wash
-          "radial-gradient(ellipse 90% 42% at 50% -2%, rgba(20,22,28,0.38) 0%, rgba(12,13,16,0.14) 36%, transparent 54%)",
-          // Neutral obsidian vertical tone — R≈G≈B across all stops
-          "linear-gradient(180deg, #060708 0%, #07080A 22%, #08090C 55%, #070809 80%, #060708 100%)",
-        ].join(", "),
+        // Single zinc-neutral hero glow — no blue channel bias, reads on mobile and desktop
+        backgroundImage:
+          "radial-gradient(ellipse 80% 45% at 50% -5%, rgba(113,113,122,0.10) 0%, transparent 62%)",
       }}
     >
       {/* ─── Nav ──────────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#07080A]/88 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0C0C0F]/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-10">
           <Link href="/" className="flex items-center gap-1.5">
             <span className="font-display text-lg font-medium text-white">K Scan</span>
@@ -428,7 +424,7 @@ export default function DemoPage() {
             Join Waitlist
           </Link>
         </div>
-        <div className="border-t border-white/8 md:hidden">
+        <div className="border-t border-white/10 md:hidden">
           <div className="mx-auto flex max-w-6xl items-center gap-6 overflow-x-auto px-6 text-[12px] uppercase tracking-[0.16em] text-zinc-500 [&::-webkit-scrollbar]:hidden">
             <Link href="/" className="whitespace-nowrap py-4 transition-colors hover:text-white">Home</Link>
             <Link href="/demo" className="whitespace-nowrap py-4 transition-colors hover:text-white">Demo</Link>
@@ -460,15 +456,15 @@ export default function DemoPage() {
           <motion.section variants={sectionReveal} className="mt-0">
             {/* Chapter transition marker */}
             <div className="mb-8 flex items-center gap-5 md:mb-10">
-              <div aria-hidden="true" className="h-px flex-1 bg-white/[0.06]" />
+              <div aria-hidden="true" className="h-px flex-1 bg-white/[0.08]" />
               <p className="shrink-0 text-[10px] font-medium uppercase tracking-[0.28em] text-zinc-600">
                 Live Product Vision
               </p>
-              <div aria-hidden="true" className="h-px flex-1 bg-white/[0.06]" />
+              <div aria-hidden="true" className="h-px flex-1 bg-white/[0.08]" />
             </div>
 
             {/* Full-column image — no card framing, image is the hero */}
-            <div className="group relative overflow-hidden rounded-[24px] border border-white/[0.06] shadow-[0_32px_90px_rgba(0,0,0,0.55)]">
+            <div className="group relative overflow-hidden rounded-[24px] border border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
               <Image
                 src="/demo/kscan-demo-image-1.jpeg"
                 alt="K Scan in the real world — visual inspiration to commerce-ready output"
@@ -501,7 +497,7 @@ export default function DemoPage() {
           </div>
 
           {/* Narrative separator — creates chapter break between the two demos */}
-          <div aria-hidden="true" className="my-10 h-px bg-white/[0.05] md:my-14" />
+          <div aria-hidden="true" className="my-10 h-px bg-white/[0.08] md:my-14" />
 
           {/* ─── Demo 02 ─────────────────────────────────────────────── */}
           <DemoCard
@@ -518,7 +514,7 @@ export default function DemoPage() {
           {/* ─── Next step ────────────────────────────────────────────────── */}
           <motion.section
             variants={sectionReveal}
-            className="mt-10 rounded-[30px] border border-white/[0.07] bg-[linear-gradient(180deg,rgba(10,11,14,0.95),rgba(6,7,9,0.98))] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_28px_70px_rgba(0,0,0,0.60)] backdrop-blur-sm md:mt-12 md:px-8 md:py-10"
+            className="mt-16 rounded-[30px] border border-white/10 bg-[#0E0E10] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_24px_60px_rgba(0,0,0,0.45)] md:mt-20 md:px-8 md:py-10"
           >
             <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Next Step</p>
             <h2 className="mt-4 font-display text-[34px] leading-[1.06] text-white md:text-[42px]">
