@@ -662,7 +662,7 @@ export default function Home() {
             <div className="overflow-hidden rounded-[28px] border border-white/10 bg-[#F2EEE7] shadow-[0_18px_46px_rgba(35,28,22,0.08)]">
               <div className="relative aspect-[16/10] w-full bg-[#F2EEE7]">
                 <Image
-                  src="/demo/How%20It%20Works%201.png"
+                  src="/demo/how-it-works-1.png"
                   alt="K Scan real-world capture to conversion flow"
                   fill
                   sizes="(max-width: 768px) 100vw, 46vw"

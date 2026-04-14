@@ -232,7 +232,7 @@ export default function DemoPage() {
       highlight: "Conversion-Focused Mobile Search.",
       description:
         "Bridging the gap between visual inspiration and immediate acquisition through our Style-Parse engine.",
-      videoSrc: "/demo/KScan-demo-v16.mp4",
+      videoSrc: "/demo/kscan-demo-v16.mp4",
       signal: "[ MOBILE PRODUCT · PURCHASE PATHS LIVE ]",
     },
     {
@@ -242,7 +242,7 @@ export default function DemoPage() {
       highlight: "Hands-Free Agentic Commerce.",
       description:
         "A near-instant wearable interface designed for the luxury retail environment.",
-      videoSrc: "/demo/KScan-demo-smartglasses-groupstreet.mp4",
+      videoSrc: "/demo/kscan-demo-smartglasses-groupstreet.mp4",
       signal: "[ WEARABLE VISION · HANDS-FREE DISCOVERY ]",
     },
   ];
