@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
+import { SiteFooter } from "@/components/ui/SiteFooter";
 import { SiteNav } from "@/components/ui/SiteNav";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -517,6 +518,15 @@ export default function DemoPage() {
           </motion.section>
         </div>
       </motion.section>
+
+      <SiteFooter
+        links={[
+          { href: "/", label: "Home" },
+          { href: "/demo", label: "Demo" },
+          { href: "/investors", label: "Investors" },
+          { href: "/#waitlist", label: "Waitlist" },
+        ]}
+      />
     </main>
   );
 }

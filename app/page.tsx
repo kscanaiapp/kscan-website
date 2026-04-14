@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { SiteFooter } from "@/components/ui/SiteFooter";
 import {
   AnimatePresence,
   type Variants,
@@ -963,42 +964,14 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-stone-100 bg-[#FAFAF8] py-12 md:py-14">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          {/* Top row: wordmark + nav */}
-          <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:justify-between md:gap-0">
-            <div className="text-center md:text-left">
-              <div className="mb-1 flex items-center justify-center gap-1.5 md:justify-start">
-                <span className="font-display text-base font-medium text-stone-900">K Scan</span>
-                <span className="text-[9px] uppercase tracking-widest text-stone-300">AI</span>
-              </div>
-              <p className="text-[11px] text-stone-400">Fashion, made shoppable.</p>
-            </div>
-
-            <nav className="grid grid-cols-2 gap-x-8 gap-y-1 md:flex md:gap-7">
-              {[
-                { href: "#how-it-works", label: "How It Works" },
-                { href: "#features", label: "Features" },
-                { href: "#waitlist", label: "Waitlist" },
-                { href: "mailto:hello@kscan.ai", label: "Contact" },
-              ].map(({ href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  className="flex items-center justify-center py-3 text-[13px] text-stone-400 transition-colors hover:text-stone-800 md:py-0 md:justify-start"
-                >
-                  {label}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          {/* Bottom row: copyright */}
-          <p className="mt-8 text-center text-[11px] text-stone-300 md:mt-6 md:text-right">
-            © 2026 K Scan AI. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter
+        links={[
+          { href: "#how-it-works", label: "How It Works" },
+          { href: "#features", label: "Features" },
+          { href: "#waitlist", label: "Waitlist" },
+          { href: "mailto:hello@kscan.ai", label: "Contact" },
+        ]}
+      />
     </div>
   );
 }
