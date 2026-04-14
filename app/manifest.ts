@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Fashion, made shoppable.",
     start_url: "/",
     display: "standalone",
-    background_color: "#09090b",
-    theme_color: "#09090b",
+    background_color: "#FAFAF8",
+    theme_color: "#FAFAF8",
     orientation: "portrait-primary",
     icons: [
       // SVG — scales to any size, supported by modern Android Chrome

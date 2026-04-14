@@ -433,7 +433,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAFAF8] font-sans text-[#111111]">
+    <div className="min-h-screen">
       <header className="sticky top-0 z-50 border-b border-stone-100 bg-[#FAFAF8]/92 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-10">
           <div className="flex items-center gap-1.5">

@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 
 // ─── Viewport (separate export required in Next.js 14+) ───────────────────
 export const viewport: Viewport = {
-  themeColor: "#09090b",
+  themeColor: "#FAFAF8",
   width: "device-width",
   initialScale: 1,
   // Prevent iOS auto-zoom on input focus

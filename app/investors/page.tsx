@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, Fragment, useEffect, useState } from "react";
+import { SiteNav } from "@/components/ui/SiteNav";
+import { SectionShell } from "@/components/ui/SectionShell";
 
 // ─── Password gate constants (restored exactly) ───────────────────────────────
 const INVESTOR_PASSWORD = "KSCAN2026";
@@ -196,30 +198,24 @@ export default function InvestorsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#FAFAF8] font-sans text-[#111111]">
+    <main className="min-h-screen">
 
-      {/* ─── Nav ──────────────────────────────────────────────────────────── */}
-      <header className="border-b border-stone-100 bg-white/70 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-8 md:px-10">
-          <Link
-            href="/"
-            className="text-[12px] uppercase tracking-[0.18em] text-stone-400 transition-colors hover:text-stone-700"
-          >
-            K Scan AI
-          </Link>
-          <nav className="hidden items-center gap-6 text-[12px] uppercase tracking-[0.16em] text-stone-400 md:flex">
-            <Link href="/demo" className="transition-colors hover:text-stone-700">Demo</Link>
-            <Link href="/investors" className="text-stone-700">Investors</Link>
-          </nav>
-        </div>
-        <div className="border-t border-stone-100/80 md:hidden">
-          <div className="mx-auto flex max-w-6xl items-center gap-6 overflow-x-auto px-6 text-[12px] uppercase tracking-[0.16em] text-stone-400 [&::-webkit-scrollbar]:hidden">
-            <Link href="/" className="whitespace-nowrap py-4 transition-colors hover:text-stone-700">Home</Link>
-            <Link href="/demo" className="whitespace-nowrap py-4 transition-colors hover:text-stone-700">Demo</Link>
-            <Link href="/investors" className="whitespace-nowrap py-4 text-stone-700">Investors</Link>
-          </div>
-        </div>
-      </header>
+      <SiteNav
+        links={[
+          { href: "/demo", label: "Demo" },
+          { href: "/investors", label: "Investors" },
+        ]}
+        mobileLinks={[
+          { href: "/", label: "Home" },
+          { href: "/demo", label: "Demo" },
+          { href: "/investors", label: "Investors" },
+        ]}
+        hideCta
+        sticky={false}
+        logoMode="textOnly"
+        headerBackground="bg-white/70 backdrop-blur-md"
+        innerClassName="py-8"
+      />
 
       {/* ─── 01 Hero ──────────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
@@ -478,7 +474,7 @@ export default function InvestorsPage() {
       </section>
 
       {/* ─── 12 Access Gate (restored exactly from prior version) ─────────── */}
-      <section id="investor-access" className="mx-auto max-w-6xl px-6 pb-10 md:px-10 md:pb-14">
+      <SectionShell id="investor-access" className="mx-auto max-w-6xl px-6 pb-10 md:px-10 md:pb-14">
         <div className="rounded-[34px] border border-stone-200/80 bg-white p-6 shadow-[0_18px_40px_rgba(35,28,22,0.05)] md:p-8">
           <div className="grid gap-8 lg:grid-cols-[0.44fr_0.56fr] lg:gap-10">
             <div className="max-w-md">
@@ -619,7 +615,7 @@ export default function InvestorsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionShell>
 
       {/* ─── Inquiry form (for those without the password) ────────────────── */}
       <section className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
