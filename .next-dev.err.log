@@ -1,0 +1,9 @@
+⚠ Port 3000 is in use by process 59320, using available port 3001 instead.
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3000
+- PID:          59320
+- Dir:          C:\Users\jsmit\kscan-website
+- Log:          .next\dev\logs\next-development.log
+
+Run taskkill /PID 59320 /F to stop it.

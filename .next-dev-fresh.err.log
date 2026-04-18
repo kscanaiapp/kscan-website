@@ -1,0 +1,7 @@
+⚠ Turbopack's filesystem cache has been deleted because we previously detected an internal error in Turbopack. Builds or page loads may be slower as a result.
+Supabase waitlist insert failed: {
+  code: '23505',
+  details: 'Key (email)=(dupe-test@example.com) already exists.',
+  hint: null,
+  message: 'duplicate key value violates unique constraint "waitlist_signups_email_key"'
+}

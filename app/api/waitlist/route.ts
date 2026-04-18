@@ -1,4 +1,4 @@
-import { headers } from "next/headers";
+import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -14,13 +14,14 @@ const bodySchema = z.object({
   referrer: z.string().trim().optional(),
 });
 
-function isDuplicateError(status: number, errorBody: unknown) {
-  if (status === 409) return true;
-  if (!errorBody || typeof errorBody !== "object") return false;
+export const runtime = "nodejs";
 
-  const error = errorBody as Record<string, unknown>;
-  const parts = [error.code, error.message, error.details, error.hint]
-    .filter((v): v is string => typeof v === "string")
+function isDuplicateError(error: unknown) {
+  if (!error || typeof error !== "object") return false;
+
+  const details = error as Record<string, unknown>;
+  const parts = [details.code, details.message, details.details, details.hint]
+    .filter((value): value is string => typeof value === "string")
     .join(" ")
     .toLowerCase();
 
@@ -29,6 +30,7 @@ function isDuplicateError(status: number, errorBody: unknown) {
 
 export async function POST(request: Request) {
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+    console.error("Missing Supabase environment variables for waitlist route.");
     return NextResponse.json(
       { status: "error", message: "Waitlist service is not configured." },
       { status: 500 },
@@ -51,52 +53,36 @@ export async function POST(request: Request) {
     return NextResponse.json({ status: "error", message }, { status: 400 });
   }
 
-  const { email, source, page, name, referrer: bodyReferrer } = parsed.data;
+  const { email } = parsed.data;
 
-  const headerStore = await headers();
-  const referrer = bodyReferrer || headerStore.get("referer") || null;
-
-  const insertPayload = {
-    email,
-    source,
-    page: page ?? null,
-    name: name ?? null,
-    referrer,
-  };
+  const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false,
+    },
+  });
 
   try {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/${WAITLIST_TABLE}`, {
-      method: "POST",
-      headers: {
-        apikey: SUPABASE_SERVICE_ROLE_KEY,
-        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
-        "Content-Type": "application/json",
-        Prefer: "return=minimal",
-      },
-      body: JSON.stringify(insertPayload),
-      cache: "no-store",
-    });
+    const { error } = await supabase.from(WAITLIST_TABLE).insert({ email });
 
-    if (response.ok) {
-      return NextResponse.json({ status: "success", message: "Joined waitlist." });
-    }
+    if (error) {
+      console.error("Supabase waitlist insert failed:", error);
+      if (isDuplicateError(error)) {
+        return NextResponse.json({ status: "duplicate", message: "Already joined." });
+      }
 
-    let errorBody: unknown = null;
-    try {
-      errorBody = await response.json();
-    } catch {
-      errorBody = null;
-    }
-
-    if (isDuplicateError(response.status, errorBody)) {
-      return NextResponse.json({ status: "duplicate", message: "Already joined." });
+      return NextResponse.json(
+        { status: "error", message: "Unable to save waitlist signup right now." },
+        { status: 500 },
+      );
     }
 
     return NextResponse.json(
-      { status: "error", message: "Unable to save waitlist signup right now." },
-      { status: 500 },
+      { status: "success", message: "Joined waitlist." },
+      { status: 201 },
     );
-  } catch {
+  } catch (err) {
+    console.error("Unexpected waitlist route error:", err);
     return NextResponse.json(
       { status: "error", message: "Unable to save waitlist signup right now." },
       { status: 500 },

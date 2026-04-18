@@ -1,0 +1,14 @@
+
+> kscan-website@0.1.0 dev
+> next dev -H 127.0.0.1
+
+▲ Next.js 16.2.2 (Turbopack)
+- Local:         http://127.0.0.1:3000
+- Network:       http://127.0.0.1:3000
+- Environments: .env.local
+✓ Ready in 620ms
+Creating turbopack project { dir: 'C:\\Users\\jsmit\\kscan-website', testMode: true }
+
+ POST /api/waitlist 201 in 2.2s (next.js: 1411ms, application-code: 785ms)
+ POST /api/waitlist 200 in 341ms (next.js: 10ms, application-code: 332ms)
+ POST /api/waitlist 400 in 21ms (next.js: 7ms, application-code: 15ms)

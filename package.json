@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 127.0.0.1",
+    "dev:fresh": "powershell -ExecutionPolicy Bypass -File ./scripts/nuke-and-boot.ps1",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -12,6 +13,7 @@
     "@supabase/supabase-js": "^2.101.1",
     "framer-motion": "^12.38.0",
     "next": "16.2.2",
+    "zod": "^4.3.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },

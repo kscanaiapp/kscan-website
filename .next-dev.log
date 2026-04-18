@@ -1,0 +1,10 @@
+
+> kscan-website@0.1.0 dev
+> next dev -H 127.0.0.1
+
+▲ Next.js 16.2.2 (Turbopack)
+- Local:         http://127.0.0.1:3001
+- Network:       http://127.0.0.1:3001
+- Environments: .env.local
+✓ Ready in 523ms
+[?25h
