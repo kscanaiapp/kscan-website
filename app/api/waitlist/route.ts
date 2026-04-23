@@ -53,7 +53,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ status: "error", message }, { status: 400 });
   }
 
-  const { email } = parsed.data;
+  const { email, source, page, name, referrer } = parsed.data;
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
     auth: {
@@ -63,7 +63,9 @@ export async function POST(request: Request) {
   });
 
   try {
-    const { error } = await supabase.from(WAITLIST_TABLE).insert({ email });
+    const { error } = await supabase
+      .from(WAITLIST_TABLE)
+      .insert({ email, source, page, name, referrer });
 
     if (error) {
       console.error("Supabase waitlist insert failed:", error);
