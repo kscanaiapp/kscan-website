@@ -16,6 +16,13 @@ const DURATIONS: Record<Stage, number> = {
   matched:   4400,
 };
 
+const IMAGE_FRAME = {
+  top: "8%",
+  left: "14%",
+  right: "14%",
+  bottom: "18%",
+};
+
 interface StyleParseHeroProps {
   heroImage?: string;
 }
@@ -29,8 +36,14 @@ function ConfidenceCounter({ active }: { active: boolean }) {
 
   useEffect(() => {
     cancelAnimationFrame(rafRef.current);
-    if (!active)   { setValue(0);  return; }
-    if (reduced)   { setValue(98); return; }
+    if (!active) {
+      rafRef.current = requestAnimationFrame(() => setValue(0));
+      return () => cancelAnimationFrame(rafRef.current);
+    }
+    if (reduced) {
+      rafRef.current = requestAnimationFrame(() => setValue(98));
+      return () => cancelAnimationFrame(rafRef.current);
+    }
 
     const start    = performance.now();
     const duration = 3100;
@@ -88,9 +101,9 @@ const stageFade = {
 };
 
 const CHIPS = [
-  { label: "Product",  value: "Leather Bomber", side: "left"  as const, top: "34%" },
-  { label: "Brand",    value: "Saint Laurent",  side: "right" as const, top: "52%" },
-  { label: "Material", value: "100% Calfskin",  side: "left"  as const, top: "68%" },
+  { label: "Product",  value: "Leather Bomber", side: "left"  as const, top: "36%" },
+  { label: "Brand",    value: "Saint Laurent",  side: "right" as const, top: "50%" },
+  { label: "Material", value: "100% Calfskin",  side: "left"  as const, top: "64%" },
 ];
 
 export default function StyleParseHero({
@@ -113,7 +126,7 @@ export default function StyleParseHero({
   const isMatched   = stage === "matched";
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-28">
+    <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-28">
 
       {/* Eyebrow */}
       <div className="mb-8 md:mb-10">
@@ -143,10 +156,10 @@ export default function StyleParseHero({
           {/* ═══════════════════════════════════════════════════
               IMAGE PANEL
           ═══════════════════════════════════════════════════ */}
-          <div className="relative w-full overflow-hidden border-b border-white/[0.05] lg:w-[56%] lg:border-b-0 lg:border-r">
+          <div className="relative w-full overflow-hidden border-b border-white/[0.05] lg:flex-[1.08] lg:border-b-0 lg:border-r">
             <div
-              className="relative aspect-[4/5] sm:aspect-[3/2] lg:aspect-auto"
-              style={{ minHeight: 380 }}
+              className="relative aspect-[4/5] sm:aspect-[4/5] lg:min-h-[42rem] lg:aspect-[4/5] xl:min-h-[46rem]"
+              style={{ minHeight: 420 }}
             >
 
               {/* Base image */}
@@ -164,7 +177,7 @@ export default function StyleParseHero({
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 56vw"
-                    className="object-cover object-[center_18%]"
+                    className="object-cover object-[center_12%] sm:object-[center_11%] lg:object-[center_10%]"
                     onError={() => setImgError(true)}
                   />
                 </motion.div>
@@ -194,7 +207,7 @@ export default function StyleParseHero({
                     {/* Viewfinder */}
                     <motion.div
                       className="absolute"
-                      style={{ top: "10%", left: "14%", right: "14%", bottom: "24%" }}
+                      style={IMAGE_FRAME}
                       animate={reduced ? {} : { scale: [1, 1.010, 1], opacity: [0.7, 1, 0.7] }}
                       transition={{ duration: 2.3, repeat: Infinity, ease: "easeInOut" }}
                     >
@@ -233,7 +246,7 @@ export default function StyleParseHero({
                     {/* Coordinate readout */}
                     <p
                       className="absolute font-mono text-[9px] tracking-[0.14em]"
-                      style={{ bottom: "28%", left: "16%", color: "rgba(0,255,255,0.28)" }}
+                      style={{ bottom: "22%", left: "16%", color: "rgba(0,255,255,0.28)" }}
                     >
                       X:0481 &nbsp;Y:1194
                     </p>
@@ -250,7 +263,7 @@ export default function StyleParseHero({
                     <motion.div
                       className="absolute"
                       style={{
-                        top: "10%", left: "14%", right: "14%", bottom: "24%",
+                        ...IMAGE_FRAME,
                         background: "linear-gradient(160deg,rgba(0,255,255,0.03) 0%,rgba(0,200,220,0.06) 100%)",
                         border: "1px solid rgba(0,255,255,0.10)",
                       }}
@@ -296,7 +309,7 @@ export default function StyleParseHero({
                     {/* Corner brackets fade-persisted */}
                     <div
                       className="pointer-events-none absolute"
-                      style={{ top: "10%", left: "14%", right: "14%", bottom: "24%" }}
+                      style={IMAGE_FRAME}
                     >
                       <Brackets opacity={0.38} weight="[1px]" />
                     </div>
@@ -306,8 +319,8 @@ export default function StyleParseHero({
                       <motion.div
                         className="pointer-events-none absolute"
                         style={{ left: "14%", right: "14%", height: 2 }}
-                        initial={{ top: "10%" }}
-                        animate={{ top: "76%" }}
+                        initial={{ top: IMAGE_FRAME.top }}
+                        animate={{ top: "82%" }}
                         transition={{
                           duration: (DURATIONS.parsing - 700) / 1000,
                           ease: [0.38, 0, 0.22, 1],
@@ -336,7 +349,7 @@ export default function StyleParseHero({
                     {/* HUD micro coordinates */}
                     <motion.p
                       className="absolute font-mono text-[7px] tracking-[0.18em]"
-                      style={{ top: "14%", left: "16%", color: "rgba(0,255,255,0.30)" }}
+                      style={{ top: "13%", left: "16%", color: "rgba(0,255,255,0.30)" }}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.5 }}
@@ -345,7 +358,7 @@ export default function StyleParseHero({
                     </motion.p>
                     <motion.p
                       className="absolute font-mono text-[7px] tracking-[0.18em]"
-                      style={{ top: "52%", right: "16%", color: "rgba(0,255,255,0.28)" }}
+                      style={{ top: "49%", right: "16%", color: "rgba(0,255,255,0.28)" }}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.9 }}
@@ -365,7 +378,7 @@ export default function StyleParseHero({
                     <div
                       className="absolute"
                       style={{
-                        top: "10%", left: "14%", right: "14%", bottom: "24%",
+                        ...IMAGE_FRAME,
                         border: "1px solid rgba(0,255,255,0.17)",
                         background: "rgba(0,255,255,0.025)",
                       }}
@@ -540,7 +553,7 @@ export default function StyleParseHero({
           {/* ═══════════════════════════════════════════════════
               INFO PANEL
           ═══════════════════════════════════════════════════ */}
-          <div className="flex w-full flex-col justify-between p-6 sm:p-8 lg:w-[44%] lg:p-10">
+          <div className="flex w-full flex-col justify-between p-6 sm:p-8 lg:min-w-[22rem] lg:flex-[0.84] lg:p-10 xl:p-11">
 
             {/* Top label */}
             <p
