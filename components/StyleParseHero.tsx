@@ -11,10 +11,17 @@ type Stage = "capturing" | "parsing" | "matched";
 const STAGES: Stage[] = ["capturing", "parsing", "matched"];
 
 const DURATIONS: Record<Stage, number> = {
-  capturing: 2600,
-  parsing:   3400,
-  matched:   4400,
+  capturing: 1800,
+  parsing:   2200,
+  matched:   3200,
 };
+
+const BOOT_FOCUS_DURATION = 1.2;
+const ACTIVATION_DELAY = 1.2;
+const ACTIVATION_DURATION = 0.6;
+const SCAN_DURATION = 2.0;
+const SCAN_DELAY = 0.12;
+const CHIP_STAGGER = 0.15;
 
 const IMAGE_FRAME = {
   top: "8%",
@@ -46,7 +53,7 @@ function ConfidenceCounter({ active }: { active: boolean }) {
     }
 
     const start    = performance.now();
-    const duration = 3100;
+    const duration = 1950;
 
     function tick(now: number) {
       const t      = Math.min((now - start) / duration, 1);
@@ -166,10 +173,11 @@ export default function StyleParseHero({
               {!imgError ? (
                 <motion.div
                   className="absolute inset-0"
+                  initial={false}
                   animate={!reduced && isCapturing
-                    ? { scale: [1, 1.015, 1] }
-                    : { scale: 1 }}
-                  transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+                    ? { scale: [1.04, 1.015, 1], filter: ["blur(1.6px)", "blur(0.4px)", "blur(0px)"] }
+                    : { scale: 1, filter: "blur(0px)" }}
+                  transition={{ duration: BOOT_FOCUS_DURATION, ease }}
                 >
                   <Image
                     src={heroImage}
@@ -208,8 +216,13 @@ export default function StyleParseHero({
                     <motion.div
                       className="absolute"
                       style={IMAGE_FRAME}
-                      animate={reduced ? {} : { scale: [1, 1.010, 1], opacity: [0.7, 1, 0.7] }}
-                      transition={{ duration: 2.3, repeat: Infinity, ease: "easeInOut" }}
+                      initial={reduced ? { opacity: 1 } : { opacity: 0, scale: 1.01 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        duration: reduced ? 0 : 0.32,
+                        delay: reduced ? 0 : ACTIVATION_DELAY,
+                        ease,
+                      }}
                     >
                       <Brackets />
 
@@ -238,18 +251,30 @@ export default function StyleParseHero({
                       <motion.div
                         className="absolute left-1/2 top-1/2 h-[5px] w-[5px] -translate-x-1/2 -translate-y-1/2 rounded-full"
                         style={{ background: "#00FFFF", boxShadow: "0 0 7px rgba(0,255,255,0.9)" }}
-                        animate={reduced ? {} : { opacity: [0.25, 1, 0.25] }}
-                        transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                        initial={reduced ? { opacity: 0.4 } : { opacity: 0 }}
+                        animate={reduced ? { opacity: 0.4 } : { opacity: [0, 0.7, 0.38] }}
+                        transition={{
+                          duration: reduced ? 0 : 0.42,
+                          delay: reduced ? 0 : ACTIVATION_DELAY + 0.1,
+                          ease,
+                        }}
                       />
                     </motion.div>
 
                     {/* Coordinate readout */}
-                    <p
+                    <motion.p
                       className="absolute font-mono text-[9px] tracking-[0.14em]"
                       style={{ bottom: "22%", left: "16%", color: "rgba(0,255,255,0.28)" }}
+                      initial={reduced ? { opacity: 0.22 } : { opacity: 0 }}
+                      animate={reduced ? { opacity: 0.22 } : { opacity: [0, 0.34, 0.14, 0.24] }}
+                      transition={{
+                        duration: reduced ? 0 : ACTIVATION_DURATION,
+                        delay: reduced ? 0 : ACTIVATION_DELAY + 0.06,
+                        ease,
+                      }}
                     >
                       X:0481 &nbsp;Y:1194
-                    </p>
+                    </motion.p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -322,9 +347,9 @@ export default function StyleParseHero({
                         initial={{ top: IMAGE_FRAME.top }}
                         animate={{ top: "82%" }}
                         transition={{
-                          duration: (DURATIONS.parsing - 700) / 1000,
+                          duration: SCAN_DURATION,
                           ease: [0.38, 0, 0.22, 1],
-                          delay: 0.22,
+                          delay: SCAN_DELAY,
                         }}
                       >
                         <div
@@ -351,8 +376,8 @@ export default function StyleParseHero({
                       className="absolute font-mono text-[7px] tracking-[0.18em]"
                       style={{ top: "13%", left: "16%", color: "rgba(0,255,255,0.30)" }}
                       initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
+                      animate={{ opacity: [0, 0.26, 0.14] }}
+                      transition={{ delay: 0.16, duration: 0.36, ease }}
                     >
                       X 0.34
                     </motion.p>
@@ -360,8 +385,8 @@ export default function StyleParseHero({
                       className="absolute font-mono text-[7px] tracking-[0.18em]"
                       style={{ top: "49%", right: "16%", color: "rgba(0,255,255,0.28)" }}
                       initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.9 }}
+                      animate={{ opacity: [0, 0.22, 0.12] }}
+                      transition={{ delay: 0.44, duration: 0.34, ease }}
                     >
                       Y 0.71
                     </motion.p>
@@ -399,7 +424,7 @@ export default function StyleParseHero({
                         initial={{ opacity: 0, scale: 0.93, y: 5 }}
                         animate={{ opacity: 1, scale: 1,    y: 0 }}
                         exit={{ opacity: 0 }}
-                        transition={{ delay: i * 0.17 + 0.18, duration: 0.44, ease }}
+                        transition={{ delay: 0.16 + i * CHIP_STAGGER, duration: 0.4, ease }}
                       >
                         {/* Guide line */}
                         <div
@@ -644,9 +669,9 @@ export default function StyleParseHero({
                             initial={{ width: "0%" }}
                             animate={{ width: "98%" }}
                             transition={{
-                              duration: (DURATIONS.parsing - 700) / 1000,
+                              duration: SCAN_DURATION,
                               ease: [0.4, 0, 0.2, 1],
-                              delay: 0.22,
+                              delay: SCAN_DELAY,
                             }}
                             style={{
                               background: "linear-gradient(90deg,rgba(0,255,255,0.65) 0%,#00FFFF 100%)",
