@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { SiteFooter } from "@/components/ui/SiteFooter";
 import { SiteNav } from "@/components/ui/SiteNav";
+import StyleParseHero from "@/components/StyleParseHero";
 import {
   AnimatePresence,
   type Variants,
@@ -541,6 +542,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <StyleParseHero />
 
       <section className="border-y border-black/5 bg-[#FAFAF8]">
         <div className="mx-auto max-w-7xl px-6 py-4 md:px-10">
