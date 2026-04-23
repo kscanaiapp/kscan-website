@@ -65,6 +65,10 @@ export function DemoEnvironmentSwitcher() {
   const activeEnvironment = ENVIRONMENTS[activeView];
 
   const [copied, setCopied] = useState(false);
+  const [loadedViews, setLoadedViews] = useState<Record<EnvironmentView, boolean>>({
+    mobile: false,
+    smartglasses: false,
+  });
   const [videoErrors, setVideoErrors] = useState<Record<EnvironmentView, boolean>>({
     mobile: false,
     smartglasses: false,
@@ -107,7 +111,7 @@ export function DemoEnvironmentSwitcher() {
       window.clearTimeout(copyTimeoutRef.current);
     }
     setCopied(true);
-    copyTimeoutRef.current = window.setTimeout(() => setCopied(false), 1800);
+    copyTimeoutRef.current = window.setTimeout(() => setCopied(false), 2000);
   }, [copiedHref]);
 
   useEffect(() => {
@@ -119,7 +123,7 @@ export function DemoEnvironmentSwitcher() {
   }, []);
 
   return (
-    <section className="mx-auto flex w-full max-w-[72rem] flex-col">
+    <section className="mx-auto flex w-full max-w-[68rem] flex-col">
       <div className="mx-auto flex max-w-[44rem] flex-col items-center gap-3 text-center">
         <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-stone-400/90">
           Environment Switcher
@@ -135,12 +139,12 @@ export function DemoEnvironmentSwitcher() {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => handleSwitch(view)}
-                className="relative rounded-full px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-stone-300/88 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111111] sm:px-7"
+                className="relative isolate min-h-[2.75rem] rounded-full px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-stone-300/88 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111111] sm:px-7"
               >
                 {isActive ? (
                   <motion.span
                     layoutId="environment-switcher-pill"
-                    className="absolute inset-0 rounded-full border border-cyan-300/18 bg-[linear-gradient(135deg,rgba(226,232,240,0.11),rgba(34,211,238,0.12))] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_0_14px_rgba(34,211,238,0.08)]"
+                    className="absolute inset-0 rounded-full border border-cyan-300/18 bg-[linear-gradient(135deg,rgba(255,255,255,0.1),rgba(34,211,238,0.11))] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_0_14px_rgba(34,211,238,0.07),0_6px_16px_rgba(0,0,0,0.18)]"
                     transition={{
                       duration: prefersReducedMotion ? 0 : TOGGLE_DURATION,
                       ease: EASE,
@@ -154,25 +158,28 @@ export function DemoEnvironmentSwitcher() {
         </div>
       </div>
 
-      <div className="mt-7 overflow-hidden rounded-2xl border border-stone-800/80 bg-[#050505] shadow-[0_0_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5">
+      <div className="mt-6 overflow-hidden rounded-2xl border border-stone-800/80 bg-[#050505] shadow-[0_0_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5">
         <div className="relative aspect-video">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(56,189,248,0.08),transparent_48%)]" />
           {(Object.keys(ENVIRONMENTS) as EnvironmentView[]).map((view) => {
             const config = ENVIRONMENTS[view];
             const isActive = view === activeView;
             const hasError = videoErrors[view];
+            const isLoaded = loadedViews[view];
 
             return (
               <motion.div
                 key={view}
                 initial={false}
                 animate={{
-                  opacity: isActive ? 1 : 0,
+                  opacity: isActive && (isLoaded || hasError) ? 1 : 0,
                 }}
                 transition={{
                   duration: prefersReducedMotion ? 0 : VIDEO_DURATION,
                   ease: EASE,
                 }}
-                className={`absolute inset-0 ${isActive ? "z-10 pointer-events-auto" : "z-0 pointer-events-none"}`}
+                className={`absolute inset-0 will-change-[opacity] ${isActive ? "z-10 pointer-events-auto" : "z-0 pointer-events-none"}`}
+                aria-hidden={!isActive}
               >
                 {hasError ? (
                   <div className="flex h-full w-full items-center justify-center bg-stone-950">
@@ -185,6 +192,12 @@ export function DemoEnvironmentSwitcher() {
                     loop
                     playsInline
                     preload="auto"
+                    onLoadedData={() =>
+                      setLoadedViews((current) => ({
+                        ...current,
+                        [view]: true,
+                      }))
+                    }
                     onError={() =>
                       setVideoErrors((current) => ({
                         ...current,
@@ -200,12 +213,32 @@ export function DemoEnvironmentSwitcher() {
             );
           })}
 
+          <AnimatePresence initial={false}>
+            {!loadedViews[activeView] && !videoErrors[activeView] ? (
+              <motion.div
+                key={`loading-${activeView}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.2, ease: EASE }}
+                className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-[#050505]"
+              >
+                <div className="flex items-center gap-2 rounded-full border border-white/8 bg-white/[0.03] px-4 py-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-cyan-300/80 shadow-[0_0_8px_rgba(103,232,249,0.65)]" />
+                  <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-stone-300/70">
+                    Loading Preview
+                  </span>
+                </div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+
           <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/24 to-transparent" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/42 to-transparent" />
         </div>
       </div>
 
-      <div className="mt-5 rounded-[24px] border border-stone-200/80 bg-[#F4F0EA] px-6 py-6 shadow-[0_16px_36px_rgba(35,28,22,0.06)] md:px-8 md:py-7">
+      <div className="mt-4 rounded-[24px] border border-stone-200/80 bg-[#F4F0EA] px-6 py-6 shadow-[0_16px_36px_rgba(35,28,22,0.06)] md:px-8 md:py-7">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeView}
@@ -234,7 +267,7 @@ export function DemoEnvironmentSwitcher() {
                 <button
                   type="button"
                   onClick={() => void handleCopyLink()}
-                  className="inline-flex h-10 min-w-[9.5rem] items-center justify-center rounded-full border border-stone-300/70 bg-stone-50 px-5 text-[11px] font-medium uppercase tracking-[0.16em] text-stone-600 transition-colors hover:border-stone-400 hover:bg-white hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/55 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-100"
+                  className="inline-flex min-h-[2.75rem] w-[14.5rem] items-center justify-center rounded-full border border-stone-300/70 bg-stone-50 px-5 text-[11px] font-medium uppercase tracking-[0.16em] text-stone-600 transition-colors hover:border-stone-400 hover:bg-white hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/55 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-100"
                 >
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.span
@@ -245,7 +278,7 @@ export function DemoEnvironmentSwitcher() {
                       transition={{ duration: prefersReducedMotion ? 0 : COPY_DURATION, ease: EASE }}
                       className="inline-flex items-center justify-center"
                     >
-                      {copied ? "Link copied" : "Copy Link"}
+                      {copied ? "Link copied with current view" : "Copy Link"}
                     </motion.span>
                   </AnimatePresence>
                 </button>

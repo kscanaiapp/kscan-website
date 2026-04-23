@@ -54,8 +54,27 @@ export default function DemoPage() {
           <section className="mt-20 md:mt-24">
             <Suspense
               fallback={
-                <div className="overflow-hidden rounded-2xl border border-stone-200/80 bg-stone-100 shadow-[0_0_50px_rgba(0,0,0,0.08)]">
-                  <div className="aspect-video animate-pulse bg-stone-200/70" />
+                <div className="mx-auto flex w-full max-w-[68rem] flex-col">
+                  <div className="mx-auto flex max-w-[44rem] flex-col items-center gap-3 text-center">
+                    <div className="h-3 w-40 animate-pulse rounded-full bg-stone-200/80" />
+                    <div className="h-11 w-[20rem] animate-pulse rounded-full border border-stone-200/80 bg-stone-100 shadow-[0_10px_24px_rgba(0,0,0,0.04)]" />
+                  </div>
+                  <div className="mt-6 overflow-hidden rounded-2xl border border-stone-200/80 bg-stone-100 shadow-[0_0_50px_rgba(0,0,0,0.08)]">
+                    <div className="aspect-video animate-pulse bg-stone-200/70" />
+                  </div>
+                  <div className="mt-4 rounded-[24px] border border-stone-200/80 bg-stone-100 px-6 py-6 shadow-[0_16px_36px_rgba(35,28,22,0.04)]">
+                    <div className="grid gap-4 md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.2fr)] md:gap-8">
+                      <div className="space-y-3">
+                        <div className="h-3 w-28 animate-pulse rounded-full bg-stone-200/80" />
+                        <div className="h-8 w-60 animate-pulse rounded-full bg-stone-200/75" />
+                      </div>
+                      <div className="space-y-3">
+                        <div className="h-3 w-56 animate-pulse rounded-full bg-stone-200/80" />
+                        <div className="h-4 w-full animate-pulse rounded-full bg-stone-200/70" />
+                        <div className="h-4 w-[88%] animate-pulse rounded-full bg-stone-200/70" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               }
             >
