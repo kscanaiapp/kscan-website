@@ -881,7 +881,7 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-[28px] bg-[#f6f2ec] shadow-[0_16px_38px_rgba(34,28,24,0.06)] ring-1 ring-black/5">
               <div className="relative aspect-[4/5]">
                   <Image
-                    src="/katlike-glam.png"
+                    src="/white-tan-hat.png"
                     alt="Editorial pink gown portrait beside the K Scan beta waitlist call to action"
                     fill
                     sizes="(max-width: 1024px) 80vw, 32vw"
@@ -898,7 +898,7 @@ export default function Home() {
               <div className="relative overflow-hidden rounded-[28px] bg-[#f6f2ec] shadow-[0_16px_38px_rgba(34,28,24,0.06)] ring-1 ring-black/5">
                 <div className="relative aspect-[4/5]">
                   <Image
-                    src="/katlike-glam.png"
+                    src="/white-tan-hat.png"
                     alt="Editorial pink gown portrait beside the K Scan beta waitlist call to action"
                     fill
                     sizes="80vw"
