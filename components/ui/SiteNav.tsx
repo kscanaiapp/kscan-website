@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { buttons } from "@/lib/theme";
 
@@ -23,6 +24,14 @@ export function SiteNav() {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   function href(entry: NavEntry): string {
     if (entry.type === "route") return entry.value;
     return isHome ? `#${entry.value}` : `/#${entry.value}`;
@@ -36,7 +45,7 @@ export function SiteNav() {
   const ctaHref = isHome ? "#waitlist" : "/#waitlist";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-stone-100 bg-[#FAFAF8]/92 backdrop-blur-md">
+    <header className={`sticky top-0 z-50 border-b transition-all duration-300 ease-in-out ${isScrolled ? "border-stone-100 bg-[#FAFAF8]/92 backdrop-blur-md" : "border-transparent bg-transparent"}`}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-10">
         {/* Logo — always links back to / */}
         <Link href="/" className="flex items-center gap-1.5">
@@ -64,7 +73,7 @@ export function SiteNav() {
       </div>
 
       {/* Mobile tray */}
-      <div className="border-t border-stone-100/80 md:hidden">
+      <div className={`border-t md:hidden ${isScrolled ? "border-stone-100/80" : "border-transparent"}`}>
         <div className="mx-auto flex max-w-7xl items-center gap-6 overflow-x-auto px-6 text-[12px] uppercase tracking-[0.16em] text-stone-400 [&::-webkit-scrollbar]:hidden">
           {!isHome && (
             <Link
