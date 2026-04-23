@@ -591,26 +591,6 @@ export default function Home() {
                 </motion.div>
               </div>
             </div>
-
-            <div className="pointer-events-none absolute -left-1 bottom-10 hidden w-[142px] overflow-hidden rounded-[24px] border border-white/40 bg-[rgba(239,232,223,0.72)] shadow-[0_16px_36px_rgba(36,29,21,0.06)] backdrop-blur-[6px] md:block lg:-left-6">
-              <div className="relative aspect-[4/5]">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className="h-full w-full object-cover object-center opacity-68 saturate-[0.9]"
-                >
-                  <source src="/kathleen-founder.mp4" type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,248,244,0.14),rgba(23,20,18,0.1))]" />
-              </div>
-              <div className="px-4 py-3">
-                <p className="font-display text-[11px] italic text-stone-500">Founder, K Scan AI</p>
-                <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-stone-400">Editorial layer</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -688,7 +668,7 @@ export default function Home() {
               delay={idx * 0.08}
               className={`pb-10 md:px-12 md:pb-0 first:md:pl-0 last:md:pr-0 ${idx === 0 ? "pt-0" : "pt-10 md:pt-0"}`}
             >
-              <span className="mb-4 block select-none font-display text-[64px] leading-none text-stone-100 md:mb-6 md:text-[72px]">
+              <span className="mb-4 block select-none font-display text-[64px] leading-none text-stone-300 md:mb-6 md:text-[72px]">
                 {step}
               </span>
               <h3 className="mb-4 font-display text-[28px] font-medium text-stone-900 md:mb-5 md:text-[30px]">{title}</h3>
