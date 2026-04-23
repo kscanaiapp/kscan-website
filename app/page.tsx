@@ -168,7 +168,7 @@ function PhoneScreen({ size }: { size: "sm" | "lg" }) {
         }}
       >
         <Image
-          src="/katlike-texture.jpeg"
+          src="/texture-dinner.png"
           alt="Leather look inside the K Scan parsing interface"
           fill
           sizes={size === "lg" ? "210px" : "160px"}
@@ -750,7 +750,7 @@ export default function Home() {
             <div className="overflow-hidden rounded-[28px] border border-white/60 bg-white/55 p-4 shadow-[0_16px_36px_rgba(34,28,24,0.06)] backdrop-blur-sm md:p-5">
               <div className="relative aspect-[5/6] overflow-hidden rounded-[22px]">
                 <Image
-                  src="/katlike-texture.jpeg"
+                  src="/texture-dinner.png"
                   alt="Kathleen in a leather-forward look used for the technical Style-Parse section"
                   fill
                   sizes="(max-width: 768px) 92vw, 31rem"
