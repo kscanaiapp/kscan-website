@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { SiteFooter } from "@/components/ui/SiteFooter";
+import { SiteNav } from "@/components/ui/SiteNav";
 import {
   AnimatePresence,
   type Variants,
@@ -435,60 +435,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-50 border-b border-stone-100 bg-[#FAFAF8]/92 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-10">
-          <div className="flex items-center gap-1.5">
-            <span className="font-display text-lg font-medium text-stone-900">K Scan</span>
-            <span className="text-[9px] uppercase tracking-widest text-stone-300">AI</span>
-          </div>
-          <nav className="hidden items-center gap-8 text-[13px] text-stone-400 md:flex">
-            <a href="#how-it-works" className="transition-colors hover:text-stone-900">
-              How It Works
-            </a>
-            <a href="#features" className="transition-colors hover:text-stone-900">
-              Features
-            </a>
-            <Link href="/demo" className="transition-colors hover:text-stone-900">
-              Demo
-            </Link>
-            <Link href="/investors" className="transition-colors hover:text-stone-900">
-              Investors
-            </Link>
-            <a href="#waitlist" className="transition-colors hover:text-stone-900">
-              Waitlist
-            </a>
-          </nav>
-          <motion.a
-            href="#waitlist"
-            className="rounded-full bg-violet-600 px-4 py-2 text-[13px] font-medium text-white transition-colors hover:bg-violet-700"
-            {...btnMotion}
-          >
-            Join Waitlist
-          </motion.a>
-        </div>
-        <div className="border-t border-stone-100/80 md:hidden">
-          <div className="mx-auto flex max-w-7xl items-center gap-6 overflow-x-auto px-6 text-[12px] uppercase tracking-[0.16em] text-stone-400 [&::-webkit-scrollbar]:hidden">
-            <Link href="/" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
-              Home
-            </Link>
-            <a href="#how-it-works" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
-              How It Works
-            </a>
-            <a href="#features" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
-              Features
-            </a>
-            <Link href="/demo" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
-              Demo
-            </Link>
-            <Link href="/investors" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
-              Investors
-            </Link>
-            <a href="#waitlist" className="whitespace-nowrap py-4 transition-colors hover:text-stone-900">
-              Waitlist
-            </a>
-          </div>
-        </div>
-      </header>
+      <SiteNav />
 
       <section className="mx-auto flex max-w-7xl flex-col gap-12 px-6 pb-16 pt-12 md:px-10 md:pb-40 md:pt-24 lg:flex-row lg:items-center lg:gap-16 lg:pt-28">
         <motion.div

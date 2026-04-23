@@ -201,22 +201,7 @@ export default function InvestorsPage() {
   return (
     <main className="min-h-screen">
 
-      <SiteNav
-        links={[
-          { href: "/demo", label: "Demo" },
-          { href: "/investors", label: "Investors" },
-        ]}
-        mobileLinks={[
-          { href: "/", label: "Home" },
-          { href: "/demo", label: "Demo" },
-          { href: "/investors", label: "Investors" },
-        ]}
-        hideCta
-        sticky={false}
-        logoMode="textOnly"
-        headerBackground="bg-white/70 backdrop-blur-md"
-        innerClassName="py-8"
-      />
+      <SiteNav />
 
       {/* ─── 01 Hero ──────────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">

@@ -398,17 +398,7 @@ export default function DemoPage() {
 
   return (
     <main className="min-h-screen">
-      <SiteNav
-        links={[
-          { href: "/demo", label: "Demo" },
-          { href: "/investors", label: "Investors" },
-        ]}
-        mobileLinks={[
-          { href: "/", label: "Home" },
-          { href: "/demo", label: "Demo" },
-          { href: "/investors", label: "Investors" },
-        ]}
-      />
+      <SiteNav />
 
       {/* ─── Hero + cards ─────────────────────────────────────────────────── */}
       <motion.section
