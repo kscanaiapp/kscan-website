@@ -13,17 +13,46 @@
  *   if (!config) return /* handle missing env *\/;
  *   const { url, serviceRoleKey } = config;
  */
+
+function isValidHttpUrl(value: string) {
+  if (!/^https?:\/\//i.test(value)) {
+    return false;
+  }
+
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === "http:" || parsed.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+function looksJwtLike(value: string) {
+  const parts = value.split(".");
+  return value.startsWith("eyJ") && parts.length === 3 && parts.every(Boolean);
+}
+
 export function getSupabaseServerConfig():
   | { url: string; serviceRoleKey: string }
   | null {
-  const url =
-    process.env.SUPABASE_URL ??
-    process.env.NEXT_PUBLIC_SUPABASE_URL ??
-    "";
+  const serverUrl = process.env.SUPABASE_URL?.trim() ?? "";
+  const publicUrl = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() ?? "";
+  const url = serverUrl || publicUrl;
 
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() ?? "";
 
-  if (!url || !serviceRoleKey) return null;
+  const diagnostics = {
+    urlSource: serverUrl ? "SUPABASE_URL" : publicUrl ? "NEXT_PUBLIC_SUPABASE_URL" : "missing",
+    supabaseUrlExists: Boolean(url),
+    supabaseUrlLooksValid: isValidHttpUrl(url),
+    serviceRoleKeyExists: Boolean(serviceRoleKey),
+    serviceRoleKeyLooksJwtLike: looksJwtLike(serviceRoleKey),
+  };
+
+  if (!diagnostics.supabaseUrlExists || !diagnostics.supabaseUrlLooksValid || !diagnostics.serviceRoleKeyExists) {
+    console.error("Invalid Supabase server configuration.", diagnostics);
+    return null;
+  }
 
   return { url, serviceRoleKey };
 }

@@ -1,13 +1,12 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { getSupabaseServerConfig } from "@/lib/serverSupabaseEnv";
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const WAITLIST_TABLE = "waitlist_signups";
 
 const bodySchema = z.object({
-  email: z.string().trim().toLowerCase().email("Please enter a valid email address."),
+  email: z.string().trim().toLowerCase().email({ message: "Please enter a valid email address." }),
   source: z.string().trim().min(1).default("homepage"),
   page: z.string().trim().optional(),
   name: z.string().trim().min(1).optional(),
@@ -29,8 +28,9 @@ function isDuplicateError(error: unknown) {
 }
 
 export async function POST(request: Request) {
-  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-    console.error("Missing Supabase environment variables for waitlist route.");
+  const config = getSupabaseServerConfig();
+  if (!config) {
+    console.error("Invalid Supabase server configuration: SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is missing.");
     return NextResponse.json(
       { status: "error", message: "Waitlist service is not configured." },
       { status: 500 },
@@ -55,14 +55,14 @@ export async function POST(request: Request) {
 
   const { email, source, page, name, referrer } = parsed.data;
 
-  const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false,
-    },
-  });
-
   try {
+    const supabase = createClient(config.url, config.serviceRoleKey, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    });
+
     const { error } = await supabase
       .from(WAITLIST_TABLE)
       .insert({ email, source, page, name, referrer });
