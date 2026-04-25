@@ -17,31 +17,26 @@ const bodySchema = z.object({
 
 export const runtime = "nodejs";
 
-async function sendWelcomeEmail(email: string, name?: string) {
+async function sendWelcomeEmail(email: string) {
   if (!resend) {
     console.warn("RESEND_API_KEY is missing. Skipping welcome email send.");
     return;
   }
 
-  const greetingName = name?.trim() || "there";
-
   await resend.emails.send({
-    from: "K Scan AI <hello@info.kscan.app>",
+    from: "K Scan <hello@info.kscan.app>",
     to: email,
-    subject: "You’re on the list | K Scan AI",
+    subject: "You’re on the K Scan waitlist",
     html: `
-      <div style="margin:0;padding:32px 20px;background-color:#FAFAF8;color:#111827;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-        <div style="max-width:560px;margin:0 auto;border:1px solid rgba(15,23,42,0.08);border-radius:24px;overflow:hidden;background:#FAFAF8;">
-          <div style="height:6px;background:linear-gradient(90deg,#7DD3FC 0%,#B6E6EE 100%);"></div>
-          <div style="padding:40px 36px 32px;">
-            <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#6B7280;margin-bottom:20px;">K Scan AI</div>
-            <p style="margin:0 0 18px;font-size:18px;line-height:1.6;color:#0F172A;">Hi ${greetingName},</p>
-            <p style="margin:0 0 16px;font-size:16px;line-height:1.75;color:#1F2937;">
-              Thanks for joining the K Scan AI waitlist. Your spot is confirmed, and we&apos;ll reach out when we have something meaningful to share.
-            </p>
-            <p style="margin:0;font-size:16px;line-height:1.75;color:#1F2937;">
-              We appreciate your interest and will keep future updates concise.
-            </p>
+      <div style="margin:0;padding:32px 20px;background:#FAFAF8;color:#0F172A;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
+        <div style="max-width:560px;margin:0 auto;background:#FAFAF8;border:1px solid rgba(15,23,42,0.08);">
+          <div style="height:4px;background:#B6E6EE;"></div>
+          <div style="padding:40px 32px;text-align:left;">
+            <p style="margin:0 0 20px;font-size:24px;line-height:1.3;font-weight:500;">You&rsquo;re in.</p>
+            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">K Scan is built to close the gap between seeing a look and finding exactly where to buy it.</p>
+            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">You&rsquo;ll be among the first to try it as we roll out early access.</p>
+            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">We&rsquo;ll keep updates minimal and only reach out when it matters.</p>
+            <p style="margin:0;font-size:16px;line-height:1.7;">&mdash; K Scan</p>
           </div>
         </div>
       </div>
@@ -114,7 +109,7 @@ export async function POST(request: Request) {
     }
 
     try {
-      await sendWelcomeEmail(email, name);
+      await sendWelcomeEmail(email);
     } catch (emailError) {
       console.error("Welcome email send failed:", emailError);
     }
