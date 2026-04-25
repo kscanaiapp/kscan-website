@@ -9,7 +9,7 @@ import { SectionShell } from "@/components/ui/SectionShell";
 
 // ─── Password gate constants (restored exactly) ───────────────────────────────
 const INVESTOR_PASSWORD = "KSCAN2026";
-const DECK_URL = "/docs/k-scan-pitch-deck-2026.pdf";
+const DECK_URL = "/docs/kscan-deck-no9.pdf";
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
@@ -584,7 +584,7 @@ export default function InvestorsPage() {
                     </h3>
                     <p className="mt-4 max-w-lg text-[14px] leading-[1.85] text-stone-500">
                       This page is configured to display a high-fidelity PDF embed from{" "}
-                      <span className="font-medium text-stone-700">/docs/k-scan-pitch-deck-2026.pdf</span>.
+                      <span className="font-medium text-stone-700">/docs/kscan-deck-no9.pdf</span>.
                       That file is not present in the current workspace, so the live deck cannot be shown yet.
                     </p>
                   </div>
@@ -592,7 +592,7 @@ export default function InvestorsPage() {
                     <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Next step</p>
                     <p className="mt-2 text-[14px] leading-[1.8] text-stone-500">
                       Ensure the final PDF is available at{" "}
-                      <span className="font-medium text-stone-700">/docs/k-scan-pitch-deck-2026.pdf</span>{" "}
+                      <span className="font-medium text-stone-700">/docs/kscan-deck-no9.pdf</span>{" "}
                       and this stage will automatically switch from placeholder to embedded presentation after access is granted.
                     </p>
                   </div>
