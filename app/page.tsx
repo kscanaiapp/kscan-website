@@ -618,10 +618,16 @@ export default function Home() {
               delay={idx * 0.08}
               className={`pb-10 md:px-12 md:pb-0 first:md:pl-0 last:md:pr-0 ${idx === 0 ? "pt-0" : "pt-10 md:pt-0"}`}
             >
-              <span className="mb-4 block select-none font-display text-[64px] leading-none text-stone-300 md:mb-6 md:text-[72px]">
+              <span
+                className="step-num mb-4 block select-none font-display text-[64px] leading-none md:text-[80px]"
+                aria-hidden="true"
+              >
                 {step}
               </span>
-              <h3 className="mb-4 font-display text-[28px] font-medium text-stone-900 md:mb-5 md:text-[30px]">{title}</h3>
+              <h3 className="mb-4 font-display text-[28px] font-medium text-stone-900 md:mb-5 md:text-[30px]">
+                <span className="sr-only">Step {idx + 1}:{" "}</span>
+                {title}
+              </h3>
               <p className="text-[15px] leading-[1.82] text-stone-500">{description}</p>
             </FadeUp>
           ))}
