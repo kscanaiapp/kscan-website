@@ -19,18 +19,36 @@ const coreFlow = [
     title: "Capture",
     description:
       "Point your phone at any look—on the street, on a screen, or in your social feed. K Scan captures the full outfit in context.",
+    image: {
+      src: "/how-it-works/capture-frame-the-look.png",
+      alt: "K Scan capture mockup showing a fashion look framed through a camera viewfinder.",
+      // 1105×896 (ratio 1.233): taller than 4:3 → top/bottom crop; object-top preserves the UI label and head
+      position: "object-top",
+    },
   },
   {
     step: "02",
     title: "Identify",
     description:
-      "K Scan identifies the key pieces—silhouette, material, and brand cues—then finds the exact match or the best alternative.",
+      "K Scan identifies what's in the frame — garments, colors, silhouettes, textures, and styling cues — then turns them into ranked matches.",
+    image: {
+      src: "/how-it-works/identify-style-parse.png",
+      alt: "K Scan identify mockup showing fashion attributes detected inside an outfit photo.",
+      // 871×768 (ratio 1.134): squarest source, heaviest top/bottom crop; object-top keeps Silhouette label + head visible
+      position: "object-top",
+    },
   },
   {
     step: "03",
     title: "Shop",
     description:
-      "Shop the exact piece or the best alternative across 200+ indexed retailers. No tab-switching. No search bars. No dead ends.",
+      "Compare retailer-neutral matches, save options, or move from inspiration to checkout.",
+    image: {
+      src: "/how-it-works/match-shop-results.png",
+      alt: "K Scan match results mockup showing retailer-neutral product matches from a scanned outfit.",
+      // 1093×793 (ratio 1.378): slightly wider than 4:3 → trivial ~1.6% left/right crop; all content is centered
+      position: "object-center",
+    },
   },
 ];
 
@@ -612,7 +630,7 @@ export default function Home() {
         </FadeUp>
 
         <div className="grid divide-y divide-stone-100 md:grid-cols-3 md:divide-x md:divide-y-0">
-          {coreFlow.map(({ step, title, description }, idx) => (
+          {coreFlow.map(({ step, title, description, image }, idx) => (
             <FadeUp
               key={step}
               delay={idx * 0.08}
@@ -629,6 +647,15 @@ export default function Home() {
                 {title}
               </h3>
               <p className="text-[15px] leading-[1.82] text-stone-500">{description}</p>
+              <div className="relative mt-4 aspect-[4/3] w-full max-w-md overflow-hidden rounded-lg border border-white/10 bg-zinc-950/40 mx-auto lg:max-w-none">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className={`object-cover ${image.position}`}
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                />
+              </div>
             </FadeUp>
           ))}
         </div>
