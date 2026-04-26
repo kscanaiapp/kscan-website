@@ -65,6 +65,14 @@ button {
   animation: subtle-shake 460ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ── How It Works: step number design tokens ─────────────────────────────── */
+/* indigo-700 (#4338ca) on #fafaf8 body = 6.9:1 contrast — exceeds WCAG AA  */
+.step-num {
+  color: #4338ca;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
