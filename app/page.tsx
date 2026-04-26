@@ -534,6 +534,63 @@ export default function Home() {
 
                 <div className="absolute -bottom-1 left-0 right-0 hidden h-32 bg-[linear-gradient(180deg,rgba(244,240,233,0),rgba(244,240,233,0.98))] md:block" />
 
+                {/* ── Active Vision overlay ─────────────────────────────────────────── */}
+                <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
+
+                  {/* Status pill — top-left on mobile/sm (editorial card is at bottom-left),
+                      bottom-left on md+ (editorial card moves to top-left at md:top-4) */}
+                  <div className="absolute left-3 top-3 md:bottom-5 md:left-4 md:top-auto">
+                    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/75 px-3 py-1.5 backdrop-blur-sm">
+                      <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500" />
+                      <div>
+                        <p className="text-[9px] font-medium uppercase leading-none tracking-[0.18em] text-white/90">
+                          Active Vision
+                        </p>
+                        <p className="mt-0.5 text-[8px] uppercase leading-none tracking-[0.14em] text-white/55">
+                          Parsing fashion signals
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Fashion recognition labels — md+ only.
+                      At sm the editorial card is at sm:top-[42%] left-3 which overlaps left-edge
+                      labels; at md it moves to md:top-4 so the column is clear below that. */}
+                  <div className="hidden md:block">
+
+                    {/* Structured blazer — left edge, mid-torso, below editorial card */}
+                    <div className="absolute left-3 top-[38%]">
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500/70" />
+                        <span className="rounded-sm border border-white/[0.08] bg-zinc-950/70 px-2 py-[3px] text-[9px] uppercase tracking-[0.16em] text-white/90">
+                          Structured blazer
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Leather bag — center, near the bag on the table; left of phone mockup */}
+                    <div className="absolute left-[38%] top-[54%]">
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500/70" />
+                        <span className="rounded-sm border border-white/[0.08] bg-zinc-950/70 px-2 py-[3px] text-[9px] uppercase tracking-[0.16em] text-white/90">
+                          Leather bag
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Match path ready — lower-left, jeans area; well above the pill at md:bottom-5 */}
+                    <div className="absolute bottom-[26%] left-3">
+                      <div className="flex items-center gap-1.5">
+                        <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-400/80" />
+                        <span className="rounded-sm border border-indigo-500/25 bg-zinc-950/70 px-2 py-[3px] text-[9px] uppercase tracking-[0.16em] text-indigo-300/90">
+                          Match path ready
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                {/* ─────────────────────────────────────────────────────────────────── */}
 
                 <div className="absolute right-3 bottom-5 z-20 md:right-6 md:bottom-7 lg:right-7">
                   <div className="animate-float relative h-[278px] w-[134px] overflow-hidden rounded-[28px] border-[3px] border-stone-700 bg-stone-900 shadow-[0_20px_50px_rgba(0,0,0,0.24)] md:h-[344px] md:w-[166px]">
