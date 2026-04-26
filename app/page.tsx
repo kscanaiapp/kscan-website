@@ -502,7 +502,7 @@ export default function Home() {
               className="text-[13px] text-stone-400 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
               {...btnMotion}
             >
-              See how it works
+              See the scan flow
             </motion.a>
           </motion.div>
         </motion.div>
@@ -715,6 +715,107 @@ export default function Home() {
               </div>
             </FadeUp>
           ))}
+        </div>
+      </section>
+
+      {/* ── Style DNA Preview ─────────────────────────────────────────────────
+          Intelligence layer: detected signals → learned taste → better matches.
+          Static demo mockup only — no auth, no Supabase, no real data.
+      ──────────────────────────────────────────────────────────────────────── */}
+      <section className="bg-[#0E0E10] py-20 md:py-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+
+          <FadeUp className="mb-12 md:mb-16">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-indigo-400/80 md:mb-5">
+              Learned Taste
+            </p>
+            <h2 className="mb-4 font-display text-4xl font-medium text-white md:text-[52px]">
+              Your Style DNA
+            </h2>
+            <p className="max-w-lg text-[15px] leading-[1.82] text-white/50">
+              K Scan turns outfit scans into recurring style signals — helping future matches feel more like you.
+            </p>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
+
+            {/* Card 1 — Silhouette Profile */}
+            <FadeUp
+              delay={0}
+              className="rounded-lg border border-white/10 bg-white/[0.05] p-4 md:p-5"
+            >
+              <p className="mb-1 text-[10px] font-medium uppercase tracking-[0.16em] text-white/40">
+                Silhouette Profile
+              </p>
+              <h3 className="mb-4 text-[15px] font-medium leading-snug text-white/85">
+                Top signal: Oversized / structured
+              </h3>
+              <div className="pointer-events-none space-y-2" aria-hidden="true">
+                <div className="h-1.5 w-3/4 rounded-full bg-indigo-500" />
+                <div className="h-1.5 w-1/2 rounded-full bg-indigo-500 opacity-70" />
+                <div className="h-1.5 w-1/3 rounded-full bg-indigo-500 opacity-40" />
+              </div>
+              <p className="mt-3 text-[10px] uppercase tracking-[0.16em] text-indigo-400/80">
+                Strong recurring pattern
+              </p>
+            </FadeUp>
+
+            {/* Card 2 — Fabric Intelligence */}
+            <FadeUp
+              delay={0.06}
+              className="rounded-lg border border-white/10 bg-white/[0.05] p-4 md:p-5"
+            >
+              <p className="mb-1 text-[10px] font-medium uppercase tracking-[0.16em] text-white/40">
+                Fabric Intelligence
+              </p>
+              <h3 className="mb-4 text-[15px] font-medium leading-snug text-white/85">
+                Texture cues: wool, denim, linen
+              </h3>
+              <div className="pointer-events-none flex items-center gap-2" aria-hidden="true">
+                <span className="h-2 w-2 flex-shrink-0 rounded-full bg-indigo-500" />
+                <span className="text-[11px] text-white/50">Texture signal detected</span>
+              </div>
+            </FadeUp>
+
+            {/* Card 3 — Color Palette */}
+            <FadeUp
+              delay={0.12}
+              className="rounded-lg border border-white/10 bg-white/[0.05] p-4 md:p-5"
+            >
+              <p className="mb-1 text-[10px] font-medium uppercase tracking-[0.16em] text-white/40">
+                Color Palette
+              </p>
+              <h3 className="mb-4 text-[15px] font-medium leading-snug text-white/85">
+                Core tones: obsidian, cream, charcoal
+              </h3>
+              <div className="pointer-events-none flex items-end gap-3" aria-hidden="true">
+                <div className="flex flex-col items-center gap-1.5">
+                  <div className="h-9 w-9 rounded-md bg-zinc-950 ring-1 ring-white/10" />
+                  <span className="text-[8px] uppercase tracking-[0.12em] text-white/30">Obsidian</span>
+                </div>
+                <div className="flex flex-col items-center gap-1.5">
+                  <div className="h-9 w-9 rounded-md bg-[#F3EFE8]" />
+                  <span className="text-[8px] uppercase tracking-[0.12em] text-white/30">Cream</span>
+                </div>
+                <div className="flex flex-col items-center gap-1.5">
+                  <div className="h-9 w-9 rounded-md bg-zinc-600" />
+                  <span className="text-[8px] uppercase tracking-[0.12em] text-white/30">Charcoal</span>
+                </div>
+              </div>
+            </FadeUp>
+
+          </div>
+
+          {/* Privacy line + quiet technical footer */}
+          <FadeUp delay={0.18}>
+            <p className="mt-8 text-center text-xs text-stone-500">
+              Built from style signals, not identity.
+            </p>
+            <p className="mt-3 text-center font-mono text-[10px] tracking-widest text-stone-500/70">
+              TASTE_PROFILE: LOCAL-FIRST SIGNALS
+            </p>
+          </FadeUp>
+
         </div>
       </section>
 
