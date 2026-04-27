@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { SiteFooter } from "@/components/ui/SiteFooter";
 import { SiteNav } from "@/components/ui/SiteNav";
 import StyleParseHero from "@/components/StyleParseHero";
 import {
@@ -1084,15 +1083,6 @@ export default function Home() {
           </FadeUp>
         </div>
       </section>
-
-      <SiteFooter
-        links={[
-          { href: "#how-it-works", label: "How It Works" },
-          { href: "#features", label: "Features" },
-          { href: "#waitlist", label: "Waitlist" },
-          { href: "mailto:hello@kscan.ai", label: "Contact" },
-        ]}
-      />
     </div>
   );
 }

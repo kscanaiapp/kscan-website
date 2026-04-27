@@ -8,10 +8,18 @@ type FooterLink = {
 };
 
 type SiteFooterProps = {
-  links: FooterLink[];
+  links?: FooterLink[];
 };
 
-export function SiteFooter({ links }: SiteFooterProps) {
+const defaultFooterLinks: FooterLink[] = [
+  { href: "/", label: "Home" },
+  { href: "/demo", label: "Demo" },
+  { href: "/investors", label: "Investors" },
+  { href: "/#waitlist", label: "Waitlist" },
+  { href: "mailto:hello@kscan.ai", label: "Contact" },
+];
+
+export function SiteFooter({ links = defaultFooterLinks }: SiteFooterProps) {
   return (
     <footer className="border-t border-stone-100 bg-[#FAFAF8] py-12 md:py-14">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
@@ -56,6 +64,12 @@ export function SiteFooter({ links }: SiteFooterProps) {
         <div className="mt-8 flex flex-col items-center gap-3 text-[11px] text-stone-300 md:mt-6 md:flex-row md:justify-between">
           <p className="text-center md:text-left">© 2026 K Scan AI. All rights reserved.</p>
           <div className="flex items-center gap-3">
+            <Link
+              href="/privacy"
+              className="-my-3 flex h-11 items-center justify-center text-[11px] transition-colors hover:text-stone-500 focus:outline-none focus-visible:text-stone-500"
+            >
+              Privacy
+            </Link>
             <a
               href="https://www.instagram.com/KScan_app"
               target="_blank"

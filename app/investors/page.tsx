@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, Fragment, useEffect, useState } from "react";
-import { SiteFooter } from "@/components/ui/SiteFooter";
 import { SiteNav } from "@/components/ui/SiteNav";
 import { SectionShell } from "@/components/ui/SectionShell";
 
@@ -699,15 +698,6 @@ export default function InvestorsPage() {
           </div>
         </div>
       </section>
-
-      <SiteFooter
-        links={[
-          { href: "/", label: "Home" },
-          { href: "/demo", label: "Demo" },
-          { href: "/investors", label: "Investors" },
-          { href: "/#waitlist", label: "Waitlist" },
-        ]}
-      />
     </main>
   );
 }

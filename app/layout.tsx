@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Playfair_Display } from "next/font/google";
+import { SiteFooter } from "@/components/ui/SiteFooter";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -57,7 +58,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${playfair.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }

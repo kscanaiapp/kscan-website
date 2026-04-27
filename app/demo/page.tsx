@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { DemoEnvironmentSwitcher } from "@/components/DemoEnvironmentSwitcher";
-import { SiteFooter } from "@/components/ui/SiteFooter";
 import { SiteNav } from "@/components/ui/SiteNav";
 
 export default function DemoPage() {
@@ -107,15 +106,6 @@ export default function DemoPage() {
           </section>
         </div>
       </section>
-
-      <SiteFooter
-        links={[
-          { href: "/", label: "Home" },
-          { href: "/demo", label: "Demo" },
-          { href: "/investors", label: "Investors" },
-          { href: "/#waitlist", label: "Waitlist" },
-        ]}
-      />
     </main>
   );
 }
