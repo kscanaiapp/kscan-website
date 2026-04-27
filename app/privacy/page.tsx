@@ -25,7 +25,16 @@ export default function PrivacyPage() {
           <p>You can request access, correction, or deletion of your data at any time.</p>
 
           <p>
-            For more details, see our full Privacy Policy or contact{" "}
+            For more details, see our full{" "}
+            <a
+              href="/docs/kscan-privacy-policy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
+            >
+              Privacy Policy
+            </a>{" "}
+            or contact{" "}
             <a
               href="mailto:kscanai.app@gmail.com"
               className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
