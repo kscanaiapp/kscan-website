@@ -408,9 +408,12 @@ export default function Home() {
     return () => { document.body.style.overflow = ""; };
   }, [investorOpen]);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!email) return;
+
+    const formData = new FormData(e.currentTarget);
+    const website = String(formData.get("website") ?? "");
 
     setSubmissionState("loading");
     setSubmissionMessage("");
@@ -423,6 +426,7 @@ export default function Home() {
         },
         body: JSON.stringify({
           email,
+          website,
           source: "homepage",
           page: window.location.pathname,
           referrer: window.location.href,
@@ -1059,6 +1063,14 @@ export default function Home() {
             ) : (
               <form onSubmit={handleSubmit} className="mx-auto flex max-w-sm flex-col gap-3 sm:flex-row sm:gap-2.5 lg:mx-0">
                 <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
+                <input
                   type="email"
                   required
                   placeholder="your@email.com"
@@ -1077,9 +1089,21 @@ export default function Home() {
               </form>
             )}
 
-            <p className={`mt-6 text-[11px] tracking-wide ${submissionState === "error" ? "text-stone-400" : "text-stone-300"}`}>
-              {submissionState === "error" ? submissionMessage : "No credit card. No spam. Unsubscribe anytime."}
-            </p>
+            {submissionState === "error" ? (
+              <p className="mt-6 text-[11px] tracking-wide text-stone-400">{submissionMessage}</p>
+            ) : (
+              <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-stone-500 lg:mx-0">
+                By joining, you agree to receive K Scan early access and product updates. We use your email only for
+                waitlist, launch, and product access communications.{" "}
+                <a
+                  href="/privacy"
+                  className="text-cyan-400/80 underline decoration-cyan-400/30 underline-offset-4 transition hover:text-cyan-300 hover:decoration-cyan-300/60"
+                >
+                  Read our Privacy Policy
+                </a>
+                .
+              </p>
+            )}
           </FadeUp>
         </div>
       </section>

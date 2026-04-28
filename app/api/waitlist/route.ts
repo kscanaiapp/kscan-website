@@ -8,12 +8,15 @@ const WAITLIST_TABLE = "waitlist_signups";
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 const bodySchema = z.object({
-  email: z.string().trim().toLowerCase().email({ message: "Please enter a valid email address." }),
+  email: z.string(),
   source: z.string().trim().min(1).default("homepage"),
   page: z.string().trim().optional(),
   name: z.string().trim().min(1).optional(),
   referrer: z.string().trim().optional(),
+  website: z.string().optional(),
 });
+
+const emailSchema = z.string().email({ message: "Please enter a valid email address." });
 
 export const runtime = "nodejs";
 
@@ -57,15 +60,6 @@ function isDuplicateError(error: unknown) {
 }
 
 export async function POST(request: Request) {
-  const config = getSupabaseServerConfig();
-  if (!config) {
-    console.error("Invalid Supabase server configuration: SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is missing.");
-    return NextResponse.json(
-      { status: "error", message: "Waitlist service is not configured." },
-      { status: 500 },
-    );
-  }
-
   let rawBody: unknown;
   try {
     rawBody = await request.json();
@@ -82,7 +76,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ status: "error", message }, { status: 400 });
   }
 
-  const { email, source, page, name, referrer } = parsed.data;
+  const { email, source, page, name, referrer, website } = parsed.data;
+  if (website?.trim()) {
+    return NextResponse.json({ status: "success", message: "Joined waitlist." });
+  }
+
+  const normalizedEmail = email.trim().toLowerCase();
+  const emailResult = emailSchema.safeParse(normalizedEmail);
+  if (!emailResult.success) {
+    const message = emailResult.error.issues[0]?.message ?? "Invalid request.";
+    return NextResponse.json({ status: "error", message }, { status: 400 });
+  }
+
+  const config = getSupabaseServerConfig();
+  if (!config) {
+    console.error("Invalid Supabase server configuration: SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is missing.");
+    return NextResponse.json(
+      { status: "error", message: "Waitlist service is not configured." },
+      { status: 500 },
+    );
+  }
 
   try {
     const supabase = createClient(config.url, config.serviceRoleKey, {
@@ -94,7 +107,7 @@ export async function POST(request: Request) {
 
     const { error } = await supabase
       .from(WAITLIST_TABLE)
-      .insert({ email, source, page, name, referrer });
+      .insert({ email: normalizedEmail, source, page, name, referrer });
 
     if (error) {
       console.error("Supabase waitlist insert failed:", error);
@@ -109,7 +122,7 @@ export async function POST(request: Request) {
     }
 
     try {
-      await sendWelcomeEmail(email);
+      await sendWelcomeEmail(normalizedEmail);
     } catch (emailError) {
       console.error("Welcome email send failed:", emailError);
     }
