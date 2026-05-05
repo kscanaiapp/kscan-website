@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { FormEvent, Fragment, useEffect, useState } from "react";
+import { InvestorDeckLauncher } from "@/components/InvestorDeckLauncher";
 import { SiteNav } from "@/components/ui/SiteNav";
 import { SectionShell } from "@/components/ui/SectionShell";
 
@@ -547,26 +547,18 @@ export default function InvestorsPage() {
                   </p>
                 </div>
               ) : deckState === "ready" ? (
-                <div className="overflow-hidden rounded-[24px] border border-stone-200/80 bg-white shadow-[0_22px_50px_rgba(35,28,22,0.08)]">
-                  <div className="flex items-center justify-between border-b border-stone-100 px-5 py-4">
-                    <div>
-                      <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Pitch Deck</p>
-                      <p className="mt-1 text-[13px] text-stone-500">Embedded private review copy</p>
-                    </div>
-                    <a
-                      href={DECK_URL}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-[12px] uppercase tracking-[0.16em] text-stone-500 transition-colors hover:text-stone-900"
-                    >
-                      Open PDF
-                    </a>
-                  </div>
-                  <div className="relative aspect-[4/5] w-full bg-[#F3EFE8] md:aspect-[5/4]">
-                    <iframe
-                      src={`${DECK_URL}#view=FitH`}
-                      title="K Scan investor deck"
-                      className="absolute inset-0 h-full w-full"
+                <div className="flex min-h-[420px] flex-col items-center justify-center rounded-[24px] border border-stone-200/80 bg-white px-8 py-10 text-center shadow-[0_22px_50px_rgba(35,28,22,0.08)]">
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Pitch Deck</p>
+                  <h3 className="mt-4 font-display text-[32px] leading-[1.08] text-stone-900">
+                    Investor deck is ready.
+                  </h3>
+                  <p className="mt-4 max-w-sm text-[14px] leading-[1.8] text-stone-500">
+                    Open the deck in a dedicated tab for the best review experience across mobile and desktop.
+                  </p>
+                  <div className="mt-7">
+                    {/* Render deck links only after password success so unauthenticated visitors never see public file targets. */}
+                    <InvestorDeckLauncher
+                      className="inline-flex rounded-full bg-stone-900 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-stone-800"
                     />
                   </div>
                 </div>
