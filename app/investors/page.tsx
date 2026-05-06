@@ -105,11 +105,6 @@ export default function InvestorsPage() {
   const [visibleCharIndex, setVisibleCharIndex] = useState<number | null>(null);
   const [deckState, setDeckState] = useState<"idle" | "checking" | "ready" | "missing">("idle");
 
-  const maskedDisplay = password
-    .split("")
-    .map((char, index) => (index === visibleCharIndex ? char : "•"))
-    .join("");
-
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -478,37 +473,26 @@ export default function InvestorsPage() {
                   <span className="mb-2 block text-[11px] uppercase tracking-[0.16em] text-stone-400">
                     Password
                   </span>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      autoComplete="current-password"
-                      autoCapitalize="none"
-                      autoCorrect="off"
-                      spellCheck={false}
-                      aria-label="Investor password"
-                      value={password}
-                      onChange={(e) => {
-                        const nextValue = e.target.value;
-                        if (nextValue.length > password.length) {
-                          setVisibleCharIndex(nextValue.length - 1);
-                        } else {
-                          setVisibleCharIndex(null);
-                        }
-                        setPassword(nextValue);
-                      }}
-                      className={`w-full rounded-full border bg-[#FAFAF8] px-5 py-4 text-[14px] text-transparent caret-stone-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-violet-200 ${shakeField ? "animate-subtle-shake border-stone-300" : "border-stone-200"}`}
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 flex items-center rounded-full px-5 text-[14px]"
-                    >
-                      {password ? (
-                        <span className="tracking-[0.02em] text-stone-900">{maskedDisplay}</span>
-                      ) : (
-                        <span className="text-stone-300">Enter investor password</span>
-                      )}
-                    </div>
-                  </div>
+                  <input
+                    type="password"
+                    autoComplete="current-password"
+                    autoCapitalize="none"
+                    autoCorrect="off"
+                    spellCheck={false}
+                    aria-label="Investor password"
+                    placeholder="Enter investor password"
+                    value={password}
+                    onChange={(e) => {
+                      const nextValue = e.target.value;
+                      if (nextValue.length > password.length) {
+                        setVisibleCharIndex(nextValue.length - 1);
+                      } else {
+                        setVisibleCharIndex(null);
+                      }
+                      setPassword(nextValue);
+                    }}
+                    className={`w-full appearance-none rounded-xl border bg-white px-4 py-3 text-left text-[16px] normal-case leading-normal tracking-normal text-stone-900 outline-none placeholder:text-stone-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 ${shakeField ? "border-violet-300" : "border-violet-200"}`}
+                  />
                 </label>
                 <button
                   type="submit"
