@@ -76,8 +76,8 @@ h3{font-size:clamp(22px,6.5vw,32px);line-height:1.08;letter-spacing:-.035em;font
 .hidden{display:none!important}
 @media (min-width:720px){body{background:#eee}.deck{border-radius:0}}
 
-.end-actions{display:flex;justify-content:center;margin:18px 0 0;position:relative;z-index:50}
-.end-pdf{font-size:12px;padding:9px 13px;background:rgba(255,255,255,.82)}
+.end-actions{display:flex;justify-content:center;margin:18px 0 0;position:relative;z-index:200;pointer-events:auto}
+.end-pdf{position:relative;z-index:201;pointer-events:auto;font-size:12px;padding:9px 13px;background:rgba(255,255,255,.82)}
 #topPdfBtn.hiddenTop{opacity:0;pointer-events:none;transform:translateY(-4px)}
 #topPdfBtn{transition:opacity .2s ease,transform .2s ease}
 @media print{html,body{height:auto;overflow:visible}.deck{width:100%;max-width:none;height:auto;box-shadow:none}.slide{position:relative;opacity:1!important;transform:none!important;min-height:100vh;page-break-after:always}.top-ui,.tap-left,.tap-right,.progress-wrap,.count,.hint,.btn{display:none!important}}
@@ -203,12 +203,55 @@ function show(n){
   history.replaceState(null,'','#'+String(i+1).padStart(2,'0'));
 }
 function next(){show(i+1)} function prev(){show(i-1)}
-document.querySelector('.tap-right').addEventListener('click',next);
-document.querySelector('.tap-left').addEventListener('click',prev);
+function isInteractiveTarget(event){
+  const target=event.target;
+  return target instanceof Element&&target.closest("a,button,[role='button'],input,textarea,select,.btn-download,.end-actions,.end-pdf");
+}
+function eventPoint(event){
+  const touch=event.changedTouches&&event.changedTouches[0]||event.touches&&event.touches[0];
+  return touch?{x:touch.clientX,y:touch.clientY}:{x:event.clientX,y:event.clientY};
+}
+function interactiveElementForPoint(event){
+  if(isInteractiveTarget(event))return event.target.closest("a,button,[role='button'],input,textarea,select,.btn-download,.end-actions,.end-pdf");
+  const {x,y}=eventPoint(event);
+  if(typeof x!=='number'||typeof y!=='number')return null;
+  return [...document.querySelectorAll("a,button,[role='button'],input,textarea,select,.btn-download,.end-actions,.end-pdf")].reverse().find(el=>{
+    const style=getComputedStyle(el);
+    if(style.visibility==='hidden'||style.display==='none'||style.pointerEvents==='none')return false;
+    const r=el.getBoundingClientRect();
+    return x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom;
+  })||null;
+}
+function handleTapZoneClick(event,moveSlide){
+  if(Date.now()-openedInteractiveTouchAt<700)return;
+  const interactive=interactiveElementForPoint(event);
+  if(interactive){
+    const link=interactive.closest('a');
+    if(link&&event.target!==link)window.open(link.href,link.target||'_self','noopener,noreferrer');
+    return;
+  }
+  moveSlide();
+}
+document.querySelector('.tap-right').addEventListener('click',e=>handleTapZoneClick(e,next));
+document.querySelector('.tap-left').addEventListener('click',e=>handleTapZoneClick(e,prev));
 document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key))next(); if(['ArrowLeft','PageUp','Backspace'].includes(e.key))prev();});
 let sx=0,sy=0,st=0;
+let openedInteractiveTouchAt=0;
 document.addEventListener('touchstart',e=>{const t=e.changedTouches[0];sx=t.clientX;sy=t.clientY;st=Date.now();},{passive:true});
-document.addEventListener('touchend',e=>{const t=e.changedTouches[0];const dx=t.clientX-sx,dy=t.clientY-sy; if(Math.abs(dx)>44&&Math.abs(dx)>Math.abs(dy)){dx<0?next():prev();}},{passive:true});
+document.addEventListener('touchend',e=>{
+  const t=e.changedTouches[0];
+  const dx=t.clientX-sx,dy=t.clientY-sy;
+  const interactive=interactiveElementForPoint(e);
+  if(interactive){
+    const link=interactive.closest('a');
+    if(link&&Math.abs(dx)<10&&Math.abs(dy)<10){
+      openedInteractiveTouchAt=Date.now();
+      window.open(link.href,link.target||'_self','noopener,noreferrer');
+    }
+    return;
+  }
+  if(Math.abs(dx)>44&&Math.abs(dx)>Math.abs(dy)){dx<0?next():prev();}
+},{passive:true});
 const start=parseInt(location.hash.replace('#',''),10); if(start) show(start-1); else show(0);
 </script>
 </body>
