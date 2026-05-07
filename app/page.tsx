@@ -376,7 +376,7 @@ function InvestorSheet({ onClose }: { onClose: () => void }) {
             Enter Investor Portal
           </motion.a>
           <motion.a
-            href="mailto:invest@kscan.ai"
+            href="mailto:kscanai.app@gmail.com"
             className="block w-full rounded-full border border-white/12 px-7 py-4 text-center text-[13px] text-stone-400 transition-colors hover:border-white/24 hover:text-stone-200"
             {...btnMotion}
           >
@@ -984,7 +984,7 @@ export default function Home() {
               </motion.a>
 
               <a
-                href="mailto:invest@kscan.ai"
+                href="mailto:kscanai.app@gmail.com"
                 className="text-center text-[12px] text-stone-400 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400 md:text-right"
               >
                 or request credentials

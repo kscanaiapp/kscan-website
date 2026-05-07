@@ -16,7 +16,7 @@ const defaultFooterLinks: FooterLink[] = [
   { href: "/demo", label: "Demo" },
   { href: "/investors", label: "Investors" },
   { href: "/#waitlist", label: "Waitlist" },
-  { href: "mailto:hello@kscan.ai", label: "Contact" },
+  { href: "mailto:kscanai.app@gmail.com", label: "Contact" },
 ];
 
 export function SiteFooter({ links = defaultFooterLinks }: SiteFooterProps) {

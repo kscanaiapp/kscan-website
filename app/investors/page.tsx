@@ -594,10 +594,10 @@ export default function InvestorsPage() {
             <p className="mt-6 text-[12px] leading-[1.75] text-stone-400">
               Prefer email?{" "}
               <a
-                href="mailto:investors@kscan.ai"
+                href="mailto:kscanai.app@gmail.com"
                 className="text-stone-600 underline decoration-stone-300 underline-offset-4 hover:decoration-stone-500"
               >
-                investors@kscan.ai
+                kscanai.app@gmail.com
               </a>
             </p>
           </div>
