@@ -2,24 +2,7 @@
 
 import Link from "next/link";
 
-type FooterLink = {
-  href: string;
-  label: string;
-};
-
-type SiteFooterProps = {
-  links?: FooterLink[];
-};
-
-const defaultFooterLinks: FooterLink[] = [
-  { href: "/", label: "Home" },
-  { href: "/demo", label: "Demo" },
-  { href: "/investors", label: "Investors" },
-  { href: "/#waitlist", label: "Waitlist" },
-  { href: "mailto:kscanai.app@gmail.com", label: "Contact" },
-];
-
-export function SiteFooter({ links = defaultFooterLinks }: SiteFooterProps) {
+export function SiteFooter() {
   return (
     <footer className="border-t border-stone-100 bg-[#FAFAF8] py-12 md:py-14">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
@@ -31,34 +14,6 @@ export function SiteFooter({ links = defaultFooterLinks }: SiteFooterProps) {
             </div>
             <p className="text-[11px] text-stone-400">Fashion, made shoppable.</p>
           </div>
-
-          <nav className="grid grid-cols-2 gap-x-8 gap-y-1 md:flex md:gap-7">
-            {links.map(({ href, label }) => {
-              const isExternal = href.startsWith("mailto:");
-
-              if (isExternal) {
-                return (
-                  <a
-                    key={label}
-                    href={href}
-                    className="flex items-center justify-center py-3 text-[13px] text-stone-400 transition-colors hover:text-stone-800 md:justify-start md:py-0"
-                  >
-                    {label}
-                  </a>
-                );
-              }
-
-              return (
-                <Link
-                  key={label}
-                  href={href}
-                  className="flex items-center justify-center py-3 text-[13px] text-stone-400 transition-colors hover:text-stone-800 md:justify-start md:py-0"
-                >
-                  {label}
-                </Link>
-              );
-            })}
-          </nav>
         </div>
 
         <div className="mt-8 flex flex-col items-center gap-3 text-[11px] text-stone-300 md:mt-6 md:flex-row md:justify-between">
