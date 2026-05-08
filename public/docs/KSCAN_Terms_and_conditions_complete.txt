@@ -1,0 +1,787 @@
+================================================================================
+                    K SCAN AI — TERMS AND CONDITIONS
+                          Version 2.2 (Final)
+                     Effective Date: May 7, 2026
+================================================================================
+
+Welcome to K SCAN AI ("K SCAN," "K Scan AI," "we," "our," or "us"). These 
+Terms and Conditions ("Terms") govern your access to and use of the K SCAN 
+mobile application, website, APIs, AI systems, software, visual commerce 
+tools, Style-Parse™ engine, and any related products, services, or features 
+(collectively, the "Service").
+
+By downloading, accessing, registering for, or using the Service, including 
+any AI-powered visual analysis functionality, you acknowledge that you have 
+read, understood, and agree to be bound by these Terms and our Privacy Policy. 
+If you do not agree to these Terms, you may not use the Service.
+
+These Terms constitute a legally binding agreement between you and K SCAN AI.
+
+================================================================================
+1. DEFINITIONS
+================================================================================
+
+For purposes of these Terms:
+
+"Service"
+Means the K SCAN AI platform, including all mobile applications, websites, 
+APIs, AI systems, Style-Parse™ technology, visual commerce systems, and 
+related services.
+
+"Style-Parse™ Engine"
+Means K SCAN AI's proprietary visual-analysis and fashion-recognition 
+technology, including computer vision systems, recommendation logic, embeddings, 
+machine-learning workflows, model orchestration systems, and visual-commerce 
+infrastructure.
+
+"AI Outputs"
+Means recommendations, styling suggestions, visual matches, product 
+identifications, similarity analyses, commerce-routing results, generated 
+metadata, or other outputs generated through the Service.
+
+"User Content"
+Means images, photographs, screenshots, text, styling inputs, profile 
+information, prompts, and other materials uploaded or submitted by users.
+
+"Retail Partners"
+Means third-party retailers, affiliate partners, marketplaces, advertisers, 
+brands, or commerce providers linked through the Service.
+
+"Trade Dress"
+Means the visual appearance and commercial aesthetic of the Service, including 
+layouts, interface systems, interaction patterns, animations, graphics, 
+typography, color systems (including the "Obsidian & Cyan" visual identity), 
+and branding treatments.
+
+"Beta Features"
+Means features identified as experimental, early access, beta, preview, or 
+pre-release functionality.
+
+================================================================================
+2. ACCEPTANCE OF TERMS
+================================================================================
+
+By creating an account, accessing, or using the Service, you agree to these 
+Terms and all applicable laws and regulations. Your use of any AI-powered 
+features, including the Style-Parse™ Engine, constitutes your acceptance of 
+these Terms.
+
+If you do not agree to these Terms, you must discontinue use of the Service 
+immediately.
+
+We reserve the right to modify these Terms at any time. Material changes will 
+be communicated through the Service, by email, or by other reasonable means. 
+Continued use of the Service following updated Terms constitutes acceptance of 
+the revised Terms.
+
+================================================================================
+3. ELIGIBILITY & PARENTAL CONSENT
+================================================================================
+
+You must be at least 13 years old to use the Service.
+
+If you are between 13 and 17 years old, you may only use the Service if:
+(a) a parent or legal guardian has reviewed and agreed to these Terms on your 
+    behalf; and
+(b) K SCAN AI has obtained verifiable parental consent before account 
+    activation.
+
+Verifiable parental consent will be obtained through one of the following 
+methods:
+• Submission of a completed parental consent form signed by the parent/guardian;
+• A credit card verification of at least $0.50 (refunded);
+• A video call with a K SCAN AI representative; or
+• Use of a third-party age-verification service.
+
+K SCAN AI may contact the registered parent or guardian at the email address 
+or phone number provided to confirm consent. Failure to provide verifiable 
+consent within 14 days of account registration will result in account 
+suspension or deletion.
+
+If you are under 18, you represent that you have permission from your parent 
+or legal guardian to use the Service and that they have agreed to these Terms.
+
+If you are a parent or guardian permitting a child between 13 and 17 to use 
+the Service, you agree to:
+• Supervise the child's use of the Service;
+• Accept full responsibility for the child's compliance with these Terms; and
+• Be bound by these Terms on behalf of the child.
+
+You may not use the Service if prohibited under applicable law or if you have 
+previously been banned from the Service for any reason.
+
+K SCAN AI reserves the right to request proof of age at any time.
+
+================================================================================
+4. USER ACCOUNTS & SECURITY
+================================================================================
+
+Certain features require account registration. You agree to:
+
+• Provide accurate, complete, and current information;
+• Maintain updated account information;
+• Maintain confidentiality of your credentials; and
+• Accept responsibility for all activities under your account.
+
+You must notify K SCAN AI immediately of any unauthorized access or security 
+breach. K SCAN AI is not responsible for losses arising from unauthorized 
+account use caused by your failure to safeguard credentials.
+
+================================================================================
+5. PRIVACY & DATA PROCESSING
+================================================================================
+
+Your use of the Service is governed by our Privacy Policy, which is 
+incorporated into these Terms by reference. By using the Service, you 
+acknowledge and agree that:
+
+• Uploaded images may be processed by artificial intelligence systems;
+• Content may be temporarily cached, stored, analyzed, or transformed to 
+  provide functionality;
+• Anonymized or aggregated data may be used to improve platform performance 
+  and ML systems; and
+• Third-party infrastructure providers may assist in delivering AI 
+  functionality.
+
+K SCAN AI is not a facial-recognition platform and does not use uploaded 
+content to identify individuals or infer biometric identity.
+
+Section 5.1 (Anonymization Standard)
+
+"Anonymized data" means data that has been irreversibly de-identified such 
+that it cannot be used to identify an individual or be re-linked to the 
+original uploader, consistent with NIST guidelines for anonymization 
+(SP 800-188) and GDPR Recital 26.
+
+Section 5.2 (Data Retention & User Deletion Rights)
+
+• Uploaded images are typically retained for 30 days unless deleted by user;
+• User profile data retained while account is active;
+• Upon account deletion, personal data is purged within 30 days (except where 
+  required by law);
+• Anonymized/aggregated analytics retained indefinitely; and
+• Users may request data export in compliance with GDPR Article 15 and 
+  CCPA §1798.100.
+
+Users should not upload government identification, financial records, medical 
+information, confidential documents, or content they do not have the legal 
+right to use.
+
+================================================================================
+6. AI PROCESSING & MACHINE LEARNING SYSTEMS
+================================================================================
+
+K SCAN AI uses proprietary and third-party artificial intelligence systems, 
+multimodal models, machine-learning technologies, computer vision 
+architectures, and recommendation systems. You acknowledge and agree that:
+
+• AI Outputs are probabilistic and may contain inaccuracies or incomplete 
+  information;
+• Visually similar results may not represent exact product matches;
+• Product pricing, brand identification, retailer availability, and fit 
+  recommendations may be inaccurate or change;
+• AI Outputs do not constitute professional advice or guarantees;
+• Outputs are generated algorithmically and may differ between sessions; and
+• K SCAN AI may improve, retrain, refine, or modify AI systems without 
+  notice.
+
+You are solely responsible for evaluating AI Outputs before relying on them 
+for purchasing or styling decisions.
+
+================================================================================
+7. VISUAL COMMERCE DISCLAIMER & PRODUCT LIABILITY
+================================================================================
+
+K SCAN AI operates as a visual-commerce discovery platform. K SCAN AI does 
+not manufacture, inspect, authenticate, warehouse, endorse, or guarantee 
+products displayed through the Service.
+
+K SCAN AI does not guarantee:
+
+• Authenticity or originality of products;
+• Pricing accuracy or current availability;
+• Retailer legitimacy or seller authenticity;
+• Product quality, legality, or safety;
+• Sizing accuracy or visual similarity accuracy; or
+• Shipping, fulfillment, or transaction performance.
+
+Section 7.1 (Counterfeit Risk & Authentication Limits)
+
+K SCAN AI does not authenticate products, verify sellers' legitimacy, or 
+guarantee that identified products are genuine or original. Users are solely 
+responsible for conducting due diligence on retailers and verifying product 
+authenticity before purchase. K SCAN AI shall not be liable for counterfeit 
+goods, inauthentic items, fraud by third-party retailers, or any losses 
+arising from counterfeit transactions.
+
+Products identified through the Service may differ materially from AI-generated 
+recommendations or visual matches. All purchases, returns, disputes, warranties, 
+and transactions involving third-party retailers are solely between you and 
+the applicable retailer.
+
+================================================================================
+8. USER CONTENT & AI PROCESSING LICENSE
+================================================================================
+
+You retain ownership of your User Content. By uploading User Content, you 
+grant K SCAN AI a limited, non-exclusive, worldwide, royalty-free license to:
+
+• Host, process, analyze, reproduce, display, transform, and transmit your 
+  content
+
+solely for:
+
+• Operating the Service;
+• Generating AI Outputs;
+• Improving platform functionality;
+• Moderation and safety; and
+• Evaluating or improving machine-learning systems.
+
+K SCAN AI may use anonymized, aggregated, or de-identified data derived from 
+User Content to improve platform functionality and AI systems. K SCAN AI does 
+not claim ownership of your uploaded images or original content, and you may 
+delete your content at any time.
+
+================================================================================
+9. PROPRIETARY TECHNOLOGY & INTELLECTUAL PROPERTY
+================================================================================
+
+The Service contains proprietary software, artificial intelligence systems, 
+recommendation engines, visual-analysis systems, model orchestration workflows, 
+interface systems, graphics, trade dress, styling methodologies, and 
+machine-learning technologies owned exclusively by K SCAN AI. Protected 
+intellectual property includes:
+
+• The Style-Parse™ Engine;
+• Recommendation and routing systems;
+• Embeddings, model workflows, and commerce-routing logic;
+• Interface architecture, styling taxonomies, and mobile interaction systems;
+• Visual design elements, animations, and the "Obsidian & Cyan" visual 
+  identity;
+• Layouts, branding systems, and platform trade dress.
+
+No ownership rights are transferred to users. All rights not explicitly 
+granted are reserved by K SCAN AI.
+
+================================================================================
+10. LIMITED LICENSE & ACCEPTABLE USE
+================================================================================
+
+Subject to compliance with these Terms, K SCAN AI grants you a limited, 
+revocable, non-exclusive, non-transferable license to access and use the 
+Service for personal, non-commercial use. You may not:
+
+• Reverse engineer, decompile, or disassemble the Service;
+• Scrape data, outputs, embeddings, or extract model behavior;
+• Benchmark the AI without authorization;
+• Use automated systems, bots, or scripts to replicate functionality;
+• Use outputs to train competing AI systems;
+• Bypass rate limits or access restrictions;
+• Interfere with platform security or infrastructure;
+• Attempt prompt injection or adversarial attacks;
+• Transmit malware, viruses, or harmful code; or
+• Exploit the Service for unlawful purposes.
+
+Violation of these restrictions may result in immediate account termination 
+and legal action.
+
+================================================================================
+11. COMMUNITY GUIDELINES & ACCEPTABLE USE POLICY
+================================================================================
+
+Users must engage respectfully and responsibly. You agree not to:
+
+• Upload unlawful, infringing, or counterfeit material;
+• Upload harmful, abusive, hateful, or discriminatory content;
+• Impersonate others or engage in deceptive practices;
+• Upload sexually explicit or exploitative content;
+• Attempt unauthorized access to systems;
+• Engage in harassment or abuse of other users; and
+• Violate applicable laws or regulations.
+
+K SCAN AI reserves the right to remove content, suspend access, or terminate 
+accounts at its sole discretion for violations.
+
+================================================================================
+12. BETA & EXPERIMENTAL FEATURES
+================================================================================
+
+Certain features may be designated as beta, experimental, preview, or early 
+access. Beta Features:
+
+• May contain bugs, errors, or incomplete functionality;
+• May experience frequent interruptions or unavailability;
+• May produce inaccurate, misleading, or harmful results; and
+• May change substantially or be discontinued at any time.
+
+Section 12.1 (Beta Features Exclusion)
+
+Beta Features are provided strictly on an "AS IS" basis without warranties and 
+are not covered by K SCAN AI's service level agreements, support commitments, 
+or uptime guarantees. Use of Beta Features is entirely at your risk.
+
+================================================================================
+13. SUBSCRIPTIONS, PAYMENTS & MONETIZATION
+================================================================================
+
+Certain portions of the Service may require payment, subscription enrollment, 
+or participation in promotional programs. K SCAN AI reserves the right to:
+
+• Introduce subscription tiers and in-app purchases;
+• Modify pricing at any time;
+• Discontinue features or change monetization models;
+• Revoke promotional offers, beta access privileges, or waitlist perks; and
+• Restrict access to premium functionality at any time.
+
+Section 13.1 (Refund Policy & App Store Overrides)
+
+Subscriptions purchased through K SCAN AI directly are non-refundable unless 
+required by law. Subscriptions purchased via Apple App Store or Google Play 
+are subject to those platforms' refund policies (typically 14 days). K SCAN AI 
+respects and enforces app-store refund windows. If you obtain a refund from 
+Apple or Google but retain access to premium features, K SCAN AI reserves the 
+right to immediately suspend your account and revoke premium access.
+
+================================================================================
+14. THIRD-PARTY LINKS & RETAIL PARTNERS
+================================================================================
+
+The Service may contain links to third-party retailers, marketplaces, 
+advertisers, or external websites. K SCAN AI does not control, operate, or 
+endorse third-party sites and is not responsible for:
+
+• Content accuracy, pricing, or product descriptions;
+• Retailer policies, legitimacy, or authentication;
+• Product authenticity, quality, or legality;
+• Fulfillment, shipping, or transaction disputes; or
+• External website privacy practices or content.
+
+Your interactions with third parties are solely between you and the applicable 
+third party. You are responsible for reviewing retailer policies, verifying 
+seller legitimacy, and conducting due diligence before making purchases.
+
+================================================================================
+15. COOKIES, TRACKING & ANALYTICS
+================================================================================
+
+K SCAN AI uses cookies, SDKs, analytics tools, device identifiers, and similar 
+tracking technologies to:
+
+• Authenticate users and maintain sessions;
+• Improve platform performance and user experience;
+• Personalize recommendations and content;
+• Analyze traffic, behavior, and usage patterns; and
+• Support platform functionality and debugging.
+
+Section 15.1 (Third-Party Vendors & Transparency)
+
+These technologies may be provided by third-party vendors including:
+
+• Analytics providers (e.g., Google Analytics, Mixpanel);
+• Authentication providers;
+• Payment processors;
+• Infrastructure providers; and
+• Advertising partners (for future monetization).
+
+You may manage cookie preferences through your browser or device settings. 
+Opting out of non-essential cookies may limit platform functionality. Detailed 
+cookie information is available in our Privacy Policy.
+
+================================================================================
+16. AI TRANSPARENCY & SYSTEM IMPROVEMENTS
+================================================================================
+
+K SCAN AI is committed to transparency regarding AI-generated functionality. 
+Users acknowledge that:
+
+• AI Outputs are generated algorithmically and may be incomplete or inaccurate;
+• Visual similarity does not guarantee identical products;
+• AI systems evolve over time and may be retrained or modified;
+• Outputs may differ significantly between sessions or users; and
+• K SCAN AI may use licensed data, publicly available information, synthetic 
+  data, and user-authorized inputs to improve systems.
+
+K SCAN AI provides regular transparency reports and welcomes feedback on AI 
+improvements. Users may submit feedback at any time.
+
+================================================================================
+17. DMCA & COPYRIGHT POLICY
+================================================================================
+
+K SCAN AI respects intellectual property rights. If you believe content on 
+the Service infringes your copyright, you may submit a DMCA notice including:
+
+• Identification of the copyrighted work;
+• Identification of allegedly infringing material;
+• Your contact information and good-faith statement; and
+• A statement under penalty of perjury.
+
+K SCAN AI may remove allegedly infringing material and may terminate repeat 
+infringers. DMCA notices may be sent to:
+
+    K SCAN AI Legal
+    Email: legal@kscan.app
+
+================================================================================
+18. DISCLAIMER OF WARRANTIES
+================================================================================
+
+THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE."
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, K SCAN AI DISCLAIMS ALL WARRANTIES, 
+EXPRESS OR IMPLIED, INCLUDING:
+
+• MERCHANTABILITY;
+• FITNESS FOR A PARTICULAR PURPOSE;
+• NON-INFRINGEMENT;
+• ACCURACY; and
+• AVAILABILITY.
+
+K SCAN AI does not warrant that:
+
+• The Service will be uninterrupted, secure, or error-free;
+• AI Outputs will be accurate, complete, or suitable for any purpose;
+• Retail results will be correct or complete;
+• Errors will be fixed or corrected;
+• The Service will be free of viruses, malware, or harmful code; or
+• Third-party integrations will function as expected.
+
+Some jurisdictions do not allow limitations of implied warranties. This 
+disclaimer may not apply to you in full.
+
+================================================================================
+19. LIMITATION OF LIABILITY
+================================================================================
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, K SCAN AI SHALL NOT BE LIABLE FOR:
+
+• INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES;
+• LOSS OF PROFITS, DATA, OR BUSINESS INTERRUPTION;
+• RELIANCE ON AI OUTPUTS OR VISUAL SEARCH RESULTS;
+• COUNTERFEIT PRODUCTS OR FRAUD BY THIRD PARTIES;
+• TRANSACTIONS OR DISPUTES WITH RETAIL PARTNERS; or
+• ANY OTHER DAMAGES, EVEN IF ADVISED OF POSSIBILITY.
+
+K SCAN AI's total liability for any claim shall not exceed the greater of:
+
+• Amounts paid by you to K SCAN AI in the preceding 12 months; or
+• $100 USD.
+
+Some jurisdictions do not allow limitation of liability. This cap may not 
+apply to you in full.
+
+================================================================================
+20. INDEMNIFICATION
+================================================================================
+
+You agree to defend, indemnify, and hold harmless K SCAN AI, its officers, 
+directors, employees, and affiliates from any claims, damages, losses, or 
+expenses (including reasonable attorney fees) arising from:
+
+• Your use of the Service;
+• Your User Content or violation of third-party rights;
+• Your violation of these Terms; or
+• Your violation of applicable law.
+
+This obligation applies whether claims arise in contract, tort, statute, or 
+any other legal basis.
+
+================================================================================
+21. TERMINATION & ACCOUNT SUSPENSION
+================================================================================
+
+K SCAN AI may suspend or terminate your access to the Service at any time for:
+
+• Violations of these Terms;
+• Suspected abuse, fraud, or unlawful activity;
+• Security concerns or policy violations;
+• Payment failures or non-compliance with subscription terms; or
+• Operational or maintenance reasons.
+
+Upon termination, your right to use the Service immediately ceases. K SCAN AI 
+may retain your data in accordance with applicable law and the Privacy Policy.
+
+================================================================================
+22. GOVERNING LAW & DISPUTE RESOLUTION
+================================================================================
+
+22.1 Governing Law
+
+These Terms shall be governed by the laws of the State of Ohio, United States, 
+without regard to its conflict-of-law principles. For users residing in the 
+European Union or United Kingdom, certain mandatory consumer protections of 
+your country of residence may also apply.
+
+22.2 Binding Arbitration (Mandatory for Most Disputes)
+
+PLEASE READ THIS SECTION CAREFULLY – IT AFFECTS YOUR LEGAL RIGHTS.
+
+Any dispute, claim, or controversy arising out of or relating to these Terms 
+or the Service (including breach, termination, interpretation, validity, or 
+enforcement) shall be resolved exclusively through binding individual 
+arbitration administered by the American Arbitration Association (AAA) under 
+its Consumer Arbitration Rules in effect at the time the dispute is filed.
+
+• Arbitration location: Cleveland, Ohio, or (at your request) by telephone, 
+  video conference, or entirely online if mutually agreed.
+• Costs: K SCAN AI will pay all filing, administration, and arbitrator fees 
+  for any arbitration where the total claim is less than $75,000 USD, unless 
+  the arbitrator finds your claim is frivolous. For claims over $75,000, costs 
+  will be allocated according to AAA Consumer Rules.
+• Attorney fees: Each party bears its own attorney fees, unless applicable law 
+  allows the prevailing party to recover them.
+• Confidentiality: The arbitration proceedings and any award shall remain 
+  confidential, except as necessary to enforce the award in court.
+
+Exceptions to Arbitration: Either party may bring a claim in small claims court 
+(if the claim is within that court's jurisdiction and is brought on an 
+individual basis) without first resorting to arbitration.
+
+22.3 Class Action & Collective Proceeding Waiver
+
+TO THE FULLEST EXTENT PERMITTED BY LAW, YOU AND K SCAN AI AGREE THAT EACH MAY 
+BRING CLAIMS AGAINST THE OTHER ONLY IN AN INDIVIDUAL CAPACITY AND NOT AS A 
+PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS, COLLECTIVE, CONSOLIDATED, OR 
+REPRESENTATIVE ACTION OR PROCEEDING. The arbitrator may not consolidate more 
+than one person's claims and may not preside over any form of representative 
+or class proceeding.
+
+22.4 Arbitration Opt-Out Right
+
+You may opt out of this arbitration agreement entirely. To opt out, you must 
+send a written notice to K SCAN AI within 30 days of the date you first agree 
+to these Terms. The notice must include:
+
+• Your full name;
+• The email address associated with your K SCAN AI account; and
+• A clear statement: "I reject the arbitration agreement in Section 22 of the 
+  K SCAN AI Terms and Conditions."
+
+Send the notice to:
+
+    K SCAN AI Legal
+    Mayfield Heights, Ohio
+    Email: legal@kscan.app
+    Subject: Arbitration Opt-Out
+
+If you opt out, neither you nor K SCAN AI can require arbitration, and any 
+dispute will be resolved in court as provided in Section 22.5 below. Opting 
+out does not affect any other term of this agreement.
+
+22.5 Court Jurisdiction for Opt-Outs or Small Claims
+
+If you opt out of arbitration or if the arbitration agreement is found 
+unenforceable, or for small claims court matters, you and K SCAN AI agree to 
+the exclusive personal jurisdiction and venue of the state or federal courts 
+located in Cuyahoga County, Ohio. However, if you are a consumer residing 
+outside the United States, applicable law may allow you to bring claims in 
+your home jurisdiction.
+
+22.6 30-Day Right to Cure
+
+Before initiating any arbitration or court proceeding, you agree to first 
+contact K SCAN AI at legal@kscan.app and provide a written description of your 
+dispute (including relevant facts and your proposed resolution). We will have 
+30 days to resolve the dispute informally. If resolved, no formal proceeding 
+is needed. This informal resolution period is a condition precedent to 
+arbitration.
+
+================================================================================
+23. APP STORE TERMS & CONDITIONS
+================================================================================
+
+If you download the App through Apple App Store or Google Play:
+
+• Those platforms are not parties to these Terms;
+• They are not responsible for support, maintenance, or updates; and
+• Your use must comply with applicable app-store terms and policies.
+
+In case of conflict, K SCAN AI's Terms apply to the Service itself; app-store 
+terms apply to app distribution and in-app purchases.
+
+================================================================================
+24. FORCE MAJEURE
+================================================================================
+
+K SCAN AI shall not be liable for delays or failures caused by events beyond 
+its reasonable control, including:
+
+• Internet outages or infrastructure failures;
+• Cyberattacks, hacking, or unauthorized access;
+• Governmental actions or regulatory changes;
+• Labor disputes or strikes;
+• Natural disasters or pandemics; or
+• Third-party service interruptions.
+
+K SCAN AI will use reasonable efforts to resume service and mitigate impacts.
+
+================================================================================
+25. FUTURE ENTERPRISE & API SERVICES
+================================================================================
+
+K SCAN AI may offer enterprise integrations, APIs, retailer tools, or 
+commercial services subject to separate agreements, including Data Processing 
+Addendums (DPAs).
+
+Section 25.1 (API Terms)
+
+If K SCAN AI provides API access:
+
+• APIs are non-public and subject to separate API Terms of Service;
+• K SCAN AI may rate-limit, deprecate, or revoke API access at any time;
+• Commercial API use may require a paid license and DPA;
+• API users may not reverse-engineer, benchmark, or train competing systems; 
+  and
+• All API terms override consumer Terms unless otherwise stated.
+
+Enterprise customers must comply with additional privacy, security, audit, 
+retention, and compliance obligations as specified in their agreements.
+
+================================================================================
+26. ACCESSIBILITY & LOCALIZATION
+================================================================================
+
+K SCAN AI is committed to digital accessibility. We aim to comply with 
+WCAG 2.1 Level AA accessibility standards. If you encounter accessibility 
+barriers, please contact us at legal@kscan.app so we may address them.
+
+These Terms are provided in English. Any translations are for convenience 
+only; the English version controls in case of conflict.
+
+================================================================================
+27. MISCELLANEOUS
+================================================================================
+
+Section 27.1 (Entire Agreement)
+
+These Terms, together with the Privacy Policy, constitute the entire agreement 
+between you and K SCAN AI regarding the Service. Any prior agreements or 
+understandings are superseded.
+
+Section 27.2 (Severability)
+
+If any provision of these Terms is found invalid or unenforceable by a court 
+of competent jurisdiction, that provision shall be severed, and the remaining 
+provisions shall remain in full effect to the maximum extent permitted by law.
+
+Section 27.3 (Waiver)
+
+Failure by K SCAN AI to enforce any provision of these Terms does not 
+constitute a waiver of that provision or K SCAN AI's right to enforce it in 
+the future.
+
+Section 27.4 (Assignment)
+
+You may not assign or transfer these Terms to any third party without K SCAN 
+AI's prior written consent. K SCAN AI may assign these Terms freely to 
+subsidiaries, affiliates, or in connection with merger, acquisition, or sale 
+of assets.
+
+Section 27.5 (No Third-Party Beneficiaries)
+
+These Terms are intended solely for the benefit of you and K SCAN AI. No 
+third party has any rights or claims under these Terms.
+
+Section 27.6 (Survival)
+
+Sections regarding intellectual property, indemnification, limitations of 
+liability, disclaimer of warranties, and governing law shall survive 
+termination of these Terms.
+
+================================================================================
+28. CONTACT INFORMATION
+================================================================================
+
+For legal notices, copyright matters, accessibility accommodations, or other 
+inquiries, contact:
+
+    K SCAN AI Legal & Support
+    Email: legal@kscan.app
+    Mailing Address: Mayfield Heights, Ohio, United States
+
+We will respond to inquiries within 30 business days.
+
+================================================================================
+29. NOTICE TO CALIFORNIA RESIDENTS (CCPA)
+================================================================================
+
+This Section applies only to natural persons who are residents of the State of 
+California, as defined in the California Consumer Privacy Act of 2018 (CCPA) 
+and its amendments (CPRA).
+
+29.1 Collection of Personal Information
+
+Over the preceding 12 months, K SCAN AI has collected the following categories 
+of personal information from users:
+
+• Identifiers (email address, username, device ID);
+• Commercial information (style preferences, saved items, interaction history);
+• Internet/network activity (app usage, clicks, session data);
+• Geolocation data (approximate based on IP address – not precise);
+• Audio/visual information (user-uploaded images);
+• Inferences (style profiles, preference scores).
+
+We do not collect or process sensitive personal information as defined under 
+CCPA (e.g., SSN, precise geolocation, biometric data for identification, 
+health data) except as explicitly provided by you.
+
+29.2 No Sale of Personal Information
+
+K SCAN AI does not sell your personal information as defined under California 
+Civil Code §1798.140(ad). We also do not "share" personal information for 
+cross-context behavioral advertising (e.g., no third-party targeting cookies). 
+If that changes, we will update this notice and provide a "Do Not Sell or 
+Share My Personal Information" link.
+
+29.3 Your California Privacy Rights
+
+You have the right to:
+
+• Know what personal information we have collected, used, disclosed, or sold 
+  about you (up to twice per 12 months);
+• Delete personal information we hold about you, subject to exceptions (e.g., 
+  completing a transaction, security, legal retention);
+• Correct inaccurate personal information;
+• Opt out of any sale or sharing (currently not applicable);
+• Limit use of sensitive personal information (not applicable); and
+• Non-discrimination – we will not deny goods or services, charge different 
+  prices, or provide a different level of service for exercising CCPA rights.
+
+29.4 How to Exercise Your Rights
+
+Submit a verifiable consumer request to:
+
+    K SCAN AI Legal
+    Email: legal@kscan.app
+    Mailing Address: Mayfield Heights, Ohio, United States
+
+To verify your identity, we may ask for your email address and account-related 
+information. If you have an account with us, you may also exercise rights 
+directly through the app's privacy settings.
+
+You may use an authorized agent to submit a request. The agent must provide 
+your signed written permission and verify their own identity with us.
+
+29.5 Response Timeline
+
+We will respond to verified requests within 45 calendar days (extendable by 
+another 45 days with notice). If we deny your request, we will explain why.
+
+29.6 Shine the Light (California Civil Code §1798.83)
+
+California's "Shine the Light" law permits residents to request, once per 
+year, a list of third parties to whom we have disclosed personal information 
+for direct marketing purposes. K SCAN AI does not share your information for 
+third-party direct marketing. To make a request, contact legal@kscan.app.
+
+29.7 Minors Under 16
+
+K SCAN AI does not knowingly sell or share personal information of minors 
+under 16 without affirmative authorization. If you believe a minor has 
+provided us with information without parental consent, please contact us.
+
+================================================================================
+© 2026 K SCAN AI. All rights reserved.
+Last Updated: May 7, 2026
+Version 2.2 (Final)
+================================================================================
