@@ -77,13 +77,6 @@ export function SiteFooter({ links = defaultFooterLinks }: SiteFooterProps) {
             >
               Terms Summary
             </Link>
-            <span aria-hidden="true" className="select-none">|</span>
-            <a
-              href="/docs/KSCAN_Terms_and_conditions_complete.txt"
-              className="-my-3 flex h-11 items-center justify-center text-[11px] transition-colors hover:text-stone-500 focus:outline-none focus-visible:text-stone-500"
-            >
-              Full Terms
-            </a>
             <a
               href="https://www.instagram.com/KScan_app"
               target="_blank"

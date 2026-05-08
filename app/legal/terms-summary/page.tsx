@@ -387,22 +387,22 @@ export default function TermsSummaryPage() {
 
         <div className="mt-6 space-y-4 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <p>
-            If you have questions about these terms, your account, privacy rights, or legal concerns, please contact us:
-          </p>
-          <p>
-            K SCAN AI Legal &amp; Support
-            <br />
-            Email:{" "}
+            For more details, see our full{" "}
+            <a
+              href="/docs/KSCAN_Terms_and_conditions_complete.txt"
+              className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
+            >
+              Terms and Conditions
+            </a>{" "}
+            or contact{" "}
             <a
               href="mailto:kscanai.app@gmail.com"
               className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
             >
               kscanai.app@gmail.com
             </a>
-            <br />
-            Location: Cleveland, Ohio, United States
+            .
           </p>
-          <p>K SCAN AI will make reasonable efforts to respond to inquiries in a timely manner.</p>
         </div>
 
         {/* REMEMBER */}
