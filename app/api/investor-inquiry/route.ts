@@ -13,7 +13,7 @@ const INVESTOR_REPLY_BODY = `Thank you for requesting access to K Scan’s confi
 
 We’ve received your request and will review it shortly. If there is a fit, we’ll follow up with access details or next steps.
 
-For questions, you can reach us at [kscanai.app@gmail.com](mailto:kscanai.app@gmail.com).
+For questions, you can reach us at kscanai.app@gmail.com.
 
 K Scan AI
 See it. Say it. Get it.`;
