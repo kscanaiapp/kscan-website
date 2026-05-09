@@ -53,3 +53,6 @@ investor-docs/watermark_log.csv
 !investor-docs/input/.gitkeep
 !investor-docs/output/.gitkeep
 !investor-docs/investors.example.csv
+
+# private runtime-only materials
+private/investor-docs/

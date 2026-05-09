@@ -14,11 +14,6 @@ const publicRoutes = [
     changeFrequency: "monthly" as const,
   },
   {
-    path: "/investors",
-    priority: 0.4,
-    changeFrequency: "monthly" as const,
-  },
-  {
     path: "/privacy",
     priority: 0.2,
     changeFrequency: "yearly" as const,

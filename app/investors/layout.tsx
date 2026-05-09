@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/investors",
   },
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: "K Scan Investor Materials",
     description:

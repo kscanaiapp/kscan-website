@@ -7,9 +7,6 @@ import { SiteNav } from "@/components/ui/SiteNav";
 import { SectionShell } from "@/components/ui/SectionShell";
 
 // ─── Password gate constants (restored exactly) ───────────────────────────────
-const INVESTOR_PASSWORD = "KSCAN2026";
-const DECK_URL = "/docs/kscan-deck-no9.pdf";
-
 // ─── Static data ──────────────────────────────────────────────────────────────
 
 const moatPoints = [
@@ -105,20 +102,32 @@ export default function InvestorsPage() {
   const [visibleCharIndex, setVisibleCharIndex] = useState<number | null>(null);
   const [deckState, setDeckState] = useState<"idle" | "checking" | "ready" | "missing">("idle");
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError("");
 
-    if (password === INVESTOR_PASSWORD) {
+    try {
+      const response = await fetch("/api/investor/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Access rejected.");
+      }
+
       setUnlocked(true);
+      setPassword("");
       setError("");
       setShakeField(false);
       return;
+    } catch {
+      setUnlocked(false);
+      setDeckState("idle");
+      setShakeField(true);
+      setError("Access could not be verified. Please check the password and try again.");
     }
-
-    setUnlocked(false);
-    setDeckState("idle");
-    setShakeField(true);
-    setError("Access could not be verified. Please check the password and try again.");
   }
 
   useEffect(() => {
@@ -139,7 +148,7 @@ export default function InvestorsPage() {
     async function checkDeck() {
       setDeckState("checking");
       try {
-        const response = await fetch(DECK_URL, { method: "HEAD" });
+        const response = await fetch("/api/investor/deck", { method: "HEAD" });
         if (!active) return;
         setDeckState(response.ok ? "ready" : "missing");
       } catch {
@@ -540,7 +549,6 @@ export default function InvestorsPage() {
                     Open the deck in a dedicated tab for the best review experience across mobile and desktop.
                   </p>
                   <div className="mt-7">
-                    {/* Render deck links only after password success so unauthenticated visitors never see public file targets. */}
                     <InvestorDeckLauncher
                       className="inline-flex rounded-full bg-stone-900 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-stone-800"
                     />
@@ -558,17 +566,15 @@ export default function InvestorsPage() {
                       The embed is ready once the deck file is added.
                     </h3>
                     <p className="mt-4 max-w-lg text-[14px] leading-[1.85] text-stone-500">
-                      This page is configured to display a high-fidelity PDF embed from{" "}
-                      <span className="font-medium text-stone-700">/docs/kscan-deck-no9.pdf</span>.
-                      That file is not present in the current workspace, so the live deck cannot be shown yet.
+                      This page is configured to display the protected investor deck after access is granted.
+                      The deck is not available right now.
                     </p>
                   </div>
                   <div className="mt-8 rounded-[22px] bg-[#F7F4EF] p-5">
                     <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Next step</p>
                     <p className="mt-2 text-[14px] leading-[1.8] text-stone-500">
-                      Ensure the final PDF is available at{" "}
-                      <span className="font-medium text-stone-700">/docs/kscan-deck-no9.pdf</span>{" "}
-                      and this stage will automatically switch from placeholder to embedded presentation after access is granted.
+                      Confirm the protected deck file is available on the server and this stage will automatically
+                      switch from placeholder to presentation after access is granted.
                     </p>
                   </div>
                 </div>
