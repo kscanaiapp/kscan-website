@@ -99,7 +99,7 @@ export default function InvestorsPage() {
   const [unlocked, setUnlocked] = useState(false);
   const [error, setError] = useState("");
   const [shakeField, setShakeField] = useState(false);
-  const [visibleCharIndex, setVisibleCharIndex] = useState<number | null>(null);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [deckState, setDeckState] = useState<"idle" | "checking" | "ready" | "missing">("idle");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -119,6 +119,7 @@ export default function InvestorsPage() {
 
       setUnlocked(true);
       setPassword("");
+      setPasswordVisible(false);
       setError("");
       setShakeField(false);
       return;
@@ -135,12 +136,6 @@ export default function InvestorsPage() {
     const timeout = window.setTimeout(() => { setShakeField(false); }, 460);
     return () => { window.clearTimeout(timeout); };
   }, [shakeField]);
-
-  useEffect(() => {
-    if (visibleCharIndex === null) return;
-    const timeout = window.setTimeout(() => { setVisibleCharIndex(null); }, 700);
-    return () => { window.clearTimeout(timeout); };
-  }, [visibleCharIndex, password]);
 
   useEffect(() => {
     if (!unlocked) return;
@@ -482,26 +477,33 @@ export default function InvestorsPage() {
                   <span className="mb-2 block text-[11px] uppercase tracking-[0.16em] text-stone-400">
                     Password
                   </span>
-                  <input
-                    type="password"
-                    autoComplete="current-password"
-                    autoCapitalize="none"
-                    autoCorrect="off"
-                    spellCheck={false}
-                    aria-label="Investor password"
-                    placeholder="Enter investor password"
-                    value={password}
-                    onChange={(e) => {
-                      const nextValue = e.target.value;
-                      if (nextValue.length > password.length) {
-                        setVisibleCharIndex(nextValue.length - 1);
-                      } else {
-                        setVisibleCharIndex(null);
-                      }
-                      setPassword(nextValue);
-                    }}
-                    className={`w-full appearance-none rounded-xl border bg-white px-4 py-3 text-left text-[16px] normal-case leading-normal tracking-normal text-stone-900 outline-none placeholder:text-stone-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 ${shakeField ? "border-violet-300" : "border-violet-200"}`}
-                  />
+                  <div className="relative">
+                    <input
+                      type={passwordVisible ? "text" : "password"}
+                      autoComplete="current-password"
+                      autoCapitalize="none"
+                      autoCorrect="off"
+                      spellCheck={false}
+                      aria-label="Investor password"
+                      placeholder="Enter investor password"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                      className={`w-full appearance-none rounded-xl border bg-white px-4 py-3 pr-20 text-left text-[16px] normal-case leading-normal tracking-normal text-stone-900 outline-none placeholder:text-stone-300 focus:border-violet-500 focus:ring-2 focus:ring-violet-200 ${shakeField ? "border-violet-300" : "border-violet-200"}`}
+                    />
+                    <button
+                      type="button"
+                      aria-label={passwordVisible ? "Hide password" : "Show password"}
+                      aria-pressed={passwordVisible}
+                      onClick={() => {
+                        setPasswordVisible((visible) => !visible);
+                      }}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.12em] text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-800 focus:outline-none focus:ring-2 focus:ring-violet-200"
+                    >
+                      {passwordVisible ? "Hide" : "Show"}
+                    </button>
+                  </div>
                 </label>
                 <button
                   type="submit"
