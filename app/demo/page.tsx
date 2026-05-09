@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { DemoEnvironmentSwitcher } from "@/components/DemoEnvironmentSwitcher";
 import { SiteNav } from "@/components/ui/SiteNav";
+import { demoMetadata } from "./metadata";
+
+export const metadata = demoMetadata;
 
 export default function DemoPage() {
   return (

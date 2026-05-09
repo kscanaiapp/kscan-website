@@ -93,6 +93,34 @@ const benchmarkStats = [
 
 const parseTags = ["Monochromatic Leather", "Tailored Blazer", "Sheer Mesh"];
 
+const faqs = [
+  {
+    question: "How does AI fashion search work?",
+    answer:
+      "K Scan analyzes a photo, screenshot, or video frame for fashion signals like garment type, silhouette, color, material, styling context, and brand cues. Those signals are used to surface exact or visually similar products across retailer sources.",
+  },
+  {
+    question: "Can K Scan identify outfits from screenshots?",
+    answer:
+      "Yes. K Scan is being built for screenshots as well as camera captures, so you can use inspiration from TikTok, Instagram, Pinterest, editorial images, or saved photos without needing to describe the outfit manually.",
+  },
+  {
+    question: "Can it find affordable alternatives?",
+    answer:
+      "K Scan is designed to show exact matches when available and useful alternatives when the original piece is unavailable, sold out, or outside your price range.",
+  },
+  {
+    question: "Does it work with TikTok or Instagram screenshots?",
+    answer:
+      "K Scan is designed around social discovery behavior. The goal is to help you move from a screenshot, post, short video, or creator outfit into a clearer shopping path.",
+  },
+  {
+    question: "Is K Scan a retailer or marketplace?",
+    answer:
+      "No. K Scan is a visual fashion discovery layer. It helps identify what you are seeing and routes you toward products from retailers rather than replacing the shopping destination.",
+  },
+];
+
 // ─── Motion primitives ────────────────────────────────────────────────────
 
 /** Fade + slide-up on first viewport entry. Fires once. */
@@ -408,6 +436,36 @@ export default function Home() {
     return () => { document.body.style.overflow = ""; };
   }, [investorOpen]);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(({ question, answer }) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: answer,
+      },
+    })),
+  };
+
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "K Scan AI",
+    applicationCategory: "ShoppingApplication",
+    operatingSystem: "iOS, Android, Web",
+    description:
+      "AI-powered visual fashion search for identifying clothes from photos, screenshots, videos, and social inspiration.",
+    url: "https://kscan.app",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/PreOrder",
+    },
+  };
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!email) return;
@@ -456,8 +514,16 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen">
+    <main className="min-h-screen">
       <SiteNav />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <section className="mx-auto flex max-w-7xl flex-col gap-12 px-6 pb-16 pt-12 md:px-10 md:pb-40 md:pt-24 lg:flex-row lg:items-center lg:gap-16 lg:pt-28">
         <motion.div
@@ -618,6 +684,44 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="visual-fashion-search" className="border-y border-stone-100 bg-white py-14 md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 md:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <FadeUp>
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
+              Visual Shopping
+            </p>
+            <h2 id="visual-fashion-search" className="font-display text-[34px] font-medium leading-[1.08] text-stone-900 md:text-[46px]">
+              AI fashion search for the way inspiration actually happens.
+            </h2>
+          </FadeUp>
+
+          <FadeUp delay={0.06} className="space-y-5 text-[15px] leading-[1.88] text-stone-500">
+            <p>
+              K Scan helps people find clothes from photos, identify outfits from screenshots, and turn visual
+              inspiration into a practical shopping path. Instead of trying to describe a jacket, dress, sneaker, or
+              full look with the right keywords, you can start with the image you already have.
+            </p>
+            <p>
+              The product is built for AI fashion search across real-world captures, saved images, short-form video
+              moments, and social posts from places like TikTok, Instagram, and Pinterest. K Scan reads fashion-specific
+              signals such as silhouette, material, color, layering, and styling context, then helps surface exact
+              products or close alternatives across retailers.
+            </p>
+            <div className="flex flex-wrap gap-4 pt-1 text-[13px]">
+              <a href="/demo" className="text-violet-600 underline decoration-violet-200 underline-offset-4 transition-colors hover:text-violet-700 hover:decoration-violet-400">
+                View the demo
+              </a>
+              <a href="#how-it-works" className="text-stone-500 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-800 hover:decoration-stone-400">
+                See how it works
+              </a>
+              <a href="#waitlist" className="text-stone-500 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-800 hover:decoration-stone-400">
+                Join the beta waitlist
+              </a>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -994,6 +1098,34 @@ export default function Home() {
         </FadeUp>
       </section>
 
+      <section aria-labelledby="faq-heading" className="bg-white py-16 md:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 md:px-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
+          <FadeUp>
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
+              Questions
+            </p>
+            <h2 id="faq-heading" className="font-display text-[34px] font-medium leading-[1.08] text-stone-900 md:text-[46px]">
+              What shoppers ask before they scan.
+            </h2>
+          </FadeUp>
+
+          <div className="divide-y divide-stone-100">
+            {faqs.map(({ question, answer }, idx) => (
+              <FadeUp key={question} delay={idx * 0.04} className="py-6 first:pt-0">
+                <article>
+                  <h3 className="text-[16px] font-medium leading-snug text-stone-900">
+                    {question}
+                  </h3>
+                  <p className="mt-3 text-[14px] leading-[1.82] text-stone-500">
+                    {answer}
+                  </p>
+                </article>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Investor bottom sheet — AnimatePresence for smooth exit */}
       <AnimatePresence>
         {investorOpen && <InvestorSheet onClose={() => setInvestorOpen(false)} />}
@@ -1107,6 +1239,6 @@ export default function Home() {
           </FadeUp>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

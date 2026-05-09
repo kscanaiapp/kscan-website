@@ -191,7 +191,8 @@ export function DemoEnvironmentSwitcher() {
                     autoPlay
                     loop
                     playsInline
-                    preload="auto"
+                    preload={isActive ? "metadata" : "none"}
+                    aria-label={`${config.label} K Scan product demo video`}
                     onLoadedData={() =>
                       setLoadedViews((current) => ({
                         ...current,

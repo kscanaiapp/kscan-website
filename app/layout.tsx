@@ -33,20 +33,63 @@ export const viewport: Viewport = {
 //   app/manifest.ts      → <link rel="manifest">
 // Adding them manually here would produce duplicate <link> tags.
 export const metadata: Metadata = {
-  title: "K Scan AI — Fashion, Made Shoppable",
+  metadataBase: new URL("https://kscan.app"),
+  title: {
+    default: "K Scan AI | AI Fashion Search From Photos & Screenshots",
+    template: "%s | K Scan AI",
+  },
   description:
-    "Point your phone at any outfit, editorial, or screen. K Scan's visual AI surfaces exactly where to buy what you're seeing — in seconds.",
+    "K Scan is an AI fashion search app that helps you identify clothes from photos, screenshots, videos, and social inspiration, then find exact or similar products to buy.",
+  keywords: [
+    "AI fashion search",
+    "find clothes from photos",
+    "identify outfits from screenshots",
+    "visual fashion discovery",
+    "screenshot shopping",
+    "fashion visual search",
+  ],
   applicationName: "K Scan AI",
+  alternates: {
+    canonical: "/",
+  },
   appleWebApp: {
     capable: true,
     title: "K Scan AI",
     statusBarStyle: "black-translucent",
   },
   openGraph: {
-    title: "K Scan AI — Fashion, Made Shoppable",
+    title: "K Scan AI | AI Fashion Search From Photos & Screenshots",
     description:
-      "Point your phone at any outfit, editorial, or screen. K Scan surfaces exactly where to buy what you're seeing — in seconds.",
+      "Identify clothing from photos, screenshots, videos, TikToks, and real-world inspiration with K Scan's visual fashion search.",
+    url: "https://kscan.app",
+    siteName: "K Scan AI",
+    images: [
+      {
+        url: "/demo/kscan-demo-image-1.jpeg",
+        width: 1600,
+        height: 1067,
+        alt: "K Scan AI visual fashion search preview",
+      },
+    ],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "K Scan AI | AI Fashion Search From Photos & Screenshots",
+    description:
+      "Find clothes from photos, screenshots, and social inspiration with AI-powered visual fashion search.",
+    images: ["/demo/kscan-demo-image-1.jpeg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
@@ -56,9 +99,38 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "K Scan AI",
+    url: "https://kscan.app",
+    logo: "https://kscan.app/icon-512.png",
+    sameAs: [
+      "https://www.instagram.com/KScan_app",
+      "https://www.tiktok.com/@KScan_app",
+    ],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "K Scan AI",
+    url: "https://kscan.app",
+    description:
+      "AI-powered visual fashion search for identifying clothes from photos, screenshots, videos, and social inspiration.",
+  };
+
   return (
     <html lang="en" className={`${geistSans.variable} ${playfair.variable}`}>
       <body className="antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         {children}
         <SiteFooter />
       </body>
