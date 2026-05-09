@@ -9,6 +9,14 @@ import { checkRateLimit, getClientIp } from "@/lib/serverRateLimit";
 
 const INQUIRY_TABLE = "investor_inquiries";
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const INVESTOR_REPLY_BODY = `Thank you for requesting access to K Scan’s confidential investor materials.
+
+We’ve received your request and will review it shortly. If there is a fit, we’ll follow up with access details or next steps.
+
+For questions, you can reach us at [kscanai.app@gmail.com](mailto:kscanai.app@gmail.com).
+
+K Scan AI
+See it. Say it. Get it.`;
 
 const bodySchema = z.object({
   name: z.string().trim().min(1, "Name is required."),
@@ -59,6 +67,26 @@ async function notifyByEmail(data: {
     return true;
   } catch (err) {
     console.error("[investor-inquiry] Email notification failed:", err);
+    return false;
+  }
+}
+
+async function sendAutoReply(email: string): Promise<boolean> {
+  if (!resend) {
+    console.warn("[investor-inquiry] RESEND_API_KEY is not configured. Skipping investor auto-reply.");
+    return false;
+  }
+
+  try {
+    await resend.emails.send({
+      from: "K Scan <hello@info.kscan.app>",
+      to: email,
+      subject: "K Scan Investor Access Request Received",
+      text: INVESTOR_REPLY_BODY,
+    });
+    return true;
+  } catch (err) {
+    console.error("[investor-inquiry] Investor auto-reply failed:", err);
     return false;
   }
 }
@@ -142,6 +170,7 @@ export async function POST(request: Request) {
   }
 
   emailSent = await notifyByEmail({ name, email, firm, message });
+  await sendAutoReply(email);
 
   if (storedInDb || emailSent) {
     return NextResponse.json({ status: "success" });
