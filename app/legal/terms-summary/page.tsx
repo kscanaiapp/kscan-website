@@ -389,7 +389,7 @@ export default function TermsSummaryPage() {
           <p>
             For more details, see our full{" "}
             <a
-              href="/docs/KSCAN_Terms_and_conditions_complete.txt"
+              href="/docs/kscan-terms-and-conditions.pdf"
               className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
             >
               Terms and Conditions
