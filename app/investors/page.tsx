@@ -188,7 +188,12 @@ export default function InvestorsPage() {
         setForm({ name: "", email: "", firm: "", message: "" });
       } else {
         setInquiryState("error");
-        setInquiryError(data.message ?? "Something went wrong. Please try again.");
+        const isValidationError = res.status >= 400 && res.status < 500;
+        setInquiryError(
+          isValidationError
+            ? (data.message ?? "We couldn't submit your request. Please email kscanai.app@gmail.com directly.")
+            : "We couldn't submit your request. Please email kscanai.app@gmail.com directly.",
+        );
       }
     } catch {
       setInquiryState("error");
@@ -621,7 +626,7 @@ export default function InvestorsPage() {
               <div className="rounded-[22px] border border-stone-200/80 bg-white p-6">
                 <p className="font-display text-[22px] text-stone-900">Request received.</p>
                 <p className="mt-3 text-[13px] leading-[1.85] text-stone-500">
-                  Thank you. We review all inquiries and will follow up with you shortly.
+                  Thank you. Your investor access request has been received.
                 </p>
               </div>
             ) : (
