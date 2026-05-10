@@ -56,6 +56,17 @@ export function SiteFooter() {
                 <path d="M14.08 3c.26 2.17 1.48 3.86 3.88 4.05v2.5a6.56 6.56 0 0 1-3.83-1.17l-.03 6.24c0 3.27-2.42 5.63-5.67 5.63A5.56 5.56 0 0 1 2.9 14.7a5.6 5.6 0 0 1 8.1-4.97v2.63a3.1 3.1 0 0 0-1.83-.6 3.03 3.03 0 0 0-3.05 3 3.03 3.03 0 0 0 3.05 3.01c1.84 0 2.93-1.24 2.93-3.08V3h1.98Z" />
               </svg>
             </a>
+            <a
+              href="https://x.com/Kscan_app"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow K Scan on X"
+              className="-m-3 flex h-11 w-11 items-center justify-center transition-colors hover:text-stone-500 focus:outline-none focus-visible:text-stone-500"
+            >
+              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+                <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
