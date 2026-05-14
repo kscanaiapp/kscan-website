@@ -915,9 +915,116 @@ export default function Home() {
 
           {/* Privacy line + quiet technical footer */}
           <FadeUp delay={0.18}>
-            <p className="mt-8 text-center text-xs text-stone-500">
-              Built from style signals, not identity.
-            </p>
+            <div className="mt-10 space-y-6 rounded-lg border border-white/10 bg-white/[0.04] px-4 py-6 text-[14px] leading-[1.8] text-stone-400 sm:px-6 md:mt-12 md:px-8 md:py-8 md:text-[15px]">
+              <div className="space-y-4">
+                <h2 className="font-display text-[28px] font-medium leading-tight text-white md:text-[34px]">
+                  K Scan AI Privacy Summary
+                </h2>
+                <p>
+                  K Scan AI is designed to protect your visual privacy while delivering intelligent fashion insights.
+                  Scans may be processed locally on your device where possible, or through secure cloud systems when
+                  needed to provide the Service.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="text-[15px] font-medium leading-snug text-white/85 md:text-[16px]">
+                  1. Data Protection &amp; Visual Privacy
+                </h3>
+                <div className="space-y-3">
+                  <p>
+                    <span className="font-medium text-stone-200">No Facial Recognition:</span>
+                    <br />
+                    We do not use scan data for facial recognition or to identify individuals.
+                  </p>
+                  <p>
+                    <span className="font-medium text-stone-200">Raw Scan Protection:</span>
+                    <br />
+                    We do not sell raw uploaded scans or images.
+                  </p>
+                  <p>
+                    <span className="font-medium text-stone-200">Transient Processing:</span>
+                    <br />
+                    Raw visual data is typically processed transiently and deleted within 24–72 hours unless you choose
+                    to save it or another permitted exception applies.
+                  </p>
+                  <p>
+                    <span className="font-medium text-stone-200">Data Minimization:</span>
+                    <br />
+                    Personally identifiable elements are minimized, masked, deleted, aggregated, or de-identified where
+                    technically feasible.
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="text-[15px] font-medium leading-snug text-white/85 md:text-[16px]">
+                  2. Commercial Data &amp; Partnership Transparency
+                </h3>
+                <p>
+                  To support our discovery and commerce tools, K Scan AI may monetize certain non-sensitive information
+                  where permitted by law.
+                </p>
+                <div className="space-y-3">
+                  <p>
+                    <span className="font-medium text-stone-200">What May Be Sold, Shared, or Licensed:</span>
+                    <br />
+                    Product preferences, style interests, app interaction data, marketing engagement data, and inferred
+                    fashion affinity information may be used with retail, analytics, advertising, or marketing partners,
+                    subject to applicable rights and consent requirements.
+                  </p>
+                  <p>
+                    <span className="font-medium text-stone-200">Service Providers:</span>
+                    <br />
+                    We also share limited information with providers that help us operate K Scan, including cloud
+                    hosting, email delivery, analytics, and security partners.
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h3 className="text-[15px] font-medium leading-snug text-white/85 md:text-[16px]">
+                  3. Your Rights &amp; Controls
+                </h3>
+                <p>You remain in control of your data and how it may be used.</p>
+                <div className="space-y-3">
+                  <p>
+                    <span className="font-medium text-stone-200">Opt-Out Rights:</span>
+                    <br />
+                    You may opt out of the sale or sharing of personal information where required by law.
+                  </p>
+                  <p>
+                    <span className="font-medium text-stone-200">Global Privacy Control:</span>
+                    <br />
+                    We honor Global Privacy Control signals as valid opt-out requests where required by law.
+                  </p>
+                  <p>
+                    <span className="font-medium text-stone-200">Access &amp; Deletion:</span>
+                    <br />
+                    You may request access to, correction of, or deletion of your personal information, subject to
+                    applicable law.
+                  </p>
+                </div>
+              </div>
+
+              <p>
+                For more details, review our full{" "}
+                <a
+                  href="/privacy"
+                  className="text-cyan-300 underline decoration-cyan-300/40 underline-offset-4 transition-colors hover:text-cyan-200 hover:decoration-cyan-200/70"
+                >
+                  Privacy Policy
+                </a>{" "}
+                or contact our privacy team at{" "}
+                <a
+                  href="mailto:privacy@kscan.ai"
+                  className="text-cyan-300 underline decoration-cyan-300/40 underline-offset-4 transition-colors hover:text-cyan-200 hover:decoration-cyan-200/70"
+                >
+                  privacy@kscan.ai
+                </a>
+                .
+              </p>
+            </div>
             <p className="mt-3 text-center font-mono text-[10px] tracking-widest text-stone-500/70">
               TASTE_PROFILE: LOCAL-FIRST SIGNALS
             </p>
