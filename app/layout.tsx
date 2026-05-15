@@ -91,6 +91,11 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  verification: {
+    other: {
+      "msvalidate.01": "F44790765DC4B0935AA2E37619331AAD",
+    },
+  },
 };
 
 // ─── Root Layout ──────────────────────────────────────────────────────────

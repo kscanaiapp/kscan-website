@@ -451,14 +451,6 @@ export function PrivacyControlsClient() {
             <Link href="/privacy" className={linkCls}>
               Privacy Summary
             </Link>
-            <a
-              href="/docs/kscan-privacy-policy.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={linkCls}
-            >
-              Full Privacy Policy
-            </a>
             <Link href="/legal/terms-summary" className={linkCls}>
               Terms Summary
             </Link>
