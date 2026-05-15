@@ -23,6 +23,11 @@ const publicRoutes = [
     priority: 0.2,
     changeFrequency: "yearly" as const,
   },
+  {
+    path: "/do-not-sell-or-share",
+    priority: 0.5,
+    changeFrequency: "yearly" as const,
+  },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

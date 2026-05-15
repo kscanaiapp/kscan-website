@@ -1,0 +1,14 @@
+# Supabase project configuration
+# Project: K Scan Privacy Controls
+# Project ref: yzqjvdfgefveprobvvyw
+
+project_id = "yzqjvdfgefveprobvvyw"
+
+# ─── Edge Function configuration ──────────────────────────────────────────
+#
+# privacy-controls: authenticated — JWT verification ON (default, do not change)
+# public-sale-share-opt-out: public — JWT verification disabled so anonymous
+#   website visitors can record browser-level opt-out preferences without login.
+
+[functions.public-sale-share-opt-out]
+verify_jwt = false

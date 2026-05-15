@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
 
 export default function PrivacyPage() {
@@ -81,7 +82,15 @@ export default function PrivacyPage() {
               <p>
                 <span className="font-semibold text-stone-700">Opt-Out Rights:</span>
                 <br />
-                You may opt out of the sale or sharing of personal information where required by law.
+                You may opt out of the sale or sharing of personal information where required by law. You can
+                manage your choices on our{" "}
+                <Link
+                  href="/do-not-sell-or-share"
+                  className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
+                >
+                  Do Not Sell or Share
+                </Link>{" "}
+                page.
               </p>
               <p>
                 <span className="font-semibold text-stone-700">Global Privacy Control:</span>
