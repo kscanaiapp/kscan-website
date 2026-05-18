@@ -29,6 +29,7 @@ async function sendWelcomeEmail(email: string) {
   await resend.emails.send({
     from: "K Scan <hello@info.kscan.app>",
     to: email,
+    replyTo: "kscanai.app@gmail.com",
     subject: "You’re on the K Scan waitlist",
     html: `
       <div style="margin:0;padding:32px 20px;background:#FAFAF8;color:#0F172A;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">

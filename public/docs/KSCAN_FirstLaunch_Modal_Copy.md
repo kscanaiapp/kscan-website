@@ -279,7 +279,7 @@ No full-text justification (left-align only)
 - [ ] Plain-language copy (no excess legalese)
 - [ ] Compliance verified: COPPA, GDPR, CCPA
 - [ ] Links to Privacy Policy working
-- [ ] Contact email (legal@kscan.app) monitored
+- [ ] Contact email (kscanai.app@gmail.com) monitored
 - [ ] Versioning system in place for T&C updates
 
 ### Design

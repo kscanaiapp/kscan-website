@@ -51,6 +51,7 @@ async function notifyByEmail(data: {
     await resend.emails.send({
       from: "K Scan <hello@info.kscan.app>",
       to: "kscanai.app@gmail.com",
+      replyTo: "kscanai.app@gmail.com",
       subject: `New Investor Inquiry from ${data.name}`,
       html: `
         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:560px;margin:0 auto;padding:32px 20px;color:#1c1917;">
@@ -81,6 +82,7 @@ async function sendAutoReply(email: string): Promise<boolean> {
     await resend.emails.send({
       from: "K Scan <hello@info.kscan.app>",
       to: email,
+      replyTo: "kscanai.app@gmail.com",
       subject: "K Scan Investor Access Request Received",
       text: INVESTOR_REPLY_BODY,
     });
