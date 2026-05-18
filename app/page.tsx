@@ -989,9 +989,6 @@ export default function Home() {
             <p className="mb-5 text-[15px] leading-[1.88] text-stone-500">
               Unlike generic image search, K Scan is designed to understand how fashion works together. It interprets the full look, then maps it to better exact matches and more useful alternatives across retailers.
             </p>
-            <p className="text-[15px] leading-[1.88] text-stone-500">
-              K Scan is designed to understand how fashion works together, not just what appears in frame. It reads silhouette, texture, layering, and context to turn real-world inspiration into better product matches and more relevant purchase paths.
-            </p>
           </div>
 
           <div className="w-full flex-shrink-0 lg:w-[31rem]">
