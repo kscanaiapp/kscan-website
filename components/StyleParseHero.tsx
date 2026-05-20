@@ -181,7 +181,7 @@ export default function StyleParseHero({
                 >
                   <Image
                     src={heroImage}
-                    alt="K Scan visual analysis — fashion editorial demo"
+                    alt="Fashion editorial image with K Scan style analysis overlays"
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 56vw"

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 
 export const demoMetadata: Metadata = {
-  title: "AI Fashion Search Demo",
+  title: {
+    absolute: "K Scan Demo | Visual Fashion Search in Action",
+  },
   description:
-    "See how K Scan turns visual fashion inspiration into mobile-first product discovery, outfit recognition, and commerce-ready results.",
+    "Experience K Scan’s visual fashion intelligence across mobile and smart-glasses environments.",
   keywords: [
     "AI fashion search demo",
     "visual shopping demo",
@@ -14,26 +16,27 @@ export const demoMetadata: Metadata = {
     canonical: "/demo",
   },
   openGraph: {
-    title: "K Scan AI Fashion Search Demo",
+    title: "K Scan Demo | Visual Fashion Search in Action",
     description:
-      "Explore the K Scan product vision for identifying clothing from photos, screenshots, and real-world inspiration.",
+      "Experience K Scan’s visual fashion intelligence across mobile and smart-glasses environments.",
     url: "https://kscan.app/demo",
     siteName: "K Scan AI",
+    locale: "en_US",
     images: [
       {
-        url: "/demo/kscan-demo-image-1.jpeg",
-        width: 1600,
-        height: 1067,
-        alt: "K Scan demo showing visual fashion search from inspiration to shopping output",
+        url: "/group-street.jpeg",
+        width: 2048,
+        height: 1365,
+        alt: "K Scan AI visual fashion search preview",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "K Scan AI Fashion Search Demo",
+    title: "K Scan Demo | Visual Fashion Search in Action",
     description:
-      "See K Scan's mobile-first visual shopping flow for outfit recognition and fashion discovery.",
-    images: ["/demo/kscan-demo-image-1.jpeg"],
+      "Experience K Scan’s visual fashion intelligence across mobile and smart-glasses environments.",
+    images: ["/group-street.jpeg"],
   },
 };

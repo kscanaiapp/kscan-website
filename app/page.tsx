@@ -773,7 +773,7 @@ export default function Home() {
               <div className="relative aspect-[16/10] w-full bg-[#F2EEE7]">
                 <Image
                   src="/demo/how-it-works-1.png"
-                  alt="K Scan real-world capture to conversion flow"
+                  alt="K Scan interface showing a captured outfit moving into matched shopping results"
                   fill
                   sizes="(max-width: 768px) 100vw, 46vw"
                   className="object-cover object-[center_18%] md:object-center"

@@ -239,7 +239,7 @@ export default function InvestorsPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-[22px]">
               <Image
                 src="/group-street.jpeg"
-                alt="Fashion context for K Scan investor materials"
+                alt="Street-style group image supporting the K Scan investor briefing"
                 fill
                 priority
                 sizes="(max-width: 1024px) 90vw, 40vw"

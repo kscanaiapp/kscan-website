@@ -35,11 +35,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://kscan.app"),
   title: {
-    default: "K Scan AI | AI Fashion Search From Photos & Screenshots",
+    default: "K Scan AI | Find Fashion From Real-World Inspiration",
     template: "%s | K Scan AI",
   },
   description:
-    "K Scan is an AI fashion search app that helps you identify clothes from photos, screenshots, videos, and social inspiration, then find exact or similar products to buy.",
+    "See a look. Find the match. K Scan transforms real-world fashion inspiration into ranked retail matches, pricing intelligence, and purchase pathways.",
   keywords: [
     "AI fashion search",
     "find clothes from photos",
@@ -58,16 +58,17 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
   },
   openGraph: {
-    title: "K Scan AI | AI Fashion Search From Photos & Screenshots",
+    title: "K Scan AI | Find Fashion From Real-World Inspiration",
     description:
-      "Identify clothing from photos, screenshots, videos, TikToks, and real-world inspiration with K Scan's visual fashion search.",
+      "See a look. Find the match. K Scan transforms real-world fashion inspiration into ranked retail matches, pricing intelligence, and purchase pathways.",
     url: "https://kscan.app",
     siteName: "K Scan AI",
+    locale: "en_US",
     images: [
       {
-        url: "/demo/kscan-demo-image-1.jpeg",
-        width: 1600,
-        height: 1067,
+        url: "/group-street.jpeg",
+        width: 2048,
+        height: 1365,
         alt: "K Scan AI visual fashion search preview",
       },
     ],
@@ -75,10 +76,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "K Scan AI | AI Fashion Search From Photos & Screenshots",
+    title: "K Scan AI | Find Fashion From Real-World Inspiration",
     description:
-      "Find clothes from photos, screenshots, and social inspiration with AI-powered visual fashion search.",
-    images: ["/demo/kscan-demo-image-1.jpeg"],
+      "See a look. Find the match. K Scan transforms real-world fashion inspiration into ranked retail matches, pricing intelligence, and purchase pathways.",
+    images: ["/group-street.jpeg"],
   },
   robots: {
     index: true,
