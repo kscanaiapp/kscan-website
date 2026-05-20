@@ -968,6 +968,26 @@ export default function Home() {
               </FadeUp>
             ))}
           </div>
+
+          <FadeUp className="mt-10 md:mt-14">
+            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
+              <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
+              <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
+                <div className="max-w-2xl">
+                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
+                    Coming Soon
+                  </p>
+                  <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
+                    StyleChat
+                  </h3>
+                  <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
+                    A conversational stylist designed to remember your preferences, saved looks, fit feedback, and upcoming plans—so recommendations feel more personal over time.
+                  </p>
+                </div>
+                <div className="hidden h-20 w-20 flex-shrink-0 rounded-full border border-cyan-200/20 bg-cyan-200/5 shadow-[0_0_44px_rgba(125,211,252,0.12)] md:block" />
+              </div>
+            </div>
+          </FadeUp>
         </div>
       </section>
 
