@@ -73,8 +73,8 @@ const featureList = [
     body: "Saved scans and purchases build a sharper profile, so recommendations improve instead of repeating.",
   },
   {
-    title: "Trend Signal Layer",
-    body: "Stock movement and demand signals add context before you commit to the piece.",
+    title: "Dressing Rooms",
+    body: "Save looks to shared rooms for trips and events. Share by link or browse together in K Scan.",
   },
 ];
 
