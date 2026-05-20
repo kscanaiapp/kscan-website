@@ -981,7 +981,7 @@ export default function Home() {
                     StyleChat
                   </h3>
                   <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    A conversational stylist designed to remember your preferences, saved looks, fit feedback, and upcoming plans—so recommendations feel more personal over time.
+                    A conversational stylist designed to remember your preferences, saved looks, fit feedback, and upcoming plans, so recommendations feel more personal over time.
                   </p>
                 </div>
                 <div className="hidden h-20 w-20 flex-shrink-0 rounded-full border border-cyan-200/20 bg-cyan-200/5 shadow-[0_0_44px_rgba(125,211,252,0.12)] md:block" />
