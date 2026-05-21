@@ -862,13 +862,13 @@ export default function Home() {
 
           <FadeUp>
             <div className="mb-4 overflow-hidden rounded-[30px] border border-stone-200 bg-stone-50 shadow-[0_18px_48px_rgba(28,22,16,0.08)] md:mb-5 md:rounded-[34px]">
-              <div className="relative aspect-[11/4]">
+              <div className="relative aspect-[7/2] lg:aspect-[4/1]">
                 <Image
                   src="/images/shoes_and_bag_hero.png"
                   alt="K Scan fashion product preview with leather shoes and a structured bag"
                   fill
                   sizes="(max-width: 768px) 92vw, (max-width: 1280px) 86vw, 1200px"
-                  className="object-cover object-[center_25%]"
+                  className="object-cover object-[center_85%]"
                 />
               </div>
             </div>
