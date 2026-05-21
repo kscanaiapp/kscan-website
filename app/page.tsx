@@ -54,11 +54,11 @@ const coreFlow = [
 const featureList = [
   {
     title: "Fashion-First Intelligence",
-    body: "We don’t just identify objects. We understand fashion—proportion, layering, silhouette, and intent—so each piece is read in context.",
+    body: "We do not just identify objects. K Scan reads proportion, layering, silhouette, and intent so each piece is understood in context.",
   },
   {
     title: "Faster Than Reverse Image Search",
-    body: "Built for live video and still images, K Scan delivers results in seconds so you can capture the look and move on.",
+    body: "Built for live video and still images, K Scan turns real-world inspiration into ranked matches. Capture the look and move on.",
   },
   {
     title: "One View, Multiple Retailers",
@@ -861,7 +861,21 @@ export default function Home() {
           </FadeUp>
 
           <FadeUp>
-            <div className="grid gap-10 border-y border-white/5 bg-zinc-950 px-6 py-12 shadow-[0_24px_70px_rgba(28,22,16,0.12)] md:gap-12 md:rounded-[34px] md:px-10 md:py-14 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
+            <div className="mb-4 overflow-hidden rounded-[30px] border border-stone-200 bg-stone-50 shadow-[0_18px_48px_rgba(28,22,16,0.08)] md:mb-5 md:rounded-[34px]">
+              <div className="relative aspect-[1376/768]">
+                <Image
+                  src="/images/shoes_and_bag_hero.png"
+                  alt="K Scan fashion product preview with leather shoes and a structured bag"
+                  fill
+                  sizes="(max-width: 768px) 92vw, (max-width: 1280px) 86vw, 1200px"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp>
+            <div className="grid gap-9 rounded-[30px] border border-white/5 bg-zinc-950 px-6 py-10 shadow-[0_24px_70px_rgba(28,22,16,0.12)] md:gap-10 md:rounded-[34px] md:px-10 md:py-12 lg:grid-cols-[0.45fr_0.55fr] lg:items-center lg:px-12">
               <div>
                 <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-indigo-300/85 md:mb-5">
                   Style Memory
@@ -872,24 +886,16 @@ export default function Home() {
                 <p className="max-w-xl text-[15px] leading-[1.82] text-stone-300/75">
                   K Scan learns from saved looks, fit feedback, and recurring style signals so future matches feel more personal without turning style into identity.
                 </p>
-                <p className="mt-7 inline-flex rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-[13px] font-medium leading-relaxed text-stone-100 shadow-[0_18px_48px_rgba(0,0,0,0.18)]">
+                <span className="mt-7 inline-flex rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-[13px] font-medium leading-relaxed text-stone-100 shadow-[0_18px_48px_rgba(0,0,0,0.18)]">
                   Built from style signals, not personal identity.
-                </p>
-                <div className="mt-8 max-w-xl border-t border-white/10 pt-6">
-                  <h3 className="mb-3 text-[15px] font-medium text-white">
-                    {featureList[4].title}
-                  </h3>
-                  <p className="text-[14px] leading-[1.82] text-stone-300/65">
-                    {featureList[4].body}
-                  </p>
-                </div>
+                </span>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                {[featureList[0], featureList[1]].map(({ title, body }, idx) => (
+              <div className="divide-y divide-white/10 border-y border-white/10 lg:border-y-0">
+                {[featureList[0], featureList[1], featureList[4]].map(({ title, body }) => (
                   <div
                     key={title}
-                    className={`border-t border-white/10 pt-6 ${idx === 1 ? "lg:ml-12" : ""}`}
+                    className="py-5 first:pt-0 last:pb-0 lg:py-6"
                   >
                     <h3 className="mb-3 text-[15px] font-medium text-white">{title}</h3>
                     <p className="text-[14px] leading-[1.82] text-stone-300/65">{body}</p>
