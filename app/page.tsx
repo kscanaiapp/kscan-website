@@ -69,7 +69,7 @@ const featureList = [
     body: "See the designer original or the closest lower-tier option without losing the look.",
   },
   {
-    title: "Style Memory",
+    title: "Personalized Recall",
     body: "Saved scans and purchases build a sharper profile, so recommendations improve instead of repeating.",
   },
   {
@@ -824,26 +824,7 @@ export default function Home() {
       </section>
 
       {/* Style Memory */}
-      <section className="border-y border-white/5 bg-zinc-950 py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <FadeUp>
-            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-indigo-300/85 md:mb-5">
-              Style Memory
-            </p>
-            <h2 className="mb-5 max-w-xl font-display text-4xl font-medium leading-[1.05] text-white md:text-[52px]">
-              Your taste, remembered privately.
-            </h2>
-            <p className="max-w-xl text-[15px] leading-[1.82] text-stone-300/75">
-              K Scan learns from saved looks, fit feedback, and recurring style signals so future matches feel more personal without turning style into identity.
-            </p>
-            <p className="mt-7 inline-flex rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-[13px] font-medium leading-relaxed text-stone-100 shadow-[0_18px_48px_rgba(0,0,0,0.18)]">
-              Built from style signals, not personal identity.
-            </p>
-          </FadeUp>
-        </div>
-      </section>
-
-      <section id="features" className="bg-white py-20 md:py-44">
+      <section id="features" className="bg-white py-20 md:py-32">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <FadeUp className="mb-12 max-w-lg md:mb-28">
             <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 md:mb-5">
@@ -879,45 +860,87 @@ export default function Home() {
             </div>
           </FadeUp>
 
-          <div className="grid gap-x-12 md:grid-cols-2 md:gap-x-16 lg:grid-cols-3">
-            {featureList.map(({ title, body }, idx) => (
-              <FadeUp key={title} delay={idx * 0.05} className="border-t border-stone-100 py-9 md:py-10">
-                <h3 className="mb-3 text-[15px] font-medium text-stone-900">{title}</h3>
-                <p className="text-[14px] leading-[1.82] text-stone-400">{body}</p>
-              </FadeUp>
-            ))}
-          </div>
-
-          <FadeUp className="mt-8 md:mt-12">
-            <div className="grid gap-6 border-t border-stone-100 pt-8 md:grid-cols-[0.82fr_1.18fr] md:items-center md:gap-10 md:pt-10">
-              <div className="max-w-md">
-                <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
-                  Dressing Rooms
+          <FadeUp>
+            <div className="grid gap-10 border-y border-white/5 bg-zinc-950 px-6 py-12 shadow-[0_24px_70px_rgba(28,22,16,0.12)] md:gap-12 md:rounded-[34px] md:px-10 md:py-14 lg:grid-cols-[0.94fr_1.06fr] lg:items-center">
+              <div>
+                <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-indigo-300/85 md:mb-5">
+                  Style Memory
                 </p>
-                <p className="text-[15px] leading-[1.82] text-stone-500">
-                  Save looks to shared rooms for trips and events, then share by link or browse together in K Scan.
+                <h2 className="mb-5 max-w-xl font-display text-4xl font-medium leading-[1.05] text-white md:text-[52px]">
+                  Your taste, remembered privately.
+                </h2>
+                <p className="max-w-xl text-[15px] leading-[1.82] text-stone-300/75">
+                  K Scan learns from saved looks, fit feedback, and recurring style signals so future matches feel more personal without turning style into identity.
                 </p>
+                <p className="mt-7 inline-flex rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-[13px] font-medium leading-relaxed text-stone-100 shadow-[0_18px_48px_rgba(0,0,0,0.18)]">
+                  Built from style signals, not personal identity.
+                </p>
+                <div className="mt-8 max-w-xl border-t border-white/10 pt-6">
+                  <h3 className="mb-3 text-[15px] font-medium text-white">
+                    {featureList[4].title}
+                  </h3>
+                  <p className="text-[14px] leading-[1.82] text-stone-300/65">
+                    {featureList[4].body}
+                  </p>
+                </div>
               </div>
-              <div className="w-full md:ml-auto">
+
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                {[featureList[0], featureList[1]].map(({ title, body }, idx) => (
+                  <div
+                    key={title}
+                    className={`border-t border-white/10 pt-6 ${idx === 1 ? "lg:ml-12" : ""}`}
+                  >
+                    <h3 className="mb-3 text-[15px] font-medium text-white">{title}</h3>
+                    <p className="text-[14px] leading-[1.82] text-stone-300/65">{body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp className="mt-12 md:mt-16">
+            <div className="grid gap-8 border-t border-stone-100 pt-10 md:gap-10 lg:grid-cols-[minmax(0,0.56fr)_minmax(320px,0.44fr)] lg:items-center">
+              <div className="w-full lg:max-w-[720px]">
                 <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-stone-50 shadow-[0_18px_50px_rgba(28,22,16,0.08)]">
-                  <div className="relative aspect-[16/11]">
+                  <div className="relative aspect-[1672/941]">
                     <Image
                       src="/images/rooms-mockup.png"
                       alt="K Scan Dressing Rooms preview showing shared styling and link sharing"
                       fill
-                      sizes="(max-width: 768px) 92vw, 36vw"
-                      className="object-cover"
+                      sizes="(max-width: 1024px) 92vw, 56vw"
+                      className="object-contain"
                     />
                   </div>
                 </div>
               </div>
+
+              <div className="max-w-md lg:ml-auto">
+                <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+                  {featureList[5].title}
+                </p>
+                <p className="text-[15px] leading-[1.82] text-stone-500">
+                  {featureList[5].body}
+                </p>
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp className="mt-10 md:mt-14">
+            <div className="grid gap-x-12 gap-y-8 border-t border-stone-100 pt-9 md:grid-cols-2 md:gap-x-16 md:pt-10">
+              {[featureList[2], featureList[3]].map(({ title, body }) => (
+                <article key={title}>
+                  <h3 className="mb-3 text-[15px] font-medium text-stone-900">{title}</h3>
+                  <p className="text-[14px] leading-[1.82] text-stone-400">{body}</p>
+                </article>
+              ))}
             </div>
           </FadeUp>
 
           <FadeUp className="mt-10 md:mt-14">
             <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
               <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
-              <div className="relative grid gap-6 lg:grid-cols-[1fr_360px] lg:items-center lg:gap-10">
+              <div className="relative grid gap-7 lg:grid-cols-[1fr_minmax(360px,0.46fr)] lg:items-center lg:gap-10">
                 <div className="max-w-2xl">
                   <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
                     Coming Soon
@@ -929,14 +952,14 @@ export default function Home() {
                     A conversational stylist designed to remember your preferences, saved looks, fit feedback, and upcoming plans, so recommendations feel more personal over time.
                   </p>
                 </div>
-                <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] shadow-[0_18px_44px_rgba(0,0,0,0.22)]">
-                  <div className="relative aspect-[4/3]">
+                <div className="mx-auto w-full max-w-[520px] overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] shadow-[0_18px_44px_rgba(0,0,0,0.22)] lg:mr-0">
+                  <div className="relative aspect-square">
                     <Image
                       src="/images/style-chat-men.png"
                       alt="K Scan StyleChat preview showing a conversational stylist with memory"
                       fill
-                      sizes="(max-width: 1024px) 82vw, 360px"
-                      className="object-cover"
+                      sizes="(max-width: 1024px) 82vw, 46vw"
+                      className="object-contain"
                     />
                   </div>
                 </div>
