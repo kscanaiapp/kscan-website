@@ -824,8 +824,8 @@ export default function Home() {
       </section>
 
       {/* Style Memory */}
-      <section className="border-y border-white/5 bg-zinc-950 py-20 md:py-28">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 md:px-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-center lg:gap-20">
+      <section className="border-y border-white/5 bg-zinc-950 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
           <FadeUp>
             <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-indigo-300/85 md:mb-5">
               Style Memory
@@ -840,44 +840,6 @@ export default function Home() {
               Built from style signals, not personal identity.
             </p>
           </FadeUp>
-
-          <div className="space-y-4 md:space-y-5">
-            <FadeUp
-              delay={0}
-              className="rounded-lg border border-white/10 bg-white/[0.035] p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)] md:max-w-[520px] md:p-6"
-            >
-              <h3 className="mb-3 text-[16px] font-medium leading-snug text-white">
-                Fit Memory
-              </h3>
-              <p className="text-[14px] leading-[1.75] text-stone-300/70">
-                Saved feedback helps future looks fit your shape, taste, and comfort preferences.
-              </p>
-            </FadeUp>
-
-            <FadeUp
-              delay={0.06}
-              className="rounded-lg border border-white/10 bg-white/[0.035] p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)] md:ml-auto md:max-w-[520px] md:p-6"
-            >
-              <h3 className="mb-3 text-[16px] font-medium leading-snug text-white">
-                Color & Material Signals
-              </h3>
-              <p className="text-[14px] leading-[1.75] text-stone-300/70">
-                K Scan notices recurring palettes, fabrics, and textures across the looks you save.
-              </p>
-            </FadeUp>
-
-            <FadeUp
-              delay={0.12}
-              className="rounded-lg border border-white/10 bg-white/[0.035] p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)] md:max-w-[520px] md:p-6"
-            >
-              <h3 className="mb-3 text-[16px] font-medium leading-snug text-white">
-                Occasion Context
-              </h3>
-              <p className="text-[14px] leading-[1.75] text-stone-300/70">
-                StyleChat can use events, saved rooms, and past preferences to make suggestions feel more relevant.
-              </p>
-            </FadeUp>
-          </div>
         </div>
       </section>
 
@@ -926,10 +888,36 @@ export default function Home() {
             ))}
           </div>
 
+          <FadeUp className="mt-8 md:mt-12">
+            <div className="grid gap-6 border-t border-stone-100 pt-8 md:grid-cols-[0.82fr_1.18fr] md:items-center md:gap-10 md:pt-10">
+              <div className="max-w-md">
+                <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+                  Dressing Rooms
+                </p>
+                <p className="text-[15px] leading-[1.82] text-stone-500">
+                  Save looks to shared rooms for trips and events, then share by link or browse together in K Scan.
+                </p>
+              </div>
+              <div className="w-full md:ml-auto">
+                <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-stone-50 shadow-[0_18px_50px_rgba(28,22,16,0.08)]">
+                  <div className="relative aspect-[16/11]">
+                    <Image
+                      src="/images/rooms-mockup.png"
+                      alt="K Scan Dressing Rooms preview showing shared styling and link sharing"
+                      fill
+                      sizes="(max-width: 768px) 92vw, 36vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+
           <FadeUp className="mt-10 md:mt-14">
             <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
               <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
-              <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
+              <div className="relative grid gap-6 lg:grid-cols-[1fr_360px] lg:items-center lg:gap-10">
                 <div className="max-w-2xl">
                   <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
                     Coming Soon
@@ -941,7 +929,17 @@ export default function Home() {
                     A conversational stylist designed to remember your preferences, saved looks, fit feedback, and upcoming plans, so recommendations feel more personal over time.
                   </p>
                 </div>
-                <div className="hidden h-20 w-20 flex-shrink-0 rounded-full border border-cyan-200/20 bg-cyan-200/5 shadow-[0_0_44px_rgba(125,211,252,0.12)] md:block" />
+                <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] shadow-[0_18px_44px_rgba(0,0,0,0.22)]">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src="/images/style-chat-men.png"
+                      alt="K Scan StyleChat preview showing a conversational stylist with memory"
+                      fill
+                      sizes="(max-width: 1024px) 82vw, 360px"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </FadeUp>
