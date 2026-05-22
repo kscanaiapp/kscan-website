@@ -14,6 +14,10 @@ type EnvironmentConfig = {
   videoSrc: string;
 };
 
+type IconProps = {
+  className?: string;
+};
+
 const DEFAULT_VIEW: EnvironmentView = "mobile";
 const EASE = [0.22, 1, 0.36, 1] as const;
 const TOGGLE_DURATION = 0.3;
@@ -55,6 +59,44 @@ function buildHref(
   return query ? `${pathname}?${query}` : pathname;
 }
 
+function Volume2({ className }: IconProps) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+    </svg>
+  );
+}
+
+function VolumeX({ className }: IconProps) {
+  return (
+    <svg
+      aria-hidden="true"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+      <path d="m22 9-6 6" />
+      <path d="m16 9 6 6" />
+    </svg>
+  );
+}
+
 export function DemoEnvironmentSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
@@ -73,6 +115,8 @@ export function DemoEnvironmentSwitcher() {
     mobile: false,
     smartglasses: false,
   });
+  const [isMuted, setIsMuted] = useState(true);
+  const activeVideoRef = useRef<HTMLVideoElement | null>(null);
   const copyTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -91,6 +135,11 @@ export function DemoEnvironmentSwitcher() {
 
   const handleSwitch = useCallback(
     (view: EnvironmentView) => {
+      setIsMuted(true);
+      if (activeVideoRef.current) {
+        activeVideoRef.current.muted = true;
+      }
+
       const href = buildHref(pathname, new URLSearchParams(searchParams.toString()), view);
       router.replace(href, { scroll: false });
     },
@@ -113,6 +162,17 @@ export function DemoEnvironmentSwitcher() {
     setCopied(true);
     copyTimeoutRef.current = window.setTimeout(() => setCopied(false), 2000);
   }, [copiedHref]);
+
+  const handleToggleMute = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+
+    const nextMuted = !isMuted;
+    setIsMuted(nextMuted);
+
+    if (activeVideoRef.current) {
+      activeVideoRef.current.muted = nextMuted;
+    }
+  }, [isMuted]);
 
   useEffect(() => {
     return () => {
@@ -166,6 +226,7 @@ export function DemoEnvironmentSwitcher() {
             const isActive = view === activeView;
             const hasError = videoErrors[view];
             const isLoaded = loadedViews[view];
+            const videoRef = isActive ? activeVideoRef : null;
 
             return (
               <motion.div
@@ -187,7 +248,8 @@ export function DemoEnvironmentSwitcher() {
                   </div>
                 ) : (
                   <video
-                    muted
+                    ref={videoRef}
+                    muted={isActive ? isMuted : true}
                     autoPlay
                     loop
                     playsInline
@@ -236,6 +298,15 @@ export function DemoEnvironmentSwitcher() {
 
           <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/24 to-transparent" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/42 to-transparent" />
+
+          <button
+            type="button"
+            aria-label={isMuted ? "Unmute demo video" : "Mute demo video"}
+            onClick={handleToggleMute}
+            className="absolute bottom-3 right-3 z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/20 text-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_30px_rgba(0,0,0,0.28)] backdrop-blur-md transition-all hover:border-white/18 hover:bg-black/30 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505] sm:bottom-4 sm:right-4"
+          >
+            {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+          </button>
         </div>
       </div>
 
