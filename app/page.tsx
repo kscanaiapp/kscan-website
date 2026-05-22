@@ -168,155 +168,6 @@ const btnMotion = {
 
 // ──────────────────────────────────────────────────────────────────────────
 
-function PhoneScreen({ size }: { size: "sm" | "lg" }) {
-  const s = {
-    statusPx: size === "lg" ? "px-5 pt-7 pb-2" : "px-4 pt-6 pb-1.5",
-    statusText: size === "lg" ? "text-[9px]" : "text-[8px]",
-    viewH: size === "lg" ? 220 : 184,
-    cornerSize: size === "lg" ? "h-5 w-5" : "h-4 w-4",
-    cornerBorder: size === "lg" ? "border-l border-t" : "border-l border-t",
-    cornerBorderR: size === "lg" ? "border-r border-t" : "border-r border-t",
-    cornerBorderBL: size === "lg" ? "border-b border-l" : "border-b border-l",
-    cornerBorderBR: size === "lg" ? "border-b border-r" : "border-b border-r",
-    logoText: size === "lg" ? "text-[9px]" : "text-[8px]",
-    parseLabel: size === "lg" ? "text-[8px]" : "text-[7px]",
-    box1: size === "lg" ? { top: 42, left: 24, w: 84, h: 100 } : { top: 32, left: 18, w: 62, h: 78 },
-    box2: size === "lg" ? { top: 122, left: 48, w: 102, h: 48 } : { top: 98, left: 34, w: 78, h: 38 },
-    dot: size === "lg" ? "h-1.5 w-1.5" : "h-1 w-1",
-    labelPad: size === "lg" ? "px-2.5 py-1.5" : "px-2 py-1",
-    tagText: size === "lg" ? "text-[8px]" : "text-[7px]",
-    statusLabel: size === "lg" ? "text-[8px]" : "text-[7px]",
-    resultPx: size === "lg" ? "px-3 pt-3" : "px-2 pt-2",
-    resultItem: size === "lg" ? "gap-2.5 px-3 py-2.5" : "gap-2 px-2 py-2",
-    resultThumb: size === "lg" ? "h-7 w-7 rounded-lg" : "h-6 w-6 rounded-md",
-    resultName: size === "lg" ? "text-[10px]" : "text-[9px]",
-    resultSub: size === "lg" ? "text-[9px]" : "text-[8px]",
-    resultMore: size === "lg" ? "text-[9px]" : "text-[8px]",
-  };
-
-  return (
-    <div className="absolute inset-0 flex flex-col bg-[#0C0C0F]">
-      <div className={`flex items-center justify-between ${s.statusPx}`}>
-        <span className={`${s.statusText} ${s.logoText} font-medium uppercase tracking-widest text-white/40`}>
-          K Scan
-        </span>
-        <div className="flex items-center gap-1.5">
-          <div className="h-1 w-1 rounded-full bg-white/30" />
-          <span className="text-[7px] uppercase tracking-[0.22em] text-white/24">Live</span>
-        </div>
-      </div>
-
-      <div
-        className="relative mx-2 overflow-hidden rounded-xl"
-        style={{
-          height: s.viewH,
-          background: "linear-gradient(155deg, #17171c 0%, #0c0c10 100%)",
-        }}
-      >
-        <Image
-          src="/images/homepage-street-discovery.png"
-          alt="Street discovery look inside the K Scan parsing interface"
-          fill
-          sizes={size === "lg" ? "210px" : "160px"}
-          className="object-cover object-[62%_50%] opacity-68"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,11,14,0.1),rgba(11,11,14,0.46))]" />
-
-        <div className={`absolute left-2.5 top-2.5 ${s.cornerSize} ${s.cornerBorder} border-white/32`} />
-        <div className={`absolute right-2.5 top-2.5 ${s.cornerSize} ${s.cornerBorderR} border-white/32`} />
-        <div className={`absolute bottom-2.5 left-2.5 ${s.cornerSize} ${s.cornerBorderBL} border-white/32`} />
-        <div className={`absolute bottom-2.5 right-2.5 ${s.cornerSize} ${s.cornerBorderBR} border-white/32`} />
-
-        <div className="absolute left-1/2 top-3 -translate-x-1/2">
-          <span className={`${s.parseLabel} uppercase tracking-[0.18em] text-white/58`}>
-            Style-Parse
-          </span>
-        </div>
-
-        <div
-          className="animate-scan absolute left-3 right-3 h-px pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent)",
-          }}
-        />
-
-        <div
-          className="absolute"
-          style={{
-            top: s.box1.top,
-            left: s.box1.left,
-            width: s.box1.w,
-            height: s.box1.h,
-          }}
-        >
-          <div className="absolute left-0 top-0 h-4 w-4 border-l border-t border-white/38" />
-          <div className="absolute right-0 top-0 h-4 w-4 border-r border-t border-white/38" />
-          <div className="absolute bottom-0 left-0 h-4 w-4 border-b border-l border-white/38" />
-          <div className="absolute bottom-0 right-0 h-4 w-4 border-b border-r border-white/38" />
-          <div className={`absolute left-[22%] top-[18%] rounded-full bg-white/48 ${s.dot}`} />
-          <div className={`absolute right-[18%] top-[24%] rounded-full bg-white/38 ${s.dot}`} />
-          <div className={`absolute bottom-[24%] left-[28%] rounded-full bg-white/44 ${s.dot}`} />
-          <div className="absolute inset-x-2 bottom-2 border-t border-white/14 pt-1.5">
-            <span className={`${s.tagText} font-medium uppercase tracking-[0.16em] text-white/84`}>
-              Tailored Outerwear
-            </span>
-          </div>
-        </div>
-
-        <div
-          className="absolute"
-          style={{
-            top: s.box2.top,
-            left: s.box2.left,
-            width: s.box2.w,
-            height: s.box2.h,
-          }}
-        >
-          <div className="absolute left-0 top-1/2 h-px w-full bg-[linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.14),rgba(255,255,255,0))]" />
-          <div className={`absolute left-[8%] top-1/2 -translate-y-1/2 rounded-full bg-white/38 ${s.dot}`} />
-          <div className={`absolute right-[14%] top-1/2 -translate-y-1/2 rounded-full bg-white/34 ${s.dot}`} />
-          <div className="absolute left-0 top-0 -translate-y-[calc(100%+2px)]">
-            <span className={`${s.tagText} font-medium uppercase tracking-[0.16em] text-white/76`}>
-              Structured Tote
-            </span>
-          </div>
-          <div className="absolute bottom-0 right-0 translate-y-[calc(100%+4px)]">
-            <span className={`${s.tagText} font-medium uppercase tracking-[0.16em] text-white/62`}>
-              Grained Calfskin
-            </span>
-          </div>
-        </div>
-
-        <div className="absolute bottom-3 left-0 right-0 text-center">
-          <span className={`${s.statusLabel} uppercase tracking-[0.2em] text-white/16`}>
-            Actively resolving material and silhouette
-          </span>
-        </div>
-      </div>
-
-      <div className={`flex-1 space-y-1.5 overflow-hidden ${s.resultPx}`}>
-        {[
-          { name: "Tailored Outerwear", detail: "Structured leather - exact match" },
-          { name: "Structured Tote", detail: "Black grained leather - nearest retail" },
-        ].map((item) => (
-          <div key={item.name} className={`flex items-center rounded-lg bg-white/[0.055] ${s.resultItem}`}>
-            <div className={`${s.resultThumb} bg-stone-800/90 ring-1 ring-white/8`} />
-            <div className="min-w-0 flex-1">
-              <div className={`${s.resultName} truncate font-medium text-white/96`}>{item.name}</div>
-              <div className={`${s.resultSub} text-white/20`}>{item.detail}</div>
-            </div>
-            <div className={`${s.resultSub} text-white/10`} aria-hidden="true">
-              -&gt;
-            </div>
-          </div>
-        ))}
-        <p className={`pt-0.5 text-center text-white/8 ${s.resultMore}`}>Parsing tonal match and silhouette</p>
-      </div>
-    </div>
-  );
-}
-
 function LockIcon() {
   return (
     <svg
@@ -606,10 +457,8 @@ export default function Home() {
                 {/* ── Active Vision overlay ─────────────────────────────────────────── */}
                 <div className="pointer-events-none absolute inset-0 z-10" aria-hidden="true">
 
-                  {/* Status pill — top-left on mobile/sm (editorial card is at bottom-left),
-                      bottom-left on md+ (editorial card moves to top-left at md:top-4) */}
-                  <div className="absolute left-3 top-3 md:bottom-5 md:left-4 md:top-auto">
-                    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/75 px-3 py-1.5 backdrop-blur-sm">
+                  <div className="absolute left-4 top-4 md:left-6 md:top-6">
+                    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-zinc-950/75 px-3.5 py-2 shadow-[0_14px_32px_rgba(0,0,0,0.22)] backdrop-blur-sm">
                       <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500" />
                       <div>
                         <p className="text-[9px] font-medium uppercase leading-none tracking-[0.18em] text-white/90">
@@ -624,13 +473,6 @@ export default function Home() {
 
                 </div>
                 {/* ─────────────────────────────────────────────────────────────────── */}
-
-                <div className="absolute right-3 bottom-5 z-20 md:right-5 md:bottom-5 lg:right-6">
-                  <div className="animate-float relative h-[208px] w-[100px] overflow-hidden rounded-[24px] border-[3px] border-stone-700 bg-stone-900 shadow-[0_20px_50px_rgba(0,0,0,0.24)] md:h-[244px] md:w-[118px]">
-                    <div className="absolute left-1/2 top-0 z-20 h-[18px] w-16 -translate-x-1/2 rounded-b-xl bg-stone-900 md:h-[20px] md:w-[74px]" />
-                    <PhoneScreen size="sm" />
-                  </div>
-                </div>
 
                 <motion.div
                   className="absolute bottom-4 left-3 max-w-[160px] p-3 sm:bottom-auto sm:top-[42%] sm:max-w-[180px] sm:p-3.5 md:top-4 md:left-3 md:max-w-[210px] md:px-5 md:py-4 lg:left-4 lg:top-5 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl z-20"

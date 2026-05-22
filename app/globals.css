@@ -33,15 +33,6 @@ button {
   font: inherit;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
 @keyframes scan-sweep {
   0% { top: 12%; opacity: 0; }
   8% { opacity: 0.45; }
@@ -78,7 +69,6 @@ button {
     scroll-behavior: auto;
   }
 
-  .animate-float,
   .animate-scan,
   .animate-subtle-shake {
     animation: none;
