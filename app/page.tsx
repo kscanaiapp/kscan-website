@@ -481,10 +481,10 @@ export default function Home() {
                   transition={{ delay: 0.6, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <p className="mb-1 text-[9px] font-medium uppercase tracking-[0.2em] text-stone-400 md:text-[10px]">
-                    Editorial signal
+                    STYLE SIGNAL
                   </p>
                   <p className="text-[14px] leading-[1.15] sm:text-[16px] md:text-[22px] font-serif text-stone-900">
-                    One image, one parse, one immediate path to purchase.
+                    See the look. Find the match. Shop the style.
                   </p>
                 </motion.div>
               </div>
