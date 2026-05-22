@@ -214,11 +214,11 @@ function PhoneScreen({ size }: { size: "sm" | "lg" }) {
         }}
       >
         <Image
-          src="/texture-dinner.png"
-          alt="Leather look inside the K Scan parsing interface"
+          src="/images/homepage-street-discovery.png"
+          alt="Street discovery look inside the K Scan parsing interface"
           fill
           sizes={size === "lg" ? "210px" : "160px"}
-          className="object-cover object-[center_20%] opacity-68"
+          className="object-cover object-[62%_50%] opacity-68"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,11,14,0.1),rgba(11,11,14,0.46))]" />
 
@@ -259,7 +259,7 @@ function PhoneScreen({ size }: { size: "sm" | "lg" }) {
           <div className={`absolute bottom-[24%] left-[28%] rounded-full bg-white/44 ${s.dot}`} />
           <div className="absolute inset-x-2 bottom-2 border-t border-white/14 pt-1.5">
             <span className={`${s.tagText} font-medium uppercase tracking-[0.16em] text-white/84`}>
-              Tailored Blazer
+              Tailored Outerwear
             </span>
           </div>
         </div>
@@ -278,12 +278,12 @@ function PhoneScreen({ size }: { size: "sm" | "lg" }) {
           <div className={`absolute right-[14%] top-1/2 -translate-y-1/2 rounded-full bg-white/34 ${s.dot}`} />
           <div className="absolute left-0 top-0 -translate-y-[calc(100%+2px)]">
             <span className={`${s.tagText} font-medium uppercase tracking-[0.16em] text-white/76`}>
-              Leather Skirt
+              Structured Tote
             </span>
           </div>
           <div className="absolute bottom-0 right-0 translate-y-[calc(100%+4px)]">
             <span className={`${s.tagText} font-medium uppercase tracking-[0.16em] text-white/62`}>
-              Monochromatic Leather
+              Grained Calfskin
             </span>
           </div>
         </div>
@@ -297,8 +297,8 @@ function PhoneScreen({ size }: { size: "sm" | "lg" }) {
 
       <div className={`flex-1 space-y-1.5 overflow-hidden ${s.resultPx}`}>
         {[
-          { name: "Tailored Blazer", detail: "Structured leather - exact match" },
-          { name: "Leather Skirt", detail: "Monochromatic finish - nearest retail" },
+          { name: "Tailored Outerwear", detail: "Structured leather - exact match" },
+          { name: "Structured Tote", detail: "Black grained leather - nearest retail" },
         ].map((item) => (
           <div key={item.name} className={`flex items-center rounded-lg bg-white/[0.055] ${s.resultItem}`}>
             <div className={`${s.resultThumb} bg-stone-800/90 ring-1 ring-white/8`} />
@@ -581,7 +581,7 @@ export default function Home() {
             <div className="absolute inset-x-[10%] top-[12%] hidden h-[78%] rounded-[40px] bg-[radial-gradient(circle_at_top,rgba(167,139,250,0.09),transparent_58%)] blur-3xl md:block" />
 
             <div className="relative overflow-hidden rounded-[28px] bg-[#f3efe8] shadow-[0_30px_80px_rgba(28,22,16,0.12)] ring-1 ring-black/5">
-              <div className="relative aspect-[5/6] md:aspect-[11/10] lg:aspect-[3/4]">
+              <div className="relative aspect-[4/3] md:aspect-[16/10] lg:aspect-[1881/836]">
                 <motion.div
                   className="absolute inset-0"
                   initial={{ scale: 1.05 }}
@@ -589,12 +589,12 @@ export default function Home() {
                   transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                 >
                 <Image
-                  src="/k2-cafe2.png"
-                  alt="Fashion editorial at a Parisian café anchoring the K Scan hero composition"
+                  src="/images/homepage-street-discovery.png"
+                  alt="Street fashion discovery scene showing K Scan visual search callouts around a tailored look"
                   fill
                   priority
                   sizes="(max-width: 768px) 92vw, 46vw"
-                  className="object-cover object-[center_20%] md:object-[center_18%] lg:object-[center_20%]"
+                  className="object-cover object-[58%_50%] md:object-[56%_50%] lg:object-center"
                 />
                 </motion.div>
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(250,248,244,0.15),rgba(29,20,16,0.16))]" />
@@ -622,47 +622,11 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Fashion recognition labels — md+ only.
-                      At sm the editorial card is at sm:top-[42%] left-3 which overlaps left-edge
-                      labels; at md it moves to md:top-4 so the column is clear below that. */}
-                  <div className="hidden md:block">
-
-                    {/* Structured blazer — left edge, mid-torso, below editorial card */}
-                    <div className="absolute left-3 top-[38%]">
-                      <div className="flex items-center gap-1.5">
-                        <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500/70" />
-                        <span className="rounded-sm border border-white/[0.08] bg-zinc-950/70 px-2 py-[3px] text-[9px] uppercase tracking-[0.16em] text-white/90">
-                          Structured blazer
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Leather bag — center, near the bag on the table; left of phone mockup */}
-                    <div className="absolute left-[38%] top-[54%]">
-                      <div className="flex items-center gap-1.5">
-                        <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500/70" />
-                        <span className="rounded-sm border border-white/[0.08] bg-zinc-950/70 px-2 py-[3px] text-[9px] uppercase tracking-[0.16em] text-white/90">
-                          Leather bag
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Match path ready — lower-left, jeans area; well above the pill at md:bottom-5 */}
-                    <div className="absolute bottom-[26%] left-3">
-                      <div className="flex items-center gap-1.5">
-                        <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-400/80" />
-                        <span className="rounded-sm border border-indigo-500/25 bg-zinc-950/70 px-2 py-[3px] text-[9px] uppercase tracking-[0.16em] text-indigo-300/90">
-                          Match path ready
-                        </span>
-                      </div>
-                    </div>
-
-                  </div>
                 </div>
                 {/* ─────────────────────────────────────────────────────────────────── */}
 
-                <div className="absolute right-3 bottom-5 z-20 md:right-6 md:bottom-7 lg:right-7">
-                  <div className="animate-float relative h-[278px] w-[134px] overflow-hidden rounded-[28px] border-[3px] border-stone-700 bg-stone-900 shadow-[0_20px_50px_rgba(0,0,0,0.24)] md:h-[344px] md:w-[166px]">
+                <div className="absolute right-3 bottom-5 z-20 md:right-5 md:bottom-5 lg:right-6">
+                  <div className="animate-float relative h-[208px] w-[100px] overflow-hidden rounded-[24px] border-[3px] border-stone-700 bg-stone-900 shadow-[0_20px_50px_rgba(0,0,0,0.24)] md:h-[244px] md:w-[118px]">
                     <div className="absolute left-1/2 top-0 z-20 h-[18px] w-16 -translate-x-1/2 rounded-b-xl bg-stone-900 md:h-[20px] md:w-[74px]" />
                     <PhoneScreen size="sm" />
                   </div>
