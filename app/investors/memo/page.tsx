@@ -47,7 +47,7 @@ export default async function InvestorMemoPage() {
       <SiteNav />
 
       <section className="mx-auto flex max-w-6xl flex-col gap-7 px-6 py-10 md:px-10 md:py-14">
-        <div className="flex flex-col gap-6 border-b border-stone-200/80 pb-7 md:flex-row md:items-end md:justify-between">
+        <div className="border-b border-stone-200/80 pb-7">
           <div>
             <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
               K Scan AI
@@ -59,32 +59,36 @@ export default async function InvestorMemoPage() {
               Thesis, market, product, and proof-gate overview.
             </p>
           </div>
-
-          <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
-            <Link
-              href="/api/investor/memo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex justify-center rounded-full bg-stone-900 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-stone-800"
-            >
-              Open PDF
-            </Link>
-            <Link
-              href="/investors"
-              className="inline-flex justify-center rounded-full border border-stone-300 bg-white px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-stone-700 transition-colors hover:border-stone-400 hover:text-stone-900"
-            >
-              Back to Investor Portal
-            </Link>
-          </div>
         </div>
 
-        <div className="overflow-hidden rounded-[28px] border border-stone-200/80 bg-white p-2 shadow-[0_22px_50px_rgba(35,28,22,0.08)] md:p-3">
-          <div className="h-[calc(100vh-200px)] min-h-[520px] overflow-auto rounded-[22px] bg-[#F7F4EF] md:h-[80vh]">
-            <iframe
-              src="/api/investor/memo"
-              title="K Scan AI Investor Memo"
-              className="h-full w-full border-0 bg-white"
-            />
+        <div className="rounded-[28px] border border-stone-200/80 bg-white px-6 py-14 text-center shadow-[0_22px_50px_rgba(35,28,22,0.08)] sm:px-10 md:py-18">
+          <div className="mx-auto flex max-w-2xl flex-col items-center">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+              Secure Review
+            </p>
+            <h2 className="font-display text-[34px] leading-[1.08] text-stone-900 md:text-[46px]">
+              Investor Memo Ready
+            </h2>
+            <p className="mt-5 max-w-xl text-[15px] leading-[1.8] text-stone-500">
+              For optimal security and readability, open the memo in a dedicated browser tab.
+            </p>
+
+            <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:justify-center">
+              <Link
+                href="/api/investor/memo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex justify-center rounded-full bg-stone-900 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-stone-800"
+              >
+                Open Memo PDF
+              </Link>
+              <Link
+                href="/investors"
+                className="inline-flex justify-center rounded-full border border-stone-300 bg-white px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-stone-700 transition-colors hover:border-stone-400 hover:text-stone-900"
+              >
+                Return to Portal
+              </Link>
+            </div>
           </div>
         </div>
       </section>
