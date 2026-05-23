@@ -20,6 +20,13 @@ export function SiteFooter() {
           <p className="text-center md:text-left">© 2026 K Scan AI. All rights reserved.</p>
           <div className="flex items-center gap-3">
             <Link
+              href="/beta"
+              className="-my-3 flex h-11 items-center justify-center text-[11px] transition-colors hover:text-stone-500 focus:outline-none focus-visible:text-stone-500"
+            >
+              Beta
+            </Link>
+            <span aria-hidden="true" className="select-none">|</span>
+            <Link
               href="/privacy"
               className="-my-3 flex h-11 items-center justify-center text-[11px] transition-colors hover:text-stone-500 focus:outline-none focus-visible:text-stone-500"
             >
