@@ -555,15 +555,23 @@ export default function InvestorsPage() {
                   <p className="mt-4 max-w-sm text-[14px] leading-[1.8] text-stone-500">
                     Open the deck in a dedicated tab for the best review experience across mobile and desktop.
                   </p>
-                  <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                  <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
                     <InvestorDeckLauncher
                       className="inline-flex rounded-full bg-stone-900 px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-white transition-colors hover:bg-stone-800"
-                    />
+                    >
+                      View Deck
+                    </InvestorDeckLauncher>
                     <InvestorDeckLauncher
                       href="/api/investor/deck-mobile"
                       className="inline-flex rounded-full border border-stone-300 bg-white px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-stone-700 transition-colors hover:border-stone-400 hover:text-stone-900"
                     >
                       Open Mobile Deck
+                    </InvestorDeckLauncher>
+                    <InvestorDeckLauncher
+                      href="/investors/memo"
+                      className="inline-flex rounded-full border border-stone-300 bg-white px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-stone-700 transition-colors hover:border-stone-400 hover:text-stone-900"
+                    >
+                      Read Investor Memo
                     </InvestorDeckLauncher>
                   </div>
                 </div>
