@@ -74,7 +74,7 @@ const featureList = [
   },
   {
     title: "Dressing Rooms",
-    body: "Save looks to shared rooms for trips and events. Share by link or browse together in K Scan.",
+    body: "Plan outfits together for trips, events, and nights out. Save looks into shared rooms, compare options, vote on favorites, and keep every decision in one place. Share by link or browse together in K Scan, then turn group inspiration into shoppable matches.",
   },
 ];
 
