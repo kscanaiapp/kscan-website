@@ -29,7 +29,8 @@ body {
 }
 
 input,
-button {
+button,
+a {
   font: inherit;
 }
 
