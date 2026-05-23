@@ -230,7 +230,7 @@ export default function InvestorsPage() {
                 href="https://calendly.com/kscan/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full border border-stone-300 px-7 py-3.5 text-[13px] font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-900"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-stone-300 px-7 py-3.5 text-[13px] font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-900"
               >
                 Schedule a Conversation
               </a>
