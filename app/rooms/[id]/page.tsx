@@ -7,14 +7,12 @@ import {
   type PublicRoomPreview,
   type PublicRoomPreviewItem,
 } from "@/lib/publicRoomPreview";
-import { RememberShareToken, ShareTokenAwareCopy } from "./ShareTokenClientState";
 
 export const dynamic = "force-dynamic";
 
 const SITE_URL = "https://kscan.app";
 const PREVIEW_IMAGE_URL = `${SITE_URL}/group-street.jpeg`;
 const SAFE_TOKEN_PATTERN = /^[A-Za-z0-9_-]+$/;
-const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 type RoomPageParams = {
   id: string;
@@ -154,7 +152,6 @@ function AvailableRoom({ preview }: { preview: PublicRoomPreview }) {
 
   return (
     <>
-      <RememberShareToken token={preview.shareToken} />
       <section className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-16 md:px-10 md:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.74fr)]">
         <div className="max-w-3xl">
           <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#B6924E]">
@@ -245,50 +242,23 @@ function FallbackState({
   body,
   primaryHref = "/demo",
   primaryLabel = "Preview K Scan",
-  shareToken,
-  knownShareTokenTitle,
-  knownShareTokenBody,
 }: {
   eyebrow: string;
   title: string;
   body: string;
   primaryHref?: string;
   primaryLabel?: string;
-  shareToken?: string;
-  knownShareTokenTitle?: string;
-  knownShareTokenBody?: string;
 }) {
-  const titleContent =
-    shareToken && knownShareTokenTitle ? (
-      <ShareTokenAwareCopy
-        token={shareToken}
-        fallback={title}
-        knownTokenCopy={knownShareTokenTitle}
-      />
-    ) : (
-      title
-    );
-  const bodyContent =
-    shareToken && knownShareTokenBody ? (
-      <ShareTokenAwareCopy
-        token={shareToken}
-        fallback={body}
-        knownTokenCopy={knownShareTokenBody}
-      />
-    ) : (
-      body
-    );
-
   return (
     <section className="mx-auto flex min-h-[calc(100vh-80px)] max-w-4xl flex-col justify-center px-6 py-16 md:px-10 md:py-24">
       <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#B6924E]">
         {eyebrow}
       </p>
       <h1 className="mt-5 break-words font-display text-[40px] font-medium leading-[1.03] text-stone-950 sm:text-[58px]">
-        {titleContent}
+        {title}
       </h1>
       <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-stone-600 md:text-[18px]">
-        {bodyContent}
+        {body}
       </p>
       <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         <Link
@@ -332,22 +302,6 @@ export default async function SharedRoomPage({ params }: RoomPageProps) {
           eyebrow="Shared Dressing Room"
           title="This room link looks incomplete."
           body="K Scan recognized the shared-room path, but this link is missing a valid room reference. Nothing private is exposed."
-        />
-      );
-    } else if (
-      (result.status === "unavailable" || result.status === "configuration_error") &&
-      UUID_PATTERN.test(token)
-    ) {
-      content = (
-        <FallbackState
-          eyebrow="Shared Dressing Room"
-          title="This shared room link needs to be refreshed."
-          body="This looks like an older K Scan room link. Ask the sender to share the room again from K Scan to create a public-safe preview link."
-          primaryHref="/beta"
-          primaryLabel="Join the Beta"
-          shareToken={token}
-          knownShareTokenTitle="This shared room is no longer available."
-          knownShareTokenBody="The link may have been disabled, expired, or entered incorrectly. No private room data is exposed."
         />
       );
     } else {
