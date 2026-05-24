@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
+import {
+  fetchPublicRoomPreview,
+  type PublicRoomPreview,
+  type PublicRoomPreviewItem,
+} from "@/lib/publicRoomPreview";
+import { RememberShareToken, ShareTokenAwareCopy } from "./ShareTokenClientState";
 
 export const dynamic = "force-dynamic";
 
 const SITE_URL = "https://kscan.app";
 const PREVIEW_IMAGE_URL = `${SITE_URL}/group-street.jpeg`;
-const SAFE_ROOM_ID_PATTERN = /^[A-Za-z0-9_-]+$/;
+const SAFE_TOKEN_PATTERN = /^[A-Za-z0-9_-]+$/;
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 type RoomPageParams = {
   id: string;
@@ -16,21 +24,41 @@ type RoomPageProps = {
   params: Promise<RoomPageParams>;
 };
 
-function normalizeRoomId(value: string) {
+function normalizeToken(value: string) {
   const decoded = value.trim();
-  if (!decoded || !SAFE_ROOM_ID_PATTERN.test(decoded)) return null;
+  if (!decoded || !SAFE_TOKEN_PATTERN.test(decoded)) return null;
   return decoded;
 }
 
-function getRoomReference(roomId: string) {
-  const tail = roomId.slice(-4).toUpperCase();
-  return `Room link ending in ${tail}`;
+function getTokenReference(token: string) {
+  return `Room link ending in ${token.slice(-4).toUpperCase()}`;
+}
+
+function getDisplayTitle(preview: PublicRoomPreview | null) {
+  return preview?.roomTitle?.trim() || "Shared Dressing Room";
+}
+
+function hasDisplayableItemFields(item: PublicRoomPreviewItem) {
+  return Boolean(item.imageUrl || item.category || item.color || item.silhouette);
+}
+
+function getPreviewItems(preview: PublicRoomPreview): PublicRoomPreviewItem[] {
+  if (preview.items.length > 0) return preview.items;
+
+  if (preview.itemCount <= 0) return [];
+
+  return Array.from({ length: preview.itemCount }, () => ({
+    imageUrl: null,
+    category: null,
+    color: null,
+    silhouette: null,
+  }));
 }
 
 export async function generateMetadata({ params }: RoomPageProps): Promise<Metadata> {
   const { id } = await params;
-  const roomId = normalizeRoomId(id);
-  const canonicalPath = roomId ? `/rooms/${encodeURIComponent(roomId)}` : "/rooms";
+  const token = normalizeToken(id);
+  const canonicalPath = token ? `/rooms/${encodeURIComponent(token)}` : "/rooms";
   const canonicalUrl = `${SITE_URL}${canonicalPath}`;
 
   return {
@@ -69,71 +97,274 @@ export async function generateMetadata({ params }: RoomPageProps): Promise<Metad
   };
 }
 
+function RoomItemCard({ item, index }: { item: PublicRoomPreviewItem; index: number }) {
+  const hasMetadata = item.category || item.color || item.silhouette;
+  const isPlaceholder = !hasDisplayableItemFields(item);
+  const label = `Shared item ${index + 1}`;
+
+  return (
+    <article className="overflow-hidden rounded-[24px] border border-stone-200/80 bg-white shadow-[0_18px_36px_rgba(35,28,22,0.08)]">
+      <div className="relative aspect-[4/5] bg-[#F1EDE7]">
+        {item.imageUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={item.imageUrl}
+            alt={label}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <div
+            aria-hidden="true"
+            className="flex h-full items-center justify-center px-6 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-400"
+          >
+            Item preview unavailable
+          </div>
+        )}
+      </div>
+      <div className="space-y-3 p-5">
+        <p className="text-[13px] font-semibold text-stone-950">
+          {label}
+        </p>
+        {hasMetadata ? (
+          <div className="flex flex-wrap gap-2">
+            {[item.category, item.color, item.silhouette].filter(Boolean).map((label) => (
+              <span
+                key={label}
+                className="rounded-full border border-stone-200 bg-[#FAF8F5] px-3 py-1 text-[11px] text-stone-600"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+        ) : isPlaceholder ? (
+          <p className="text-[13px] leading-6 text-stone-500">
+            Public-safe placeholder.
+          </p>
+        ) : (
+          <p className="text-[13px] leading-6 text-stone-500">No public attributes available.</p>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function AvailableRoom({ preview }: { preview: PublicRoomPreview }) {
+  const title = getDisplayTitle(preview);
+  const previewItems = getPreviewItems(preview);
+
+  return (
+    <>
+      <RememberShareToken token={preview.shareToken} />
+      <section className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-16 md:px-10 md:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.74fr)]">
+        <div className="max-w-3xl">
+          <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#B6924E]">
+            Room access link recognized
+          </p>
+          <h1 className="mt-5 font-display text-[44px] font-medium leading-[1.02] text-stone-950 sm:text-[58px] md:text-[72px]">
+            {title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-stone-600 md:text-[18px]">
+            This shared K Scan Dressing Room is available as a public-safe, view-only preview. Private notes, account details, and internal IDs are not displayed.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">
+            <span className="rounded-full border border-stone-200 bg-white px-4 py-2">
+              {preview.itemCount} {preview.itemCount === 1 ? "item" : "items"}
+            </span>
+            <span className="rounded-full border border-stone-200 bg-white px-4 py-2">
+              {getTokenReference(preview.shareToken)}
+            </span>
+          </div>
+          <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <Link
+              href="/demo"
+              className="rounded-full bg-[#C7A86B] px-8 py-4 text-[14px] font-semibold uppercase tracking-[0.16em] text-stone-950 shadow-[0_18px_36px_rgba(64,48,24,0.16)] transition-colors hover:bg-[#B6924E]"
+            >
+              Preview K Scan
+            </Link>
+            <Link
+              href="/beta"
+              className="rounded-full border border-stone-200 bg-white px-8 py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-stone-600 shadow-[0_12px_26px_rgba(35,28,22,0.06)] transition-colors hover:text-stone-950"
+            >
+              Join the Beta
+            </Link>
+          </div>
+        </div>
+
+        <aside className="rounded-[28px] border border-stone-200/80 bg-white p-5 shadow-[0_22px_52px_rgba(35,28,22,0.08)]">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[#F1EDE7]">
+            {preview.coverImageUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={preview.coverImageUrl}
+                alt="Shared Dressing Room cover"
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <div className="flex h-full items-center justify-center px-8 text-center text-[12px] font-semibold uppercase tracking-[0.24em] text-stone-400">
+                View-only room preview
+              </div>
+            )}
+          </div>
+        </aside>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-20 md:px-10">
+        <div className="mb-8 flex items-end justify-between gap-6">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#B6924E]">
+              Shared Items
+            </p>
+            <h2 className="mt-3 font-display text-[34px] leading-tight text-stone-950">
+              Public-safe room contents
+            </h2>
+          </div>
+        </div>
+
+        {previewItems.length > 0 ? (
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {previewItems.map((item, index) => (
+              <RoomItemCard key={`${preview.shareToken}-${index}`} item={item} index={index} />
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-[28px] border border-stone-200/80 bg-white p-8 shadow-[0_18px_36px_rgba(35,28,22,0.06)]">
+            <p className="text-[18px] font-medium text-stone-950">This shared room is currently empty.</p>
+            <p className="mt-3 max-w-2xl text-[15px] leading-7 text-stone-600">
+              The link is active, but there are no public-safe items available to preview yet.
+            </p>
+          </div>
+        )}
+      </section>
+    </>
+  );
+}
+
+function FallbackState({
+  eyebrow,
+  title,
+  body,
+  primaryHref = "/demo",
+  primaryLabel = "Preview K Scan",
+  shareToken,
+  knownShareTokenTitle,
+  knownShareTokenBody,
+}: {
+  eyebrow: string;
+  title: string;
+  body: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  shareToken?: string;
+  knownShareTokenTitle?: string;
+  knownShareTokenBody?: string;
+}) {
+  const titleContent =
+    shareToken && knownShareTokenTitle ? (
+      <ShareTokenAwareCopy
+        token={shareToken}
+        fallback={title}
+        knownTokenCopy={knownShareTokenTitle}
+      />
+    ) : (
+      title
+    );
+  const bodyContent =
+    shareToken && knownShareTokenBody ? (
+      <ShareTokenAwareCopy
+        token={shareToken}
+        fallback={body}
+        knownTokenCopy={knownShareTokenBody}
+      />
+    ) : (
+      body
+    );
+
+  return (
+    <section className="mx-auto flex min-h-[calc(100vh-80px)] max-w-4xl flex-col justify-center px-6 py-16 md:px-10 md:py-24">
+      <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#B6924E]">
+        {eyebrow}
+      </p>
+      <h1 className="mt-5 break-words font-display text-[40px] font-medium leading-[1.03] text-stone-950 sm:text-[58px]">
+        {titleContent}
+      </h1>
+      <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-stone-600 md:text-[18px]">
+        {bodyContent}
+      </p>
+      <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+        <Link
+          href={primaryHref}
+          className="w-full rounded-full bg-[#C7A86B] px-8 py-4 text-center text-[14px] font-semibold uppercase tracking-[0.16em] text-stone-950 shadow-[0_18px_36px_rgba(64,48,24,0.16)] transition-colors hover:bg-[#B6924E] sm:w-auto"
+        >
+          {primaryLabel}
+        </Link>
+        <Link
+          href="/"
+          className="w-full rounded-full border border-stone-200 bg-white px-8 py-4 text-center text-[13px] font-medium uppercase tracking-[0.16em] text-stone-600 shadow-[0_12px_26px_rgba(35,28,22,0.06)] transition-colors hover:text-stone-950 sm:w-auto"
+        >
+          Explore K Scan
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 export default async function SharedRoomPage({ params }: RoomPageProps) {
   const { id } = await params;
-  const roomId = normalizeRoomId(id);
-  const appHref = roomId ? `kscan://rooms/${encodeURIComponent(roomId)}` : "/demo";
+  const token = normalizeToken(id);
+  let content: ReactNode;
+
+  if (!token) {
+    content = (
+      <FallbackState
+        eyebrow="Shared Dressing Room"
+        title="This room link looks incomplete."
+        body="K Scan recognized the shared-room path, but this link is missing a valid room reference. Nothing private is exposed."
+      />
+    );
+  } else {
+    const result = await fetchPublicRoomPreview(token);
+
+    if (result.status === "available") {
+      content = <AvailableRoom preview={result.preview} />;
+    } else if (result.status === "malformed") {
+      content = (
+        <FallbackState
+          eyebrow="Shared Dressing Room"
+          title="This room link looks incomplete."
+          body="K Scan recognized the shared-room path, but this link is missing a valid room reference. Nothing private is exposed."
+        />
+      );
+    } else if (
+      (result.status === "unavailable" || result.status === "configuration_error") &&
+      UUID_PATTERN.test(token)
+    ) {
+      content = (
+        <FallbackState
+          eyebrow="Shared Dressing Room"
+          title="This shared room link needs to be refreshed."
+          body="This looks like an older K Scan room link. Ask the sender to share the room again from K Scan to create a public-safe preview link."
+          primaryHref="/beta"
+          primaryLabel="Join the Beta"
+          shareToken={token}
+          knownShareTokenTitle="This shared room is no longer available."
+          knownShareTokenBody="The link may have been disabled, expired, or entered incorrectly. No private room data is exposed."
+        />
+      );
+    } else {
+      content = (
+        <FallbackState
+          eyebrow="Shared Dressing Room"
+          title="This shared room is no longer available."
+          body="The link may have been disabled, expired, or entered incorrectly. No private room data is exposed."
+        />
+      );
+    }
+  }
 
   return (
     <main className="min-h-screen bg-[#F7F4EF] text-stone-950">
       <SiteNav />
-
-      <section className="mx-auto flex min-h-[calc(100vh-80px)] max-w-6xl flex-col justify-center px-6 py-16 md:px-10 md:py-24">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(340px,0.72fr)]">
-          <div className="max-w-3xl">
-            <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#B6924E]">
-              Room access link recognized
-            </p>
-            <h1 className="mt-5 font-display text-[44px] font-medium leading-[1.02] text-stone-950 sm:text-[58px] md:text-[72px]">
-              Shared Dressing Room
-            </h1>
-            <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-stone-600 md:text-[18px]">
-              {roomId
-                ? "This K Scan room is ready to open in the app. For privacy, this web preview does not expose room contents."
-                : "This room link looks incomplete. Open K Scan or explore the beta to continue safely."}
-            </p>
-
-            <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-              {roomId ? (
-                <a
-                  href={appHref}
-                  className="rounded-full bg-[#C7A86B] px-8 py-4 text-[14px] font-semibold uppercase tracking-[0.16em] text-stone-950 shadow-[0_18px_36px_rgba(64,48,24,0.16)] transition-colors hover:bg-[#B6924E]"
-                >
-                  Open in K Scan App
-                </a>
-              ) : (
-                <Link
-                  href="/demo"
-                  className="rounded-full bg-[#C7A86B] px-8 py-4 text-[14px] font-semibold uppercase tracking-[0.16em] text-stone-950 shadow-[0_18px_36px_rgba(64,48,24,0.16)] transition-colors hover:bg-[#B6924E]"
-                >
-                  Preview K Scan
-                </Link>
-              )}
-              <Link
-                href={roomId ? "/demo" : "/"}
-                className="rounded-full border border-stone-200 bg-white px-8 py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-stone-600 shadow-[0_12px_26px_rgba(35,28,22,0.06)] transition-colors hover:text-stone-950"
-              >
-                Explore K Scan
-              </Link>
-            </div>
-          </div>
-
-          <aside className="rounded-[28px] border border-stone-200/80 bg-white p-6 shadow-[0_22px_52px_rgba(35,28,22,0.08)]">
-            <div className="rounded-[22px] border border-stone-100 bg-[#FAF8F5] p-6">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-stone-400">
-                K Scan AI
-              </p>
-              <h2 className="mt-5 font-display text-[30px] leading-tight text-stone-950">
-                {roomId ? getRoomReference(roomId) : "Incomplete room link"}
-              </h2>
-              <div className="mt-6 space-y-3 text-[13px] leading-[1.8] text-stone-500">
-                <p>No private room data is displayed on this public page.</p>
-                <p>Use the K Scan app to access shared room workflows during beta.</p>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
+      {content}
     </main>
   );
 }
