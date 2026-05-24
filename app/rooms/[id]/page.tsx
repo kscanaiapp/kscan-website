@@ -9,6 +9,7 @@ import {
 } from "@/lib/publicRoomPreview";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const SITE_URL = "https://kscan.app";
 const PREVIEW_IMAGE_URL = `${SITE_URL}/group-street.jpeg`;
