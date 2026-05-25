@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
 
+const linkClassName =
+  "text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500";
+
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-[#FAFAF8]">
@@ -23,28 +26,32 @@ export default function PrivacyPage() {
               1. Data Protection &amp; Visual Privacy
             </h2>
             <div className="space-y-3">
-              <p>
-                <span className="font-semibold text-stone-700">No Facial Recognition:</span>
-                <br />
-                We do not use scan data for facial recognition or to identify individuals.
-              </p>
-              <p>
-                <span className="font-semibold text-stone-700">Raw Scan Protection:</span>
-                <br />
-                We do not sell raw uploaded scans or images.
-              </p>
-              <p>
-                <span className="font-semibold text-stone-700">Transient Processing:</span>
-                <br />
-                Raw visual data is typically processed transiently and deleted within 24–72 hours unless you choose to
-                save it or another permitted exception applies.
-              </p>
-              <p>
-                <span className="font-semibold text-stone-700">Data Minimization:</span>
-                <br />
-                Personally identifiable elements are minimized, masked, deleted, aggregated, or de-identified where
-                technically feasible.
-              </p>
+              <div>
+                <h3 className="font-semibold text-stone-700">No Facial Recognition:</h3>
+                <p>We do not use scan data for facial recognition, biometric identification, or to identify individuals.</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-stone-700">Raw Scan Protection:</h3>
+                <p>We do not sell raw uploaded scans or images.</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-stone-700">{"Face & Bystander Protection:"}</h3>
+                <p>Before scan images are transmitted for cloud processing, K Scan applies privacy filtering to blur detected faces.</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-stone-700">Transient Processing:</h3>
+                <p>
+                  Raw visual data is typically processed transiently and deleted within 24–72 hours unless you choose to
+                  save it or another permitted exception applies.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-stone-700">No Microphone in Initial Release:</h3>
+                <p>
+                  The initial mobile release does not request microphone permission or collect voice, speech-recognition,
+                  raw audio, or voiceprint data.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -53,23 +60,32 @@ export default function PrivacyPage() {
               2. Commercial Data &amp; Partnership Transparency
             </h2>
             <p>
-              To support our discovery and commerce tools, K Scan AI may monetize certain non-sensitive information
-              where permitted by law.
+              To support our discovery and commerce tools, K Scan AI may use limited commercial, attribution,
+              analytics, and preference signals where permitted by law and subject to applicable consent, opt-out
+              rights, and platform rules.
             </p>
             <div className="space-y-3">
-              <p>
-                <span className="font-semibold text-stone-700">What May Be Sold, Shared, or Licensed:</span>
-                <br />
-                Product preferences, style interests, app interaction data, marketing engagement data, and inferred
-                fashion affinity information may be used with retail, analytics, advertising, or marketing partners,
-                subject to applicable rights and consent requirements.
-              </p>
-              <p>
-                <span className="font-semibold text-stone-700">Service Providers:</span>
-                <br />
-                We also share limited information with providers that help us operate K Scan, including cloud hosting,
-                email delivery, analytics, and security partners.
-              </p>
+              <div>
+                <h3 className="font-semibold text-stone-700">Raw Scan Limits:</h3>
+                <p>
+                  We do not sell raw scans, uploaded images, biometric identifiers, facial recognition data, or
+                  sensitive personal information.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-stone-700">Aggregated Demand Intelligence:</h3>
+                <p>
+                  K Scan may create, use, or commercialize aggregated, anonymized, or de-identified demand intelligence
+                  that does not reasonably identify you.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-stone-700">Service Providers:</h3>
+                <p>
+                  We also share limited information with providers that help us operate K Scan, including cloud hosting,
+                  analytics, security, customer support, and app infrastructure partners.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -79,48 +95,38 @@ export default function PrivacyPage() {
             </h2>
             <p>You remain in control of your data and how it may be used.</p>
             <div className="space-y-3">
-              <p>
-                <span className="font-semibold text-stone-700">Opt-Out Rights:</span>
-                <br />
-                You may opt out of the sale or sharing of personal information where required by law. You can
-                manage your choices on our{" "}
-                <Link
-                  href="/do-not-sell-or-share"
-                  className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
-                >
-                  Do Not Sell or Share
-                </Link>{" "}
-                page.
-              </p>
-              <p>
-                <span className="font-semibold text-stone-700">Global Privacy Control:</span>
-                <br />
-                We honor Global Privacy Control signals as valid opt-out requests where required by law.
-              </p>
-              <p>
-                <span className="font-semibold text-stone-700">Access &amp; Deletion:</span>
-                <br />
-                You may request access to, correction of, or deletion of your personal information, subject to
-                applicable law.
-              </p>
+              <div>
+                <h3 className="font-semibold text-stone-700">Opt-Out Rights:</h3>
+                <p>
+                  You may opt out of the sale, sharing, or similar use of personal information where required by law at:{" "}
+                  <Link href="/do-not-sell-or-share" className={linkClassName}>
+                    kscan.app/do-not-sell-or-share
+                  </Link>
+                  .
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-stone-700">Global Privacy Control:</h3>
+                <p>We honor Global Privacy Control signals as valid opt-out requests where required by law.</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-stone-700">Access &amp; Deletion:</h3>
+                <p>
+                  You may request access to, correction of, or deletion of your personal information, subject to
+                  applicable law. If you create an account, you may also delete it in-app through Settings &gt; Account
+                  &gt; Delete Account.
+                </p>
+              </div>
             </div>
           </section>
 
           <p>
             For more details, review our full{" "}
-            <a
-              href="/docs/kscan-privacy-policy.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
-            >
+            <a href="/docs/kscan-privacy-policy.pdf" target="_blank" rel="noopener noreferrer" className={linkClassName}>
               Privacy Policy
             </a>{" "}
             or contact our privacy team at{" "}
-            <a
-              href="mailto:kscanai.app@gmail.com"
-              className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
-            >
+            <a href="mailto:kscanai.app@gmail.com" className={linkClassName}>
               kscanai.app@gmail.com
             </a>
             .

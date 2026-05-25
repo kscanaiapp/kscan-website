@@ -26,16 +26,19 @@ export default function TermsSummaryPage() {
         <div className="mt-6 space-y-8 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <div>
             <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">
-              AI-Powered Fashion Discovery
+              AI-Powered Fashion Discovery:
             </h3>
             <p>
               K Scan AI may generate product suggestions, visual matches, fashion insights, and retailer links based on
-              uploaded or captured content.
+              uploaded or captured content. AI outputs are probabilistic and may be incomplete, approximate,
+              inaccurate, outdated, or based on visually similar items.
             </p>
           </div>
 
           <div>
-            <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">Your Content Stays Yours</h3>
+            <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">
+              Your Content Stays Yours:
+            </h3>
             <p>
               You retain ownership of the photos, screenshots, prompts, and other content you submit. K Scan AI
               receives only the limited permissions needed to operate, secure, maintain, and improve the Service as
@@ -44,27 +47,43 @@ export default function TermsSummaryPage() {
           </div>
 
           <div>
-            <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">Raw Scan Protection</h3>
+            <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">Raw Scan Protection:</h3>
             <p>
-              K Scan AI does not sell raw uploaded scans or images, and we do not use uploaded scan content for facial
-              recognition or biometric surveillance.
+              K Scan AI does not sell raw uploaded scans or images. We do not use uploaded scan content for facial
+              recognition, biometric identification, or surveillance.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">
+              {"Face & Bystander Protection:"}
+            </h3>
+            <p>
+              Before scan images are transmitted for cloud processing, K Scan AI applies privacy filtering to blur
+              detected faces.
             </p>
           </div>
         </div>
 
         <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
-          2. Commercial Data &amp; Partner Activity
+          {"2. Commercial Data & Partner Activity"}
         </h2>
 
         <div className="mt-6 space-y-4 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <p>
-            Certain non-sensitive commercial, analytics, preference, marketing, and inference data may be used, sold,
-            shared, licensed, or disclosed where permitted by law and subject to applicable privacy rights, consent
-            requirements, and opt-out controls.
+            To support our discovery and commerce tools, K Scan AI may share limited non-sensitive information with
+            service providers, retail partners, affiliate partners, analytics providers, attribution providers, and
+            marketing partners where permitted by law and subject to applicable consent, opt-out rights, contractual
+            restrictions, platform rules, and user privacy controls.
           </p>
           <p>
-            K Scan AI may also earn affiliate revenue, referral fees, advertising revenue, data licensing revenue, or
-            other commercial consideration from partners.
+            K Scan AI may create, use, or commercialize aggregated, anonymized, or de-identified demand intelligence
+            that does not reasonably identify you.
+          </p>
+          <p>
+            K Scan AI may also earn affiliate fees, referral commissions, advertising revenue, partner reporting
+            revenue, aggregated demand-intelligence revenue, or other commercial consideration from partners. Sponsored
+            or paid placements, where used, are identified as such where required by law or platform rules.
           </p>
         </div>
 
@@ -73,16 +92,19 @@ export default function TermsSummaryPage() {
         <div className="mt-6 space-y-8 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <div>
             <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">
-              AI Outputs Are Not Guarantees
+              AI Outputs Are Not Guarantees:
             </h3>
             <p>
               AI-generated fashion matches, recommendations, and product suggestions may be incomplete, approximate,
-              inaccurate, or outdated. Users should independently evaluate results before relying on them.
+              inaccurate, visually similar but non-identical, or outdated. Users should independently evaluate results
+              before relying on them or making a purchase.
             </p>
           </div>
 
           <div>
-            <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">Third-Party Retailers</h3>
+            <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">
+              Third-Party Retailers:
+            </h3>
             <p>
               K Scan AI may link to outside retailers, marketplaces, affiliate partners, and commerce providers. We do
               not manufacture, inspect, authenticate, ship, fulfill, or guarantee third-party products or transactions.
@@ -91,11 +113,11 @@ export default function TermsSummaryPage() {
 
           <div>
             <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">
-              Pricing and Availability
+              Pricing and Availability:
             </h3>
             <p>
-              Retail prices, inventory, shipping terms, return policies, authenticity, and seller details may change
-              without notice and are controlled by the third party, not K Scan AI.
+              Retail prices, inventory, shipping terms, return policies, authenticity, sizing, and seller details may
+              change without notice and are controlled by the third party, not K Scan AI.
             </p>
           </div>
         </div>
@@ -111,7 +133,7 @@ export default function TermsSummaryPage() {
           </p>
           <p>
             You are responsible for maintaining the security of your account credentials and for evaluating third-party
-            products and sellers before purchase.
+            products, retailers, and sellers before purchase.
           </p>
         </div>
 
@@ -125,8 +147,13 @@ export default function TermsSummaryPage() {
             consent withdrawal, or opt-out choices for certain data uses.
           </p>
           <p>
-            K Scan AI&apos;s liability, disclaimers, acceptable-use rules, dispute provisions, and other legal terms are
-            governed by the full Terms and Conditions.
+            If you create an account, you may delete it in the app through{" "}
+            {"Settings > Account > Delete Account"}, subject to limited legal exceptions described in the full Terms and
+            Privacy Policy.
+          </p>
+          <p>
+            K Scan AI&apos;s liability, disclaimers, acceptable-use rules, platform terms, dispute provisions, and other
+            legal terms are governed by the full Terms and Conditions.
           </p>
         </div>
 
