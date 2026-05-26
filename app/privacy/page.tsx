@@ -36,7 +36,11 @@ export default function PrivacyPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-stone-700">{"Face & Bystander Protection:"}</h3>
-                <p>Before scan images are transmitted for cloud processing, K Scan applies privacy filtering to blur detected faces.</p>
+                <p>
+                  K Scan is architected for privacy. We are currently implementing on-device edge processing intended
+                  to auto-obscure detected faces and other bystander-identifying visual data before cloud processing.
+                  During this beta phase, scan images are transmitted through secure, encrypted channels for processing.
+                </p>
               </div>
               <div>
                 <h3 className="font-semibold text-stone-700">Transient Processing:</h3>
