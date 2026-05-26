@@ -110,6 +110,7 @@ export default function InvestorsPage() {
       const response = await fetch("/api/investor/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify({ password }),
       });
 
@@ -143,7 +144,10 @@ export default function InvestorsPage() {
     async function checkDeck() {
       setDeckState("checking");
       try {
-        const response = await fetch("/api/investor/deck", { method: "HEAD" });
+        const response = await fetch("/api/investor/deck", {
+          method: "HEAD",
+          credentials: "same-origin",
+        });
         if (!active) return;
         setDeckState(response.ok ? "ready" : "missing");
       } catch {
@@ -574,6 +578,12 @@ export default function InvestorsPage() {
                       className="inline-flex rounded-full border border-stone-300 bg-white px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-stone-700 transition-colors hover:border-stone-400 hover:text-stone-900"
                     >
                       Read Investor Memo
+                    </InvestorDeckLauncher>
+                    <InvestorDeckLauncher
+                      href="/investors/revenue-brief"
+                      className="inline-flex rounded-full border border-stone-300 bg-white px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-stone-700 transition-colors hover:border-stone-400 hover:text-stone-900"
+                    >
+                      Revenue Strategy Brief
                     </InvestorDeckLauncher>
                   </div>
                 </div>
