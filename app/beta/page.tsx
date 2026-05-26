@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   keywords: [
     "K Scan beta",
     "beta access",
-    "closet organizer app",
-    "scan to closet beta",
-    "AI wardrobe app",
+    "AI fashion search beta",
+    "visual fashion discovery app",
+    "fashion recognition beta",
     "fashion app early access",
   ],
   alternates: {
@@ -69,13 +69,25 @@ const betaStatus = [
     dotClass: "bg-stone-300",
     badgeClass: "border-stone-200 bg-stone-100 text-stone-600",
   },
+  {
+    label: "Dressing Rooms",
+    status: "Live in Beta",
+    dotClass: "bg-emerald-400",
+    badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
+  },
+  {
+    label: "Share by Link",
+    status: "Live in Beta",
+    dotClass: "bg-emerald-400",
+    badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
+  },
 ];
 
 const roadmapCards = [
   {
     title: "Collaborative Rooms",
     description:
-      "Style together for trips, events, and group outfit decisions.",
+      "Expanding shared rooms into group outfit planning for trips, events, voting, and style decisions.",
     badge: "Exploring",
   },
   {
@@ -174,18 +186,19 @@ export default function BetaPage() {
             </p>
           </div>
 
-          {/* Experimental */}
+          {/* Live beta features */}
           <div className={`${surfaces.linenCard} p-6`}>
             <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
-              Also In Testing
+              Also Live in Beta
             </p>
             <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
-              Experimental Features
+              Dressing Rooms &amp; Share by Link
             </h3>
             <p className="text-[13px] leading-relaxed text-stone-500">
-              Dressing Rooms and Share Rooms may appear during testing. These
-              are early-stage and not the core focus — your feedback on these
-              helps us understand how far to take them.
+              Dressing Rooms and Share by Link are now live in beta. Testers
+              can save looks into rooms and share them by text link with app
+              users and non-app users while we continue refining the
+              scan-to-closet workflow.
             </p>
           </div>
         </div>
