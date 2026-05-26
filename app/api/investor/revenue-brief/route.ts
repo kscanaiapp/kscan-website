@@ -1,7 +1,6 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import {
-  getConfiguredInvestorAccessPassword,
   INVESTOR_ACCESS_COOKIE,
   isInvestorAccessCookieValid,
 } from "@/lib/investorAccess";
@@ -21,8 +20,11 @@ function briefHeaders() {
 }
 
 async function hasInvestorAccess() {
-  const configuredPassword = getConfiguredInvestorAccessPassword();
-  if (!configuredPassword) return null;
+  const configuredPassword = process.env.INVESTOR_ACCESS_PASSWORD;
+  if (!configuredPassword) {
+    console.error("Revenue brief requested, but access password is not configured.");
+    return false;
+  }
 
   const cookieStore = await cookies();
   const provided = cookieStore.get(INVESTOR_ACCESS_COOKIE)?.value ?? "";
@@ -91,16 +93,7 @@ export async function HEAD(request: Request) {
     return rateLimitedResponse(rateLimit.retryAfterSeconds);
   }
 
-  const hasAccess = await hasInvestorAccess();
-  if (hasAccess === null) {
-    console.error("Revenue brief requested, but access password is not configured.");
-    return new NextResponse(null, {
-      status: 503,
-      headers: { "Cache-Control": "private, no-store" },
-    });
-  }
-
-  if (!hasAccess) {
+  if (!(await hasInvestorAccess())) {
     console.warn("Unauthorized revenue brief HEAD request.");
     return new NextResponse(null, {
       status: 401,
@@ -144,16 +137,7 @@ export async function GET(request: Request) {
     );
   }
 
-  const hasAccess = await hasInvestorAccess();
-  if (hasAccess === null) {
-    console.error("Revenue brief requested, but access password is not configured.");
-    return NextResponse.json(
-      { status: "error", message: "Access is unavailable." },
-      { status: 503, headers: { "Cache-Control": "private, no-store" } },
-    );
-  }
-
-  if (!hasAccess) {
+  if (!(await hasInvestorAccess())) {
     console.warn("Unauthorized revenue brief GET request.");
     return NextResponse.json(
       { status: "error", message: "Access could not be verified." },
