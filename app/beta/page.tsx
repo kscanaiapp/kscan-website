@@ -82,7 +82,7 @@ const betaStatus = [
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
-    label: "* Smart Glasses",
+    label: "Smart Glasses *",
     status: "In Development",
     dotClass: "bg-indigo-400",
     badgeClass: "border-indigo-200 bg-indigo-50 text-indigo-700",
