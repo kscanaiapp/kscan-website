@@ -82,7 +82,7 @@ const betaStatus = [
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
-    label: "Smart Glasses",
+    label: "* Smart Glasses",
     status: "In Development",
     dotClass: "bg-indigo-400",
     badgeClass: "border-indigo-200 bg-indigo-50 text-indigo-700",
@@ -162,9 +162,9 @@ export default function BetaPage() {
         </div>
 
         <p className="mt-5 max-w-md text-[12px] leading-relaxed text-stone-400">
-          Phase 2 development is underway for smart-glasses fashion discovery,
-          extending K Scan&rsquo;s Style-Parse workflow toward hands-free
-          real-world scanning.
+          Fashion discovery is moving beyond the screen. K Scan is bringing
+          real world style recognition into wearable tech through immersive
+          hands free visual experiences.
         </p>
       </section>
 
