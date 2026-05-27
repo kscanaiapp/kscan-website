@@ -57,8 +57,8 @@ const featureList = [
     body: "We do not just identify objects. K Scan reads proportion, layering, silhouette, and intent so each piece is understood in context.",
   },
   {
-    title: "Faster Than Reverse Image Search",
-    body: "Built for live video and still images, K Scan turns real-world inspiration into ranked matches. Capture the look and move on.",
+    title: "Built for Speed and Context",
+    body: "Designed for live video and still images, K Scan turns real-world inspiration into ranked matches. Capture the look and move on.",
   },
   {
     title: "One View, Multiple Retailers",
@@ -81,11 +81,11 @@ const featureList = [
 const trustMetrics = [
   { label: "Avg. Parse Time", value: "1.4s" },
   { label: "Silhouette Recognition", value: "94%" },
-  { label: "Retailers Indexed", value: "200+" },
+  { label: "Retailers in Catalog", value: "200+" },
 ];
 
 const benchmarkStats = [
-  { label: "500k+ Outfit Images", pct: 94 },
+  { label: "Outfit Image Recognition", pct: 94 },
   { label: "Real-Time Material Detection", pct: 89 },
   { label: "Cross-Retailer Product Sync", pct: 81 },
   { label: "Custom Silhouette Recognition", pct: 76 },
@@ -305,7 +305,7 @@ export default function Home() {
     "@type": "SoftwareApplication",
     name: "K Scan AI",
     applicationCategory: "ShoppingApplication",
-    operatingSystem: "iOS, Android, Web",
+    operatingSystem: "Android, Web",
     description:
       "AI-powered visual fashion search for identifying clothes from photos, screenshots, videos, and social inspiration.",
     url: "https://kscan.app",
@@ -538,7 +538,7 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-600 md:text-xs">
             <span>AVG SCAN TIME: 1.4S</span>
             <span className="hidden h-3 w-px bg-neutral-200 md:inline-block" aria-hidden="true" />
-            <span>10+ INTEGRATED RETAILERS</span>
+            <span>10+ COMMERCE PARTNERS</span>
           </div>
         </div>
       </section>
@@ -818,6 +818,7 @@ export default function Home() {
               </div>
             </div>
           </FadeUp>
+
         </div>
       </section>
 
@@ -887,7 +888,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="mt-6 text-[11px] leading-relaxed text-stone-400">
-                Internal benchmark across 50,000 test outfit images. Independent audit pending.
+                Internal benchmark. Results are representative estimates; independent audit pending.
               </p>
             </div>
           </div>

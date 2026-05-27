@@ -81,6 +81,12 @@ const betaStatus = [
     dotClass: "bg-emerald-400",
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
+  {
+    label: "Smart Glasses",
+    status: "In Development",
+    dotClass: "bg-indigo-400",
+    badgeClass: "border-indigo-200 bg-indigo-50 text-indigo-700",
+  },
 ];
 
 const roadmapCards = [
@@ -154,6 +160,12 @@ export default function BetaPage() {
             ))}
           </ul>
         </div>
+
+        <p className="mt-5 max-w-md text-[12px] leading-relaxed text-stone-400">
+          Phase 2 development is underway for smart-glasses fashion discovery,
+          extending K Scan&rsquo;s Style-Parse workflow toward hands-free
+          real-world scanning.
+        </p>
       </section>
 
       {/* ── Divider ────────────────────────────────────────────────────────── */}
@@ -244,7 +256,7 @@ export default function BetaPage() {
         <p className="mt-8 text-[12px] text-stone-400">
           Want to influence the roadmap?{" "}
           <a
-            href="mailto:beta@kscan.app?subject=Beta Feedback"
+            href="mailto:kscanai.app@gmail.com?subject=Beta Feedback"
             className="underline underline-offset-2 transition-colors hover:text-stone-600"
           >
             Send us your top pick.
@@ -274,7 +286,7 @@ export default function BetaPage() {
             Send feedback directly to the K Scan team.
           </p>
           <a
-            href="mailto:beta@kscan.app?subject=Beta Feedback"
+            href="mailto:kscanai.app@gmail.com?subject=Beta Feedback"
             className={buttons.primaryLg}
           >
             Send Beta Feedback
