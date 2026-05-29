@@ -46,6 +46,13 @@ export function SiteFooter() {
             >
               Do Not Sell or Share
             </Link>
+            <span aria-hidden="true" className="select-none">|</span>
+            <Link
+              href="/support"
+              className="-my-3 flex h-11 items-center justify-center text-[11px] transition-colors hover:text-stone-500 focus:outline-none focus-visible:text-stone-500"
+            >
+              Support
+            </Link>
             <a
               href="https://www.instagram.com/KScan_app"
               target="_blank"
