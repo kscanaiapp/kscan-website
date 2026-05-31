@@ -56,11 +56,13 @@ export default function TermsSummaryPage() {
 
           <div>
             <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">
-              {"Face & Bystander Protection:"}
+              Beta Image Handling:
             </h3>
             <p>
-              Before scan images are transmitted for cloud processing, K Scan AI applies privacy filtering to blur
-              detected faces.
+              K Scan AI is a fashion-discovery tool and is not designed for facial recognition, biometric
+              identification, or surveillance. In this beta release, images are transmitted to our backend for AI
+              analysis without active on-device face blurring. The app&apos;s privacy sanitizer infrastructure may
+              operate in pass-through mode. K Scan does not represent this beta as applying active face blurring.
             </p>
           </div>
         </div>

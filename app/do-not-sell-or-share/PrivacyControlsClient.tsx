@@ -448,10 +448,10 @@ export function PrivacyControlsClient() {
             Related Legal Documents
           </h2>
           <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[14px]">
-            <Link href="/privacy" className={linkCls}>
+            <Link href="/legal/privacy" className={linkCls}>
               Privacy Summary
             </Link>
-            <Link href="/legal/terms-summary" className={linkCls}>
+            <Link href="/legal/terms" className={linkCls}>
               Terms Summary
             </Link>
           </div>
