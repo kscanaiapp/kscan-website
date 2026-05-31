@@ -230,7 +230,7 @@ export default function BetaPage() {
           What We&rsquo;re Exploring Next
         </h2>
         <p className="mb-10 max-w-md text-[13px] leading-relaxed text-stone-500">
-          These are directions we&rsquo;re actively thinking through — not
+          These are directions we&rsquo;re actively thinking through, not
           commitments, but honest signals of where the product is heading.
         </p>
 
