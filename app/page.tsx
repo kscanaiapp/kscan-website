@@ -1074,7 +1074,7 @@ export default function Home() {
                 By joining, you agree to receive K Scan early access and product updates. We use your email only for
                 waitlist, launch, and product access communications.{" "}
                 <a
-                  href="/privacy"
+                  href="/legal/privacy"
                   className="text-cyan-400/80 underline decoration-cyan-400/30 underline-offset-4 transition hover:text-cyan-300 hover:decoration-cyan-300/60"
                 >
                   Read our Privacy Policy
