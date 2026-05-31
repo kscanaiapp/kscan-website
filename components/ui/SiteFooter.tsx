@@ -27,17 +27,17 @@ export function SiteFooter() {
             </Link>
             <span aria-hidden="true" className="select-none">|</span>
             <Link
-              href="/privacy"
+              href="/legal/privacy"
               className="-my-3 flex h-11 items-center justify-center text-[11px] transition-colors hover:text-stone-500 focus:outline-none focus-visible:text-stone-500"
             >
               Privacy
             </Link>
             <span aria-hidden="true" className="select-none">|</span>
             <Link
-              href="/legal/terms-summary"
+              href="/legal/terms"
               className="-my-3 flex h-11 items-center justify-center text-[11px] transition-colors hover:text-stone-500 focus:outline-none focus-visible:text-stone-500"
             >
-              Terms Summary
+              Terms
             </Link>
             <span aria-hidden="true" className="select-none">|</span>
             <Link
