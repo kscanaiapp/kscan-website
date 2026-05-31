@@ -64,6 +64,7 @@ export default function LegalPrivacyPage() {
               Product Scope
             </h2>
             <p>K Scan is not designed for facial recognition, biometric identification, or surveillance.</p>
+            <p>K Scan AI is not directed to children under 13.</p>
           </section>
 
           <section className="space-y-4">
@@ -74,6 +75,13 @@ export default function LegalPrivacyPage() {
               <li>Account deletion requests are routed through an in-app deletion-request workflow.</li>
               <li>Requests are processed within 30 days unless retention is legally required or permitted.</li>
             </ul>
+            <p>
+              For sale, sharing, or sensitive-data preference choices, visit our{" "}
+              <a href="/do-not-sell-or-share" className={linkClassName}>
+                Do Not Sell or Share page
+              </a>
+              .
+            </p>
           </section>
 
           <section className="space-y-2 pt-4">

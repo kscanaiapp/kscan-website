@@ -42,7 +42,7 @@ export default function SupportPage() {
             </h2>
             <ul className="space-y-2 pl-4">
               <li>Use the in-app deletion request workflow from Privacy controls.</li>
-              <li>Requests are reviewed and processed within beta operations policy timelines.</li>
+              <li>Deletion requests are processed within 30 days unless retention is legally required or permitted.</li>
             </ul>
           </section>
 
