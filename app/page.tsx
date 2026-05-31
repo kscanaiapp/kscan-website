@@ -538,7 +538,7 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-600 md:text-xs">
             <span>AVG SCAN TIME: 1.4S</span>
             <span className="hidden h-3 w-px bg-neutral-200 md:inline-block" aria-hidden="true" />
-            <span>10+ COMMERCE PARTNERS</span>
+            <span>10+ RETAILER SOURCES</span>
           </div>
         </div>
       </section>
