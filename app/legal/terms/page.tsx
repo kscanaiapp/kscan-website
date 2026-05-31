@@ -62,10 +62,11 @@ export default function LegalTermsPage() {
           <section className="space-y-2 pt-4">
             <h2 className="text-[11px] font-semibold uppercase tracking-widest text-stone-400">Contact</h2>
             <p>
-              Support:{" "}
-              <a href="mailto:support@kscan.app" className={linkClassName}>
-                support@kscan.app
+              For support or questions, contact{" "}
+              <a href="mailto:kscanai.app@gmail.com" className={linkClassName}>
+                kscanai.app@gmail.com
               </a>
+              .
             </p>
           </section>
         </div>

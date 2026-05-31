@@ -17,16 +17,11 @@ export default function SupportPage() {
           <section className="space-y-2">
             <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">Contact</h2>
             <p>
-              Support:{" "}
-              <a href="mailto:support@kscan.app" className={linkClassName}>
-                support@kscan.app
+              For support, privacy requests, or account help, contact{" "}
+              <a href="mailto:kscanai.app@gmail.com" className={linkClassName}>
+                kscanai.app@gmail.com
               </a>
-            </p>
-            <p>
-              Privacy:{" "}
-              <a href="mailto:privacy@kscan.app" className={linkClassName}>
-                privacy@kscan.app
-              </a>
+              .
             </p>
           </section>
 
@@ -75,8 +70,8 @@ export default function SupportPage() {
             <ul className="space-y-2 pl-4">
               <li>
                 Testers can report crashes, permission issues, and scan-result concerns to{" "}
-                <a href="mailto:support@kscan.app" className={linkClassName}>
-                  support@kscan.app
+                <a href="mailto:kscanai.app@gmail.com" className={linkClassName}>
+                  kscanai.app@gmail.com
                 </a>
                 .
               </li>
