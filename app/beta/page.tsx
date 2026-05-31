@@ -99,7 +99,7 @@ const roadmapCards = [
   {
     title: "Circular Closet",
     description:
-      "Secondhand-first recommendations and resale-aware wardrobe planning.",
+      "Vintage recommendations and resale focused wardrobe planning.",
     badge: "Exploring",
   },
   {
