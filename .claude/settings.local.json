@@ -1,7 +1,31 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\jsmit\\\\kscan-website\")",
+      "Bash(Select-Object Name, FullName)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\jsmit\\\\kscan-website\\\\supabase\\\\functions\\\\privacy-controls\\\\\" -Force)",
+      "Bash(cmd /c \"cd C:\\\\Users\\\\jsmit\\\\kscan-website && npm.cmd run build 2>&1\")",
+      "Bash(cmd /c \"npm.cmd run build\")",
+      "Bash(cmd /c \"cd /d C:\\\\Users\\\\jsmit\\\\kscan-website && npm.cmd run build\")",
+      "Bash(git mv *)",
+      "PowerShell(Get-Content \"C:\\\\Users\\\\jsmit\\\\kscan-website\\\\.env.local\" | Select-String -Pattern \"SUPABASE|supabase\" | ForEach-Object { $line = $_.Line; if \\($line -match \"KEY|SECRET|TOKEN\"\\) { \\($line -split \"=\"\\)[0] + \"=[REDACTED]\" } else { $line } })",
+      "PowerShell($path = \"$env:APPDATA\\\\supabase\\\\access-token\"; if \\(Test-Path $path\\) { \"token file exists\" } else { \"no token file at $path\" }; $path2 = \"$env:USERPROFILE\\\\.supabase\\\\access-token\"; if \\(Test-Path $path2\\) { Get-Content $path2 | Select-Object -First 1 } else { \"no token at $path2\" })",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.supabase\\\\\" -ErrorAction SilentlyContinue; Get-ChildItem \"$env:APPDATA\\\\supabase\\\\\" -ErrorAction SilentlyContinue; Get-ChildItem \"$env:LOCALAPPDATA\\\\supabase\\\\\" -ErrorAction SilentlyContinue)",
+      "PowerShell(npx supabase --version 2>&1; Write-Output \"---\"; Get-Content \"$env:USERPROFILE\\\\.supabase\\\\telemetry.json\" -ErrorAction SilentlyContinue)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\jsmit\\\\kscan-website\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(npx tsc *)",
+      "Bash(powershell -Command ' *)",
+      "Bash(cmd /c npm.cmd run build)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "PowerShell(node -e \"const p=require\\('./package.json'\\); console.log\\('Build script:', p.scripts?.build\\); console.log\\('Dev script:', p.scripts?.dev\\); console.log\\('Start script:', p.scripts?.start\\)\")",
+      "PowerShell(git check-ignore -v app/legal/privacy/page.tsx)",
+      "PowerShell(git check-ignore -v app/legal/terms/page.tsx)",
+      "PowerShell(git check-ignore -v app/support/page.tsx)",
+      "PowerShell(cmd /c \"dir /s /b app\\\\legal 2>&1\")",
+      "PowerShell(cmd /c \"dir /s /b app\\\\support 2>&1\")"
     ]
   }
 }

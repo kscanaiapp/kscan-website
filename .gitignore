@@ -56,3 +56,21 @@ investor-docs/watermark_log.csv
 
 # private runtime-only materials
 private/investor-docs/
+
+# Word temp/lock files that should never be committed
+public/docs/~$*
+public/docs/~WRL*.tmp
+
+# Demo backup archives (serve from public/demo/ only)
+public/demo-backups/
+
+# Internal validation docs (not for public serving)
+public/docs/beta-v2-validation-summary.md
+public/docs/kscan-apple-privacy-policy.docx
+
+# Local QA and Test Logging Noise
+*.log
+*.err
+qa/
+.codex-screens/
+supabase/.temp/
