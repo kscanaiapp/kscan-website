@@ -164,7 +164,7 @@ export default function TermsSummaryPage() {
             For more details, see our full{" "}
             <a
               href="/docs/kscan-terms-and-conditions.pdf"
-              className="text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
+              className="rounded-sm font-medium text-indigo-600 underline decoration-indigo-300 underline-offset-2 transition-colors hover:text-indigo-800 hover:decoration-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2"
             >
               Terms and Conditions
             </a>{" "}
