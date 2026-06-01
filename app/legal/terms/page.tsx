@@ -62,11 +62,16 @@ export default function LegalTermsPage() {
           <section className="space-y-2 pt-4">
             <h2 className="text-[11px] font-semibold uppercase tracking-widest text-stone-400">Contact</h2>
             <p>
-              For support or questions, contact{" "}
-              <a href="mailto:kscanai.app@gmail.com" className={linkClassName}>
-                kscanai.app@gmail.com
-              </a>
-              .
+              For questions or to obtain a full copy of our{" "}
+              <a
+                href="/docs/kscan-terms-and-conditions.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-sm font-medium text-indigo-600 underline decoration-indigo-300 underline-offset-2 transition-colors hover:text-indigo-800 hover:decoration-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2"
+              >
+                Terms and Conditions
+              </a>{" "}
+              please contact us at kscanai.app@gmail.com.
             </p>
           </section>
         </div>

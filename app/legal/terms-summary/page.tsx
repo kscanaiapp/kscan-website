@@ -161,14 +161,14 @@ export default function TermsSummaryPage() {
 
         <div className="mt-14 space-y-4 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <p>
-            Our full{" "}
+            For questions, or to obtain a full copy of our{" "}
             <a
               href="/docs/kscan-terms-and-conditions.pdf"
               className="rounded-sm font-medium text-indigo-600 underline decoration-indigo-300 underline-offset-2 transition-colors hover:text-indigo-800 hover:decoration-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2"
             >
               Terms and Conditions
             </a>{" "}
-            are available online or by email at kscanai.app@gmail.com.
+            please contact us at kscanai.app@gmail.com.
           </p>
         </div>
 
