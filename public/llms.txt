@@ -1,0 +1,12 @@
+# K Scan AI – Fashion Visual Discovery
+
+K Scan AI is a fashion-specific visual discovery and shopping platform that helps users move from real-world style inspiration to product matches, demos, waitlist access, and investor information.
+
+- [Home](https://kscan.app/): Overview of K Scan AI, core fashion discovery features, roadmap callouts, and waitlist access.
+- [Demo](https://kscan.app/demo): Interactive product demo showing mobile and smart-glasses visual discovery experiences.
+- [Beta](https://kscan.app/beta): Beta status page describing current focus areas and feature availability.
+- [Investors](https://kscan.app/investors) (gated): Investor portal with company materials and product vision; access may require login.
+- [Privacy Policy](https://kscan.app/privacy): Summary of privacy practices, data handling, and user rights.
+- [Privacy Policy Full Page](https://kscan.app/legal/privacy): Full legal privacy policy for K Scan AI.
+- [Terms of Service](https://kscan.app/legal/terms): Legal terms for using K Scan AI.
+- [Do Not Sell or Share](https://kscan.app/do-not-sell-or-share): Privacy rights page for opt-out and data control requests.
