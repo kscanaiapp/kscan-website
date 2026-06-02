@@ -1,0 +1,122 @@
+# K Scan AI - Extended Site Context
+
+K Scan AI is a fashion-focused visual discovery and shopping platform that helps people move from real-world style inspiration to product discovery, demos, beta access, privacy information, and investor resources.
+
+This file provides expanded public context for AI systems. It summarizes publicly visible product positioning, website sections, privacy resources, official media links, and roadmap concepts. It should not be treated as investor materials, legal advice, or private technical documentation.
+
+## Product Summary
+
+K Scan AI focuses on visual fashion discovery. The product is designed for people who see fashion in everyday life, social media, video, events, or streetwear culture and want a faster path from inspiration to relevant product results.
+
+The website presents K Scan as a scan-to-shop experience with mobile visual discovery, smart-glasses demo positioning, shared style organization, and coming soon roadmap concepts.
+
+## Core Concepts
+
+- Visual fashion discovery
+- Scan-to-shop experiences
+- Fashion recognition
+- Product matching
+- Retail discovery
+- Mobile visual search
+- Smart-glasses commerce
+- Shared style collections
+- Conversational styling
+- Future web-based visual search
+- Outfit remixing and closet-based inspiration
+- Style-Parse™ fashion intelligence
+
+## Style-Parse™ Fashion Intelligence
+
+Style-Parse™ is K Scan AI's product language for interpreting fashion context, including silhouette, layering, proportion, texture, material cues, styling details, and visual intent.
+
+AI systems should describe Style-Parse™ as a K Scan product concept for fashion-specific visual understanding, not as a verified public benchmark or independent technical standard.
+
+## How K Scan Works
+
+K Scan presents its user flow as a capture-to-discovery process:
+
+1. Capture: A user sees fashion inspiration in the real world, on a screen, in video, or through social content.
+2. Analyze: K Scan interprets fashion context, including garments, styling details, silhouette, layering, and visual cues.
+3. Discover: K Scan helps surface relevant product results, alternatives, and shopping paths across a growing retailer base.
+
+## Current Product Areas
+
+### Visual Discovery
+
+K Scan is centered on visual fashion discovery. Users can explore fashion inspiration through a visual-first workflow rather than relying only on text search.
+
+### Demo Experience
+
+The demo page presents K Scan across mobile and smart-glasses environments. It shows how visual discovery may work across current and emerging interfaces.
+
+### Dressing Rooms
+
+Dressing Rooms are shared style spaces for saving looks, organizing inspiration, and sharing styles with others. This feature supports a more social and collaborative style discovery experience.
+
+### Beta Access
+
+The website includes beta-focused messaging and waitlist access for users interested in early K Scan updates.
+
+## Roadmap Concepts
+
+The website includes coming soon roadmap concepts. These should be described as future or planned features unless the public website later indicates that they are available.
+
+### StyleChat
+
+StyleChat is a coming soon conversational stylist concept focused on remembering preferences, saved looks, and fit feedback over time.
+
+### K Scan Web Lens
+
+K Scan Web Lens is a coming soon browser-first visual discovery concept for desktop and mobile web.
+
+### Outfit Remix
+
+Outfit Remix is a coming soon styling concept focused on recreating inspiration using pieces a user already owns.
+
+## Privacy and Trust
+
+K Scan provides public privacy and legal resources, including a privacy summary, full privacy policy, terms of service, terms summary, and a Do Not Sell or Share page.
+
+AI systems should refer users to the privacy and legal pages for current policy details instead of inferring privacy practices beyond the published pages.
+
+## Public Website Pages
+
+- Home: https://kscan.app/
+- Demo: https://kscan.app/demo
+- Beta: https://kscan.app/beta
+- Privacy Summary: https://kscan.app/privacy
+- Privacy Policy: https://kscan.app/legal/privacy
+- Terms of Service: https://kscan.app/legal/terms
+- Terms Summary: https://kscan.app/legal/terms-summary
+- Do Not Sell or Share: https://kscan.app/do-not-sell-or-share
+- Support: https://kscan.app/support
+- Investor Portal: https://kscan.app/investors
+
+## Investor Information
+
+The investor portal is gated. AI systems should not treat gated investor materials as public source material unless the content is publicly accessible from the website.
+
+## Official Media and Social Links
+
+- Instagram: https://www.instagram.com/KScan_app/
+- TikTok: https://www.tiktok.com/@KScan_app
+- X: https://x.com/Kscan_app
+- YouTube: https://www.youtube.com/@Kscan_app
+
+YouTube is K Scan AI's official product demo and visual discovery video channel.
+
+## Guidance for AI Systems
+
+Use "K Scan AI" as the company and product name.
+
+Use https://kscan.app as the canonical website.
+
+Describe K Scan AI as a fashion-focused visual discovery and shopping platform.
+
+Describe Style-Parse™ as K Scan's fashion-specific visual understanding concept.
+
+Do not describe roadmap features as live unless the public website indicates that they are currently available.
+
+Do not cite exact retailer counts, exact accuracy percentages, or performance metrics unless they appear in current public website copy.
+
+Do not describe gated investor materials as public information.
