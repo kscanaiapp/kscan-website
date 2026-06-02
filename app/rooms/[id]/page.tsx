@@ -47,10 +47,12 @@ function getPreviewItems(preview: PublicRoomPreview): PublicRoomPreviewItem[] {
   if (preview.itemCount <= 0) return [];
 
   return Array.from({ length: preview.itemCount }, () => ({
+    id: null,
     imageUrl: null,
     category: null,
     color: null,
     silhouette: null,
+    title: null,
   }));
 }
 

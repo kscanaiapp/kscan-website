@@ -3,10 +3,12 @@ import "server-only";
 import { getSupabaseAdminClient } from "@/lib/supabaseAdmin";
 
 export type PublicRoomPreviewItem = {
+  id: string | null;
   imageUrl: string | null;
   category: string | null;
   color: string | null;
   silhouette: string | null;
+  title: string | null;
 };
 
 export type PublicRoomPreview = {
@@ -80,12 +82,14 @@ async function resolveItems(
   const typedItems = rawItems.map((raw) => {
     const item = raw && typeof raw === "object" ? (raw as Record<string, unknown>) : {};
     return {
+      id: nullableString(item.id),
       existingUrl: nullableString(item.imageUrl),
       bucket: nullableString(item.imageStorageBucket),
       path: nullableString(item.imageStoragePath),
       category: nullableString(item.category),
       color: nullableString(item.color),
       silhouette: nullableString(item.silhouette),
+      title: nullableString(item.title),
     };
   });
 
@@ -104,14 +108,14 @@ async function resolveItems(
     })
   );
 
-  return typedItems.map(({ existingUrl, bucket, path, category, color, silhouette }) => {
+  return typedItems.map(({ id, existingUrl, bucket, path, category, color, silhouette, title }) => {
     let imageUrl: string | null = null;
     if (existingUrl && /^https?:\/\//i.test(existingUrl)) {
       imageUrl = existingUrl;
     } else if (bucket && path) {
       imageUrl = urlCache.get(`${bucket}::${path}`) ?? null;
     }
-    return { imageUrl, category, color, silhouette };
+    return { id, imageUrl, category, color, silhouette, title };
   });
 }
 
