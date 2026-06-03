@@ -55,8 +55,13 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
       return json({ status: "malformed" }, 400);
     }
 
-    if (result.status !== "available") {
+    if (result.status === "unavailable") {
       return json({ status: "unavailable" }, 404);
+    }
+
+    if (result.status !== "available") {
+      console.error(`[rooms-preview] Internal error: ${result.status}`);
+      return json({ status: "error", message: "Internal server error" }, 500);
     }
 
     const { preview } = result;

@@ -22,7 +22,7 @@ export type PublicRoomPreview = {
 
 export type PublicRoomPreviewResult =
   | { status: "available"; preview: PublicRoomPreview }
-  | { status: "unavailable" | "malformed" | "configuration_error" };
+  | { status: "unavailable" | "malformed" | "configuration_error" | "unexpected_shape" };
 
 // Internal server-only type — storage fields must never be serialized to client
 type RpcPreviewPayload = {
@@ -144,6 +144,11 @@ export async function fetchPublicRoomPreview(
   }
 
   const raw = (data ?? {}) as RpcPreviewPayload;
+
+  if (typeof raw.status !== "string") {
+    console.error("[rooms-preview] UNEXPECTED_SHAPE: RPC returned no status field");
+    return { status: "unexpected_shape" };
+  }
 
   if (raw.status === "malformed") return { status: "malformed" };
   if (raw.status !== "available") return { status: "unavailable" };
