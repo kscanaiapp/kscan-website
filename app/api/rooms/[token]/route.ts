@@ -12,63 +12,94 @@ const UUID_PATTERN =
 
 const MAX_ITEMS = 50;
 
-const SHARED_HEADERS = {
+const BASE_HEADERS = {
   "Content-Type": "application/json",
   "Access-Control-Allow-Origin": "*",
-  "Cache-Control": "public, max-age=60, stale-while-revalidate=300",
 };
-
-function json(body: unknown, status: number): NextResponse {
-  return NextResponse.json(body, { status, headers: SHARED_HEADERS });
-}
 
 type RouteContext = {
   params: Promise<{ token: string }>;
 };
 
 export async function GET(request: Request, context: RouteContext): Promise<NextResponse> {
+  const urlPresent = Boolean(process.env.SUPABASE_URL?.trim()) ? "yes" : "no";
+  const keyPresent = Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()) ? "yes" : "no";
+
   const ip = getClientIp(request);
   const rl = checkRateLimit({ key: `rooms-preview:${ip}`, limit: 100, windowMs: 60_000 });
+
+  function diagJson(
+    body: unknown,
+    status: number,
+    resultStatus: string,
+    tokenReceived: "yes" | "no" = "no",
+  ): NextResponse {
+    return NextResponse.json(body, {
+      status,
+      headers: {
+        ...BASE_HEADERS,
+        "Cache-Control": "no-store, no-cache, must-revalidate",
+        "X-KScan-Rooms-Api-Diag": "rooms-api-diag-866a922",
+        "X-KScan-Supabase-Url-Present": urlPresent,
+        "X-KScan-Service-Key-Present": keyPresent,
+        "X-KScan-Token-Received": tokenReceived,
+        "X-KScan-Result-Status": resultStatus,
+      },
+    });
+  }
+
   if (!rl.allowed) {
     return NextResponse.json(
       { status: "rate_limited" },
       {
         status: 429,
         headers: {
-          ...SHARED_HEADERS,
+          ...BASE_HEADERS,
+          "Cache-Control": "no-store, no-cache, must-revalidate",
+          "X-KScan-Rooms-Api-Diag": "rooms-api-diag-866a922",
+          "X-KScan-Supabase-Url-Present": urlPresent,
+          "X-KScan-Service-Key-Present": keyPresent,
+          "X-KScan-Token-Received": "no",
+          "X-KScan-Result-Status": "rate_limited",
           "Retry-After": String(rl.retryAfterSeconds),
         },
-      }
+      },
     );
   }
 
   const { token } = await context.params;
+  const tokenReceived: "yes" | "no" = Boolean(token && token.length > 0) ? "yes" : "no";
 
   if (!token || !UUID_PATTERN.test(token)) {
-    return json({ status: "malformed" }, 400);
+    return diagJson({ status: "malformed" }, 400, "malformed", tokenReceived);
   }
 
   try {
     const result = await fetchPublicRoomPreview(token);
 
     if (result.status === "malformed") {
-      return json({ status: "malformed" }, 400);
+      return diagJson({ status: "malformed" }, 400, "malformed", tokenReceived);
     }
 
     if (result.status === "unavailable") {
-      return json({ status: "unavailable" }, 404);
+      return diagJson({ status: "unavailable" }, 404, "unavailable", tokenReceived);
     }
 
     if (result.status !== "available") {
       console.error(`[rooms-preview] Internal error: ${result.status}`);
-      return json({ status: "error", message: "Internal server error" }, 500);
+      return diagJson(
+        { status: "error", message: "Internal server error" },
+        500,
+        result.status,
+        tokenReceived,
+      );
     }
 
     const { preview } = result;
     const visibleItems = preview.items.slice(0, MAX_ITEMS);
     const isCapped = preview.itemCount > MAX_ITEMS;
 
-    return json(
+    return diagJson(
       {
         status: "available",
         preview: {
@@ -91,10 +122,17 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
           })),
         },
       },
-      200
+      200,
+      "available",
+      tokenReceived,
     );
   } catch {
     console.error("[rooms-preview] Unexpected error handling shared room request");
-    return json({ status: "error", message: "Internal server error" }, 500);
+    return diagJson(
+      { status: "error", message: "Internal server error" },
+      500,
+      "internal_error",
+      tokenReceived,
+    );
   }
 }
