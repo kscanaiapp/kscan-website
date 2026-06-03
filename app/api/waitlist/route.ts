@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
-import { getSupabaseServerConfig } from "@/lib/serverSupabaseEnv";
+import { getWaitlistSupabaseConfig } from "@/lib/waitlistSupabaseEnv";
 
 const WAITLIST_TABLE = "waitlist_signups";
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
@@ -48,6 +48,28 @@ async function sendWelcomeEmail(email: string) {
   });
 }
 
+function redactLogValue(value: unknown) {
+  if (typeof value !== "string") return value;
+  return value
+    .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "[redacted-email]")
+    .slice(0, 500);
+}
+
+function safeSupabaseError(error: unknown) {
+  if (!error || typeof error !== "object") {
+    return { message: redactLogValue(String(error)) };
+  }
+  const record = error as Record<string, unknown>;
+  return {
+    name: redactLogValue(record.name),
+    code: redactLogValue(record.code),
+    message: redactLogValue(record.message),
+    details: redactLogValue(record.details),
+    hint: redactLogValue(record.hint),
+    enumerableKeys: Object.keys(record),
+  };
+}
+
 function isDuplicateError(error: unknown) {
   if (!error || typeof error !== "object") return false;
 
@@ -89,9 +111,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ status: "error", message }, { status: 400 });
   }
 
-  const config = getSupabaseServerConfig();
+  const config = getWaitlistSupabaseConfig();
   if (!config) {
-    console.error("Invalid Supabase server configuration: SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is missing.");
+    console.error("[waitlist] Supabase configuration is invalid. Check WAITLIST_SUPABASE_URL and WAITLIST_SUPABASE_SERVICE_ROLE_KEY (or legacy SUPABASE_* fallback).");
     return NextResponse.json(
       { status: "error", message: "Waitlist service is not configured." },
       { status: 500 },
@@ -108,13 +130,20 @@ export async function POST(request: Request) {
 
     const { error } = await supabase
       .from(WAITLIST_TABLE)
-      .insert({ email: normalizedEmail, source, page, name, referrer });
+      .insert({
+        email: normalizedEmail,
+        source,
+        page: page ?? null,
+        name: name ?? null,
+        referrer: referrer ?? null,
+      });
 
     if (error) {
-      console.error("Supabase waitlist insert failed:", error);
       if (isDuplicateError(error)) {
         return NextResponse.json({ status: "duplicate", message: "Already joined." });
       }
+
+      console.error("Supabase waitlist insert failed:", safeSupabaseError(error));
 
       return NextResponse.json(
         { status: "error", message: "Unable to save waitlist signup right now." },
