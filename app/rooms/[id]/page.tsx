@@ -37,6 +37,10 @@ function getDisplayTitle(preview: PublicRoomPreview | null) {
   return preview?.roomTitle?.trim() || "Shared Dressing Room";
 }
 
+function getDisplayNote(preview: PublicRoomPreview | null) {
+  return preview?.note?.trim() || null;
+}
+
 function hasDisplayableItemFields(item: PublicRoomPreviewItem) {
   return Boolean(item.imageUrl || item.category || item.color || item.silhouette);
 }
@@ -151,6 +155,7 @@ function RoomItemCard({ item, index }: { item: PublicRoomPreviewItem; index: num
 
 function AvailableRoom({ preview }: { preview: PublicRoomPreview }) {
   const title = getDisplayTitle(preview);
+  const note = getDisplayNote(preview);
   const previewItems = getPreviewItems(preview);
 
   return (
@@ -163,8 +168,18 @@ function AvailableRoom({ preview }: { preview: PublicRoomPreview }) {
           <h1 className="mt-5 font-display text-[44px] font-medium leading-[1.02] text-stone-950 sm:text-[58px] md:text-[72px]">
             {title}
           </h1>
+          {note ? (
+            <div className="mt-6 max-w-2xl rounded-[24px] border border-stone-200/80 bg-white px-6 py-5 shadow-[0_18px_36px_rgba(35,28,22,0.06)]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-stone-500">
+                Room Note
+              </p>
+              <p className="mt-3 text-[16px] leading-[1.9] text-stone-600 md:text-[18px]">
+                {note}
+              </p>
+            </div>
+          ) : null}
           <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-stone-600 md:text-[18px]">
-            This shared K Scan Dressing Room is available as a public-safe, view-only preview. Private notes, account details, and internal IDs are not displayed.
+            Only shared room details selected for preview are shown. The room owner&apos;s private information remains hidden.
           </p>
           <div className="mt-8 flex flex-wrap gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">
             <span className="rounded-full border border-stone-200 bg-white px-4 py-2">

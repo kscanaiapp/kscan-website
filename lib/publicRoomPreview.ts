@@ -14,6 +14,7 @@ export type PublicRoomPreviewItem = {
 export type PublicRoomPreview = {
   shareToken: string;
   roomTitle: string | null;
+  note: string | null;
   itemCount: number;
   coverImageUrl: string | null;
   sharedAt: string | null;
@@ -29,6 +30,7 @@ type RpcPreviewPayload = {
   status?: unknown;
   shareToken?: unknown;
   roomTitle?: unknown;
+  note?: unknown;
   itemCount?: unknown;
   coverImageUrl?: unknown;
   coverImageStorageBucket?: unknown;
@@ -171,6 +173,7 @@ export async function fetchPublicRoomPreview(
     preview: {
       shareToken: resolvedShareToken,
       roomTitle: nullableString(raw.roomTitle),
+      note: nullableString(raw.note),
       itemCount: typeof raw.itemCount === "number" ? raw.itemCount : 0,
       sharedAt: nullableString(raw.sharedAt),
       coverImageUrl,

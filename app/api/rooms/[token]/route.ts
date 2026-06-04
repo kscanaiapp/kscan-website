@@ -105,6 +105,7 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
         preview: {
           token: preview.shareToken,
           title: preview.roomTitle,
+          note: preview.note,
           itemCount: preview.itemCount,
           sharedAt: preview.sharedAt,
           coverImageUrl: preview.coverImageUrl,
