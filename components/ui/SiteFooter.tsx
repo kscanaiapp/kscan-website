@@ -41,6 +41,13 @@ export function SiteFooter() {
             </Link>
             <span aria-hidden="true" className="select-none">|</span>
             <Link
+              href="/legal/delete-account"
+              className="-my-3 flex h-11 items-center justify-center text-[11px] transition-colors hover:text-stone-500 focus:outline-none focus-visible:text-stone-500"
+            >
+              Delete Account
+            </Link>
+            <span aria-hidden="true" className="select-none">|</span>
+            <Link
               href="/do-not-sell-or-share"
               className="-my-3 flex h-11 items-center justify-center text-[11px] transition-colors hover:text-stone-500 focus:outline-none focus-visible:text-stone-500"
             >
