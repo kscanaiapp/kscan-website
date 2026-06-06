@@ -231,7 +231,7 @@ export default function InvestorsPage() {
                 Request Investor Materials
               </button>
               <a
-                href="https://calendly.com/kscan/30min"
+                href="https://cal.com/k-scan-app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-stone-300 px-7 py-3.5 text-[13px] font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-900"
@@ -616,6 +616,31 @@ export default function InvestorsPage() {
           </div>
         </div>
       </SectionShell>
+
+      {/* ─── Cal.com Scheduling ───────────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-6 pb-6 md:px-10">
+        <div className="flex flex-col gap-5 rounded-[24px] border border-stone-200/80 bg-white px-6 py-6 md:flex-row md:items-center md:justify-between md:px-8">
+          <div>
+            <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+              Scheduling
+            </p>
+            <h2 className="font-display text-[22px] leading-[1.1] text-stone-900">
+              Schedule a Conversation
+            </h2>
+            <p className="mt-2 max-w-sm text-[14px] leading-[1.85] text-stone-500">
+              For investor or strategic partner conversations, schedule time through K Scan&apos;s booking link.
+            </p>
+          </div>
+          <a
+            href="https://cal.com/k-scan-app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-stone-300 px-7 py-3.5 text-[13px] font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-900 md:flex-shrink-0"
+          >
+            Open Cal.com Booking
+          </a>
+        </div>
+      </section>
 
       {/* ─── Inquiry form (for those without the password) ────────────────── */}
       <section className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
