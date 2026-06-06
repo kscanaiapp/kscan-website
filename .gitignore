@@ -74,3 +74,6 @@ public/docs/kscan-apple-privacy-policy.docx
 qa/
 .codex-screens/
 supabase/.temp/
+
+# Claude local settings
+.claude/settings.local.json
