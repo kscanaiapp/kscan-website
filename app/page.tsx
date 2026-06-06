@@ -393,7 +393,7 @@ export default function Home() {
             className="mb-5 max-w-[10ch] font-display text-[46px] leading-[1.01] text-stone-900 sm:text-[52px] md:mb-6 md:text-[66px] lg:text-[78px]"
             variants={staggerChild}
           >
-            See it. Say it. Get it.
+            See it. Scan it. Style it.
           </motion.h1>
           <motion.p
             className="mb-8 max-w-[90%] text-[15px] leading-[1.85] text-stone-500 sm:max-w-[27rem] md:mb-9 md:text-[16px]"
