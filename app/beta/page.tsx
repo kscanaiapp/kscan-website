@@ -214,6 +214,35 @@ export default function BetaPage() {
             </p>
           </div>
         </div>
+
+        {/* Android beta testing notice */}
+        <div className={`${surfaces.card} mt-6 max-w-lg p-6`}>
+          <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
+            Android Beta Testing
+          </p>
+          <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
+            Android Beta Testing
+          </h3>
+          <p className="text-[13px] leading-relaxed text-stone-500">
+            Android beta testing is now available through Google Play testing
+            for approved testers. If you have been invited, use your Google
+            account to opt in and install the beta build. If you need access,{" "}
+            <Link
+              href="/#waitlist"
+              className="underline underline-offset-2 transition-colors hover:text-stone-700"
+            >
+              join the waitlist
+            </Link>{" "}
+            or{" "}
+            <Link
+              href="/support"
+              className="underline underline-offset-2 transition-colors hover:text-stone-700"
+            >
+              contact support
+            </Link>
+            .
+          </p>
+        </div>
       </section>
 
       {/* ── Divider ────────────────────────────────────────────────────────── */}
