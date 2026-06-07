@@ -121,6 +121,61 @@ async function resolveItems(
   });
 }
 
+// ─── Read-only reaction counts ────────────────────────────────────────────────
+
+export type ReactionCounts = {
+  like: number;
+  love: number;
+  looking: number;
+  thumbs_down: number;
+};
+
+export function emptyReactionCounts(): ReactionCounts {
+  return { like: 0, love: 0, looking: 0, thumbs_down: 0 };
+}
+
+export async function fetchPublicItemReactionCounts(
+  itemIds: string[]
+): Promise<Record<string, ReactionCounts>> {
+  const result: Record<string, ReactionCounts> = {};
+  if (itemIds.length === 0) return result;
+
+  const admin = getSupabaseAdminClient();
+  if (!admin) {
+    console.error("Supabase admin client unavailable for reaction counts.");
+    return result;
+  }
+
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data, error } = await (admin as any).rpc("get_item_reaction_counts", {
+      p_item_ids: itemIds,
+    });
+    if (error) {
+      console.error("Reaction count RPC failed:", error.message);
+      return result;
+    }
+    for (const row of (data ?? []) as Array<{
+      item_id: string;
+      reaction_type: string;
+      count: number;
+    }>) {
+      const id = String(row.item_id ?? "").trim();
+      if (!id) continue;
+      if (!result[id]) result[id] = emptyReactionCounts();
+      const rt = row.reaction_type;
+      if (rt === "like" || rt === "love" || rt === "looking" || rt === "thumbs_down") {
+        result[id][rt] = Number(row.count) || 0;
+      }
+    }
+  } catch (err) {
+    console.error("Reaction count fetch failed:", err);
+  }
+  return result;
+}
+
+// ─── Preview fetch ─────────────────────────────────────────────────────────────
+
 export async function fetchPublicRoomPreview(
   shareToken: string
 ): Promise<PublicRoomPreviewResult> {

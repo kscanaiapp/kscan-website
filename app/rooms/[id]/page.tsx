@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { cache } from "react";
 import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
 import {
   fetchPublicRoomPreview,
+  fetchPublicItemReactionCounts,
+  emptyReactionCounts,
   type PublicRoomPreview,
   type PublicRoomPreviewItem,
+  type ReactionCounts,
 } from "@/lib/publicRoomPreview";
+
+const getCachedPreview = cache(fetchPublicRoomPreview);
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -66,9 +72,25 @@ export async function generateMetadata({ params }: RoomPageProps): Promise<Metad
   const canonicalPath = token ? `/rooms/${encodeURIComponent(token)}` : "/rooms";
   const canonicalUrl = `${SITE_URL}${canonicalPath}`;
 
+  let roomTitle: string | null = null;
+  if (token) {
+    try {
+      const result = await getCachedPreview(token);
+      if (result.status === "available") {
+        roomTitle = result.preview.roomTitle?.trim() || null;
+      }
+    } catch {
+      // metadata failure must never break page render
+    }
+  }
+
+  const displayTitle = roomTitle
+    ? `${roomTitle} | K Scan AI`
+    : "Shared Dressing Room | K Scan AI";
+
   return {
     title: {
-      absolute: "Shared Dressing Room | K Scan AI",
+      absolute: displayTitle,
     },
     description:
       "Open a shared K Scan AI dressing room and explore scan-to-closet beta access.",
@@ -76,7 +98,7 @@ export async function generateMetadata({ params }: RoomPageProps): Promise<Metad
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: "Shared Dressing Room | K Scan AI",
+      title: displayTitle,
       description:
         "Open a shared K Scan AI dressing room and explore scan-to-closet beta access.",
       url: canonicalUrl,
@@ -87,14 +109,16 @@ export async function generateMetadata({ params }: RoomPageProps): Promise<Metad
           url: PREVIEW_IMAGE_URL,
           width: 2048,
           height: 1365,
-          alt: "K Scan AI shared Dressing Room preview",
+          alt: roomTitle
+            ? `${roomTitle} | K Scan AI shared Dressing Room`
+            : "K Scan AI shared Dressing Room preview",
         },
       ],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: "Shared Dressing Room | K Scan AI",
+      title: displayTitle,
       description:
         "Open a shared K Scan AI dressing room and explore scan-to-closet beta access.",
       images: [PREVIEW_IMAGE_URL],
@@ -102,7 +126,44 @@ export async function generateMetadata({ params }: RoomPageProps): Promise<Metad
   };
 }
 
-function RoomItemCard({ item, index }: { item: PublicRoomPreviewItem; index: number }) {
+const ACTIVE_REACTIONS: ReadonlyArray<{
+  type: keyof ReactionCounts;
+  emoji: string;
+  label: string;
+}> = [
+  { type: "love", emoji: "❤️", label: "Love" },
+  { type: "like", emoji: "👍", label: "Like" },
+  { type: "looking", emoji: "👀", label: "Looking" },
+  { type: "thumbs_down", emoji: "👎", label: "Not it" },
+];
+
+function ReactionRow({ reactions }: { reactions: ReactionCounts }) {
+  return (
+    <div className="flex flex-wrap gap-1.5 px-5 pb-4 pt-1">
+      {ACTIVE_REACTIONS.map(({ type, emoji, label }) => (
+        <span
+          key={type}
+          aria-label={`${label}: ${reactions[type]}`}
+          title={label}
+          className="flex select-none items-center gap-1 rounded-full border border-stone-200 bg-stone-50 px-3 py-1 text-[11px] font-medium text-stone-600 cursor-default"
+        >
+          <span aria-hidden="true">{emoji}</span>
+          <span>{reactions[type]}</span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function RoomItemCard({
+  item,
+  index,
+  reactions,
+}: {
+  item: PublicRoomPreviewItem;
+  index: number;
+  reactions: ReactionCounts;
+}) {
   const hasMetadata = item.category || item.color || item.silhouette;
   const isPlaceholder = !hasDisplayableItemFields(item);
   const label = `Shared item ${index + 1}`;
@@ -149,11 +210,18 @@ function RoomItemCard({ item, index }: { item: PublicRoomPreviewItem; index: num
           <p className="text-[13px] leading-6 text-stone-500">No public attributes available.</p>
         )}
       </div>
+      {item.id ? <ReactionRow reactions={reactions} /> : null}
     </article>
   );
 }
 
-function AvailableRoom({ preview }: { preview: PublicRoomPreview }) {
+function AvailableRoom({
+  preview,
+  reactionCounts,
+}: {
+  preview: PublicRoomPreview;
+  reactionCounts: Record<string, ReactionCounts>;
+}) {
   const title = getDisplayTitle(preview);
   const note = getDisplayNote(preview);
   const previewItems = getPreviewItems(preview);
@@ -238,7 +306,12 @@ function AvailableRoom({ preview }: { preview: PublicRoomPreview }) {
         {previewItems.length > 0 ? (
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {previewItems.map((item, index) => (
-              <RoomItemCard key={`${preview.shareToken}-${index}`} item={item} index={index} />
+              <RoomItemCard
+                key={`${preview.shareToken}-${index}`}
+                item={item}
+                index={index}
+                reactions={item.id ? (reactionCounts[item.id] ?? emptyReactionCounts()) : emptyReactionCounts()}
+              />
             ))}
           </div>
         ) : (
@@ -310,10 +383,14 @@ export default async function SharedRoomPage({ params }: RoomPageProps) {
       />
     );
   } else {
-    const result = await fetchPublicRoomPreview(token);
+    const result = await getCachedPreview(token);
 
     if (result.status === "available") {
-      content = <AvailableRoom preview={result.preview} />;
+      const itemIds = result.preview.items
+        .map((i) => i.id)
+        .filter((id): id is string => id !== null);
+      const reactionCounts = await fetchPublicItemReactionCounts(itemIds);
+      content = <AvailableRoom preview={result.preview} reactionCounts={reactionCounts} />;
     } else if (result.status === "malformed") {
       content = (
         <FallbackState
