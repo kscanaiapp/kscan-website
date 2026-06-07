@@ -42,6 +42,16 @@ export default function PrivacyPage() {
                 </p>
               </div>
               <div>
+                <h3 className="font-semibold text-stone-700">Photo &amp; Media Library Access:</h3>
+                <p>
+                  If you choose to upload screenshots, photos, outfit images, shopping screenshots, social-media
+                  screenshots, or other images into Style Library, Dressing Rooms, saved items, style boards, or related
+                  private visual-inspiration features, K Scan may request access to your device&apos;s photo or media
+                  library. K Scan uses this access only for user-selected uploads or media you grant permission to
+                  access.
+                </p>
+              </div>
+              <div>
                 <h3 className="font-semibold text-stone-700">Face &amp; Bystander Protection:</h3>
                 <p>
                   K Scan does not currently apply on-device face blurring or bystander-obscuring before upload. If a
