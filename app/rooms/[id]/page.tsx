@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { cache } from "react";
 import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
+import { CoverImage } from "@/components/rooms/CoverImage";
 import {
   fetchPublicRoomPreview,
   fetchPublicItemReactionCounts,
@@ -131,8 +132,8 @@ const ACTIVE_REACTIONS: ReadonlyArray<{
   emoji: string;
   label: string;
 }> = [
-  { type: "love", emoji: "❤️", label: "Love" },
   { type: "like", emoji: "👍", label: "Like" },
+  { type: "love", emoji: "❤️", label: "Love" },
   { type: "looking", emoji: "👀", label: "Looking" },
   { type: "thumbs_down", emoji: "👎", label: "Not it" },
 ];
@@ -275,18 +276,14 @@ function AvailableRoom({
 
         <aside className="rounded-[28px] border border-stone-200/80 bg-white p-5 shadow-[0_22px_52px_rgba(35,28,22,0.08)]">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] bg-[#F1EDE7]">
-            {preview.coverImageUrl ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={preview.coverImageUrl}
-                alt="Shared Dressing Room cover"
-                className="h-full w-full object-cover"
-              />
-            ) : (
-              <div className="flex h-full items-center justify-center px-8 text-center text-[12px] font-semibold uppercase tracking-[0.24em] text-stone-400">
-                View-only room preview
-              </div>
-            )}
+            <CoverImage
+              primaryUrl={preview.coverImageUrl}
+              fallbackUrls={preview.items
+                .map((i) => i.imageUrl)
+                .filter((u): u is string => u !== null && u !== preview.coverImageUrl)
+                .slice(0, 2)}
+              alt="Shared Dressing Room cover"
+            />
           </div>
         </aside>
       </section>
