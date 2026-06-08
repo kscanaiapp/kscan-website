@@ -30,7 +30,7 @@ Current public beta status as of the last update to this file:
 - Current Focus — Scan-to-Closet
 - Dressing Rooms — Live in Beta
 - Share by Link — Live in Beta
-- StyleChat — Live in Beta
+- StyleChat — Live Now
 - Smart Glasses * — In Development
 
 ## What We're Testing
@@ -45,7 +45,7 @@ Plan outfits together, compare looks, react with emoji, and keep group style dec
 
 ### StyleChat
 
-Ask questions, explore styling options, compare looks, and discover new ways to wear what you find.
+StyleChat is live. It is K Scan's real-time AI-powered conversational stylist for outfit ideas, fit feedback, occasion styling, and general style advice. StyleChat can use saved looks, library images, dressing room context, fit notes, and user-provided style preferences to make recommendations more personal over time.
 
 ### Android Beta Testing
 

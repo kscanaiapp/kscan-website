@@ -63,7 +63,7 @@ The website includes coming soon roadmap concepts. These should be described as 
 
 ### StyleChat
 
-StyleChat is a coming soon conversational stylist concept focused on remembering preferences, saved looks, and fit feedback over time.
+StyleChat is live. It is K Scan's real-time AI-powered conversational stylist for outfit ideas, fit feedback, occasion styling, and general style advice. StyleChat can use saved looks, library images, dressing room context, fit notes, and user-provided style preferences to make recommendations more personal over time.
 
 ### K Scan Web Lens
 
