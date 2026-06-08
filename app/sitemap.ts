@@ -3,41 +3,21 @@ import type { MetadataRoute } from "next";
 const siteUrl = "https://kscan.app";
 
 const publicRoutes = [
-  {
-    path: "",
-    priority: 1,
-    changeFrequency: "weekly" as const,
-  },
-  {
-    path: "/demo",
-    priority: 0.8,
-    changeFrequency: "monthly" as const,
-  },
-  {
-    path: "/investors",
-    priority: 0.6,
-    changeFrequency: "monthly" as const,
-  },
-  {
-    path: "/privacy",
-    priority: 0.2,
-    changeFrequency: "yearly" as const,
-  },
-  {
-    path: "/legal/terms-summary",
-    priority: 0.2,
-    changeFrequency: "yearly" as const,
-  },
-  {
-    path: "/do-not-sell-or-share",
-    priority: 0.5,
-    changeFrequency: "yearly" as const,
-  },
+  { path: "", changeFrequency: "weekly" as const, priority: 1.0 },
+  { path: "/beta", changeFrequency: "monthly" as const, priority: 0.8 },
+  { path: "/demo", changeFrequency: "monthly" as const, priority: 0.8 },
+  { path: "/privacy", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/legal/privacy", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/legal/terms", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/legal/terms-summary", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/do-not-sell-or-share", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/support", changeFrequency: "monthly" as const, priority: 0.5 },
+  { path: "/legal/delete-account", changeFrequency: "yearly" as const, priority: 0.3 },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+const lastModified = new Date().toISOString().split("T")[0];
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return publicRoutes.map((route) => ({
     url: `${siteUrl}${route.path}`,
     lastModified,
