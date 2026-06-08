@@ -82,6 +82,12 @@ const betaStatus = [
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
+    label: "StyleChat",
+    status: "Live in Beta",
+    dotClass: "bg-emerald-400",
+    badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
+  },
+  {
     label: "Smart Glasses *",
     status: "In Development",
     dotClass: "bg-indigo-400",
@@ -101,12 +107,6 @@ const roadmapCards = [
     description:
       "Vintage recommendations and resale focused wardrobe planning.",
     badge: "Exploring",
-  },
-  {
-    title: "StyleChat",
-    description:
-      "Conversational styling guidance designed around personal wardrobe context.",
-    badge: "Coming Soon",
   },
   {
     title: "Outfit Remix",
@@ -198,7 +198,7 @@ export default function BetaPage() {
             </p>
           </div>
 
-          {/* Live beta features */}
+          {/* Live beta features — Dressing Rooms */}
           <div className={`${surfaces.linenCard} p-6`}>
             <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
               Also Live in Beta
@@ -207,10 +207,22 @@ export default function BetaPage() {
               Dressing Rooms &amp; Share by Link
             </h3>
             <p className="text-[13px] leading-relaxed text-stone-500">
-              Dressing Rooms and Share by Link are now live in beta. Testers
-              can save looks into rooms and share them by text link with app
-              users and non-app users while we continue refining the
-              scan-to-closet workflow.
+              Plan outfits together, compare looks, react with emoji, and keep
+              group style decisions in one place.
+            </p>
+          </div>
+
+          {/* Live beta features — StyleChat */}
+          <div className={`${surfaces.linenCard} p-6`}>
+            <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
+              Live in Beta
+            </p>
+            <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
+              StyleChat
+            </h3>
+            <p className="text-[13px] leading-relaxed text-stone-500">
+              Ask questions, explore styling options, compare looks, and
+              discover new ways to wear what you find.
             </p>
           </div>
         </div>

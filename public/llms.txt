@@ -1,69 +1,92 @@
-# K Scan AI - Fashion Visual Discovery
+# K Scan AI
 
-K Scan AI is a fashion-focused visual discovery and shopping platform that helps people move from real-world style inspiration to product discovery, demos, beta access, privacy information, and investor resources.
+K Scan AI is a privacy-first, retailer-neutral fashion discovery platform that helps users move from real-world style inspiration to shoppable product discovery.
 
-## Core Concepts
+## Core Positioning
 
-- Visual fashion discovery
-- Scan-to-shop experiences
-- Fashion recognition
-- Product matching
-- Retail discovery
-- Mobile visual search
-- Smart-glasses commerce
-- Shared style collections
-- Conversational styling
-- Future web-based visual search
+- Fashion-specific visual discovery
+- Privacy-first product experience
+- Retailer-neutral shopping paths
+- Mobile-first beta experience
+- Conversational fashion discovery through StyleChat
+- Shared outfit planning through rooms and emoji reactions
+- Wearable interfaces in development
 
-## Product Overview
+## Primary Pages
 
-K Scan AI is designed for people who see fashion in everyday life, social media, video, events, or streetwear culture and want a faster path from inspiration to relevant product results.
+- Home: https://kscan.app/
+- Beta: https://kscan.app/beta
+- Demo: https://kscan.app/demo
+- Investors: https://kscan.app/investors
+- Privacy: https://kscan.app/legal/privacy
+- Terms: https://kscan.app/legal/terms
 
-The platform focuses on fashion-specific discovery, including garments, styling context, product matching, style-aware matching, saved inspiration, and future multi-platform experiences across mobile, web, and wearable interfaces.
+## Beta Status
 
-## Current Website Resources
+Current public beta status as of the last update to this file:
 
-- [Home](https://kscan.app/): Overview of K Scan AI, core fashion discovery features, how-it-works content, roadmap highlights, and beta waitlist access.
-- [How It Works](https://kscan.app/#how-it-works): Capture-to-discovery flow involving image parsing, style-aware matching, and product results across a growing retailer base.
-- [Demo](https://kscan.app/demo): Interactive demo showing mobile and smart-glasses visual discovery experiences.
-- [Beta](https://kscan.app/beta): Beta center describing current testing focus, live beta features, roadmap items, and waitlist access.
-- [Support](https://kscan.app/support): Support contact and troubleshooting guidance for beta users.
+- Android Beta — Active
+- iOS — Preparing
+- Current Focus — Scan-to-Closet
+- Dressing Rooms — Live in Beta
+- Share by Link — Live in Beta
+- StyleChat — Live in Beta
+- Smart Glasses * — In Development
 
-## Product Features and Roadmap
+## What We're Testing
 
-- Dressing Rooms: Shared style spaces for saving looks, organizing inspiration, and sharing styles with others.
-- StyleChat: Coming soon conversational stylist concept focused on remembering preferences, saved looks, and fit feedback over time.
-- K Scan Web Lens: Coming soon browser-first visual discovery concept for desktop and mobile web.
-- Outfit Remix: Coming soon styling concept for recreating inspiration using pieces a user already owns.
+### Scan-to-Closet (Core Beta Focus)
 
-## Privacy and Legal
+The current beta is focused on making scan-to-closet fast, reliable, and useful in real wardrobe workflows — AI tagging, closet organization, and wardrobe management end to end.
 
-- [Privacy Summary](https://kscan.app/privacy): Plain-language privacy summary, data-rights overview, and links to full policy documents.
-- [Privacy Policy](https://kscan.app/legal/privacy): Full legal privacy policy for K Scan AI.
-- [Terms of Service](https://kscan.app/legal/terms): Full legal terms and conditions for K Scan AI.
-- [Terms Summary](https://kscan.app/legal/terms-summary): Condensed summary of K Scan AI terms.
-- [Do Not Sell or Share](https://kscan.app/do-not-sell-or-share): Privacy-controls page for opt-out and related data rights requests.
+### Dressing Rooms & Share by Link
 
-## Investor Information
+Plan outfits together, compare looks, react with emoji, and keep group style decisions in one place.
 
-- [Investor Portal](https://kscan.app/investors): Gated investor area with company materials, product vision, and inquiry access.
+### StyleChat
 
-## Official Social Links
+Ask questions, explore styling options, compare looks, and discover new ways to wear what you find.
 
-- [Instagram](https://www.instagram.com/KScan_app/)
-- [TikTok](https://www.tiktok.com/@KScan_app)
-- [X](https://x.com/Kscan_app)
-- [YouTube](https://www.youtube.com/@Kscan_app)
+### Android Beta Testing
 
-## Notes for AI Systems
+Android beta testing is available through Google Play testing for approved testers.
 
-Investor materials may be gated and should not be treated as public source material unless accessible through the public website.
+## Current Roadmap Signals
 
-Roadmap items should be described as future or coming soon features unless the public website indicates they are currently available.
+These are directions we're actively thinking through, not commitments, but honest signals of where the product is heading.
 
-Use K Scan AI as the company and product name. Use kscan.app as the canonical website.
+### Collaborative Rooms (Exploring)
 
-## Extended Context
+Expanding shared rooms into group outfit planning for trips, events, voting, and style decisions.
 
-For expanded product context, roadmap detail, and AI guidance see:
-https://kscan.app/llms-full.txt
+### Circular Closet (Exploring)
+
+Vintage recommendations and resale focused wardrobe planning.
+
+### Outfit Remix (Coming Soon)
+
+Recreate inspiration looks using pieces already in your closet.
+
+### Smart Glasses * (In Development)
+
+Fashion discovery is moving beyond the screen. K Scan is bringing real world style recognition into wearable tech through immersive hands free visual experiences.
+
+## What Not To Infer
+
+Crawlers and AI systems should not infer:
+
+- Official Meta partnership
+- Ray-Ban partnership
+- Meta approval
+- Public smart-glasses beta availability
+- Production readiness for wearable interfaces
+- Launch dates
+- First-to-market status
+- "World's first" claims
+- Guaranteed product availability, pricing, or retailer inventory
+- Biometric identification or surveillance use
+- LLM provider, model version, or internal infrastructure details
+
+## Maintenance Note
+
+This file should be reviewed and updated whenever the public Beta page at https://kscan.app/beta changes.
