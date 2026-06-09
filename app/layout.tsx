@@ -79,7 +79,14 @@ export const metadata: Metadata = {
     title: "K Scan AI | Find Fashion From Real-World Inspiration",
     description:
       "See a look. Find the match. K Scan transforms real-world fashion inspiration into ranked retail matches, pricing intelligence, and purchase pathways.",
-    images: ["/group-street.jpeg"],
+    images: [
+      {
+        url: "/group-street.jpeg",
+        alt: "K Scan AI — fashion scanning and styling app",
+        width: 2048,
+        height: 1365,
+      },
+    ],
   },
   robots: {
     index: true,
