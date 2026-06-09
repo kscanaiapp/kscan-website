@@ -159,6 +159,9 @@ export default function BetaPage() {
               </li>
             ))}
           </ul>
+          <p className="mt-4 text-[11px] leading-relaxed text-stone-400">
+            * Coming in a future release
+          </p>
         </div>
 
         <p className="mt-5 max-w-md text-[12px] leading-relaxed text-stone-400">

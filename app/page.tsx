@@ -41,7 +41,7 @@ const coreFlow = [
     step: "03",
     title: "Shop",
     description:
-      "Compare retailer-neutral matches, save options, or move from inspiration to checkout.",
+      "Compare retailer-neutral matches, save options, or move from inspiration to the retailer.",
     image: {
       src: "/how-it-works/match-shop-results.png",
       alt: "K Scan match results mockup showing retailer-neutral product matches from a scanned outfit.",
@@ -557,6 +557,9 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <p className="mt-4 text-[11px] leading-relaxed text-stone-400">
+              Internal benchmark, independent audit pending.
+            </p>
           </div>
         </FadeUp>
       </section>

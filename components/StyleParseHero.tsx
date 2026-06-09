@@ -690,7 +690,7 @@ export default function StyleParseHero({
                         Match
                       </h3>
                       <p className="mb-6 text-[13px] leading-[1.82] text-white/32">
-                        Exact product, brand, and material resolved. One tap to purchase across 200+ indexed retailers.
+                        Exact product, brand, and material resolved. Shop at retailer across 200+ indexed retailers.
                       </p>
                       {/* Data rows */}
                       <div className="space-y-[6px]">
