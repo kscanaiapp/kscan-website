@@ -108,7 +108,7 @@ export function SiteFooter() {
                 </svg>
               </a>
               <a
-                href="https://www.reddit.com"
+                href="https://www.reddit.com/user/kscan_app"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="K Scan on Reddit"
