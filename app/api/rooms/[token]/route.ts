@@ -22,26 +22,15 @@ type RouteContext = {
 };
 
 export async function GET(request: Request, context: RouteContext): Promise<NextResponse> {
-  const urlPresent = Boolean(process.env.SUPABASE_URL?.trim()) ? "yes" : "no";
-
   const ip = getClientIp(request);
   const rl = checkRateLimit({ key: `rooms-preview:${ip}`, limit: 100, windowMs: 60_000 });
 
-  function diagJson(
-    body: unknown,
-    status: number,
-    resultStatus: string,
-    tokenReceived: "yes" | "no" = "no",
-  ): NextResponse {
+  function diagJson(body: unknown, status: number): NextResponse {
     return NextResponse.json(body, {
       status,
       headers: {
         ...BASE_HEADERS,
         "Cache-Control": "no-store, no-cache, must-revalidate",
-        "X-KScan-Rooms-Api-Diag": "rooms-api-diag-866a922",
-        "X-KScan-Supabase-Url-Present": urlPresent,
-        "X-KScan-Token-Received": tokenReceived,
-        "X-KScan-Result-Status": resultStatus,
       },
     });
   }
@@ -54,10 +43,6 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
         headers: {
           ...BASE_HEADERS,
           "Cache-Control": "no-store, no-cache, must-revalidate",
-          "X-KScan-Rooms-Api-Diag": "rooms-api-diag-866a922",
-          "X-KScan-Supabase-Url-Present": urlPresent,
-          "X-KScan-Token-Received": "no",
-          "X-KScan-Result-Status": "rate_limited",
           "Retry-After": String(rl.retryAfterSeconds),
         },
       },
@@ -65,21 +50,20 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
   }
 
   const { token } = await context.params;
-  const tokenReceived: "yes" | "no" = Boolean(token && token.length > 0) ? "yes" : "no";
 
   if (!token || !UUID_PATTERN.test(token)) {
-    return diagJson({ status: "malformed" }, 400, "malformed", tokenReceived);
+    return diagJson({ status: "malformed" }, 400);
   }
 
   try {
     const result = await fetchPublicRoomPreview(token);
 
     if (result.status === "malformed") {
-      return diagJson({ status: "malformed" }, 400, "malformed", tokenReceived);
+      return diagJson({ status: "malformed" }, 400);
     }
 
     if (result.status === "unavailable") {
-      return diagJson({ status: "unavailable" }, 404, "unavailable", tokenReceived);
+      return diagJson({ status: "unavailable" }, 404);
     }
 
     if (result.status !== "available") {
@@ -87,8 +71,6 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
       return diagJson(
         { status: "error", message: "Internal server error" },
         500,
-        result.status,
-        tokenReceived,
       );
     }
 
@@ -121,16 +103,12 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
         },
       },
       200,
-      "available",
-      tokenReceived,
     );
   } catch {
     console.error("[rooms-preview] Unexpected error handling shared room request");
     return diagJson(
       { status: "error", message: "Internal server error" },
       500,
-      "internal_error",
-      tokenReceived,
     );
   }
 }
