@@ -23,7 +23,6 @@ type RouteContext = {
 
 export async function GET(request: Request, context: RouteContext): Promise<NextResponse> {
   const urlPresent = Boolean(process.env.SUPABASE_URL?.trim()) ? "yes" : "no";
-  const keyPresent = Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()) ? "yes" : "no";
 
   const ip = getClientIp(request);
   const rl = checkRateLimit({ key: `rooms-preview:${ip}`, limit: 100, windowMs: 60_000 });
@@ -41,7 +40,6 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
         "Cache-Control": "no-store, no-cache, must-revalidate",
         "X-KScan-Rooms-Api-Diag": "rooms-api-diag-866a922",
         "X-KScan-Supabase-Url-Present": urlPresent,
-        "X-KScan-Service-Key-Present": keyPresent,
         "X-KScan-Token-Received": tokenReceived,
         "X-KScan-Result-Status": resultStatus,
       },
@@ -58,7 +56,6 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
           "Cache-Control": "no-store, no-cache, must-revalidate",
           "X-KScan-Rooms-Api-Diag": "rooms-api-diag-866a922",
           "X-KScan-Supabase-Url-Present": urlPresent,
-          "X-KScan-Service-Key-Present": keyPresent,
           "X-KScan-Token-Received": "no",
           "X-KScan-Result-Status": "rate_limited",
           "Retry-After": String(rl.retryAfterSeconds),
