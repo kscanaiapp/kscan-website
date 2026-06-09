@@ -81,7 +81,7 @@ const featureList = [
 const trustMetrics = [
   { label: "Avg. Parse Time", value: "1.4s" },
   { label: "Silhouette Recognition", value: "94%" },
-  { label: "Retailers in Catalog", value: "200+" },
+  { label: "Retailer + resale discovery", value: "" },
 ];
 
 const benchmarkStats = [
