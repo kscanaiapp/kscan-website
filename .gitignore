@@ -83,3 +83,7 @@ supabase/.temp/
 .env.production
 .env.*
 !.env.example
+
+# Local/private app submission materials
+public/docs/app submission docs/
+public/docs/apple/
