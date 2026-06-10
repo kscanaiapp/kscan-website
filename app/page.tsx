@@ -80,15 +80,15 @@ const featureList = [
 
 const trustMetrics = [
   { label: "Avg. Parse Time", value: "1.4s" },
-  { label: "Silhouette Recognition", value: "94%" },
-  { label: "Retailer + resale discovery", value: "" },
+  { label: "recognition", value: "Silhouette" },
+  { label: "resale discovery", value: "Retailer +" },
 ];
 
 const benchmarkStats = [
-  { label: "Outfit Image Recognition", pct: 94 },
-  { label: "Real-Time Material Detection", pct: 89 },
-  { label: "Cross-Retailer Product Sync", pct: 81 },
-  { label: "Custom Silhouette Recognition", pct: 76 },
+  { label: "recognition", value: "Outfit image" },
+  { label: "signals", value: "Material + texture" },
+  { label: "discovery", value: "Retailer-neutral" },
+  { label: "matching", value: "Custom silhouette" },
 ];
 
 const parseTags = ["Monochromatic Leather", "Tailored Blazer", "Sheer Mesh"];
@@ -558,7 +558,7 @@ export default function Home() {
               ))}
             </div>
             <p className="mt-4 text-[11px] leading-relaxed text-stone-400">
-              Internal benchmark, independent audit pending.
+              Beta results may vary by image quality, lighting, garment visibility, and retailer availability.
             </p>
           </div>
         </FadeUp>
@@ -881,17 +881,17 @@ export default function Home() {
               </div>
 
               <div className="mt-5 space-y-0">
-                {benchmarkStats.map(({ label, pct }) => (
+                {benchmarkStats.map(({ label, value }) => (
                   <div key={label} className="flex items-baseline gap-4 border-t border-stone-200 py-5">
-                    <span className="w-[4.5rem] flex-shrink-0 font-display text-[40px] leading-none tabular-nums text-stone-900">
-                      {pct}%
+                    <span className="w-[9rem] flex-shrink-0 font-display text-[24px] leading-none text-stone-900 md:text-[28px]">
+                      {value}
                     </span>
                     <span className="text-[13px] leading-snug text-stone-500">{label}</span>
                   </div>
                 ))}
               </div>
               <p className="mt-6 text-[11px] leading-relaxed text-stone-400">
-                Internal benchmark. Results are representative estimates; independent audit pending.
+                Beta results may vary by image quality, lighting, garment visibility, and retailer availability.
               </p>
             </div>
           </div>
