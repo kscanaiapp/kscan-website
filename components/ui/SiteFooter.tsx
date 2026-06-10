@@ -73,7 +73,7 @@ export function SiteFooter() {
             {/* Social icons — centered row below legal links on mobile, inline on md+ */}
             <div className="flex items-center">
               <a
-                href="https://www.instagram.com/KScan_app"
+                href="https://www.instagram.com/kscan_app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
