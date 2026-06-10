@@ -28,6 +28,14 @@ export default function DeleteAccountPage() {
             through a request workflow and is not immediate.
           </p>
 
+          <p>
+            Want a copy of your account data before deletion? Request a data export before deleting
+            your account.{" "}
+            <Link href="/support" className={linkClassName}>
+              Request Data Export
+            </Link>
+          </p>
+
           <section className="space-y-4">
             <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
               How to Request Deletion
@@ -53,6 +61,9 @@ export default function DeleteAccountPage() {
               Deletion covers account and profile data, privacy preferences, saved style scans, scan history, Dressing
               Room contents, Dressing Room share links, and user-linked app data where applicable.
             </p>
+            <ul className="space-y-2 pl-4">
+              <li>StyleChat conversations, saved style preferences, Style Memory, and personalization context connected to your account.</li>
+            </ul>
           </section>
 
           <section className="space-y-4">
