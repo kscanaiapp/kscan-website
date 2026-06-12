@@ -16,10 +16,10 @@ export default function PrivacyPage() {
 
         <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <p>
-            K Scan AI is a fashion-specific visual discovery and shopping-assistance service. When you choose to scan
-            or upload an image, K Scan uses that image to identify fashion items, generate style signals, and return
-            product matches. During the Beta phase, submitted scan images are securely transmitted to K Scan&apos;s cloud
-            processing environment to provide the Service.
+            K Scan AI is intended for users 18 and older and is not directed to children or minors. Users under 18
+            should not use the Service. Users should upload clothing-focused images only. Images, StyleChat messages,
+            and related content may be processed through secure cloud systems and AI providers to provide scan results,
+            StyleChat, product matching, shopping links, support, safety, and service improvement.
           </p>
 
           <section aria-labelledby="data-protection" className="space-y-4">
@@ -30,25 +30,25 @@ export default function PrivacyPage() {
               <div>
                 <h3 className="font-semibold text-stone-700">No Facial Recognition:</h3>
                 <p>
-                  K Scan AI does not use facial recognition technology. We do not identify, verify, or analyze
-                  individual faces.
+                  K Scan is not designed for surveillance, facial recognition, biometric identification, or
+                  identifying people. K Scan does not create biometric templates, faceprints, or identity profiles.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-stone-700">Cloud Scan Processing:</h3>
+                <h3 className="font-semibold text-stone-700">Cloud and AI Processing:</h3>
                 <p>
-                  During the Beta phase, scan images you submit are transmitted through secure, encrypted connections
-                  to K Scan&apos;s cloud processing environment for AI visual processing and product matching.
+                  Images, StyleChat messages, and related content may be processed through secure cloud systems and AI
+                  providers to provide scan results, StyleChat, product matching, shopping links, support, safety, and
+                  service improvement. AI outputs and product matches may be incomplete, inaccurate, unavailable, or
+                  based on similar rather than exact matches.
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-stone-700">Photo &amp; Media Library Access:</h3>
+                <h3 className="font-semibold text-stone-700">Clothing-Focused Uploads:</h3>
                 <p>
-                  If you choose to upload screenshots, photos, outfit images, shopping screenshots, social-media
-                  screenshots, or other images into Style Library, Dressing Rooms, saved items, style boards, or related
-                  private visual-inspiration features, K Scan may request access to your device&apos;s photo or media
-                  library. K Scan uses this access only for user-selected uploads or media you grant permission to
-                  access.
+                  Users should upload clothing-focused images only. Avoid uploading faces, bystanders, license plates,
+                  sensitive documents, or private information about other people unless you intend that content to be
+                  processed as part of the image.
                 </p>
               </div>
               <div>
@@ -60,10 +60,10 @@ export default function PrivacyPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-stone-700">Future Privacy Roadmap:</h3>
+                <h3 className="font-semibold text-stone-700">18+ Use Only:</h3>
                 <p>
-                  On-device face and bystander-obscuring technology is planned as a future privacy improvement, but it
-                  is not currently available in the Beta release.
+                  K Scan AI is intended for users 18 and older, is not directed to children or minors, and users under
+                  18 should not use the Service.
                 </p>
               </div>
               <div>
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
               <div>
                 <h3 className="font-semibold text-stone-700">No Microphone in Initial Release:</h3>
                 <p>
-                  The initial mobile release does not request microphone permission or collect voice,
+                  The current iOS App Store submission build does not request microphone permission or collect voice,
                   speech-recognition, raw audio, or voiceprint data.
                 </p>
               </div>
@@ -91,7 +91,8 @@ export default function PrivacyPage() {
             <p>
               To support our discovery and commerce tools, K Scan AI may use limited commercial, attribution,
               analytics, commerce, and preference signals where permitted by law and subject to applicable consent,
-              opt-out rights, platform rules, and user privacy controls.
+              opt-out rights, platform rules, and user privacy controls. Retailer links lead to third-party sites or
+              services with their own terms and privacy policies.
             </p>
             <div className="space-y-3">
               <div>
@@ -106,12 +107,10 @@ export default function PrivacyPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-stone-700">Aggregated Demand Intelligence:</h3>
+                <h3 className="font-semibold text-stone-700">Advertising &amp; Tracking:</h3>
                 <p>
-                  K Scan may create, use, disclose, license, sell, or commercialize aggregated, anonymized, or
-                  de-identified demand intelligence that does not reasonably identify an individual. This may include
-                  fashion trend signals, category interest, product demand patterns, retailer performance insights, and
-                  aggregated commercial intelligence.
+                  K Scan does not currently use third-party advertising SDKs or collect Advertising ID for targeted
+                  advertising unless later disclosed.
                 </p>
               </div>
               <div>
@@ -153,9 +152,8 @@ export default function PrivacyPage() {
                 <h3 className="font-semibold text-stone-700">Access &amp; Deletion:</h3>
                 <p>
                   You may request access to, correction of, or deletion of your personal information, subject to
-                  applicable law. If you create an account, you may delete it in the app through{" "}
-                  {"Settings > Account > Delete Account"}. This option is available regardless of whether you created
-                  your account using email, Sign in with Apple, Google Sign-In, or another supported login method.
+                  applicable law. Deletion requests are generally processed within 30 days, subject to legal,
+                  security, fraud-prevention, backup, and operational limits.
                 </p>
               </div>
             </div>

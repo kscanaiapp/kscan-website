@@ -16,7 +16,8 @@ export default function LegalPrivacyPage() {
 
         <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <p>
-            K Scan AI helps users scan fashion items and receive AI-assisted style and product discovery results.
+            K Scan AI is intended for users 18 and older and is not directed to children or minors. Users under 18
+            should not use the Service. Users should upload clothing-focused images only.
           </p>
 
           <section className="space-y-4">
@@ -25,11 +26,12 @@ export default function LegalPrivacyPage() {
             </h2>
             <ul className="space-y-2 pl-4">
               <li>
-                Scan images are transmitted securely as data URI/base64 payloads to the K Scan backend for AI fashion
-                analysis.
+                Images, StyleChat messages, and related content may be processed through secure cloud systems and AI
+                providers to provide scan results, StyleChat, product matching, shopping links, support, safety, and
+                service improvement.
               </li>
-              <li>Backend service endpoint: kscan-app-1.onrender.com.</li>
-              <li>Analysis is performed through a backend AI fashion-analysis service.</li>
+              <li>AI outputs and product matches may be incomplete, inaccurate, unavailable, or based on similar rather than exact matches.</li>
+              <li>Retailer links lead to third-party sites or services with their own terms and privacy policies.</li>
             </ul>
           </section>
 
@@ -40,9 +42,10 @@ export default function LegalPrivacyPage() {
             <ul className="space-y-2 pl-4">
               <li>
                 Supabase is used for authentication, database infrastructure, privacy settings, deletion/export/correction
-                requests, and style-library storage where applicable.
+                requests, and account-level privacy workflows.
               </li>
-              <li>Saved images may be stored when users explicitly save items or use storage-backed features.</li>
+              <li>The current iOS submission build saves scan thumbnails locally on the device when users save scans.</li>
+              <li>K Scan does not currently use third-party advertising SDKs or collect Advertising ID for targeted advertising unless later disclosed.</li>
             </ul>
           </section>
 
@@ -52,10 +55,11 @@ export default function LegalPrivacyPage() {
             </h2>
             <ul className="space-y-2 pl-4">
               <li>
-                A privacy sanitizer hook exists as infrastructure and may operate in pass-through mode during beta unless
-                Face Blur v2 is completed.
+                K Scan is not designed for surveillance, facial recognition, biometric identification, or identifying
+                people.
               </li>
-              <li>K Scan does not represent this beta as active on-device face blurring.</li>
+              <li>K Scan does not create biometric templates, faceprints, or identity profiles.</li>
+              <li>Users should avoid uploading faces, bystanders, license plates, sensitive documents, or private information about other people.</li>
             </ul>
           </section>
 
@@ -63,8 +67,8 @@ export default function LegalPrivacyPage() {
             <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
               Product Scope
             </h2>
-            <p>K Scan is not designed for facial recognition, biometric identification, or surveillance.</p>
-            <p>K Scan AI is not directed to children under 13.</p>
+            <p>K Scan AI is intended for users 18 and older, is not directed to children or minors, and users under 18 should not use the Service.</p>
+            <p>K Scan does not currently apply automatic face blurring or automatic bystander filtering before upload.</p>
           </section>
 
           <section className="space-y-4">
@@ -72,8 +76,8 @@ export default function LegalPrivacyPage() {
               Requests and Retention
             </h2>
             <ul className="space-y-2 pl-4">
-              <li>Account deletion requests are routed through an in-app deletion-request workflow.</li>
-              <li>Requests are processed within 30 days unless retention is legally required or permitted.</li>
+              <li>Account deletion requests are routed through Privacy &gt; Delete Account in the app.</li>
+              <li>Deletion requests are generally processed within 30 days, subject to legal, security, fraud-prevention, backup, and operational limits.</li>
             </ul>
             <p>
               For sale, sharing, or sensitive-data preference choices, visit our{" "}
