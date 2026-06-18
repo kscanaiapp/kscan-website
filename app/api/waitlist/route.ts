@@ -2,10 +2,11 @@ import { createClient } from "@supabase/supabase-js";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { z } from "zod";
-import { getWaitlistSupabaseConfig } from "@/lib/waitlistSupabaseEnv";
 
 const WAITLIST_TABLE = "waitlist_signups";
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 const bodySchema = z.object({
   email: z.string(),
@@ -16,7 +17,9 @@ const bodySchema = z.object({
   website: z.string().optional(),
 });
 
-const emailSchema = z.string().email({ message: "Please enter a valid email address." });
+const emailSchema = z.string().email({
+  message: "Please enter a valid email address.",
+});
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -31,16 +34,16 @@ async function sendWelcomeEmail(email: string) {
     from: "K Scan <hello@info.kscan.app>",
     to: email,
     replyTo: "kscanai.app@gmail.com",
-    subject: "You’re on the K Scan waitlist",
+    subject: "You're on the K Scan waitlist",
     html: `
       <div style="margin:0;padding:32px 20px;background:#FAFAF8;color:#0F172A;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
         <div style="max-width:560px;margin:0 auto;background:#FAFAF8;border:1px solid rgba(15,23,42,0.08);">
           <div style="height:4px;background:#B6E6EE;"></div>
           <div style="padding:40px 32px;text-align:left;">
-            <p style="margin:0 0 20px;font-size:24px;line-height:1.3;font-weight:500;">You&rsquo;re in.</p>
+            <p style="margin:0 0 20px;font-size:24px;line-height:1.3;font-weight:500;">You're in.</p>
             <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">K Scan turns what you see into what you can buy &mdash; instantly.</p>
-            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">We&rsquo;re rolling out access in small waves as we refine the experience.</p>
-            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">We&rsquo;ll reach out when it&rsquo;s ready.</p>
+            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">We're rolling out access in small waves as we refine the experience.</p>
+            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">We'll reach out when it's ready.</p>
             <p style="margin:0;font-size:16px;line-height:1.7;">&mdash; K Scan AI</p>
           </div>
         </div>
@@ -62,32 +65,30 @@ function safeSupabaseError(error: unknown) {
   }
   const record = error as Record<string, unknown>;
   return {
-    name: redactLogValue(record.name),
     code: redactLogValue(record.code),
     message: redactLogValue(record.message),
     details: redactLogValue(record.details),
     hint: redactLogValue(record.hint),
-    enumerableKeys: Object.keys(record),
   };
 }
 
 function isDuplicateError(error: unknown) {
   if (!error || typeof error !== "object") return false;
-
   const details = error as Record<string, unknown>;
   const parts = [details.code, details.message, details.details, details.hint]
     .filter((value): value is string => typeof value === "string")
     .join(" ")
     .toLowerCase();
-
-  return parts.includes("23505") || parts.includes("duplicate") || parts.includes("unique");
+  return (
+    parts.includes("23505") ||
+    parts.includes("duplicate") ||
+    parts.includes("unique")
+  );
 }
 
-// Non-secret diagnostic: extract the Supabase project ref from the project URL
-// (https://<ref>.supabase.co). The ref is public; this reveals legacy vs production.
 function deriveProjectRef(url: string): string | null {
   try {
-    const host = new URL(url).hostname; // <ref>.supabase.co
+    const host = new URL(url).hostname;
     const ref = host.split(".")[0];
     return ref || null;
   } catch {
@@ -114,7 +115,7 @@ export async function POST(request: Request) {
 
   const { email, source, page, name, referrer, website } = parsed.data;
   if (website?.trim()) {
-    return NextResponse.json({ status: "success", message: "Joined waitlist." });
+    return NextResponse.json({ status: "success" });
   }
 
   const normalizedEmail = email.trim().toLowerCase();
@@ -124,54 +125,54 @@ export async function POST(request: Request) {
     return NextResponse.json({ status: "error", message }, { status: 400 });
   }
 
-  const config = getWaitlistSupabaseConfig();
-  if (!config) {
-    // Non-secret diagnostics: presence booleans only — never the values.
+  const envUrl = process.env.WAITLIST_PRIVACY_SUPABASE_URL?.trim();
+  const envServiceRoleKey =
+    process.env.WAITLIST_PRIVACY_SUPABASE_SERVICE_ROLE_KEY?.trim();
+
+  if (!envUrl || !envServiceRoleKey) {
     const diagnostics = {
       code: "MISSING_CONFIG",
-      envUrlPresent: Boolean(process.env.WAITLIST_SUPABASE_URL?.trim()),
-      envServiceRolePresent: Boolean(process.env.WAITLIST_SUPABASE_SERVICE_ROLE_KEY?.trim()),
-      legacyUrlPresent: Boolean(process.env.SUPABASE_URL?.trim()),
-      legacyServiceRolePresent: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()),
+      envUrlPresent: Boolean(envUrl),
+      envServiceRolePresent: Boolean(envServiceRoleKey),
     };
-    console.error("[waitlist] MISSING_CONFIG — no valid waitlist Supabase configuration.", diagnostics);
+    console.error("[waitlist] MISSING_CONFIG", diagnostics);
     return NextResponse.json(
-      { status: "error", code: "MISSING_CONFIG", message: "Waitlist service is not configured.", diagnostics },
+      {
+        status: "error",
+        code: "MISSING_CONFIG",
+        message: "Waitlist service is not configured.",
+        diagnostics,
+      },
       { status: 500 },
     );
   }
 
-  // Non-secret: which project this request will write to (legacy ref vs production ref).
-  const targetProjectRef = deriveProjectRef(config.url);
+  const targetProjectRef = deriveProjectRef(envUrl);
 
   try {
-    const supabase = createClient(config.url, config.serviceRoleKey, {
+    const supabase = createClient(envUrl, envServiceRoleKey, {
       auth: {
         autoRefreshToken: false,
         persistSession: false,
       },
     });
 
-    const { error } = await supabase
-      .from(WAITLIST_TABLE)
-      .insert({
-        email: normalizedEmail,
-        source,
-        page: page ?? null,
-        name: name ?? null,
-        referrer: referrer ?? null,
-      });
+    const { error } = await supabase.from(WAITLIST_TABLE).insert({
+      email: normalizedEmail,
+      source,
+      page: page ?? null,
+      name: name ?? null,
+      referrer: referrer ?? null,
+    });
 
     if (error) {
       if (isDuplicateError(error)) {
-        return NextResponse.json({ status: "duplicate", message: "Already joined." });
+        return NextResponse.json({ status: "duplicate" });
       }
 
       const safe = safeSupabaseError(error);
-      const safeCode = (safe as { code?: unknown }).code;
-      console.error("[waitlist] DB_ERROR — insert failed:", {
+      console.error("[waitlist] DB_ERROR", {
         targetProjectRef,
-        configSource: config.source,
         ...safe,
       });
 
@@ -180,9 +181,9 @@ export async function POST(request: Request) {
           status: "error",
           code: "DB_ERROR",
           message: "Unable to save waitlist signup right now.",
-          supabaseErrorCode: typeof safeCode === "string" ? safeCode : null,
+          supabaseErrorCode:
+            typeof safe.code === "string" ? safe.code : null,
           targetProjectRef,
-          configSource: config.source,
         },
         { status: 500 },
       );
@@ -194,14 +195,15 @@ export async function POST(request: Request) {
       console.error("Welcome email send failed:", emailError);
     }
 
-    return NextResponse.json(
-      { status: "success", message: "Joined waitlist." },
-      { status: 201 },
-    );
+    return NextResponse.json({ status: "success" }, { status: 201 });
   } catch (err) {
     console.error("Unexpected waitlist route error:", err);
     return NextResponse.json(
-      { status: "error", message: "Unable to save waitlist signup right now." },
+      {
+        status: "error",
+        code: "UNEXPECTED",
+        message: "Unable to save waitlist signup right now.",
+      },
       { status: 500 },
     );
   }
