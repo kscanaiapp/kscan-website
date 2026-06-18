@@ -19,6 +19,7 @@ const bodySchema = z.object({
 const emailSchema = z.string().email({ message: "Please enter a valid email address." });
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 async function sendWelcomeEmail(email: string) {
   if (!resend) {
@@ -82,6 +83,18 @@ function isDuplicateError(error: unknown) {
   return parts.includes("23505") || parts.includes("duplicate") || parts.includes("unique");
 }
 
+// Non-secret diagnostic: extract the Supabase project ref from the project URL
+// (https://<ref>.supabase.co). The ref is public; this reveals legacy vs production.
+function deriveProjectRef(url: string): string | null {
+  try {
+    const host = new URL(url).hostname; // <ref>.supabase.co
+    const ref = host.split(".")[0];
+    return ref || null;
+  } catch {
+    return null;
+  }
+}
+
 export async function POST(request: Request) {
   let rawBody: unknown;
   try {
@@ -113,12 +126,23 @@ export async function POST(request: Request) {
 
   const config = getWaitlistSupabaseConfig();
   if (!config) {
-    console.error("[waitlist] Supabase configuration is invalid. Check WAITLIST_SUPABASE_URL and WAITLIST_SUPABASE_SERVICE_ROLE_KEY (or legacy SUPABASE_* fallback).");
+    // Non-secret diagnostics: presence booleans only — never the values.
+    const diagnostics = {
+      code: "MISSING_CONFIG",
+      envUrlPresent: Boolean(process.env.WAITLIST_SUPABASE_URL?.trim()),
+      envServiceRolePresent: Boolean(process.env.WAITLIST_SUPABASE_SERVICE_ROLE_KEY?.trim()),
+      legacyUrlPresent: Boolean(process.env.SUPABASE_URL?.trim()),
+      legacyServiceRolePresent: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()),
+    };
+    console.error("[waitlist] MISSING_CONFIG — no valid waitlist Supabase configuration.", diagnostics);
     return NextResponse.json(
-      { status: "error", message: "Waitlist service is not configured." },
+      { status: "error", code: "MISSING_CONFIG", message: "Waitlist service is not configured.", diagnostics },
       { status: 500 },
     );
   }
+
+  // Non-secret: which project this request will write to (legacy ref vs production ref).
+  const targetProjectRef = deriveProjectRef(config.url);
 
   try {
     const supabase = createClient(config.url, config.serviceRoleKey, {
@@ -143,10 +167,23 @@ export async function POST(request: Request) {
         return NextResponse.json({ status: "duplicate", message: "Already joined." });
       }
 
-      console.error("Supabase waitlist insert failed:", safeSupabaseError(error));
+      const safe = safeSupabaseError(error);
+      const safeCode = (safe as { code?: unknown }).code;
+      console.error("[waitlist] DB_ERROR — insert failed:", {
+        targetProjectRef,
+        configSource: config.source,
+        ...safe,
+      });
 
       return NextResponse.json(
-        { status: "error", message: "Unable to save waitlist signup right now." },
+        {
+          status: "error",
+          code: "DB_ERROR",
+          message: "Unable to save waitlist signup right now.",
+          supabaseErrorCode: typeof safeCode === "string" ? safeCode : null,
+          targetProjectRef,
+          configSource: config.source,
+        },
         { status: 500 },
       );
     }
