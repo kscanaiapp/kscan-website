@@ -159,17 +159,30 @@ export default function BetaPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-[11px] leading-relaxed text-stone-400">
-            *{" "}
-            <a
-              href="https://kscan-glasses-demo.vercel.app/simulator.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2 transition-colors hover:text-stone-600"
-            >
-              Browser Demo
-            </a>
-          </p>
+          <div className="mt-4 space-y-1 text-[11px] leading-relaxed text-stone-400">
+            <p>
+              *{" "}
+              <a
+                href="https://kscan-glasses-demo.vercel.app/simulator.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 transition-colors hover:text-stone-600"
+              >
+                Meta Browser Demo
+              </a>
+            </p>
+            <p>
+              **{" "}
+              <a
+                href="https://kscan-google-glasses-demo.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 transition-colors hover:text-stone-600"
+              >
+                Google XR Browser Demo
+              </a>
+            </p>
+          </div>
         </div>
 
         <p className="mt-5 max-w-md text-[12px] leading-relaxed text-stone-400">
