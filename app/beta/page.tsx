@@ -160,7 +160,15 @@ export default function BetaPage() {
             ))}
           </ul>
           <p className="mt-4 text-[11px] leading-relaxed text-stone-400">
-            * Coming in a future release
+            *{" "}
+            <a
+              href="https://kscan-glasses-demo.vercel.app/simulator.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 transition-colors hover:text-stone-600"
+            >
+              Browser Demo
+            </a>
           </p>
         </div>
 
