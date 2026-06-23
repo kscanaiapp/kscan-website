@@ -52,6 +52,74 @@ async function sendWelcomeEmail(email: string) {
   });
 }
 
+async function sendOwnerNotification({
+  email,
+  name,
+  source,
+  page,
+  referrer,
+}: {
+  email: string;
+  name: string | null | undefined;
+  source: string | null | undefined;
+  page: string | null | undefined;
+  referrer: string | null | undefined;
+}) {
+  const alertEmail = process.env.WAITLIST_ALERT_EMAIL?.trim();
+  if (!alertEmail) {
+    console.warn("[waitlist] WAITLIST_ALERT_EMAIL is missing. Skipping owner notification.");
+    return;
+  }
+  if (!resend) {
+    console.warn("[waitlist] RESEND_API_KEY is missing. Skipping owner notification.");
+    return;
+  }
+
+  const maskedEmail = email.replace(/(.{2}).*@/, "$1***@");
+
+  const lines = [
+    "New K Scan Waitlist Signup",
+    "",
+    `Email: ${email}`,
+    name ? `Name: ${name}` : null,
+    source ? `Source: ${source}` : null,
+    page ? `Page: ${page}` : null,
+    referrer ? `Referrer: ${referrer}` : null,
+    `Time: ${new Date().toISOString()}`,
+    `Table: ${WAITLIST_TABLE}`,
+  ].filter((line): line is string => line !== null);
+
+  try {
+    await resend.emails.send({
+      from: "K Scan <hello@info.kscan.app>",
+      to: alertEmail,
+      subject: "New K Scan Waitlist Signup",
+      text: lines.join("\n"),
+      html: `<pre style="font-family:system-ui,monospace;font-size:14px;line-height:1.7;padding:24px;background:#FAFAF8;color:#111827;">${lines
+        .map((line) => (line ? escapeHtml(line) : ""))
+        .join("\n")}</pre>`,
+    });
+    console.log("[waitlist] Owner notification sent.", { maskedEmail });
+  } catch (err) {
+    console.error("[waitlist] Owner notification failed:", {
+      maskedEmail,
+      error:
+        err instanceof Error
+          ? err.message
+          : "Unknown error",
+    });
+  }
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function redactLogValue(value: unknown) {
   if (typeof value !== "string") return value;
   return value
@@ -193,6 +261,18 @@ export async function POST(request: Request) {
       await sendWelcomeEmail(normalizedEmail);
     } catch (emailError) {
       console.error("Welcome email send failed:", emailError);
+    }
+
+    try {
+      await sendOwnerNotification({
+        email: normalizedEmail,
+        name: name ?? null,
+        source: source ?? null,
+        page: page ?? null,
+        referrer: referrer ?? null,
+      });
+    } catch (notifyError) {
+      console.error("[waitlist] Owner notification failed:", notifyError);
     }
 
     return NextResponse.json({ status: "success" }, { status: 201 });
