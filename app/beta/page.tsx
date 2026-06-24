@@ -122,7 +122,7 @@ const StatusBadge = ({
   badgeClass: string;
 }) => {
   const baseClasses =
-    "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em]";
+    "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] leading-none whitespace-nowrap shrink-0";
   const dot = (
     <span
       className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
@@ -136,7 +136,7 @@ const StatusBadge = ({
         href={statusHref}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${baseClasses} underline decoration-stone-400 underline-offset-2 transition-colors hover:opacity-80 ${badgeClass}`}
+        className={`${baseClasses} no-underline transition-colors hover:opacity-80 ${badgeClass}`}
       >
         {dot}
         {status}
@@ -203,7 +203,7 @@ export default function BetaPage() {
             </p>
             <ul className="space-y-3">
               {betaStatus.map(({ label, ...badgeProps }) => (
-                <li key={label} className="flex items-center justify-between">
+                <li key={label} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
                   <span className="text-[13px] text-stone-600">{label}</span>
                   <StatusBadge {...badgeProps} />
                 </li>
