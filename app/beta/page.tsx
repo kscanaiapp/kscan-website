@@ -109,6 +109,49 @@ const betaStatus: {
   },
 ];
 
+// Shared status pill renderer — ensures linked and unlinked badges stay identical in size/style.
+const StatusBadge = ({
+  status,
+  statusHref,
+  dotClass,
+  badgeClass,
+}: {
+  status: string;
+  statusHref?: string;
+  dotClass: string;
+  badgeClass: string;
+}) => {
+  const baseClasses =
+    "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em]";
+  const dot = (
+    <span
+      className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
+      aria-hidden="true"
+    />
+  );
+
+  if (statusHref) {
+    return (
+      <a
+        href={statusHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${baseClasses} no-underline transition-colors hover:opacity-80 ${badgeClass}`}
+      >
+        {dot}
+        {status}
+      </a>
+    );
+  }
+
+  return (
+    <span className={`${baseClasses} ${badgeClass}`}>
+      {dot}
+      {status}
+    </span>
+  );
+};
+
 const roadmapCards = [
   {
     title: "Collaborative Rooms",
@@ -151,7 +194,7 @@ export default function BetaPage() {
         </p>
 
         {/* Status module + mock image */}
-        <div className="mt-10 grid gap-8 md:grid-cols-[5fr_7fr] md:items-start">
+        <div className="mt-10 grid gap-8 md:grid-cols-[5fr_7fr] lg:grid-cols-[0.7fr_1.55fr] md:items-start">
           <div
             className={`${surfaces.linenCard} max-w-sm p-5 sm:max-w-md`}
           >
@@ -159,33 +202,10 @@ export default function BetaPage() {
               Beta Status
             </p>
             <ul className="space-y-3">
-              {betaStatus.map(({ label, status, statusHref, dotClass, badgeClass }) => (
+              {betaStatus.map(({ label, ...badgeProps }) => (
                 <li key={label} className="flex items-center justify-between">
                   <span className="text-[13px] text-stone-600">{label}</span>
-                  {statusHref ? (
-                    <a
-                      href={statusHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] no-underline transition-colors hover:opacity-80 ${badgeClass}`}
-                    >
-                      <span
-                        className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
-                        aria-hidden="true"
-                      />
-                      {status}
-                    </a>
-                  ) : (
-                    <span
-                      className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] ${badgeClass}`}
-                    >
-                      <span
-                        className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
-                        aria-hidden="true"
-                      />
-                      {status}
-                    </span>
-                  )}
+                  <StatusBadge {...badgeProps} />
                 </li>
               ))}
             </ul>
@@ -289,6 +309,17 @@ export default function BetaPage() {
               Ask questions, explore styling options, compare looks, and
               discover new ways to wear what you find.
             </p>
+          </div>
+
+          {/* Feature preview image */}
+          <div className="overflow-hidden rounded-xl border border-stone-100 shadow-sm">
+            <Image
+              src="/images/features-image-3.png"
+              alt="K Scan app feature preview"
+              width={1536}
+              height={1024}
+              className="h-auto w-full object-contain"
+            />
           </div>
         </div>
 
