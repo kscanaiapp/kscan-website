@@ -151,7 +151,7 @@ export default function BetaPage() {
         </p>
 
         {/* Status module + mock image */}
-        <div className="mt-10 flex flex-col gap-8 md:flex-row md:items-start">
+        <div className="mt-10 grid gap-8 md:grid-cols-[5fr_7fr] md:items-start">
           <div
             className={`${surfaces.linenCard} max-w-sm p-5 sm:max-w-md`}
           >
@@ -167,7 +167,7 @@ export default function BetaPage() {
                       href={statusHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] underline underline-offset-2 transition-colors hover:opacity-80 ${badgeClass}`}
+                      className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] no-underline transition-colors hover:opacity-80 ${badgeClass}`}
                     >
                       <span
                         className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
@@ -215,12 +215,12 @@ export default function BetaPage() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-xl border border-stone-100 shadow-sm md:max-w-sm">
+          <div className="overflow-hidden rounded-xl border border-stone-100 shadow-sm md:mt-6">
             <Image
               src="/images/general-mock.png"
               alt="K Scan smart glasses interface and app bridge mockup"
-              width={640}
-              height={480}
+              width={960}
+              height={720}
               className="h-auto w-full object-contain"
             />
           </div>
