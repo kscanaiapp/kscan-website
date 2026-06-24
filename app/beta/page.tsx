@@ -136,7 +136,7 @@ const StatusBadge = ({
         href={statusHref}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${baseClasses} no-underline transition-colors hover:opacity-80 ${badgeClass}`}
+        className={`${baseClasses} ${badgeClass} underline decoration-stone-400 underline-offset-2 hover:decoration-stone-600 hover:opacity-80`}
       >
         {dot}
         {status}
