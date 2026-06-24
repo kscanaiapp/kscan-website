@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
 import { surfaces, buttons } from "@/lib/theme";
@@ -50,7 +51,13 @@ export const metadata: Metadata = {
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
-const betaStatus = [
+const betaStatus: {
+  label: string;
+  status: string;
+  statusHref?: string;
+  dotClass: string;
+  badgeClass: string;
+}[] = [
   {
     label: "Android Beta",
     status: "Active",
@@ -86,6 +93,13 @@ const betaStatus = [
     status: "Live in Beta",
     dotClass: "bg-emerald-400",
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
+  },
+  {
+    label: "App Native Face Blurring",
+    status: "In Development",
+    statusHref: "https://sjkh3b27ibz4g.kimi.page/",
+    dotClass: "bg-indigo-400",
+    badgeClass: "border-indigo-200 bg-indigo-50 text-indigo-700",
   },
   {
     label: "Smart Glasses *",
@@ -136,52 +150,79 @@ export default function BetaPage() {
           discovery.
         </p>
 
-        {/* Status module */}
-        <div
-          className={`${surfaces.linenCard} mt-10 max-w-sm p-5 sm:max-w-md`}
-        >
-          <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.22em] text-stone-400">
-            Beta Status
-          </p>
-          <ul className="space-y-3">
-            {betaStatus.map(({ label, status, dotClass, badgeClass }) => (
-              <li key={label} className="flex items-center justify-between">
-                <span className="text-[13px] text-stone-600">{label}</span>
-                <span
-                  className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] ${badgeClass}`}
+        {/* Status module + mock image */}
+        <div className="mt-10 flex flex-col gap-8 md:flex-row md:items-start">
+          <div
+            className={`${surfaces.linenCard} max-w-sm p-5 sm:max-w-md`}
+          >
+            <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.22em] text-stone-400">
+              Beta Status
+            </p>
+            <ul className="space-y-3">
+              {betaStatus.map(({ label, status, statusHref, dotClass, badgeClass }) => (
+                <li key={label} className="flex items-center justify-between">
+                  <span className="text-[13px] text-stone-600">{label}</span>
+                  {statusHref ? (
+                    <a
+                      href={statusHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] underline underline-offset-2 transition-colors hover:opacity-80 ${badgeClass}`}
+                    >
+                      <span
+                        className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
+                        aria-hidden="true"
+                      />
+                      {status}
+                    </a>
+                  ) : (
+                    <span
+                      className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] ${badgeClass}`}
+                    >
+                      <span
+                        className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
+                        aria-hidden="true"
+                      />
+                      {status}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4 space-y-1 text-[11px] leading-relaxed text-stone-400">
+              <p>
+                *{" "}
+                <a
+                  href="https://kscan-glasses-demo.vercel.app/simulator.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 transition-colors hover:text-stone-600"
                 >
-                  <span
-                    className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
-                    aria-hidden="true"
-                  />
-                  {status}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-4 space-y-1 text-[11px] leading-relaxed text-stone-400">
-            <p>
-              *{" "}
-              <a
-                href="https://kscan-glasses-demo.vercel.app/simulator.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 transition-colors hover:text-stone-600"
-              >
-                Meta Browser Demo
-              </a>
-            </p>
-            <p>
-              **{" "}
-              <a
-                href="https://kscan-google-glasses-demo.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 transition-colors hover:text-stone-600"
-              >
-                Google XR Browser Demo
-              </a>
-            </p>
+                  Meta Browser Demo
+                </a>
+              </p>
+              <p>
+                **{" "}
+                <a
+                  href="https://kscan-google-glasses-demo.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 transition-colors hover:text-stone-600"
+                >
+                  Google XR Browser Demo
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-xl border border-stone-100 shadow-sm md:max-w-sm">
+            <Image
+              src="/images/general-mock.png"
+              alt="K Scan smart glasses interface and app bridge mockup"
+              width={640}
+              height={480}
+              className="h-auto w-full object-contain"
+            />
           </div>
         </div>
 
