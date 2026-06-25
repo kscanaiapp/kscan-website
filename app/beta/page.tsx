@@ -122,7 +122,7 @@ const StatusBadge = ({
   badgeClass: string;
 }) => {
   const baseClasses =
-    "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] leading-none whitespace-nowrap shrink-0";
+    "inline-flex w-fit max-w-max shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] leading-none whitespace-nowrap";
   const dot = (
     <span
       className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
@@ -136,10 +136,12 @@ const StatusBadge = ({
         href={statusHref}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${baseClasses} ${badgeClass} underline decoration-stone-400 underline-offset-2 hover:decoration-stone-600 hover:opacity-80`}
+        className={`${baseClasses} ${badgeClass} transition-colors hover:opacity-80`}
       >
         {dot}
-        {status}
+        <span className="underline decoration-stone-400 underline-offset-2 hover:decoration-stone-600">
+          {status}
+        </span>
       </a>
     );
   }
