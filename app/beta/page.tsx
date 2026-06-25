@@ -158,20 +158,20 @@ const roadmapCards = [
   {
     title: "Collaborative Rooms",
     description:
-      "Expanding shared rooms into group outfit planning for trips, events, voting, and style decisions.",
-    badge: "Exploring",
+      "Shared rooms are live in beta. We’re expanding them into richer group planning for trips, events, voting, reactions, and shared style decisions.",
+    badge: "Expanding in Beta",
   },
   {
-    title: "Circular Closet",
+    title: "Smart Closet",
     description:
-      "Vintage recommendations and resale focused wardrobe planning.",
-    badge: "Exploring",
+      "A connected closet layer for saved scans, Style Memory, StyleChat, and TextScan. We’re exploring how K Scan can help users organize what they own, rediscover saved pieces, describe items by text, and get smarter outfit suggestions from their personal style context.",
+    badge: "Research & Design",
   },
   {
     title: "Outfit Remix",
     description:
-      "Recreate inspiration looks using pieces already in your closet.",
-    badge: "Coming Soon",
+      "Designing ways to remix inspiration looks with saved closet pieces, similar finds, and retailer-neutral alternatives before moving the experience into beta testing.",
+    badge: "In Design",
   },
 ];
 
