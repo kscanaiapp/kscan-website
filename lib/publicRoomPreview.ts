@@ -5,28 +5,15 @@ import {
   type RoomsSupabaseAdminClient,
 } from "@/lib/roomsSupabaseAdmin";
 
-export type PublicRoomPreviewItem = {
-  id: string | null;
-  imageUrl: string | null;
-  category: string | null;
-  color: string | null;
-  silhouette: string | null;
-  title: string | null;
-};
+import {
+  emptyReactionCounts,
+  type PublicRoomPreview,
+  type PublicRoomPreviewItem,
+  type PublicRoomPreviewResult,
+  type ReactionCounts,
+} from "./roomPreviewTypes";
 
-export type PublicRoomPreview = {
-  shareToken: string;
-  roomTitle: string | null;
-  note: string | null;
-  itemCount: number;
-  coverImageUrl: string | null;
-  sharedAt: string | null;
-  items: PublicRoomPreviewItem[];
-};
-
-export type PublicRoomPreviewResult =
-  | { status: "available"; preview: PublicRoomPreview }
-  | { status: "unavailable" | "malformed" | "configuration_error" | "unexpected_shape" };
+export type { PublicRoomPreview, PublicRoomPreviewItem, PublicRoomPreviewResult, ReactionCounts };
 
 // Internal server-only type — storage fields must never be serialized to client
 type RpcPreviewPayload = {
@@ -126,16 +113,7 @@ async function resolveItems(
 
 // ─── Read-only reaction counts ────────────────────────────────────────────────
 
-export type ReactionCounts = {
-  like: number;
-  love: number;
-  looking: number;
-  thumbs_down: number;
-};
-
-export function emptyReactionCounts(): ReactionCounts {
-  return { like: 0, love: 0, looking: 0, thumbs_down: 0 };
-}
+export { emptyReactionCounts } from "./roomPreviewTypes";
 
 export async function fetchPublicItemReactionCounts(
   itemIds: string[]

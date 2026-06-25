@@ -4,10 +4,10 @@ import { cache } from "react";
 import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
 import { CoverImage } from "@/components/rooms/CoverImage";
+import { SharedRoomCollaborationPanel } from "@/components/rooms/SharedRoomCollaborationPanel";
 import {
   fetchPublicRoomPreview,
   fetchPublicItemReactionCounts,
-  emptyReactionCounts,
   type PublicRoomPreview,
   type PublicRoomPreviewItem,
   type ReactionCounts,
@@ -127,43 +127,12 @@ export async function generateMetadata({ params }: RoomPageProps): Promise<Metad
   };
 }
 
-const ACTIVE_REACTIONS: ReadonlyArray<{
-  type: keyof ReactionCounts;
-  emoji: string;
-  label: string;
-}> = [
-  { type: "like", emoji: "👍", label: "Like" },
-  { type: "love", emoji: "❤️", label: "Love" },
-  { type: "looking", emoji: "👀", label: "Looking" },
-  { type: "thumbs_down", emoji: "👎", label: "Not it" },
-];
-
-function ReactionRow({ reactions }: { reactions: ReactionCounts }) {
-  return (
-    <div className="flex flex-wrap gap-1.5 px-5 pb-4 pt-1">
-      {ACTIVE_REACTIONS.map(({ type, emoji, label }) => (
-        <span
-          key={type}
-          aria-label={`${label}: ${reactions[type]}`}
-          title={label}
-          className="flex select-none items-center gap-1 rounded-full border border-stone-200 bg-stone-50 px-3 py-1 text-[11px] font-medium text-stone-600 cursor-default"
-        >
-          <span aria-hidden="true">{emoji}</span>
-          <span>{reactions[type]}</span>
-        </span>
-      ))}
-    </div>
-  );
-}
-
 function RoomItemCard({
   item,
   index,
-  reactions,
 }: {
   item: PublicRoomPreviewItem;
   index: number;
-  reactions: ReactionCounts;
 }) {
   const hasMetadata = item.category || item.color || item.silhouette;
   const isPlaceholder = !hasDisplayableItemFields(item);
@@ -211,7 +180,6 @@ function RoomItemCard({
           <p className="text-[13px] leading-6 text-stone-500">No public attributes available.</p>
         )}
       </div>
-      {item.id ? <ReactionRow reactions={reactions} /> : null}
     </article>
   );
 }
@@ -307,7 +275,6 @@ function AvailableRoom({
                 key={`${preview.shareToken}-${index}`}
                 item={item}
                 index={index}
-                reactions={item.id ? (reactionCounts[item.id] ?? emptyReactionCounts()) : emptyReactionCounts()}
               />
             ))}
           </div>
@@ -320,6 +287,12 @@ function AvailableRoom({
           </div>
         )}
       </section>
+
+      <SharedRoomCollaborationPanel
+        token={preview.shareToken}
+        preview={preview}
+        initialReactionCounts={reactionCounts}
+      />
     </>
   );
 }
