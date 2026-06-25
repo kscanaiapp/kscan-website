@@ -158,7 +158,7 @@ const roadmapCards = [
   {
     title: "Collaborative Rooms",
     description:
-      "Shared rooms are live in beta. We’re expanding them into richer group planning for trips, events, voting, reactions, and shared style decisions.",
+      "Shared rooms are live in beta. We’re expanding them into richer group planning for trips, events, voting, reactions 🔥, and shared style decisions.",
     badge: "Expanding in Beta",
   },
   {
