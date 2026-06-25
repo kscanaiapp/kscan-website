@@ -132,17 +132,17 @@ const StatusBadge = ({
 
   if (statusHref) {
     return (
-      <a
-        href={statusHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${baseClasses} ${badgeClass} transition-colors hover:opacity-80`}
-      >
+      <span className={`${baseClasses} ${badgeClass}`}>
         {dot}
-        <span className="underline decoration-stone-400 underline-offset-2 hover:decoration-stone-600">
+        <a
+          href={statusHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="leading-none underline decoration-stone-400 underline-offset-2 transition-colors hover:decoration-stone-600 hover:opacity-80"
+        >
           {status}
-        </span>
-      </a>
+        </a>
+      </span>
     );
   }
 
