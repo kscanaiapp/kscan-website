@@ -122,7 +122,7 @@ const StatusBadge = ({
   badgeClass: string;
 }) => {
   const baseClasses =
-    "inline-flex w-fit max-w-max shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] leading-none whitespace-nowrap";
+    "inline-flex w-fit max-w-max shrink-0 items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.12em] leading-none whitespace-nowrap";
   const dot = (
     <span
       className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
@@ -183,8 +183,8 @@ export default function BetaPage() {
       <SiteNav />
 
       {/* ── 1. Hero + Beta Status ──────────────────────────────────────────── */}
-      <section className="mx-auto max-w-6xl px-6 pb-16 pt-16 md:px-10 md:pb-24 md:pt-24">
-        <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-400">
+      <section className="mx-auto max-w-6xl px-6 pb-14 pt-16 md:px-10 md:pb-20 md:pt-24">
+        <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
           01 — Beta Center
         </p>
         <h1 className="font-display max-w-xl text-[42px] leading-[1.02] text-stone-900 sm:text-[52px] md:text-[64px]">
@@ -196,48 +196,56 @@ export default function BetaPage() {
         </p>
 
         {/* Status module + mock image */}
-        <div className="mt-10 grid gap-8 md:grid-cols-[5fr_7fr] lg:grid-cols-[0.7fr_1.55fr] md:items-start">
-          <div
-            className={`${surfaces.linenCard} max-w-sm p-5 sm:max-w-md`}
-          >
-            <p className="mb-4 font-mono text-[9px] uppercase tracking-[0.22em] text-stone-400">
-              Beta Status
-            </p>
-            <ul className="space-y-3">
-              {betaStatus.map(({ label, ...badgeProps }) => (
-                <li key={label} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-                  <span className="text-[13px] text-stone-600">{label}</span>
-                  <StatusBadge {...badgeProps} />
-                </li>
-              ))}
-            </ul>
-            <div className="mt-4 space-y-1 text-[11px] leading-relaxed text-stone-400">
-              <p>
-                *{" "}
-                <a
-                  href="https://kscan-glasses-demo.vercel.app/simulator.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2 transition-colors hover:text-stone-600"
-                >
-                  Meta Browser Demo
-                </a>
+        <div className="mt-10 grid gap-6 md:grid-cols-[5fr_8fr] lg:grid-cols-[0.65fr_1.6fr] md:items-start">
+          <div className="flex flex-col">
+            <div
+              className={`${surfaces.linenCard} max-w-md p-6`}
+            >
+              <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
+                Beta Status
               </p>
-              <p>
-                **{" "}
-                <a
-                  href="https://kscan-google-glasses-demo.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2 transition-colors hover:text-stone-600"
-                >
-                  Google XR Browser Demo
-                </a>
-              </p>
+              <ul className="space-y-3.5">
+                {betaStatus.map(({ label, ...badgeProps }) => (
+                  <li key={label} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+                    <span className="text-[14px] text-stone-600">{label}</span>
+                    <StatusBadge {...badgeProps} />
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-5 space-y-1 text-[11px] leading-relaxed text-stone-400">
+                <p>
+                  *{" "}
+                  <a
+                    href="https://kscan-glasses-demo.vercel.app/simulator.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 transition-colors hover:text-stone-600"
+                  >
+                    Meta Browser Demo
+                  </a>
+                </p>
+                <p>
+                  **{" "}
+                  <a
+                    href="https://kscan-google-glasses-demo.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 transition-colors hover:text-stone-600"
+                  >
+                    Google XR Browser Demo
+                  </a>
+                </p>
+              </div>
             </div>
+
+            <p className="mt-4 max-w-md text-[12px] leading-relaxed text-stone-400">
+              Fashion discovery is moving beyond the screen. K Scan is bringing
+              real world style recognition into wearable tech through immersive
+              hands free visual experiences.
+            </p>
           </div>
 
-          <div className="overflow-hidden rounded-xl border border-stone-100 shadow-sm md:mt-6">
+          <div className="overflow-hidden rounded-xl border border-stone-100 shadow-sm">
             <Image
               src="/images/general-mock.png"
               alt="K Scan smart glasses interface and app bridge mockup"
@@ -247,12 +255,6 @@ export default function BetaPage() {
             />
           </div>
         </div>
-
-        <p className="mt-5 max-w-md text-[12px] leading-relaxed text-stone-400">
-          Fashion discovery is moving beyond the screen. K Scan is bringing
-          real world style recognition into wearable tech through immersive
-          hands free visual experiences.
-        </p>
       </section>
 
       {/* ── Divider ────────────────────────────────────────────────────────── */}
@@ -262,7 +264,7 @@ export default function BetaPage() {
 
       {/* ── 2. What We're Testing ──────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-        <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-400">
+        <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
           02 — Current Testing Focus
         </p>
         <h2 className="font-display mb-8 text-[28px] leading-tight text-stone-900 sm:text-[34px]">
@@ -362,7 +364,7 @@ export default function BetaPage() {
 
       {/* ── 3. Roadmap Preview ─────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-        <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-400">
+        <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
           03 — Product Direction
         </p>
         <h2 className="font-display mb-3 text-[28px] leading-tight text-stone-900 sm:text-[34px]">
@@ -390,6 +392,15 @@ export default function BetaPage() {
               </p>
             </div>
           ))}
+          <div className="hidden md:flex items-stretch overflow-hidden rounded-xl border border-stone-100 shadow-sm">
+            <Image
+              src="/dressing-rooms-v2.png"
+              alt="Dressing Room collaborative styling preview"
+              width={1122}
+              height={1402}
+              className="h-full w-full object-cover"
+            />
+          </div>
         </div>
 
         <p className="mt-8 text-[12px] text-stone-400">
@@ -413,7 +424,7 @@ export default function BetaPage() {
         id="beta-feedback"
         className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24"
       >
-        <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-400">
+        <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
           04 — Feedback
         </p>
         <div className="max-w-xl">
@@ -440,7 +451,7 @@ export default function BetaPage() {
 
       {/* ── 5. Beta Access Reinforcement ───────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
-        <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-400">
+        <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
           05 — Early Access
         </p>
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">

@@ -69,7 +69,7 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
     if (result.status !== "available") {
       console.error(`[rooms-preview] Internal error: ${result.status}`);
       return diagJson(
-        { status: "error", message: "Internal server error" },
+        { status: "error", message: "Temporarily unavailable" },
         500,
       );
     }
@@ -107,7 +107,7 @@ export async function GET(request: Request, context: RouteContext): Promise<Next
   } catch {
     console.error("[rooms-preview] Unexpected error handling shared room request");
     return diagJson(
-      { status: "error", message: "Internal server error" },
+      { status: "error", message: "Temporarily unavailable" },
       500,
     );
   }

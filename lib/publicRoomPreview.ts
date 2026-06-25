@@ -1,6 +1,9 @@
 import "server-only";
 
-import { getSupabaseAdminClient } from "@/lib/supabaseAdmin";
+import {
+  getRoomsSupabaseAdminClient,
+  type RoomsSupabaseAdminClient,
+} from "@/lib/roomsSupabaseAdmin";
 
 export type PublicRoomPreviewItem = {
   id: string | null;
@@ -39,7 +42,7 @@ type RpcPreviewPayload = {
   items?: unknown;
 };
 
-type AdminClient = NonNullable<ReturnType<typeof getSupabaseAdminClient>>;
+type AdminClient = RoomsSupabaseAdminClient;
 
 function nullableString(value: unknown): string | null {
   return typeof value === "string" && value.trim() ? value : null;
@@ -140,9 +143,11 @@ export async function fetchPublicItemReactionCounts(
   const result: Record<string, ReactionCounts> = {};
   if (itemIds.length === 0) return result;
 
-  const admin = getSupabaseAdminClient();
-  if (!admin) {
-    console.error("Supabase admin client unavailable for reaction counts.");
+  let admin: AdminClient;
+  try {
+    admin = getRoomsSupabaseAdminClient();
+  } catch (err) {
+    console.error("[rooms-preview] Reaction count client unavailable:", err);
     return result;
   }
 
@@ -179,11 +184,11 @@ export async function fetchPublicItemReactionCounts(
 export async function fetchPublicRoomPreview(
   shareToken: string
 ): Promise<PublicRoomPreviewResult> {
-  const admin = getSupabaseAdminClient();
-  if (!admin) {
-    console.error(
-      "Supabase admin client unavailable. Check SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY env vars."
-    );
+  let admin: AdminClient;
+  try {
+    admin = getRoomsSupabaseAdminClient();
+  } catch (err) {
+    console.error("[rooms-preview] Preview client unavailable:", err);
     return { status: "configuration_error" };
   }
 
