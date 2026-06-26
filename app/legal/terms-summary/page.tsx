@@ -4,7 +4,7 @@ import { SiteNav } from "@/components/ui/SiteNav";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Terms Summary | K Scan AI",
+  title: "Terms Summary",
   description:
     "Review a plain-language summary of key K Scan AI terms, beta limitations, user responsibilities, and third-party shopping disclosures.",
   alternates: {

@@ -1,5 +1,32 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "Privacy Summary | K Scan AI",
+  },
+  description:
+    "Review K Scan AI privacy information, including uploads, account data, AI-assisted results, and privacy request options.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Summary | K Scan AI",
+    description:
+      "Review K Scan AI privacy information, including uploads, account data, AI-assisted results, and privacy request options.",
+    url: "https://kscan.app/privacy",
+    siteName: "K Scan AI",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Summary | K Scan AI",
+    description:
+      "Review K Scan AI privacy information, including uploads, account data, AI-assisted results, and privacy request options.",
+  },
+};
 
 const linkClassName =
   "text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500";

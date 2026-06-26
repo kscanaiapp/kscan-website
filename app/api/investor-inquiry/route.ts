@@ -16,7 +16,7 @@ Weâ€™ve received your request and will review it shortly. If there is a fit, weâ
 For questions, you can reach us at kscanai.app@gmail.com.
 
 K Scan AI
-See it. Say it. Get it.`;
+See it. Scan it. Style it.`;
 
 const bodySchema = z.object({
   name: z.string().trim().min(1, "Name is required."),

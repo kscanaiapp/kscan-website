@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     description:
       "Learn how to delete your K Scan AI account and request support for account deletion, data access, or privacy-related questions.",
     url: "https://kscan.app/legal/delete-account",
+    siteName: "K Scan AI",
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",

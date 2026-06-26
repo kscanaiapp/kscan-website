@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     description:
       "Use K Scan AI privacy controls for sale, sharing, targeted advertising, and Global Privacy Control-related requests where applicable.",
     url: "https://kscan.app/do-not-sell-or-share",
+    siteName: "K Scan AI",
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
