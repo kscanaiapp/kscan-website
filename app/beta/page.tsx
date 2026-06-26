@@ -8,10 +8,10 @@ import { surfaces, buttons } from "@/lib/theme";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "K Scan Beta Center | Early Access & Product Roadmap",
+    absolute: "K Scan AI Beta | Product Status and Early Access",
   },
   description:
-    "Explore the K Scan beta, current testing focus, roadmap priorities, and early access information.",
+    "Follow K Scan AI beta progress across scan-to-style discovery, dressing rooms, StyleChat, TextScan, and upcoming product direction.",
   keywords: [
     "K Scan beta",
     "beta access",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     canonical: "/beta",
   },
   openGraph: {
-    title: "K Scan Beta Center | Early Access & Product Roadmap",
+    title: "K Scan AI Beta | Product Status and Early Access",
     description:
-      "Explore the K Scan beta, current testing focus, roadmap priorities, and early access information.",
+      "Follow K Scan AI beta progress across scan-to-style discovery, dressing rooms, StyleChat, TextScan, and upcoming product direction.",
     url: "https://kscan.app/beta",
     siteName: "K Scan AI",
     locale: "en_US",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "K Scan Beta Center | Early Access & Product Roadmap",
+    title: "K Scan AI Beta | Product Status and Early Access",
     description:
-      "Explore the K Scan beta, current testing focus, roadmap priorities, and early access information.",
+      "Follow K Scan AI beta progress across scan-to-style discovery, dressing rooms, StyleChat, TextScan, and upcoming product direction.",
     images: ["/group-street.jpeg"],
   },
 };

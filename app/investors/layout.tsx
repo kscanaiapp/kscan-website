@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "K Scan Investors | Fashion Intelligence Platform",
+    absolute: "K Scan AI Investors | Company Overview",
   },
   description:
-    "Investor access to K Scan’s product vision, platform roadmap, and fashion intelligence opportunity.",
+    "Access K Scan AI investor materials, company updates, and product overview information through the protected investor portal.",
   alternates: {
     canonical: "/investors",
   },
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "K Scan Investors | Fashion Intelligence Platform",
+    title: "K Scan AI Investors | Company Overview",
     description:
-      "Investor access to K Scan’s product vision, platform roadmap, and fashion intelligence opportunity.",
+      "Access K Scan AI investor materials, company updates, and product overview information through the protected investor portal.",
     url: "https://kscan.app/investors",
     siteName: "K Scan AI",
     locale: "en_US",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "K Scan Investors | Fashion Intelligence Platform",
+    title: "K Scan AI Investors | Company Overview",
     description:
-      "Investor access to K Scan’s product vision, platform roadmap, and fashion intelligence opportunity.",
+      "Access K Scan AI investor materials, company updates, and product overview information through the protected investor portal.",
     images: ["/group-street.jpeg"],
   },
 };

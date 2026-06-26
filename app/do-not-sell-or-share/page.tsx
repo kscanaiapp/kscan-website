@@ -3,9 +3,11 @@ import { SiteNav } from "@/components/ui/SiteNav";
 import { PrivacyControlsClient } from "./PrivacyControlsClient";
 
 export const metadata: Metadata = {
-  title: "Do Not Sell or Share My Personal Information",
+  title: {
+    absolute: "Do Not Sell or Share My Personal Information | K Scan AI",
+  },
   description:
-    "Manage opt-out rights and privacy choices for certain K Scan AI commercial, analytics, preference, and marketing data uses.",
+    "Use K Scan AI privacy controls for sale, sharing, targeted advertising, and Global Privacy Control-related requests where applicable.",
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://kscan.app/do-not-sell-or-share",
@@ -13,14 +15,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Do Not Sell or Share My Personal Information | K Scan AI",
     description:
-      "Manage opt-out rights and privacy choices for certain K Scan AI commercial, analytics, preference, and marketing data uses.",
+      "Use K Scan AI privacy controls for sale, sharing, targeted advertising, and Global Privacy Control-related requests where applicable.",
     url: "https://kscan.app/do-not-sell-or-share",
   },
   twitter: {
     card: "summary_large_image",
     title: "Do Not Sell or Share My Personal Information | K Scan AI",
     description:
-      "Manage opt-out rights and privacy choices for certain K Scan AI commercial, analytics, preference, and marketing data uses.",
+      "Use K Scan AI privacy controls for sale, sharing, targeted advertising, and Global Privacy Control-related requests where applicable.",
   },
 };
 

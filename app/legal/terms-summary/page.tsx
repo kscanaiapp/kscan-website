@@ -1,6 +1,31 @@
+import type { Metadata } from "next";
 import { SiteNav } from "@/components/ui/SiteNav";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Terms Summary | K Scan AI",
+  description:
+    "Review a plain-language summary of key K Scan AI terms, beta limitations, user responsibilities, and third-party shopping disclosures.",
+  alternates: {
+    canonical: "https://kscan.app/legal/terms-summary",
+  },
+  openGraph: {
+    title: "Terms Summary | K Scan AI",
+    description:
+      "Review a plain-language summary of key K Scan AI terms, beta limitations, user responsibilities, and third-party shopping disclosures.",
+    url: "https://kscan.app/legal/terms-summary",
+    siteName: "K Scan AI",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms Summary | K Scan AI",
+    description:
+      "Review a plain-language summary of key K Scan AI terms, beta limitations, user responsibilities, and third-party shopping disclosures.",
+  },
+};
 
 export default function TermsSummaryPage() {
   return (

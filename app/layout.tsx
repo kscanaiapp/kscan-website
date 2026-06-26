@@ -35,11 +35,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://kscan.app"),
   title: {
-    default: "K Scan AI | Find Fashion From Real-World Inspiration",
+    default: "K Scan AI | See it. Scan it. Style it.",
     template: "%s | K Scan AI",
   },
   description:
-    "See a look. Find the match. K Scan transforms real-world fashion inspiration into ranked retail matches, pricing intelligence, and purchase pathways.",
+    "K Scan AI helps turn real-world fashion inspiration into AI-assisted style discovery, saved looks, and retailer-neutral shopping paths.",
   keywords: [
     "AI fashion search",
     "find clothes from photos",
@@ -58,9 +58,9 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
   },
   openGraph: {
-    title: "K Scan AI | Find Fashion From Real-World Inspiration",
+    title: "K Scan AI | See it. Scan it. Style it.",
     description:
-      "See a look. Find the match. K Scan transforms real-world fashion inspiration into ranked retail matches, pricing intelligence, and purchase pathways.",
+      "K Scan AI helps turn real-world fashion inspiration into AI-assisted style discovery, saved looks, and retailer-neutral shopping paths.",
     url: "https://kscan.app",
     siteName: "K Scan AI",
     locale: "en_US",
@@ -76,9 +76,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "K Scan AI | Find Fashion From Real-World Inspiration",
+    title: "K Scan AI | See it. Scan it. Style it.",
     description:
-      "See a look. Find the match. K Scan transforms real-world fashion inspiration into ranked retail matches, pricing intelligence, and purchase pathways.",
+      "K Scan AI helps turn real-world fashion inspiration into AI-assisted style discovery, saved looks, and retailer-neutral shopping paths.",
     images: [
       {
         url: "/group-street.jpeg",

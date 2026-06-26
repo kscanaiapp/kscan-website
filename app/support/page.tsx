@@ -2,23 +2,25 @@ import { SiteNav } from "@/components/ui/SiteNav";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Support",
+  title: {
+    absolute: "Support | K Scan AI",
+  },
   description:
-    "Get help with K Scan AI beta access, account deletion, data requests, camera permissions, scan issues, and reviewer support.",
+    "Get help with K Scan AI, including account support, privacy requests, data export questions, and beta access guidance.",
   alternates: {
     canonical: "https://kscan.app/support",
   },
   openGraph: {
     title: "Support | K Scan AI",
     description:
-      "Get help with K Scan AI beta access, account deletion, data requests, camera permissions, scan issues, and reviewer support.",
+      "Get help with K Scan AI, including account support, privacy requests, data export questions, and beta access guidance.",
     url: "https://kscan.app/support",
   },
   twitter: {
     card: "summary_large_image",
     title: "Support | K Scan AI",
     description:
-      "Get help with K Scan AI beta access, account deletion, data requests, camera permissions, scan issues, and reviewer support.",
+      "Get help with K Scan AI, including account support, privacy requests, data export questions, and beta access guidance.",
   },
 };
 

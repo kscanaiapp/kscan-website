@@ -3,9 +3,11 @@ import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
 
 export const metadata: Metadata = {
-  title: "Delete Your K Scan AI Account",
+  title: {
+    absolute: "Delete Your K Scan AI Account | K Scan AI",
+  },
   description:
-    "Learn how to request deletion of your K Scan AI account and associated personal information.",
+    "Learn how to delete your K Scan AI account and request support for account deletion, data access, or privacy-related questions.",
   robots: { index: false, follow: true },
   alternates: {
     canonical: "https://kscan.app/legal/delete-account",
@@ -13,14 +15,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Delete Your K Scan AI Account | K Scan AI",
     description:
-      "Learn how to request deletion of your K Scan AI account and associated personal information.",
+      "Learn how to delete your K Scan AI account and request support for account deletion, data access, or privacy-related questions.",
     url: "https://kscan.app/legal/delete-account",
   },
   twitter: {
     card: "summary_large_image",
     title: "Delete Your K Scan AI Account | K Scan AI",
     description:
-      "Learn how to request deletion of your K Scan AI account and associated personal information.",
+      "Learn how to delete your K Scan AI account and request support for account deletion, data access, or privacy-related questions.",
   },
 };
 

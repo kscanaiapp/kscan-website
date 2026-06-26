@@ -2,23 +2,25 @@ import { SiteNav } from "@/components/ui/SiteNav";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
+  title: {
+    absolute: "Terms of Service | K Scan AI",
+  },
   description:
-    "Review the K Scan AI terms for beta use, AI-assisted fashion discovery, third-party retailer links, and user responsibilities.",
+    "Review the K Scan AI Terms of Service for beta use, AI-assisted fashion discovery, third-party links, account responsibilities, and limitations.",
   alternates: {
     canonical: "https://kscan.app/legal/terms",
   },
   openGraph: {
     title: "Terms of Service | K Scan AI",
     description:
-      "Review the K Scan AI terms for beta use, AI-assisted fashion discovery, third-party retailer links, and user responsibilities.",
+      "Review the K Scan AI Terms of Service for beta use, AI-assisted fashion discovery, third-party links, account responsibilities, and limitations.",
     url: "https://kscan.app/legal/terms",
   },
   twitter: {
     card: "summary_large_image",
     title: "Terms of Service | K Scan AI",
     description:
-      "Review the K Scan AI terms for beta use, AI-assisted fashion discovery, third-party retailer links, and user responsibilities.",
+      "Review the K Scan AI Terms of Service for beta use, AI-assisted fashion discovery, third-party links, account responsibilities, and limitations.",
   },
 };
 
