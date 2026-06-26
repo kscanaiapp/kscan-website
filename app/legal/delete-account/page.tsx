@@ -5,8 +5,23 @@ import { SiteNav } from "@/components/ui/SiteNav";
 export const metadata: Metadata = {
   title: "Delete Your K Scan AI Account",
   description:
-    "Request deletion of your K Scan AI account and personal data. Learn what data is deleted, what may be retained, and how to contact us.",
+    "Learn how to request deletion of your K Scan AI account and associated personal information.",
   robots: { index: false, follow: true },
+  alternates: {
+    canonical: "https://kscan.app/legal/delete-account",
+  },
+  openGraph: {
+    title: "Delete Your K Scan AI Account | K Scan AI",
+    description:
+      "Learn how to request deletion of your K Scan AI account and associated personal information.",
+    url: "https://kscan.app/legal/delete-account",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Delete Your K Scan AI Account | K Scan AI",
+    description:
+      "Learn how to request deletion of your K Scan AI account and associated personal information.",
+  },
 };
 
 export default function DeleteAccountPage() {

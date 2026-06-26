@@ -1,4 +1,26 @@
 import { SiteNav } from "@/components/ui/SiteNav";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Support",
+  description:
+    "Get help with K Scan AI beta access, account deletion, data requests, camera permissions, scan issues, and reviewer support.",
+  alternates: {
+    canonical: "https://kscan.app/support",
+  },
+  openGraph: {
+    title: "Support | K Scan AI",
+    description:
+      "Get help with K Scan AI beta access, account deletion, data requests, camera permissions, scan issues, and reviewer support.",
+    url: "https://kscan.app/support",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Support | K Scan AI",
+    description:
+      "Get help with K Scan AI beta access, account deletion, data requests, camera permissions, scan issues, and reviewer support.",
+  },
+};
 
 export default function SupportPage() {
   const linkClassName =

@@ -1,4 +1,26 @@
 import { SiteNav } from "@/components/ui/SiteNav";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "Learn how K Scan AI handles privacy, visual inputs, cloud processing, account deletion, and user privacy choices.",
+  alternates: {
+    canonical: "https://kscan.app/legal/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | K Scan AI",
+    description:
+      "Learn how K Scan AI handles privacy, visual inputs, cloud processing, account deletion, and user privacy choices.",
+    url: "https://kscan.app/legal/privacy",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | K Scan AI",
+    description:
+      "Learn how K Scan AI handles privacy, visual inputs, cloud processing, account deletion, and user privacy choices.",
+  },
+};
 
 export default function LegalPrivacyPage() {
   const linkClassName =

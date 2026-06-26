@@ -5,8 +5,23 @@ import { PrivacyControlsClient } from "./PrivacyControlsClient";
 export const metadata: Metadata = {
   title: "Do Not Sell or Share My Personal Information",
   description:
-    "Manage your K Scan AI data privacy choices, including opting out of the sale or sharing of personal information and requesting account data deletion.",
+    "Manage opt-out rights and privacy choices for certain K Scan AI commercial, analytics, preference, and marketing data uses.",
   robots: { index: true, follow: true },
+  alternates: {
+    canonical: "https://kscan.app/do-not-sell-or-share",
+  },
+  openGraph: {
+    title: "Do Not Sell or Share My Personal Information | K Scan AI",
+    description:
+      "Manage opt-out rights and privacy choices for certain K Scan AI commercial, analytics, preference, and marketing data uses.",
+    url: "https://kscan.app/do-not-sell-or-share",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Do Not Sell or Share My Personal Information | K Scan AI",
+    description:
+      "Manage opt-out rights and privacy choices for certain K Scan AI commercial, analytics, preference, and marketing data uses.",
+  },
 };
 
 export default function DoNotSellPage() {
