@@ -63,7 +63,19 @@ The website includes coming soon roadmap concepts. These should be described as 
 
 ### StyleChat
 
-StyleChat is live. It is K Scan's real-time AI-powered conversational stylist for outfit ideas, fit feedback, occasion styling, and general style advice. StyleChat can use saved looks, library images, dressing room context, fit notes, and user-provided style preferences to make recommendations more personal over time.
+StyleChat is live in beta. It is K Scan's real-time AI-powered conversational stylist for outfit ideas, fit feedback, occasion styling, and general style advice. StyleChat can use saved looks, library images, dressing room context, fit notes, and user-provided style preferences to make recommendations more personal over time.
+
+### TextScan
+
+TextScan is live in beta. It lets users describe fashion items, style goals, or outfit needs in natural language so K Scan can help surface relevant style suggestions, saved looks, and shopping paths.
+
+### Native Face Blurring
+
+Native Face Blurring is in production. It is being built to reduce visible face and bystander exposure in scan imagery before or during privacy-sensitive processing flows, without adding biometric identification or face-recognition claims.
+
+### Smart Glasses
+
+Smart Glasses are in prototype production with a video demo available. This work extends K Scan's real-world fashion discovery experience toward wearable, hands-free visual scanning concepts without implying public availability or a shipped glasses product.
 
 ### K Scan Web Lens
 
