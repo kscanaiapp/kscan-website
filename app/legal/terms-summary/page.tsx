@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function TermsSummaryPage() {
   return (
-    <main className="min-h-screen bg-[#FAFAF8]">
+    <main id="main-content" className="min-h-screen bg-[#FAFAF8]">
       <SiteNav />
 
       <section className="mx-auto max-w-3xl px-6 py-16 md:px-10 md:py-24">

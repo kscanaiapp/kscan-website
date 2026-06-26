@@ -31,7 +31,7 @@ export default function DeleteAccountPage() {
     "text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500";
 
   return (
-    <main className="min-h-screen bg-[#FAFAF8]">
+    <main id="main-content" className="min-h-screen bg-[#FAFAF8]">
       <SiteNav />
 
       <section className="mx-auto max-w-3xl px-6 py-16 md:px-10 md:py-24">

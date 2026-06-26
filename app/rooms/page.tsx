@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function MissingRoomPage() {
   return (
-    <main className="min-h-screen bg-[#F7F4EF] text-stone-950">
+    <main id="main-content" className="min-h-screen bg-[#F7F4EF] text-stone-950">
       <SiteNav />
       <section className="mx-auto flex min-h-[calc(100vh-80px)] max-w-4xl flex-col justify-center px-6 py-16 md:px-10 md:py-24">
         <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#B6924E]">

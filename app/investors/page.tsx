@@ -206,7 +206,7 @@ export default function InvestorsPage() {
   }
 
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
 
       <SiteNav />
 

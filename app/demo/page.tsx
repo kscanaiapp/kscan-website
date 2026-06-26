@@ -9,7 +9,7 @@ export const metadata = demoMetadata;
 
 export default function DemoPage() {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       <SiteNav />
 
       <section className="relative">

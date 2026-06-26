@@ -76,7 +76,7 @@ export function SiteFooter() {
                 href="https://www.instagram.com/kscan_app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
+                aria-label="K Scan AI on Instagram"
                 className="flex h-11 w-11 items-center justify-center text-stone-600 transition-colors hover:text-stone-900 focus:outline-none focus-visible:text-stone-900"
               >
                 <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="1.7">
@@ -89,7 +89,7 @@ export function SiteFooter() {
                 href="https://www.tiktok.com/@KScan_app"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="TikTok"
+                aria-label="K Scan AI on TikTok"
                 className="flex h-11 w-11 items-center justify-center text-stone-600 transition-colors hover:text-stone-900 focus:outline-none focus-visible:text-stone-900"
               >
                 <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-current">

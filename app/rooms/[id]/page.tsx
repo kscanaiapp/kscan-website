@@ -381,7 +381,7 @@ export default async function SharedRoomPage({ params }: RoomPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[#F7F4EF] text-stone-950">
+    <main id="main-content" className="min-h-screen bg-[#F7F4EF] text-stone-950">
       <SiteNav />
       {content}
     </main>

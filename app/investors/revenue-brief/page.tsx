@@ -43,7 +43,7 @@ export default async function InvestorRevenueBriefPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#FAFAF8]">
+    <main id="main-content" className="min-h-screen bg-[#FAFAF8]">
       <SiteNav />
 
       <section className="mx-auto flex max-w-6xl flex-col gap-7 px-6 py-10 md:px-10 md:py-14">

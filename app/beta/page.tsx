@@ -179,7 +179,7 @@ const roadmapCards = [
 
 export default function BetaPage() {
   return (
-    <main className="min-h-screen bg-[#FAFAF8]">
+    <main id="main-content" className="min-h-screen bg-[#FAFAF8]">
       <SiteNav />
 
       {/* ── 1. Hero + Beta Status ──────────────────────────────────────────── */}
