@@ -185,7 +185,7 @@ export function DemoEnvironmentSwitcher() {
   return (
     <section className="mx-auto flex w-full max-w-[68rem] flex-col">
       <div className="mx-auto flex max-w-[44rem] flex-col items-center gap-3 text-center">
-        <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-stone-400/90">
+        <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-stone-700/90">
           Environment Switcher
         </p>
         <div className="inline-flex items-center rounded-full border border-stone-500/30 bg-[#101010] p-1 shadow-[0_10px_24px_rgba(0,0,0,0.24)] ring-1 ring-white/5">
@@ -321,7 +321,7 @@ export function DemoEnvironmentSwitcher() {
             className="grid gap-5 md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.2fr)] md:items-start md:gap-8"
           >
             <div>
-              <p className="text-[10px] font-medium uppercase tracking-[0.26em] text-stone-400">
+              <p className="text-[10px] font-medium uppercase tracking-[0.26em] text-stone-700">
                 Active Environment
               </p>
               <h2 className="mt-2.5 font-display text-[28px] leading-[1.04] text-stone-900 md:text-[34px]">

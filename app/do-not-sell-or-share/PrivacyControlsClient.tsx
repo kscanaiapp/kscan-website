@@ -266,7 +266,7 @@ export function PrivacyControlsClient() {
         <section aria-labelledby="privacy-choices-heading">
           <h2
             id="privacy-choices-heading"
-            className="text-[11px] font-semibold uppercase tracking-widest text-stone-400"
+            className="text-[11px] font-semibold uppercase tracking-widest text-stone-600"
           >
             Privacy Choices
           </h2>
@@ -285,11 +285,11 @@ export function PrivacyControlsClient() {
 
                 {/* Sub-label changes based on state */}
                 {mounted && gpcDetected ? (
-                  <p className="mt-1 text-[12px] text-stone-400">
+                  <p className="mt-1 text-[12px] text-stone-600">
                     This preference is controlled by your browser&apos;s Global Privacy Control signal.
                   </p>
                 ) : mounted && savedServerSide ? (
-                  <p className="mt-1 text-[12px] text-stone-400">
+                  <p className="mt-1 text-[12px] text-stone-600">
                     Your sale/share opt-out is currently active for this browser. To change this preference,{" "}
                     <a
                       href="mailto:kscanai.app@gmail.com?subject=Do%20Not%20Sell%20or%20Share%20Request"
@@ -300,7 +300,7 @@ export function PrivacyControlsClient() {
                     .
                   </p>
                 ) : (
-                  <p className="mt-1 text-[12px] text-stone-400">
+                  <p className="mt-1 text-[12px] text-stone-600">
                     Applies to non-sensitive commercial, analytics, preference, and inference data where
                     permitted by applicable law.
                   </p>
@@ -333,7 +333,7 @@ export function PrivacyControlsClient() {
               <p className="text-[14px] font-medium leading-snug text-stone-800">
                 Limit sensitive personal information processing where applicable
               </p>
-              <p className="mt-1 text-[12px] text-stone-400">
+              <p className="mt-1 text-[12px] text-stone-600">
                 This request is handled manually. Email{" "}
                 <a
                   href="mailto:kscanai.app@gmail.com?subject=Limit%20Sensitive%20Processing%20Request"
@@ -365,14 +365,14 @@ export function PrivacyControlsClient() {
                   "transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2",
                   optOut && saveStatus !== "saving"
                     ? "cursor-pointer bg-indigo-600 text-white hover:bg-indigo-700"
-                    : "cursor-not-allowed bg-stone-100 text-stone-400",
+                    : "cursor-not-allowed bg-stone-100 text-stone-600",
                 ].join(" ")}
               >
                 {saveStatus === "saving" ? "Saving…" : "Save Privacy Choices"}
               </button>
 
               {!optOut && saveStatus === "idle" && (
-                <p className="text-[12px] text-stone-400">
+                <p className="text-[12px] text-stone-600">
                   Enable the toggle above to record your opt-out for this browser.
                 </p>
               )}
@@ -416,7 +416,7 @@ export function PrivacyControlsClient() {
         <section aria-labelledby="deletion-heading">
           <h2
             id="deletion-heading"
-            className="text-[11px] font-semibold uppercase tracking-widest text-stone-400"
+            className="text-[11px] font-semibold uppercase tracking-widest text-stone-600"
           >
             Request Data Deletion
           </h2>
@@ -443,7 +443,7 @@ export function PrivacyControlsClient() {
         <section aria-labelledby="legal-links-heading">
           <h2
             id="legal-links-heading"
-            className="text-[11px] font-semibold uppercase tracking-widest text-stone-400"
+            className="text-[11px] font-semibold uppercase tracking-widest text-stone-600"
           >
             Related Legal Documents
           </h2>
@@ -468,7 +468,7 @@ export function PrivacyControlsClient() {
         </section>
 
         {/* ── Page footer ────────────────────────────────────────────────── */}
-        <div className="border-t border-stone-100 pt-8 text-[13px] text-stone-400">
+        <div className="border-t border-stone-100 pt-8 text-[13px] text-stone-600">
           <p>&copy; 2026 K SCAN AI. All rights reserved.</p>
         </div>
       </div>

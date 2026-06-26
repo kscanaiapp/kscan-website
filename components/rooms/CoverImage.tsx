@@ -19,7 +19,7 @@ export function CoverImage({ primaryUrl, fallbackUrls, alt }: CoverImageProps) {
     return (
       <div
         aria-hidden="true"
-        className="flex h-full items-center justify-center px-8 text-center text-[12px] font-semibold uppercase tracking-[0.24em] text-stone-400"
+        className="flex h-full items-center justify-center px-8 text-center text-[12px] font-semibold uppercase tracking-[0.24em] text-stone-600"
       >
         View-only room preview
       </div>

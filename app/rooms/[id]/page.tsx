@@ -151,7 +151,7 @@ function RoomItemCard({
         ) : (
           <div
             aria-hidden="true"
-            className="flex h-full items-center justify-center px-6 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-400"
+            className="flex h-full items-center justify-center px-6 text-center text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-600"
           >
             Item preview unavailable
           </div>

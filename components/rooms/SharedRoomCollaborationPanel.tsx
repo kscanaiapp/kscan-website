@@ -599,7 +599,7 @@ export function SharedRoomCollaborationPanel({
                       <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#B6924E]">
                         {message.sender_id === currentUserIdRef.current ? "You" : "Participant"}
                       </span>
-                      <span className="text-[11px] text-stone-400">
+                      <span className="text-[11px] text-stone-600">
                         {formatMessageTime(message.created_at)}
                       </span>
                     </div>
@@ -624,14 +624,14 @@ export function SharedRoomCollaborationPanel({
               placeholder={canInteract ? "Message about this room…" : "Join the conversation to send a message"}
               maxLength={MESSAGE_MAX_LENGTH}
               disabled={!canInteract || sending}
-              className="min-h-[96px] w-full resize-none rounded-[16px] border border-stone-200 bg-[#FAF8F5] p-4 text-[15px] text-stone-800 placeholder:text-stone-400 focus:border-[#B6924E] focus:outline-none disabled:opacity-60"
+              className="min-h-[96px] w-full resize-none rounded-[16px] border border-stone-200 bg-[#FAF8F5] p-4 text-[15px] text-stone-800 placeholder:text-stone-600 focus:border-[#B6924E] focus:outline-none disabled:opacity-60"
               aria-label="Message composer"
             />
             <div className="mt-2 flex items-center justify-between">
               <span
                 className={classNames(
                   "text-[12px]",
-                  draft.trim().length > MESSAGE_MAX_LENGTH ? "text-red-600" : "text-stone-400"
+                  draft.trim().length > MESSAGE_MAX_LENGTH ? "text-red-600" : "text-stone-600"
                 )}
               >
                 {draft.trim().length}/{MESSAGE_MAX_LENGTH}

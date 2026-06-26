@@ -12,16 +12,16 @@ export default function LegalTermsPage() {
         <h1 className="font-display text-[38px] leading-[1.05] text-stone-900 sm:text-[46px] md:text-[56px]">
           K Scan AI Terms
         </h1>
-        <p className="mt-4 text-[14px] text-stone-400">Last updated: May 2026</p>
+        <p className="mt-4 text-[14px] text-stone-600">Last updated: May 2026</p>
 
         <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">Beta Status</h2>
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">Beta Status</h2>
             <p>K Scan AI is currently in beta and functionality may evolve.</p>
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               AI-Assisted Results
             </h2>
             <ul className="space-y-2 pl-4">
@@ -33,7 +33,7 @@ export default function LegalTermsPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Third-Party Links
             </h2>
             <ul className="space-y-2 pl-4">
@@ -43,7 +43,7 @@ export default function LegalTermsPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               User Responsibilities
             </h2>
             <ul className="space-y-2 pl-4">
@@ -53,14 +53,14 @@ export default function LegalTermsPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Intended Use
             </h2>
             <p>K Scan is not an emergency, identity, surveillance, or biometric tool.</p>
           </section>
 
           <section className="space-y-2 pt-4">
-            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-stone-400">Contact</h2>
+            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-stone-600">Contact</h2>
             <p>
               For questions or to obtain a full copy of our{" "}
               <a
@@ -76,7 +76,7 @@ export default function LegalTermsPage() {
           </section>
         </div>
 
-        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-400">
+        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-600">
           <p>&copy; 2026 K SCAN AI. All rights reserved.</p>
         </div>
       </section>

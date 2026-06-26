@@ -69,7 +69,7 @@ const roadmapPhases = [
 
 function SectionLabel({ n, text }: { n: string; text: string }) {
   return (
-    <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-400">
+    <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-700">
       {n} — {text}
     </p>
   );
@@ -89,7 +89,7 @@ function Bullets({ items }: { items: string[] }) {
 }
 
 const inputBase =
-  "w-full rounded-[14px] border border-stone-200 bg-white px-4 py-3 text-[14px] text-stone-900 placeholder:text-stone-400 focus:border-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-100";
+  "w-full rounded-[14px] border border-stone-200 bg-white px-4 py-3 text-[14px] text-stone-900 placeholder:text-stone-600 focus:border-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-100";
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
@@ -338,7 +338,7 @@ export default function InvestorsPage() {
             </div>
           ))}
         </div>
-        <p className="mt-6 max-w-xl text-[13px] leading-[1.85] text-stone-400">
+        <p className="mt-6 max-w-xl text-[13px] leading-[1.85] text-stone-600">
           Mobile is the wedge. Wearables deepen the moat by moving the interface closer to the moment of discovery.
         </p>
       </section>
@@ -357,7 +357,7 @@ export default function InvestorsPage() {
             {archSteps.map(({ step, title, body }, i) => (
               <Fragment key={step}>
                 <div className="flex-1 rounded-[18px] border border-stone-200/80 bg-[#F5F3EF] p-5">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-400">{step}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-700">{step}</p>
                   <p className="mt-3 font-display text-[16px] leading-[1.2] text-stone-900">{title}</p>
                   <p className="mt-2 text-[12px] leading-[1.75] text-stone-500">{body}</p>
                 </div>
@@ -444,7 +444,7 @@ export default function InvestorsPage() {
           <div className="grid gap-4 md:grid-cols-3">
             {roadmapPhases.map(({ phase, title, body }) => (
               <div key={phase} className="rounded-[22px] border border-stone-200/80 bg-[#F5F3EF] p-6">
-                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-400">{phase}</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-600">{phase}</p>
                 <h3 className="mt-3 font-display text-[20px] leading-[1.15] text-stone-900">{title}</h3>
                 <p className="mt-3 text-[13px] leading-[1.82] text-stone-500">{body}</p>
               </div>
@@ -473,7 +473,7 @@ export default function InvestorsPage() {
         <div className="rounded-[34px] border border-stone-200/80 bg-white p-6 shadow-[0_18px_40px_rgba(35,28,22,0.05)] md:p-8">
           <div className="grid gap-8 lg:grid-cols-[0.44fr_0.56fr] lg:gap-10">
             <div className="max-w-md">
-              <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+              <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
                 Access Gate
               </p>
               <h2 className="font-display text-[30px] leading-[1.08] text-stone-900 md:text-[36px]">
@@ -485,7 +485,7 @@ export default function InvestorsPage() {
 
               <form onSubmit={handleSubmit} className="mt-8 space-y-3">
                 <label className="block">
-                  <span className="mb-2 block text-[11px] uppercase tracking-[0.16em] text-stone-400">
+                  <span className="mb-2 block text-[11px] uppercase tracking-[0.16em] text-stone-600">
                     Password
                   </span>
                   <div className="relative">
@@ -528,13 +528,13 @@ export default function InvestorsPage() {
                 {error ? (
                   <p className="text-[12px] leading-relaxed text-stone-500">{error}</p>
                 ) : unlocked ? (
-                  <p className="text-[12px] leading-relaxed text-stone-400">
+                  <p className="text-[12px] leading-relaxed text-stone-600">
                     Access confirmed. Deck materials are now visible below.
                   </p>
                 ) : null}
               </div>
 
-              <p className="mt-6 text-[11px] leading-[1.75] text-stone-400">
+              <p className="mt-6 text-[11px] leading-[1.75] text-stone-700">
                 Confidentiality Notice: Investor materials are intended for qualified recipients only and are provided for evaluation purposes.
               </p>
             </div>
@@ -554,7 +554,7 @@ export default function InvestorsPage() {
                 </div>
               ) : deckState === "ready" ? (
                 <div className="flex min-h-[420px] flex-col items-center justify-center rounded-[24px] border border-stone-200/80 bg-white px-8 py-10 text-center shadow-[0_22px_50px_rgba(35,28,22,0.08)]">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Pitch Deck</p>
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-stone-600">Pitch Deck</p>
                   <h3 className="mt-4 font-display text-[32px] leading-[1.08] text-stone-900">
                     Investor deck is ready.
                   </h3>
@@ -594,7 +594,7 @@ export default function InvestorsPage() {
               ) : (
                 <div className="flex min-h-[420px] flex-col justify-between rounded-[24px] border border-stone-200 bg-white p-8">
                   <div>
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Deck Placeholder</p>
+                    <p className="text-[11px] uppercase tracking-[0.18em] text-stone-600">Deck Placeholder</p>
                     <h3 className="mt-4 font-display text-[30px] leading-[1.08] text-stone-900">
                       The embed is ready once the deck file is added.
                     </h3>
@@ -604,7 +604,7 @@ export default function InvestorsPage() {
                     </p>
                   </div>
                   <div className="mt-8 rounded-[22px] bg-[#F7F4EF] p-5">
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Next step</p>
+                    <p className="text-[11px] uppercase tracking-[0.18em] text-stone-600">Next step</p>
                     <p className="mt-2 text-[14px] leading-[1.8] text-stone-500">
                       Confirm the protected deck file is available on the server and this stage will automatically
                       switch from placeholder to presentation after access is granted.
@@ -621,7 +621,7 @@ export default function InvestorsPage() {
       <section className="mx-auto max-w-6xl px-6 pb-6 md:px-10">
         <div className="flex flex-col gap-5 rounded-[24px] border border-stone-200/80 bg-white px-6 py-6 md:flex-row md:items-center md:justify-between md:px-8">
           <div>
-            <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+            <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
               Scheduling
             </p>
             <h2 className="font-display text-[22px] leading-[1.1] text-stone-900">
@@ -646,7 +646,7 @@ export default function InvestorsPage() {
       <section className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
         <div className="grid gap-8 rounded-[30px] border border-stone-200/80 bg-[#F5F3EF] p-6 md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-12">
           <div>
-            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
               Investor Contact
             </p>
             <h2 className="font-display text-[26px] leading-[1.1] text-stone-900">
@@ -655,7 +655,7 @@ export default function InvestorsPage() {
             <p className="mt-4 text-[14px] leading-[1.85] text-stone-500">
               Submit an inquiry and we&apos;ll follow up with credentials and materials. All inquiries are reviewed personally.
             </p>
-            <p className="mt-6 text-[12px] leading-[1.75] text-stone-400">
+            <p className="mt-6 text-[12px] leading-[1.75] text-stone-600">
               Prefer email?{" "}
               <a
                 href="mailto:kscanai.app@gmail.com"
@@ -678,7 +678,7 @@ export default function InvestorsPage() {
               <form onSubmit={handleInquirySubmit} className="space-y-3">
                 <div className="grid gap-3 sm:grid-cols-2">
                   <label className="block">
-                    <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">Name</span>
+                    <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-600">Name</span>
                     <input
                       type="text"
                       required
@@ -689,7 +689,7 @@ export default function InvestorsPage() {
                     />
                   </label>
                   <label className="block">
-                    <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">Email</span>
+                    <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-600">Email</span>
                     <input
                       type="email"
                       required
@@ -701,7 +701,7 @@ export default function InvestorsPage() {
                   </label>
                 </div>
                 <label className="block">
-                  <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">
+                  <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-600">
                     Firm <span className="normal-case tracking-normal text-stone-300">(optional)</span>
                   </span>
                   <input
@@ -713,7 +713,7 @@ export default function InvestorsPage() {
                   />
                 </label>
                 <label className="block">
-                  <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-400">Message</span>
+                  <span className="mb-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-stone-600">Message</span>
                   <textarea
                     rows={3}
                     required

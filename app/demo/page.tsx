@@ -15,7 +15,7 @@ export default function DemoPage() {
       <section className="relative">
         <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:px-10 md:pb-32 md:pt-24">
           <div className="max-w-3xl">
-            <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400">Demo</p>
+            <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-600">Demo</p>
             <h1 className="font-display text-[42px] leading-[1.02] text-stone-900 sm:text-[52px] md:text-[68px]">
               Mobile now. Wearables next.
             </h1>
@@ -28,7 +28,7 @@ export default function DemoPage() {
           <section className="mt-0">
             <div className="mb-8 flex items-center gap-5 md:mb-10">
               <div aria-hidden="true" className="h-px flex-1 bg-stone-200" />
-              <p className="shrink-0 text-[10px] font-medium uppercase tracking-[0.28em] text-stone-400">
+              <p className="shrink-0 text-[10px] font-medium uppercase tracking-[0.28em] text-stone-600">
                 Live Product Vision
               </p>
               <div aria-hidden="true" className="h-px flex-1 bg-stone-200" />
@@ -47,7 +47,7 @@ export default function DemoPage() {
               </div>
             </div>
 
-            <p className="mt-5 text-[13px] leading-[1.8] text-stone-400 md:mt-6 md:max-w-2xl">
+            <p className="mt-5 text-[13px] leading-[1.8] text-stone-600 md:mt-6 md:max-w-2xl">
               A grounded look at how K Scan appears in the real world - turning visual inspiration into
               commerce-ready output without breaking the flow of discovery.
             </p>
@@ -85,7 +85,7 @@ export default function DemoPage() {
           </section>
 
           <section className="mt-16 rounded-[30px] border border-stone-200/80 bg-[#F4F0EA] px-6 py-8 shadow-[0_16px_36px_rgba(35,28,22,0.06)] md:mt-20 md:px-8 md:py-10">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-stone-400">Next Step</p>
+            <p className="text-[11px] uppercase tracking-[0.18em] text-stone-600">Next Step</p>
             <h2 className="mt-4 font-display text-[34px] leading-[1.06] text-stone-900 md:text-[42px]">
               Continue from the demo.
             </h2>
@@ -101,7 +101,7 @@ export default function DemoPage() {
               </Link>
               <Link
                 href="/investors"
-                className="text-[13px] text-stone-400 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
+                className="text-[13px] text-stone-600 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
               >
                 Investor Access
               </Link>

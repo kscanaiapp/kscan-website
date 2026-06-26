@@ -49,7 +49,7 @@ export default async function InvestorRevenueBriefPage() {
       <section className="mx-auto flex max-w-6xl flex-col gap-7 px-6 py-10 md:px-10 md:py-14">
         <div className="border-b border-stone-200/80 pb-7">
           <div>
-            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
               K Scan AI
             </p>
             <h1 className="font-display text-[40px] leading-[1.04] text-stone-900 md:text-[56px]">
@@ -63,7 +63,7 @@ export default async function InvestorRevenueBriefPage() {
 
         <div className="rounded-[28px] border border-stone-200/80 bg-white px-6 py-14 text-center shadow-[0_22px_50px_rgba(35,28,22,0.08)] sm:px-10 md:py-18">
           <div className="mx-auto flex max-w-2xl flex-col items-center">
-            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
               Secure Review
             </p>
             <h2 className="font-display text-[34px] leading-[1.08] text-stone-900 md:text-[46px]">

@@ -54,7 +54,7 @@ export function SiteNav() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-8 text-[13px] text-stone-400 md:flex">
+        <nav className="hidden items-center gap-8 text-[13px] text-stone-600 md:flex">
           {visible.map((item) => (
             <Link
               key={item.id}
@@ -74,7 +74,7 @@ export function SiteNav() {
 
       {/* Mobile tray */}
       <div className={`border-t md:hidden ${isScrolled ? "border-stone-100/80" : "border-transparent"}`}>
-        <div className="mx-auto flex max-w-7xl items-center gap-6 overflow-x-auto px-6 text-[12px] uppercase tracking-[0.16em] text-stone-400 [&::-webkit-scrollbar]:hidden">
+        <div className="mx-auto flex max-w-7xl items-center gap-6 overflow-x-auto px-6 text-[12px] uppercase tracking-[0.16em] text-stone-600 [&::-webkit-scrollbar]:hidden">
           {!isHome && (
             <Link
               href="/"

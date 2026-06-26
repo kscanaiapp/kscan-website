@@ -37,7 +37,7 @@ export default function DeleteAccountPage() {
           </p>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               How to Request Deletion
             </h2>
             <ul className="space-y-2 pl-4">
@@ -54,7 +54,7 @@ export default function DeleteAccountPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Data Deleted
             </h2>
             <p>
@@ -67,7 +67,7 @@ export default function DeleteAccountPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Data Retained
             </h2>
             <p>
@@ -77,7 +77,7 @@ export default function DeleteAccountPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Processing Time
             </h2>
             <p>
@@ -88,7 +88,7 @@ export default function DeleteAccountPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Related Resources
             </h2>
             <p>
@@ -105,7 +105,7 @@ export default function DeleteAccountPage() {
           </section>
 
           <section className="space-y-2 pt-4">
-            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-stone-400">Contact</h2>
+            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-stone-600">Contact</h2>
             <p>
               For account deletion requests or questions, contact{" "}
               <a href="mailto:kscanai.app@gmail.com?subject=Account%20Deletion%20Request" className={linkClassName}>
@@ -116,7 +116,7 @@ export default function DeleteAccountPage() {
           </section>
         </div>
 
-        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-400">
+        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-600">
           <p>&copy; 2026 K SCAN AI. All rights reserved.</p>
         </div>
       </section>

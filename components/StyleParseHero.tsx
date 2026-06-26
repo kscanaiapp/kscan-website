@@ -137,7 +137,7 @@ export default function StyleParseHero({
 
       {/* Eyebrow */}
       <div className="mb-8 md:mb-10">
-        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-stone-400">
+        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-stone-600">
           Style-Parse Engine
         </p>
       </div>

@@ -15,7 +15,7 @@ export default function SupportPage() {
 
         <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <section className="space-y-2">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">Contact</h2>
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">Contact</h2>
             <p>
               For support, privacy requests, or account help, contact{" "}
               <a href="mailto:kscanai.app@gmail.com" className={linkClassName}>
@@ -26,7 +26,7 @@ export default function SupportPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Camera and Scan Troubleshooting
             </h2>
             <ul className="space-y-2 pl-4">
@@ -37,7 +37,7 @@ export default function SupportPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Account Deletion Help
             </h2>
             <ul className="space-y-2 pl-4">
@@ -47,14 +47,14 @@ export default function SupportPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Data Export and Correction Help
             </h2>
             <p>Submit export and correction requests from the in-app Privacy screen when signed in.</p>
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Beta Support Expectations
             </h2>
             <ul className="space-y-2 pl-4">
@@ -64,7 +64,7 @@ export default function SupportPage() {
           </section>
 
           <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               Reviewer and Tester Help
             </h2>
             <ul className="space-y-2 pl-4">
@@ -80,7 +80,7 @@ export default function SupportPage() {
           </section>
         </div>
 
-        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-400">
+        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-600">
           <p>&copy; 2026 K SCAN AI. All rights reserved.</p>
         </div>
       </section>

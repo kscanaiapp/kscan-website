@@ -20,7 +20,7 @@ export default function TermsSummaryPage() {
           </p>
         </div>
 
-        <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+        <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
           1. What You Can Expect
         </h2>
 
@@ -71,7 +71,7 @@ export default function TermsSummaryPage() {
           </div>
         </div>
 
-        <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+        <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
           {"2. Commercial Data & Partner Activity"}
         </h2>
 
@@ -94,7 +94,7 @@ export default function TermsSummaryPage() {
           </p>
         </div>
 
-        <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-400">3. Important Limits</h2>
+        <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-600">3. Important Limits</h2>
 
         <div className="mt-6 space-y-8 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <div>
@@ -134,7 +134,7 @@ export default function TermsSummaryPage() {
           </div>
         </div>
 
-        <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+        <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
           4. Your Responsibilities
         </h2>
 
@@ -158,7 +158,7 @@ export default function TermsSummaryPage() {
           </p>
         </div>
 
-        <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-400">
+        <h2 className="mt-14 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
           5. Your Rights and Legal Protections
         </h2>
 
@@ -198,7 +198,7 @@ export default function TermsSummaryPage() {
           </p>
         </div>
 
-        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-400">
+        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-600">
           <p>&copy; 2026 K SCAN AI. All rights reserved.</p>
         </div>
       </section>

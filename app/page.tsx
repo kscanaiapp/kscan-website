@@ -384,7 +384,7 @@ export default function Home() {
           variants={staggerContainer}
         >
           <motion.p
-            className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-400 md:mb-8"
+            className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-600 md:mb-8"
             variants={staggerChild}
           >
             Private beta - 2026
@@ -413,13 +413,13 @@ export default function Home() {
               >
                 Get Early Access
               </motion.a>
-              <p className="text-[11px] tracking-[0.04em] text-stone-400">
+              <p className="text-[11px] tracking-[0.04em] text-stone-600">
                 No screenshots. No guessing. Just the exact piece (or your perfect alternative).
               </p>
             </div>
             <motion.a
               href="#how-it-works"
-              className="text-[13px] text-stone-400 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
+              className="text-[13px] text-stone-600 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
               {...btnMotion}
             >
               See the scan flow
@@ -480,7 +480,7 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <p className="mb-1 text-[9px] font-medium uppercase tracking-[0.2em] text-stone-400 md:text-[10px]">
+                  <p className="mb-1 text-[9px] font-medium uppercase tracking-[0.2em] text-stone-600 md:text-[10px]">
                     STYLE SIGNAL
                   </p>
                   <p className="text-[14px] leading-[1.15] sm:text-[16px] md:text-[22px] font-serif text-stone-900">
@@ -496,7 +496,7 @@ export default function Home() {
       <section aria-labelledby="visual-fashion-search" className="border-y border-stone-100 bg-white py-14 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 px-6 md:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <FadeUp>
-            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600">
               Visual Shopping
             </p>
             <h2 id="visual-fashion-search" className="font-display text-[34px] font-medium leading-[1.08] text-stone-900 md:text-[46px]">
@@ -551,13 +551,13 @@ export default function Home() {
                 <div key={label} className="flex items-center gap-8 md:gap-12">
                   <div className="text-left">
                     <div className="font-display text-2xl font-semibold text-stone-900 md:text-xl md:font-medium">{value}</div>
-                    <div className="mt-0.5 text-[10px] uppercase tracking-wider text-stone-400">{label}</div>
+                    <div className="mt-0.5 text-[10px] uppercase tracking-wider text-stone-600">{label}</div>
                   </div>
                   {i < trustMetrics.length - 1 && <div className="hidden h-8 w-px flex-shrink-0 bg-stone-100 md:block" />}
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-[11px] leading-relaxed text-stone-400">
+            <p className="mt-4 text-[11px] leading-relaxed text-stone-600">
               Beta results may vary by image quality, lighting, garment visibility, and retailer availability.
             </p>
           </div>
@@ -566,7 +566,7 @@ export default function Home() {
 
       <section id="how-it-works" className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-44">
         <FadeUp className="mb-12 md:mb-28">
-          <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 md:mb-5">
+          <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600 md:mb-5">
             The Core Flow
           </p>
           <h2 className="font-display text-4xl font-medium text-stone-900 md:text-[52px]">
@@ -590,7 +590,7 @@ export default function Home() {
               </div>
             </div>
             <div className="max-w-md">
-              <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+              <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
                 Live Product Flow
               </p>
               <p className="text-[14px] leading-[1.78] text-stone-500">
@@ -636,7 +636,7 @@ export default function Home() {
       <section id="features" className="bg-white py-20 md:py-32">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <FadeUp className="mb-12 max-w-lg md:mb-28">
-            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 md:mb-5">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600 md:mb-5">
               What Sets It Apart
             </p>
             <h2 className="font-display text-4xl font-medium text-stone-900 md:text-[52px]">
@@ -660,7 +660,7 @@ export default function Home() {
               </div>
             </div>
             <div className="max-w-md">
-              <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+              <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
                 Fashion-first signal
               </p>
               <p className="font-display text-[30px] leading-[1.15] text-stone-900 md:text-[36px]">
@@ -731,7 +731,7 @@ export default function Home() {
               </div>
 
               <div className="max-w-md lg:ml-auto">
-                <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-400">
+                <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
                   {featureList[5].title}
                 </p>
                 <p className="text-[15px] leading-[1.82] text-stone-500">
@@ -746,7 +746,7 @@ export default function Home() {
               {[featureList[2], featureList[3]].map(({ title, body }) => (
                 <article key={title}>
                   <h3 className="mb-3 text-[15px] font-medium text-stone-900">{title}</h3>
-                  <p className="text-[14px] leading-[1.82] text-stone-400">{body}</p>
+                  <p className="text-[14px] leading-[1.82] text-stone-600">{body}</p>
                 </article>
               ))}
             </div>
@@ -829,7 +829,7 @@ export default function Home() {
         <FadeUp>
         <div className="flex flex-col gap-10 rounded-3xl bg-[#F5F3EF] px-6 py-10 md:rounded-[44px] md:px-16 md:py-24 md:gap-14 lg:flex-row lg:items-start lg:gap-20">
           <div className="max-w-lg flex-1">
-            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 md:mb-6">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600 md:mb-6">
               Under the Hood
             </p>
             <h2 className="mb-5 font-display text-3xl font-medium leading-[1.1] text-stone-900 md:mb-7 md:text-[42px]">
@@ -890,7 +890,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <p className="mt-6 text-[11px] leading-relaxed text-stone-400">
+              <p className="mt-6 text-[11px] leading-relaxed text-stone-600">
                 Beta results may vary by image quality, lighting, garment visibility, and retailer availability.
               </p>
             </div>
@@ -903,7 +903,7 @@ export default function Home() {
         <FadeUp>
           <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 md:flex-row md:items-end md:justify-between md:gap-7 md:px-10">
             <div className="space-y-3">
-              <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
+              <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600">
                 K Scan AI
               </p>
               <h3 className="max-w-xl font-display text-[26px] font-medium leading-snug text-stone-900 md:text-[32px]">
@@ -938,7 +938,7 @@ export default function Home() {
 
               <a
                 href="mailto:kscanai.app@gmail.com"
-                className="text-center text-[12px] text-stone-400 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400 md:text-right"
+                className="text-center text-[12px] text-stone-600 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400 md:text-right"
               >
                 or request credentials
               </a>
@@ -950,7 +950,7 @@ export default function Home() {
       <section aria-labelledby="faq-heading" className="bg-white py-16 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:px-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
           <FadeUp>
-            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600">
               Questions
             </p>
             <h2 id="faq-heading" className="font-display text-[34px] font-medium leading-[1.08] text-stone-900 md:text-[46px]">
@@ -1013,13 +1013,13 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-400 md:mb-6">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600 md:mb-6">
               Priority Beta Access
             </p>
             <h2 className="mb-5 font-display text-[40px] font-medium leading-[1.02] text-stone-900 sm:text-[44px] md:mb-6 md:text-[58px]">
               Beta Waitlist
             </h2>
-            <p className="mx-auto mb-8 max-w-xs text-[15px] leading-[1.82] text-stone-400 md:mb-10 lg:mx-0">
+            <p className="mx-auto mb-8 max-w-xs text-[15px] leading-[1.82] text-stone-600 md:mb-10 lg:mx-0">
               Private beta access. Invitations are sent in limited waves. Be among the first to try K Scan.
             </p>
 
@@ -1057,7 +1057,7 @@ export default function Home() {
                   placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full flex-1 rounded-full border border-stone-200 bg-white px-6 py-4 text-[14px] text-stone-900 placeholder:text-stone-400 focus:border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-100 sm:w-auto"
+                  className="w-full flex-1 rounded-full border border-stone-200 bg-white px-6 py-4 text-[14px] text-stone-900 placeholder:text-stone-600 focus:border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-100 sm:w-auto"
                 />
                 <motion.button
                   type="submit"
@@ -1071,7 +1071,7 @@ export default function Home() {
             )}
 
             {submissionState === "error" ? (
-              <p className="mt-6 text-[11px] tracking-wide text-stone-400">{submissionMessage}</p>
+              <p className="mt-6 text-[11px] tracking-wide text-stone-600">{submissionMessage}</p>
             ) : (
               <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-stone-500 lg:mx-0">
                 By joining, you agree to receive K Scan early access and product updates. We use your email only for

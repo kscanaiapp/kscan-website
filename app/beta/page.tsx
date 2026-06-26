@@ -212,7 +212,7 @@ export default function BetaPage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-5 space-y-1 text-[11px] leading-relaxed text-stone-400">
+              <div className="mt-5 space-y-1 text-[11px] leading-relaxed text-stone-600">
                 <p>
                   *{" "}
                   <a
@@ -238,7 +238,7 @@ export default function BetaPage() {
               </div>
             </div>
 
-            <p className="mt-4 max-w-md text-[12px] leading-relaxed text-stone-400">
+            <p className="mt-4 max-w-md text-[12px] leading-relaxed text-stone-600">
               Fashion discovery is moving beyond the screen. K Scan is bringing
               real world style recognition into wearable tech through immersive
               hands free visual experiences.
@@ -274,7 +274,7 @@ export default function BetaPage() {
         <div className="grid gap-6 sm:grid-cols-2">
           {/* Core focus */}
           <div className={`${surfaces.card} p-6`}>
-            <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
+            <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-600">
               Core Beta Focus
             </p>
             <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
@@ -289,7 +289,7 @@ export default function BetaPage() {
 
           {/* Live beta features — Dressing Rooms */}
           <div className={`${surfaces.linenCard} p-6`}>
-            <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
+            <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-600">
               Also Live in Beta
             </p>
             <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
@@ -303,7 +303,7 @@ export default function BetaPage() {
 
           {/* Live beta features — StyleChat */}
           <div className={`${surfaces.linenCard} p-6`}>
-            <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
+            <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-600">
               Live in Beta
             </p>
             <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
@@ -329,7 +329,7 @@ export default function BetaPage() {
 
         {/* Android beta testing notice */}
         <div className={`${surfaces.card} mt-6 max-w-lg p-6`}>
-          <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
+          <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-600">
             Android Beta Testing
           </p>
           <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
@@ -381,7 +381,7 @@ export default function BetaPage() {
               key={title}
               className={`${surfaces.linenCard} flex flex-col p-5`}
             >
-              <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-400">
+              <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-600">
                 {badge}
               </p>
               <h3 className="mb-2 text-[14px] font-semibold text-stone-900">
@@ -403,7 +403,7 @@ export default function BetaPage() {
           </div>
         </div>
 
-        <p className="mt-8 text-[12px] text-stone-400">
+        <p className="mt-8 text-[12px] text-stone-600">
           Want to influence the roadmap?{" "}
           <a
             href="mailto:kscanai.app@gmail.com?subject=Beta Feedback"
