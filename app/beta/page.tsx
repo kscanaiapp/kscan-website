@@ -65,10 +65,10 @@ const betaStatus: {
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
-    label: "iOS",
-    status: "Preparing",
-    dotClass: "bg-amber-400",
-    badgeClass: "border-amber-200 bg-amber-50 text-amber-700",
+    label: "iOS Beta",
+    status: "Active",
+    dotClass: "bg-emerald-400",
+    badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
     label: "Current Focus",
