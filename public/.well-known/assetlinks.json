@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.kscanai.app",
+      "sha256_cert_fingerprints": [
+        "16:55:28:E3:01:85:4D:CA:78:13:4A:CF:CC:8B:75:E4:5A:80:A8:30:69:BE:59:27:C7:B3:6F:E2:87:67:91:2E"
+      ]
+    }
+  }
+]

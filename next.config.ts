@@ -42,12 +42,32 @@ const securityHeaders = [
   },
 ];
 
+// Headers required for Android App Links (Digital Asset Links) and iOS
+// Universal Links (apple-app-site-association) verification. These files must
+// be served as application/json with permissive CORS, regardless of the
+// extensionless filename Apple requires for AASA. Listed AFTER the broad
+// securityHeaders rule so Content-Type / CORS override the default mime
+// detection for /public/.well-known/* static assets.
+const wellKnownJsonHeaders = [
+  { key: "Content-Type", value: "application/json" },
+  { key: "Access-Control-Allow-Origin", value: "*" },
+  { key: "Cache-Control", value: "public, max-age=3600, must-revalidate" },
+];
+
 const nextConfig: NextConfig = {
   async headers() {
     return [
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        source: "/.well-known/assetlinks.json",
+        headers: wellKnownJsonHeaders,
+      },
+      {
+        source: "/.well-known/apple-app-site-association",
+        headers: wellKnownJsonHeaders,
       },
     ];
   },
