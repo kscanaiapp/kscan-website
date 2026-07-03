@@ -74,7 +74,7 @@ const featureList = [
   },
   {
     title: "Dressing Rooms",
-    body: "Plan outfits together for trips, events, and nights out. Save looks into shared rooms, compare options, vote on favorites, and keep every decision in one place. Share by link or browse together in K Scan, then turn group inspiration into shoppable matches.",
+    body: "Plan outfits together for trips, events, and nights out. Save looks into shared Dressing Rooms, compare options, vote on favorites, and keep every decision in one place. Powered by your evolving StyleDNA, K Scan understands your group's preferences and refines suggestions over time while adapting to context like weather, location, and occasion. Native in-app chat keeps every conversation, reaction, and decision connected directly to the looks you're considering. Share by link or browse together in K Scan, then turn group inspiration into more relevant, shoppable matches.",
   },
 ];
 
@@ -764,7 +764,7 @@ export default function Home() {
                     StyleChat
                   </h3>
                   <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    A conversational stylist designed to remember your preferences, saved looks, fit feedback, and upcoming plans, so recommendations feel more personal over time.
+                    A conversational stylist powered by your StyleDNA, designed to learn from what you choose to wear, save, and respond to. It provides personalized recommendations with clear explanations, adapting to your preferences, the weather, and your plans so every suggestion feels more relevant over time.
                   </p>
                 </div>
                 <div className="mx-auto w-full max-w-[520px] overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] shadow-[0_18px_44px_rgba(0,0,0,0.22)] lg:mr-0">
