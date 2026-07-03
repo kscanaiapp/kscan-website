@@ -720,7 +720,7 @@ export default function Home() {
                 <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-stone-50 shadow-[0_18px_50px_rgba(28,22,16,0.08)]">
                   <div className="relative aspect-[1672/941]">
                     <Image
-                      src="/images/rooms-mockup.png"
+                      src="/images/dressing-rooms-v6.png"
                       alt="K Scan Dressing Rooms preview showing shared styling and link sharing"
                       fill
                       sizes="(max-width: 1024px) 92vw, 56vw"
@@ -770,7 +770,7 @@ export default function Home() {
                 <div className="mx-auto w-full max-w-[520px] overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] shadow-[0_18px_44px_rgba(0,0,0,0.22)] lg:mr-0">
                   <div className="relative aspect-square">
                     <Image
-                      src="/images/style-chat-men.png"
+                      src="/images/stylechat.png"
                       alt="K Scan StyleChat preview showing a conversational stylist with memory"
                       fill
                       sizes="(max-width: 1024px) 82vw, 46vw"
