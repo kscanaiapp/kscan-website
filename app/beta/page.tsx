@@ -436,7 +436,9 @@ export default function BetaPage() {
             Send feedback directly to the K Scan team.
           </p>
           <a
-            href="mailto:kscanai.app@gmail.com?subject=Beta Feedback"
+            href="https://docs.google.com/forms/d/e/1FAIpQLScTd8Oc14bwTFOl5q8jPsQ5-RbzdxlkM8zqBjJJvU2v0Ry68g/viewform?usp=header"
+            target="_blank"
+            rel="noopener noreferrer"
             className={buttons.primaryLg}
           >
             Send Beta Feedback
