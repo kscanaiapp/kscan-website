@@ -318,8 +318,8 @@ export default function BetaPage() {
           {/* Feature preview image */}
           <div className="overflow-hidden rounded-xl border border-stone-100 shadow-sm">
             <Image
-              src="/images/features-image-3.png"
-              alt="K Scan app feature preview"
+              src="/images/rooms-chat-beta.png"
+              alt="Dressing Rooms chat and collaboration preview"
               width={1536}
               height={1024}
               className="h-auto w-full object-contain"
