@@ -185,7 +185,7 @@ export default function BetaPage() {
       {/* ── 1. Hero + Beta Status ──────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 pb-14 pt-16 md:px-10 md:pb-20 md:pt-24">
         <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
-          01 — Beta Center
+          01. Beta Center
         </p>
         <h1 className="font-display max-w-xl text-[42px] leading-[1.02] text-stone-900 sm:text-[52px] md:text-[64px]">
           K Scan Beta Center
@@ -265,7 +265,7 @@ export default function BetaPage() {
       {/* ── 2. What We're Testing ──────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
-          02 — Current Testing Focus
+          02. Current Testing Focus
         </p>
         <h2 className="font-display mb-8 text-[28px] leading-tight text-stone-900 sm:text-[34px]">
           What We&rsquo;re Testing
@@ -348,7 +348,7 @@ export default function BetaPage() {
             >
               join the waitlist
             </Link>{" "}
-            or{" "}
+            (18+ only) or{" "}
             <Link
               href="/support"
               className="underline underline-offset-2 transition-colors hover:text-stone-700"
@@ -368,7 +368,7 @@ export default function BetaPage() {
       {/* ── 3. Roadmap Preview ─────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
-          03 — Product Direction
+          03. Product Direction
         </p>
         <h2 className="font-display mb-3 text-[28px] leading-tight text-stone-900 sm:text-[34px]">
           What We&rsquo;re Exploring Next
@@ -428,7 +428,7 @@ export default function BetaPage() {
         className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24"
       >
         <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
-          04 — Feedback
+          04. Feedback
         </p>
         <div className="max-w-xl">
           <h2 className="font-display mb-4 text-[28px] leading-tight text-stone-900 sm:text-[34px]">
@@ -457,7 +457,7 @@ export default function BetaPage() {
       {/* ── 5. Beta Access Reinforcement ───────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
-          05 — Early Access
+          05. Early Access
         </p>
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-md">
@@ -466,7 +466,7 @@ export default function BetaPage() {
             </h2>
             <p className="text-[14px] leading-relaxed text-stone-500">
               Request early access and help shape K Scan before launch.
-              Invitations are sent in limited waves.
+              Invitations are sent in limited waves. You must be 18 or older to participate.
             </p>
           </div>
           <Link href="/#waitlist" className={`${buttons.primaryLg} flex-shrink-0`}>

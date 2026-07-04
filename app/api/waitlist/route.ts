@@ -41,10 +41,10 @@ async function sendWelcomeEmail(email: string) {
           <div style="height:4px;background:#B6E6EE;"></div>
           <div style="padding:40px 32px;text-align:left;">
             <p style="margin:0 0 20px;font-size:24px;line-height:1.3;font-weight:500;">You're in.</p>
-            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">K Scan turns what you see into what you can buy &mdash; instantly.</p>
+            <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">K Scan turns what you see into shoppable discovery.</p>
             <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">We're rolling out access in small waves as we refine the experience.</p>
             <p style="margin:0 0 16px;font-size:16px;line-height:1.7;">We'll reach out when it's ready.</p>
-            <p style="margin:0;font-size:16px;line-height:1.7;">&mdash; K Scan AI</p>
+            <p style="margin:0;font-size:16px;line-height:1.7;">K Scan AI</p>
           </div>
         </div>
       </div>

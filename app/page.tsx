@@ -56,7 +56,7 @@ const featureList = [
   },
   {
     title: "One View, Multiple Retailers",
-    body: "See the exact match or the best alternative across indexed retailers. No tab-switching. No dead ends.",
+    body: "See the closest match or the best alternative across indexed retailers. No tab-switching. No dead ends.",
   },
   {
     title: "Price Tier Awareness",
@@ -73,7 +73,7 @@ const featureList = [
 ];
 
 const trustMetrics = [
-  { label: "Avg. Parse Time", value: "1.4s" },
+  { label: "Visual Parsing", value: "AI-Powered" },
   { label: "recognition", value: "Silhouette" },
   { label: "resale discovery", value: "Retailer +" },
 ];
@@ -91,7 +91,7 @@ const faqs = [
   {
     question: "How does AI fashion search work?",
     answer:
-      "K Scan analyzes a photo, screenshot, or video frame for fashion signals like garment type, silhouette, color, material, styling context, and brand cues. Those signals are used to surface exact or visually similar products across retailer sources.",
+      "K Scan analyzes a photo, screenshot, or video frame for fashion signals like garment type, silhouette, color, material, styling context, and brand cues. Those signals are used to surface relevant or visually similar products across retailer sources.",
   },
   {
     question: "Can K Scan identify outfits from screenshots?",
@@ -299,16 +299,10 @@ export default function Home() {
     "@type": "SoftwareApplication",
     name: "K Scan AI",
     applicationCategory: "ShoppingApplication",
-    operatingSystem: "Android, Web",
+    operatingSystem: "iOS, Android, Web",
     description:
       "AI-powered visual fashion search for identifying clothes from photos, screenshots, videos, and social inspiration.",
     url: "https://kscan.app",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/PreOrder",
-    },
   };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -393,7 +387,7 @@ export default function Home() {
             className="mb-8 max-w-[90%] text-[15px] leading-[1.85] text-stone-500 sm:max-w-[27rem] md:mb-9 md:text-[16px]"
             variants={staggerChild}
           >
-            The fashion you spot in real life - shoppable in seconds.
+            The fashion you spot in real life - shoppable through visual search.
           </motion.p>
           <motion.div
             className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5"
@@ -408,7 +402,7 @@ export default function Home() {
                 Get Early Access
               </motion.a>
               <p className="text-[11px] tracking-[0.04em] text-stone-600">
-                No screenshots. No guessing. Just the exact piece (or your perfect alternative).
+                No keyword guessing. No endless searching. Find the piece, or the closest available match.
               </p>
             </div>
             <motion.a
@@ -530,7 +524,7 @@ export default function Home() {
       <section className="border-y border-black/5 bg-[#FAFAF8]">
         <div className="mx-auto max-w-7xl px-6 py-4 md:px-10">
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-center text-[10px] font-medium uppercase tracking-[0.2em] text-neutral-600 md:text-xs">
-            <span>AVG SCAN TIME: 1.4S</span>
+            <span>AI-POWERED FASHION SEARCH</span>
             <span className="hidden h-3 w-px bg-neutral-200 md:inline-block" aria-hidden="true" />
             <span>RETAILER + RESALE DISCOVERY</span>
           </div>
@@ -588,7 +582,7 @@ export default function Home() {
                 Live Product Flow
               </p>
               <p className="text-[14px] leading-[1.78] text-stone-500">
-                No more “I’ll find it later.” K Scan closes the gap between inspiration and action in seconds.
+                No more “I’ll find it later.” K Scan closes the gap between inspiration and action.
               </p>
             </div>
           </div>
@@ -829,10 +823,10 @@ export default function Home() {
               The Fashion Intelligence Engine
             </h2>
             <p className="mb-5 text-[15px] leading-[1.88] text-stone-500">
-              Built for real-world fashion discovery. K Scan reads silhouette, material, layering, and context in seconds.
+              Built for real-world fashion discovery. K Scan reads silhouette, material, layering, and context for fast visual matching.
             </p>
             <p className="mb-5 text-[15px] leading-[1.88] text-stone-500">
-              Unlike generic image search, K Scan is designed to understand how fashion works together. It interprets the full look, then maps it to better exact matches and more useful alternatives across retailers.
+              Unlike generic image search, K Scan is designed to understand how fashion works together. It interprets the full look, then maps it to closer matches and more useful alternatives across retailers.
             </p>
           </div>
 
@@ -1067,7 +1061,7 @@ export default function Home() {
               <p className="mt-6 text-[11px] tracking-wide text-stone-600">{submissionMessage}</p>
             ) : (
               <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-stone-500 lg:mx-0">
-                By joining, you agree to receive K Scan early access and product updates. We use your email only for
+                By joining, you confirm you are 18 or older and agree to receive K Scan early access and product updates. We use your email only for
                 waitlist, launch, and product access communications.{" "}
                 <a
                   href="/legal/privacy"

@@ -503,7 +503,7 @@ export default function StyleParseHero({
                       exit={{ opacity: 0 }}
                       transition={{ delay: 0.55, duration: 0.38 }}
                     >
-                      Matched in 1.8s
+                      Match Found
                     </motion.p>
                   </motion.div>
                 )}
@@ -606,11 +606,11 @@ export default function StyleParseHero({
                         Capture
                       </h3>
                       <p className="mb-7 text-[13px] leading-[1.82] text-white/32">
-                        Point at any garment — on the street, a screen, or a social feed. K Scan locks onto the target instantly.
+                        Point at any garment: on the street, a screen, or a social feed. K Scan starts the match flow from what you see.
                       </p>
                       <div className="grid grid-cols-2 gap-3">
                         {[
-                          { label: "Lock Time",   value: "< 0.4s" },
+                          { label: "Lock Time",   value: "Fast" },
                           { label: "Input Types", value: "Video / Still" },
                         ].map(m => (
                           <div
@@ -640,7 +640,7 @@ export default function StyleParseHero({
                         Parse
                       </h3>
                       <p className="mb-6 text-[13px] leading-[1.82] text-white/32">
-                        The engine reads silhouette, material, and brand signal simultaneously — no step-by-step pipeline.
+                        The engine reads silhouette, material, and brand signal simultaneously. No step-by-step pipeline.
                       </p>
                       {/* Confidence card */}
                       <div

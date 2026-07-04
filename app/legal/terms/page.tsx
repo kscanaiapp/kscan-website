@@ -40,6 +40,11 @@ export default function LegalTermsPage() {
 
         <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <section className="space-y-4">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">Age Requirement</h2>
+            <p>K Scan AI is intended for users 18 and older and is not directed to children or minors.</p>
+          </section>
+
+          <section className="space-y-4">
             <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">Beta Status</h2>
             <p>K Scan AI is currently in beta and functionality may evolve.</p>
           </section>

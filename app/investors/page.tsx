@@ -70,7 +70,7 @@ const roadmapPhases = [
 function SectionLabel({ n, text }: { n: string; text: string }) {
   return (
     <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-700">
-      {n} — {text}
+      {n}. {text}
     </p>
   );
 }
@@ -320,7 +320,7 @@ export default function InvestorsPage() {
             <p className="mt-6 text-[15px] leading-[1.9] text-stone-500">
               K Scan is not trying to solve visual search broadly. It is focused on a specific, high-value moment: when
               a user sees a look they want and existing tools fail to turn that moment into action. By centering the
-              product on fashion-specific cues—silhouette, material, layering, and styling context—K Scan aims to close
+              product on fashion-specific cues: silhouette, material, layering, and styling context. K Scan aims to close
               the gap between inspiration and transaction more effectively than generic object recognition.
             </p>
           </div>

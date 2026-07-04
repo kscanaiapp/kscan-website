@@ -29,7 +29,7 @@ export default function DemoPage() {
             <div className="mb-8 flex items-center gap-5 md:mb-10">
               <div aria-hidden="true" className="h-px flex-1 bg-stone-200" />
               <p className="shrink-0 text-[10px] font-medium uppercase tracking-[0.28em] text-stone-600">
-                Live Product Vision
+                Product Vision Demo
               </p>
               <div aria-hidden="true" className="h-px flex-1 bg-stone-200" />
             </div>

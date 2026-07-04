@@ -58,6 +58,16 @@ export default function DeleteAccountPage() {
 
           <section className="space-y-4">
             <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
+              Sign in with Apple
+            </h2>
+            <p>
+              Where applicable, K Scan will revoke or disconnect Sign in with Apple credentials as part of account
+              deletion in accordance with Apple&apos;s account-deletion requirements.
+            </p>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
               How to Request Deletion
             </h2>
             <ul className="space-y-2 pl-4">
