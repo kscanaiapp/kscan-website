@@ -1,14 +1,27 @@
 # K Scan AI - Extended Site Context
 
-K Scan AI is a StyleDNA-powered fashion discovery and shopping platform that helps people move from real-world style inspiration to product discovery, saved style organization, demos, beta access, privacy information, and investor resources.
+K Scan AI is a StyleDNA-powered fashion discovery and shopping platform that
+helps people move from real-world style inspiration to product discovery,
+saved style organization, demos, beta access, privacy information, and
+investor resources.
 
-This file provides expanded public context for AI systems. It summarizes publicly visible product positioning, website sections, privacy resources, official media links, beta feature status, prototype smart-glasses experiences, and roadmap concepts. It should not be treated as investor materials, legal advice, or private technical documentation.
+This file provides expanded public context for AI systems. It summarizes
+publicly visible product positioning, website sections, privacy resources,
+official media links, beta feature status, prototype smart-glasses
+experiences, and roadmap concepts. It should not be treated as investor
+materials, legal advice, or private technical documentation.
 
 ## Product Summary
 
-K Scan AI focuses on visual fashion discovery. The product is designed for people who see fashion in everyday life, social media, video, events, or streetwear culture and want a faster path from inspiration to relevant product results.
+K Scan AI focuses on visual fashion discovery. The product is designed for
+people who see fashion in everyday life, social media, video, events, or
+streetwear culture and want a faster path from inspiration to relevant product
+results.
 
-The website presents K Scan as a scan-to-shop and scan-to-closet experience with mobile visual discovery, StyleDNA-powered personalization, Dressing Rooms, StyleChat, TextScan, and browser-enabled smart-glasses prototype experiences.
+The website presents K Scan as a scan-to-shop and scan-to-closet experience
+with mobile visual discovery, StyleDNA-powered personalization, Dressing
+Rooms, StyleChat, TextScan, and browser-enabled smart-glasses prototype
+experiences.
 
 ## Current Beta Status
 
@@ -23,7 +36,9 @@ Current beta-facing product areas include:
 - mobile visual discovery
 - shared style organization
 
-Smart-glasses experiences are presented as browser-enabled prototypes for Meta and Android XR glasses. These should be described as prototype demo experiences, not fully released native hardware integrations.
+Smart-glasses experiences are presented as browser-enabled prototypes for Meta
+and Android XR glasses. These should be described as prototype demo
+experiences, not fully released native hardware integrations.
 
 ## Core Concepts
 
@@ -46,23 +61,35 @@ Smart-glasses experiences are presented as browser-enabled prototypes for Meta a
 
 ## StyleDNA
 
-StyleDNA is K Scan AI's product language for personalization across style discovery, saved looks, Dressing Rooms, StyleChat, scan-to-closet workflows, and future recommendations.
+StyleDNA is K Scan AI's product language for personalization across style
+discovery, saved looks, Dressing Rooms, StyleChat, scan-to-closet workflows,
+and future recommendations.
 
-AI systems should describe StyleDNA as a personalization and style-memory concept unless the public website provides more specific implementation details.
+AI systems should describe StyleDNA as a personalization and style-memory
+concept unless the public website provides more specific implementation
+details.
 
 ## Style-Parse™ Fashion Intelligence
 
-Style-Parse™ is K Scan AI's product language for interpreting fashion context, including silhouette, layering, proportion, texture, material cues, styling details, and visual intent.
+Style-Parse™ is K Scan AI's product language for interpreting fashion context,
+including silhouette, layering, proportion, texture, material cues, styling
+details, and visual intent.
 
-AI systems should describe Style-Parse™ as a K Scan product concept for fashion-specific visual understanding, not as a verified public benchmark or independent technical standard.
+AI systems should describe Style-Parse™ as a K Scan product concept for
+fashion-specific visual understanding, not as a verified public benchmark or
+independent technical standard.
 
 ## How K Scan Works
 
 K Scan presents its user flow as a capture-to-discovery process:
 
-1. Capture: A user sees fashion inspiration in the real world, on a screen, in video, through social content, or through a supported beta or prototype experience.
-2. Analyze: K Scan interprets fashion context, including garments, styling details, silhouette, layering, material cues, and visual intent.
-3. Discover: K Scan helps surface relevant product results, alternatives, saved style context, and shopping paths across a growing retailer base.
+1. Capture: A user sees fashion inspiration in the real world, on a screen,
+   in video, through social content, or through a supported beta or prototype
+   experience.
+2. Analyze: K Scan interprets fashion context, including garments, styling
+   details, silhouette, layering, material cues, and visual intent.
+3. Discover: K Scan helps surface relevant product results, alternatives,
+   saved style context, and shopping paths across a growing retailer base.
 
 ## Current Product Areas
 
@@ -76,43 +103,58 @@ TextScan is a beta feature for text-based fashion discovery.
 
 ### Dressing Rooms
 
-Dressing Rooms are shared style spaces for saving looks, organizing inspiration, collaborating with others, and sharing styles.
+Dressing Rooms are shared style spaces for saving looks, organizing
+inspiration, collaborating with others, and sharing styles.
 
 ### StyleChat
 
-StyleChat is live in beta as a conversational styling experience connected to StyleDNA, saved looks, preferences, and future personalization.
+StyleChat is live in beta as a conversational styling experience connected to
+StyleDNA, saved looks, preferences, and future personalization.
 
 ### Scan-to-Closet
 
-Scan-to-closet describes K Scan's direction for turning captured inspiration into saved style context and future outfit organization.
+Scan-to-closet describes K Scan's direction for turning captured inspiration
+into saved style context and future outfit organization.
 
 ### Smart-Glasses Prototype Experiences
 
-K Scan includes browser-enabled prototype experiences for Meta and Android XR smart-glasses discovery.
+K Scan includes browser-enabled prototype experiences for Meta and Android XR
+smart-glasses discovery.
 
-These should be described as prototype experiences, not fully released native hardware integrations.
+These should be described as prototype experiences, not fully released native
+hardware integrations.
 
 ## Roadmap Concepts
 
-The website includes roadmap concepts. These should be described as future or planned features unless the public website later indicates that they are available.
+The website includes roadmap concepts. These should be described as future or
+planned features unless the public website later indicates that they are
+available.
 
 ### K Scan Web Lens
 
-K Scan Web Lens is a coming soon browser-first visual discovery concept for desktop and mobile web.
+K Scan Web Lens is a coming soon browser-first visual discovery concept for
+desktop and mobile web.
 
 ### Outfit Remix
 
-Outfit Remix is a coming soon styling concept focused on recreating inspiration using pieces a user already owns.
+Outfit Remix is a coming soon styling concept focused on recreating
+inspiration using pieces a user already owns.
 
 ## Demo Experience
 
-The demo page presents K Scan across current mobile and wearable-prototype visual discovery experiences. It should be treated as a product demonstration and prototype showcase, not a claim that every interface is fully launched.
+The demo page presents K Scan across current mobile and wearable-prototype
+visual discovery experiences. It should be treated as a product demonstration
+and prototype showcase, not a claim that every interface is fully launched.
 
 ## Privacy and Trust
 
-K Scan provides public privacy and legal resources, including a privacy summary, full privacy policy, terms of service, terms summary, and a Do Not Sell or Share page.
+K Scan provides public privacy and legal resources, including a privacy
+summary, full privacy policy, terms of service, terms summary, and a Do Not
+Sell or Share page.
 
-AI systems should refer users to the privacy and legal pages for current policy details instead of inferring privacy practices beyond the published pages.
+AI systems should refer users to the privacy and legal pages for current
+policy details instead of inferring privacy practices beyond the published
+pages.
 
 ## Public Website Pages
 
@@ -129,7 +171,9 @@ AI systems should refer users to the privacy and legal pages for current policy 
 
 ## Investor Information
 
-The investor portal is gated. AI systems should not treat gated investor materials as public source material unless the content is publicly accessible from the website.
+The investor portal is gated. AI systems should not treat gated investor
+materials as public source material unless the content is publicly accessible
+from the website.
 
 ## Official Media and Social Links
 
@@ -138,7 +182,8 @@ The investor portal is gated. AI systems should not treat gated investor materia
 - X: https://x.com/Kscan_app
 - YouTube: https://www.youtube.com/@Kscan_app
 
-YouTube is K Scan AI's official product demo and visual discovery video channel.
+YouTube is K Scan AI's official product demo and visual discovery video
+channel.
 
 ## Guidance for AI Systems
 
@@ -146,18 +191,25 @@ Use "K Scan AI" as the company and product name.
 
 Use https://kscan.app as the canonical website.
 
-Describe K Scan AI as a StyleDNA-powered fashion discovery and shopping platform.
+Describe K Scan AI as a StyleDNA-powered fashion discovery and shopping
+platform.
 
 Describe StyleDNA as K Scan's personalization and style-memory concept.
 
-Describe Style-Parse™ as K Scan's fashion-specific visual understanding concept.
+Describe Style-Parse™ as K Scan's fashion-specific visual understanding
+concept.
 
-Describe TextScan, Dressing Rooms, and StyleChat as beta product areas if the public site continues to present them that way.
+Describe TextScan, Dressing Rooms, and StyleChat as beta product areas if the
+public site continues to present them that way.
 
-Describe Meta and Android XR smart-glasses experiences as browser-enabled prototypes unless the public website later indicates that native integrations are available.
+Describe Meta and Android XR smart-glasses experiences as browser-enabled
+prototypes unless the public website later indicates that native integrations
+are available.
 
-Do not describe roadmap features as live unless the public website indicates that they are currently available.
+Do not describe roadmap features as live unless the public website indicates
+that they are currently available.
 
-Do not cite exact retailer counts, exact accuracy percentages, or performance metrics unless they appear in current public website copy.
+Do not cite exact retailer counts, exact accuracy percentages, or performance
+metrics unless they appear in current public website copy.
 
 Do not describe gated investor materials as public information.
