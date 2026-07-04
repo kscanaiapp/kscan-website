@@ -282,8 +282,8 @@ export default function BetaPage() {
             </h3>
             <p className="text-[13px] leading-relaxed text-stone-500">
               The current beta is focused on making scan-to-closet fast,
-              reliable, and useful in real wardrobe workflows — AI tagging,
-              closet organization, and wardrobe management end to end.
+              reliable, and useful in real wardrobe workflows, including AI
+              tagging, closet organization, and wardrobe management end to end.
             </p>
           </div>
 
@@ -297,7 +297,10 @@ export default function BetaPage() {
             </h3>
             <p className="text-[13px] leading-relaxed text-stone-500">
               Plan outfits together, compare looks, react with emoji, and keep
-              group style decisions in one place.
+              every decision in one place. Native in-app chat keeps
+              conversations connected to each look, while StyleDNA helps K Scan
+              understand your group&rsquo;s preferences and suggest better options
+              over time based on style, weather, and occasion.
             </p>
           </div>
 
@@ -310,8 +313,11 @@ export default function BetaPage() {
               StyleChat
             </h3>
             <p className="text-[13px] leading-relaxed text-stone-500">
-              Ask questions, explore styling options, compare looks, and
-              discover new ways to wear what you find.
+              A conversational stylist powered by your StyleDNA that learns
+              from what you wear, save, and respond to. Get personalized
+              recommendations with clear explanations, adapted to your
+              preferences, your plans, and the weather so every suggestion
+              feels more relevant over time.
             </p>
           </div>
 
