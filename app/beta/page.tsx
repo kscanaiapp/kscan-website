@@ -329,9 +329,6 @@ export default function BetaPage() {
 
         {/* Mobile beta testing notice */}
         <div className={`${surfaces.card} mt-6 max-w-lg p-6`}>
-          <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-600">
-            Mobile Beta
-          </p>
           <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
             Mobile Beta Testing
           </h3>
