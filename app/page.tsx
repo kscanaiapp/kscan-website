@@ -17,24 +17,20 @@ const coreFlow = [
     step: "01",
     title: "Capture",
     description:
-      "Point your phone at any look—on the street, on a screen, or in your social feed. K Scan captures the full outfit in context.",
+      "Point your phone at any look, whether on the street, on a screen, or in your social feed. K Scan captures the full outfit in context.",
     image: {
       src: "/how-it-works/capture-frame-the-look.png",
       alt: "K Scan capture mockup showing a fashion look framed through a camera viewfinder.",
-      // 1105×896 (ratio 1.233): taller than 4:3 → top/bottom crop; object-top preserves the UI label and head
-      position: "object-top",
     },
   },
   {
     step: "02",
     title: "Identify",
     description:
-      "K Scan identifies what's in the frame — garments, colors, silhouettes, textures, and styling cues — then turns them into ranked matches.",
+      "K Scan identifies what's in the frame, including garments, colors, silhouettes, textures, and styling cues, then turns them into ranked matches.",
     image: {
       src: "/how-it-works/identify-style-parse.png",
       alt: "K Scan identify mockup showing fashion attributes detected inside an outfit photo.",
-      // 871×768 (ratio 1.134): squarest source, heaviest top/bottom crop; object-top keeps Silhouette label + head visible
-      position: "object-top",
     },
   },
   {
@@ -45,8 +41,6 @@ const coreFlow = [
     image: {
       src: "/how-it-works/match-shop-results.png",
       alt: "K Scan match results mockup showing retailer-neutral product matches from a scanned outfit.",
-      // 1093×793 (ratio 1.378): slightly wider than 4:3 → trivial ~1.6% left/right crop; all content is centered
-      position: "object-center",
     },
   },
 ];
@@ -605,7 +599,7 @@ export default function Home() {
             <FadeUp
               key={step}
               delay={idx * 0.08}
-              className={`pb-10 md:px-12 md:pb-0 first:md:pl-0 last:md:pr-0 ${idx === 0 ? "pt-0" : "pt-10 md:pt-0"}`}
+              className={`flex h-full flex-col pb-10 md:px-12 md:pb-0 ${idx === 0 ? "pt-0" : "pt-10 md:pt-0"}`}
             >
               <span
                 className="step-num mb-4 block select-none font-display text-[64px] leading-none md:text-[80px]"
@@ -617,13 +611,13 @@ export default function Home() {
                 <span className="sr-only">Step {idx + 1}:{" "}</span>
                 {title}
               </h3>
-              <p className="text-[15px] leading-[1.82] text-stone-500">{description}</p>
-              <div className="relative mt-4 aspect-[4/3] w-full max-w-md overflow-hidden rounded-lg border border-white/10 bg-zinc-950/40 mx-auto lg:max-w-none">
+              <p className="mb-4 text-[15px] leading-[1.82] text-stone-500">{description}</p>
+              <div className="relative mt-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-lg border border-white/10 bg-zinc-950/40 mx-auto lg:max-w-none">
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className={`object-cover ${image.position}`}
+                  className="object-cover object-top"
                   sizes="(min-width: 1024px) 33vw, 100vw"
                 />
               </div>
