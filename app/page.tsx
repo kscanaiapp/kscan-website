@@ -767,7 +767,7 @@ export default function Home() {
                     A conversational stylist powered by your StyleDNA, designed to learn from what you choose to wear, save, and respond to. It provides personalized recommendations with clear explanations, adapting to your preferences, the weather, and your plans so every suggestion feels more relevant over time.
                   </p>
                 </div>
-                <div className="mx-auto w-full max-w-[520px] overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] shadow-[0_18px_44px_rgba(0,0,0,0.22)] lg:mr-0">
+                <div className="mx-auto w-full max-w-[520px] overflow-hidden rounded-[24px] bg-white/[0.015] ring-1 ring-inset ring-white/6 lg:mr-0">
                   <div className="relative aspect-square">
                     <Image
                       src="/images/stylechat.png"
