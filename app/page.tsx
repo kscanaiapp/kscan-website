@@ -715,8 +715,8 @@ export default function Home() {
           </FadeUp>
 
           <FadeUp className="mt-12 md:mt-16">
-            <div className="grid gap-8 border-t border-stone-100 pt-10 md:gap-10 lg:grid-cols-[minmax(0,0.56fr)_minmax(320px,0.44fr)] lg:items-center">
-              <div className="w-full lg:max-w-[720px]">
+            <div className="grid gap-8 border-t border-stone-100 pt-10 md:gap-10 lg:grid-cols-[minmax(0,0.62fr)_minmax(320px,0.38fr)] lg:items-center">
+              <div className="w-full lg:max-w-[800px]">
                 <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-stone-50 shadow-[0_18px_50px_rgba(28,22,16,0.08)]">
                   <div className="relative aspect-[1672/941]">
                     <Image
@@ -731,7 +731,7 @@ export default function Home() {
               </div>
 
               <div className="max-w-md lg:ml-auto">
-                <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
+                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-600">
                   {featureList[5].title}
                 </p>
                 <p className="text-[15px] leading-[1.82] text-stone-500">
@@ -755,7 +755,7 @@ export default function Home() {
           <FadeUp className="mt-10 md:mt-14">
             <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
               <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
-              <div className="relative grid gap-7 lg:grid-cols-[1fr_minmax(360px,0.46fr)] lg:items-center lg:gap-10">
+              <div className="relative grid gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,0.52fr)] lg:items-center lg:gap-10">
                 <div className="max-w-2xl">
                   <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
                     Live Now
@@ -767,7 +767,7 @@ export default function Home() {
                     A conversational stylist powered by your StyleDNA, designed to learn from what you choose to wear, save, and respond to. It provides personalized recommendations with clear explanations, adapting to your preferences, the weather, and your plans so every suggestion feels more relevant over time.
                   </p>
                 </div>
-                <div className="mx-auto w-full max-w-[520px] lg:mr-0">
+                <div className="mx-auto w-full max-w-[560px] lg:mr-0">
                   <Image
                     src="/images/stylechat.png"
                     alt="K Scan StyleChat preview showing a conversational stylist with memory"
