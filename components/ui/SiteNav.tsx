@@ -16,8 +16,8 @@ const NAV_ITEMS: NavEntry[] = [
   { id: "how-it-works", label: "How It Works", type: "anchor", value: "how-it-works" },
   { id: "features",     label: "Features",     type: "anchor", value: "features" },
   { id: "demo",         label: "Demo",         type: "route",  value: "/demo" },
+  { id: "beta",         label: "Beta Program", type: "route",  value: "/beta" },
   { id: "investors",    label: "Investors",    type: "route",  value: "/investors" },
-  { id: "waitlist",     label: "Waitlist",     type: "anchor", value: "waitlist" },
 ];
 
 export function SiteNav() {
