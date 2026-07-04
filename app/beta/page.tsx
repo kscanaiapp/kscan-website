@@ -327,18 +327,18 @@ export default function BetaPage() {
           </div>
         </div>
 
-        {/* Android beta testing notice */}
+        {/* Mobile beta testing notice */}
         <div className={`${surfaces.card} mt-6 max-w-lg p-6`}>
           <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-600">
-            Android Beta Testing
+            Mobile Beta
           </p>
           <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
-            Android Beta Testing
+            Mobile Beta Testing
           </h3>
           <p className="text-[13px] leading-relaxed text-stone-500">
-            Android beta testing is now available through Google Play testing
-            for approved testers. If you have been invited, use your Google
-            account to opt in and install the beta build. If you need access,{" "}
+            K Scan is now in active beta testing on iOS and Android for
+            approved testers. Invited users can install the beta through Apple
+            TestFlight or Google Play testing. To request access,{" "}
             <Link
               href="/#waitlist"
               className="underline underline-offset-2 transition-colors hover:text-stone-700"
