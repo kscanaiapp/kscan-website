@@ -5,7 +5,7 @@
  *   app/favicon.ico       (same file, so Next.js App Router auto-discovers it)
  */
 import sharp from "sharp";
-import { readFileSync, writeFileSync } from "fs";
+import { writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 

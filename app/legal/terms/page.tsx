@@ -25,8 +25,6 @@ export const metadata: Metadata = {
 };
 
 export default function LegalTermsPage() {
-  const linkClassName =
-    "text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500";
 
   return (
     <main id="main-content" className="min-h-screen bg-[#FAFAF8]">
