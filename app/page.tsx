@@ -746,7 +746,7 @@ export default function Home() {
               <div className="relative grid gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,0.52fr)] lg:items-center lg:gap-10">
                 <div className="max-w-2xl">
                   <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
-                    Live Now
+                    Live in Beta
                   </p>
                   <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
                     StyleChat
