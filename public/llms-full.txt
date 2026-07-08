@@ -32,9 +32,13 @@ Current beta-facing product areas include:
 - TextScan
 - StyleChat
 - Dressing Rooms
+- Share by Link
 - scan-to-closet workflows
 - mobile visual discovery
 - shared style organization
+
+VoiceScan is coming soon as a planned hands-free fashion discovery input mode.
+App Native Face Blurring is in development.
 
 Smart-glasses experiences are presented as browser-enabled prototypes for Meta
 and Android XR glasses. These should be described as prototype demo
@@ -93,23 +97,40 @@ K Scan presents its user flow as a capture-to-discovery process:
 
 ## Current Product Areas
 
-### Mobile Beta
+### Mobile Beta Testing
 
 K Scan is actively testing on iOS and Android with approved beta testers.
+Invited users can install the beta through Apple TestFlight or Google Play
+testing.
 
 ### TextScan
 
-TextScan is a beta feature for text-based fashion discovery.
+TextScan is live in beta and supports text-based fashion discovery prompts for
+approved beta users.
 
 ### Dressing Rooms
 
 Dressing Rooms are shared style spaces for saving looks, organizing
 inspiration, collaborating with others, and sharing styles.
 
+### Share by Link
+
+Share by Link is live in beta and lets beta users share saved styles and
+Dressing Rooms with others through a link.
+
+### VoiceScan
+
+VoiceScan is coming soon as a planned hands-free fashion discovery input mode.
+
+### App Native Face Blurring
+
+App Native Face Blurring is in development.
+
 ### StyleChat
 
-StyleChat is live in beta as a conversational styling experience connected to
-StyleDNA, saved looks, preferences, and future personalization.
+StyleChat is live in beta as a conversational fashion discovery experience. It
+helps users ask questions, explore styling options, compare looks, and discover
+new ways to wear what they find.
 
 ### Scan-to-Closet
 

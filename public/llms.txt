@@ -5,8 +5,9 @@ helps people move from real-world style inspiration to visual discovery, saved
 style organization, product matches, beta access, and investor resources.
 
 K Scan is currently in active beta testing on iOS and Android for approved
-testers. The product also includes browser-enabled prototype experiences for
-Meta and Android XR smart-glasses discovery.
+testers. Invited users can install the beta through Apple TestFlight or Google
+Play testing. The product also includes browser-enabled prototype experiences
+for Meta and Android XR smart-glasses discovery.
 
 ## Core Concepts
 
@@ -27,9 +28,13 @@ Meta and Android XR smart-glasses discovery.
 
 - iOS Beta: Active for approved testers.
 - Android Beta: Active for approved testers.
+- Current Focus: Scan-to-Closet.
+- VoiceScan: Coming soon.
 - TextScan: Live in beta.
-- StyleChat: Live in beta.
 - Dressing Rooms: Live in beta.
+- Share by Link: Live in beta.
+- StyleChat: Live in beta.
+- App Native Face Blurring: In development.
 - Smart-glasses experiences: Browser-enabled prototypes for Meta and Android XR
   glasses.
 
@@ -70,6 +75,19 @@ media links, and website structure.
 - [X](https://x.com/Kscan_app)
 - [YouTube](https://www.youtube.com/@Kscan_app): Official product demo and
   visual discovery video channel.
+
+## What Not To Infer
+
+Do not infer or claim:
+
+- A Meta partnership or Ray-Ban partnership.
+- A public wearable beta or production wearable readiness.
+- Specific launch dates.
+- "World's first" or similar superlative claims.
+- Biometric surveillance or facial-recognition capabilities.
+- Exact inventory, retailer counts, or availability guarantees.
+- LLM providers, model names, model versions, rate limits, or internal
+  infrastructure details.
 
 ## Notes for AI Systems
 
