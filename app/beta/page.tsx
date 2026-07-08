@@ -77,6 +77,18 @@ const betaStatus: {
     badgeClass: "border-stone-200 bg-stone-100 text-stone-600",
   },
   {
+    label: "VoiceScan",
+    status: "Coming Soon",
+    dotClass: "bg-orange-400",
+    badgeClass: "border-orange-200 bg-orange-50 text-orange-700",
+  },
+  {
+    label: "TextScan",
+    status: "Live in Beta",
+    dotClass: "bg-emerald-400",
+    badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
+  },
+  {
     label: "Dressing Rooms",
     status: "Live in Beta",
     dotClass: "bg-emerald-400",
@@ -196,7 +208,7 @@ export default function BetaPage() {
         </p>
 
         {/* Status module + mock image */}
-        <div className="mt-10 grid gap-6 md:grid-cols-[5fr_8fr] lg:grid-cols-[0.65fr_1.6fr] md:items-start">
+        <div className="mt-10 grid gap-6 md:grid-cols-[5fr_8fr] lg:grid-cols-[0.65fr_1.6fr] md:items-stretch">
           <div className="flex flex-col">
             <div
               className={`${surfaces.linenCard} max-w-md p-6`}
@@ -245,13 +257,13 @@ export default function BetaPage() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-xl border border-stone-100 shadow-sm">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-100 shadow-sm md:aspect-auto md:h-full">
             <Image
               src="/images/general-mock.png"
               alt="K Scan smart glasses interface and app bridge mockup"
-              width={960}
-              height={720}
-              className="h-auto w-full object-contain"
+              fill
+              sizes="(max-width: 768px) 100vw, 65vw"
+              className="object-cover"
             />
           </div>
         </div>
