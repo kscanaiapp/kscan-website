@@ -71,10 +71,10 @@ const betaStatus: {
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
-    label: "Current Focus",
-    status: "Scan-to-Closet",
-    dotClass: "bg-stone-300",
-    badgeClass: "border-stone-200 bg-stone-100 text-stone-600",
+    label: "Scan-to-Closet",
+    status: "Live in Beta",
+    dotClass: "bg-emerald-400",
+    badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
     label: "VoiceScan",
