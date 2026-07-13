@@ -101,7 +101,7 @@ const betaStatus: {
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
-    label: "Elise AI Stylist",
+    label: "AI Stylist",
     status: "Live in Beta",
     dotClass: "bg-emerald-400",
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
@@ -310,7 +310,7 @@ export default function BetaPage() {
             <p className="text-[13px] leading-relaxed text-stone-500">
               Plan outfits together, compare looks, react with emoji, and keep
               every decision in one place. Native in-app chat keeps
-              conversations connected to each look, while StyleDNA helps K Scan
+              conversations connected to each look, while Signature Style helps K Scan
               understand your group&rsquo;s preferences and suggest better options
               over time based on style, weather, and occasion.
             </p>
