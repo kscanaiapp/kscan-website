@@ -749,16 +749,16 @@ export default function Home() {
                     Live in Beta
                   </p>
                   <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
-                    StyleChat
+                    AI Stylist
                   </h3>
                   <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    A conversational stylist powered by your StyleDNA, designed to learn from what you choose to wear, save, and respond to. It provides personalized recommendations with clear explanations, adapting to your preferences, the weather, and your plans so every suggestion feels more relevant over time.
+                    Ask questions, explore styling options, compare looks, and discover new ways to wear what you scan and save. AI Stylist uses your preferences and Signature Style to provide personalized recommendations with clear, relevant explanations.
                   </p>
                 </div>
                 <div className="mx-auto w-full max-w-[560px] lg:mr-0">
                   <Image
                     src="/images/stylechat.png"
-                    alt="K Scan StyleChat preview showing a conversational stylist with memory"
+                    alt="AI Stylist personalized fashion recommendations interface"
                     width={1536}
                     height={1024}
                     sizes="(max-width: 1024px) 82vw, 46vw"
