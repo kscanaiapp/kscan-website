@@ -101,7 +101,7 @@ const betaStatus: {
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
-    label: "StyleChat",
+    label: "Elise AI Stylist",
     status: "Live in Beta",
     dotClass: "bg-emerald-400",
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
@@ -322,14 +322,10 @@ export default function BetaPage() {
               Live in Beta
             </p>
             <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
-              StyleChat
+              Elise, Your AI Stylist
             </h3>
             <p className="text-[13px] leading-relaxed text-stone-500">
-              A conversational stylist powered by your StyleDNA that learns
-              from what you wear, save, and respond to. Get personalized
-              recommendations with clear explanations, adapted to your
-              preferences, your plans, and the weather so every suggestion
-              feels more relevant over time.
+              Ask questions, explore styling options, compare looks, and discover new ways to wear what you scan and save. Elise uses your preferences and Signature Style to provide personalized recommendations with clear, relevant explanations.
             </p>
           </div>
 
