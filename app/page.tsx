@@ -68,7 +68,7 @@ const featureList = [
   },
   {
     title: "Dressing Rooms",
-    body: "Plan outfits together for trips, events, and nights out. Save looks into shared Dressing Rooms, compare options, vote on favorites, and keep every decision in one place. Powered by your evolving StyleDNA, K Scan understands your group's preferences and refines suggestions over time while adapting to context like weather, location, and occasion. Native in-app chat keeps every conversation, reaction, and decision connected directly to the looks you're considering. Share by link or browse together in K Scan, then turn group inspiration into more relevant, shoppable matches.",
+    body: "Plan outfits together for trips, events, and nights out. Save looks into shared Dressing Rooms, compare options, vote on favorites, and keep every decision in one place. Powered by your evolving Signature Style, K Scan understands your group's preferences and refines suggestions over time while adapting to context like weather, location, and occasion. Native in-app chat keeps every conversation, reaction, and decision connected directly to the looks you're considering. Share by link or browse together in K Scan, then turn group inspiration into more relevant, shoppable matches.",
   },
 ];
 
