@@ -7,6 +7,8 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: #7c3aed #f5f1ea;
+  scrollbar-width: auto;
 }
 
 body {
@@ -16,6 +18,25 @@ body {
   background-image: radial-gradient(circle at top, rgba(255, 255, 255, 0.72), rgba(250, 250, 248, 0) 38%);
   color: #111111;
   text-rendering: optimizeLegibility;
+}
+
+/* ── Global scrollbar: K Scan violet accent on warm linen track ──────────── */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f1ea;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7c3aed;
+  border-radius: 999px;
+  border: 3px solid #f5f1ea;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6d28d9;
 }
 
 ::selection {
