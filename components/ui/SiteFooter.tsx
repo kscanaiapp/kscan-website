@@ -35,14 +35,14 @@ export function SiteFooter() {
               </Link>
               <span aria-hidden="true" className="hidden select-none text-stone-400 md:inline">|</span>
               <Link
-                href="/legal/privacy"
+                href="/privacy"
                 className="flex h-11 items-center justify-center px-2 text-stone-600 transition-colors hover:text-stone-900 focus:outline-none focus-visible:text-stone-900"
               >
                 Privacy
               </Link>
               <span aria-hidden="true" className="hidden select-none text-stone-400 md:inline">|</span>
               <Link
-                href="/legal/terms"
+                href="/legal/terms-summary"
                 className="flex h-11 items-center justify-center px-2 text-stone-600 transition-colors hover:text-stone-900 focus:outline-none focus-visible:text-stone-900"
               >
                 Terms
