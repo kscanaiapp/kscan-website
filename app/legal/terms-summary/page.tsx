@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
 
 export const dynamic = "force-dynamic";
@@ -213,13 +214,23 @@ export default function TermsSummaryPage() {
         <div className="mt-14 space-y-4 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <p>
             For questions, or to obtain a full copy of our{" "}
-            <a
-              href="/docs/kscan-terms-and-conditions.pdf"
+            <Link
+              href="/legal/terms"
               className="rounded-sm font-medium text-indigo-600 underline decoration-indigo-300 underline-offset-2 transition-colors hover:text-indigo-800 hover:decoration-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2"
             >
               Terms and Conditions
-            </a>{" "}
+            </Link>{" "}
             please contact us at kscanai.app@gmail.com.
+          </p>
+          <p className="text-[13px]">
+            <a
+              href="/docs/kscan-terms-and-conditions.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-stone-600 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
+            >
+              Download Terms and Conditions PDF
+            </a>
           </p>
         </div>
 

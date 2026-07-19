@@ -192,15 +192,23 @@ export default function PrivacyPage() {
             </h2>
             <p>
               Our full{" "}
+              <Link
+                href="/legal/privacy"
+                className="rounded-sm font-medium text-indigo-600 underline decoration-indigo-300 underline-offset-2 transition-colors hover:text-indigo-800 hover:decoration-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2"
+              >
+                Privacy Policy
+              </Link>{" "}
+              is available online or by email at kscanai.app@gmail.com.
+            </p>
+            <p className="text-[13px]">
               <a
                 href="/docs/kscan-privacy-policy.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-sm font-medium text-indigo-600 underline decoration-indigo-300 underline-offset-2 transition-colors hover:text-indigo-800 hover:decoration-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2"
+                className={linkClassName}
               >
-                Privacy Policy
-              </a>{" "}
-              is available online or by email at kscanai.app@gmail.com.
+                Download Privacy Policy PDF
+              </a>
             </p>
           </section>
         </div>
