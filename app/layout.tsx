@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | K Scan AI",
   },
   description:
-    "K Scan AI helps turn real-world fashion inspiration into AI-assisted style discovery, saved looks, and retailer-neutral shopping paths.",
+    "K Scan AI is a fashion scan app, AI stylist, and visual commerce platform that helps users scan inspiration, discover products and alternatives, save items, and style their scanned closet.",
   keywords: [
     "AI fashion search",
     "find clothes from photos",
@@ -128,7 +128,7 @@ export default function RootLayout({
     name: "K Scan AI",
     url: "https://kscan.app",
     description:
-      "AI-powered visual fashion search for identifying clothes from photos, screenshots, videos, and social inspiration.",
+      "AI-powered visual fashion search for identifying clothes from photos, screenshots, and social inspiration.",
   };
 
   return (

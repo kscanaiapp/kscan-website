@@ -15,9 +15,8 @@ import {
 const coreFlow = [
   {
     step: "01",
-    title: "Capture",
-    description:
-      "Point your phone at any look, whether on the street, on a screen, or in your social feed. K Scan captures the full outfit in context.",
+    title: "Scan",
+    description: "Capture a look from real life, a photo, or a screenshot.",
     image: {
       src: "/how-it-works/capture-frame-the-look.png",
       alt: "K Scan capture mockup showing a fashion look framed through a camera viewfinder.",
@@ -25,9 +24,9 @@ const coreFlow = [
   },
   {
     step: "02",
-    title: "Identify",
+    title: "Discover",
     description:
-      "K Scan identifies what's in the frame, including garments, colors, silhouettes, textures, and styling cues, then turns them into ranked matches.",
+      "K Scan identifies the clothing, color, silhouette, material, and relevant style context.",
     image: {
       src: "/how-it-works/identify-style-parse.png",
       alt: "K Scan identify mockup showing fashion attributes detected inside an outfit photo.",
@@ -37,11 +36,25 @@ const coreFlow = [
     step: "03",
     title: "Shop",
     description:
-      "Compare retailer-neutral matches, save options, or move from inspiration to the retailer.",
+      "Explore product results, alternatives, real purchase options, and retailer pathways.",
     image: {
       src: "/how-it-works/match-shop-results.png",
-      alt: "K Scan match results mockup showing retailer-neutral product matches from a scanned outfit.",
+      alt: "K Scan match results mockup showing product results and retailer pathways from a scanned outfit.",
     },
+  },
+  {
+    step: "04",
+    title: "Save",
+    description:
+      "Keep scanned items and fashion discoveries in your scanned closet.",
+    image: null,
+  },
+  {
+    step: "05",
+    title: "Style",
+    description:
+      "Use Signature Style and the AI Stylist to plan outfits and rediscover what you have saved.",
+    image: null,
   },
 ];
 
@@ -52,7 +65,7 @@ const featureList = [
   },
   {
     title: "Built for Speed and Context",
-    body: "Designed for live video and still images, K Scan turns real-world inspiration into ranked matches. Capture the look and move on.",
+    body: "Designed for photos, screenshots, and saved video frames, K Scan turns real-world inspiration into ranked matches. Capture the look and move on.",
   },
   {
     title: "One View, Multiple Retailers",
@@ -64,11 +77,11 @@ const featureList = [
   },
   {
     title: "Personalized Recall",
-    body: "Saved scans and purchases build a sharper profile, so recommendations improve instead of repeating.",
+    body: "Saved scans, saved items, and styling preferences help K Scan understand your taste over time.",
   },
   {
     title: "Dressing Rooms",
-    body: "Plan outfits together for trips, events, and nights out. Save looks into shared Dressing Rooms, compare options, vote on favorites, and keep every decision in one place. Powered by your evolving Signature Style, K Scan understands your group's preferences and refines suggestions over time while adapting to context like weather, location, and occasion. Native in-app chat keeps every conversation, reaction, and decision connected directly to the looks you're considering. Share by link or browse together in K Scan, then turn group inspiration into more relevant, shoppable matches.",
+    body: "Plan looks together. Save outfit ideas in Dressing Rooms, compare options, share a link, and keep reactions and conversations connected to the looks being considered. Whether you are planning for a trip, event, or night out, every option stays organized in one place. Signature Style helps make future suggestions more relevant to the preferences you share.",
   },
 ];
 
@@ -91,7 +104,7 @@ const faqs = [
   {
     question: "How does AI fashion search work?",
     answer:
-      "K Scan analyzes a photo, screenshot, or video frame for fashion signals like garment type, silhouette, color, material, styling context, and brand cues. Those signals are used to surface relevant or visually similar products across retailer sources.",
+      "K Scan analyzes a photo, screenshot, or a saved frame from a video for fashion signals like garment type, silhouette, color, material, styling context, and brand cues. Those signals are used to surface relevant products and alternatives across retailer pathways.",
   },
   {
     question: "Can K Scan identify outfits from screenshots?",
@@ -101,7 +114,7 @@ const faqs = [
   {
     question: "Can it find affordable alternatives?",
     answer:
-      "K Scan is designed to show exact matches when available and useful alternatives when the original piece is unavailable, sold out, or outside your price range.",
+      "K Scan is designed to surface relevant products and useful alternatives when the original piece is unavailable, sold out, or outside your price range.",
   },
   {
     question: "Does it work with TikTok or Instagram screenshots?",
@@ -111,7 +124,7 @@ const faqs = [
   {
     question: "Is K Scan a retailer or marketplace?",
     answer:
-      "No. K Scan is a visual fashion discovery layer. It helps identify what you are seeing and routes you toward products from retailers rather than replacing the shopping destination.",
+      "No. K Scan is a visual commerce layer for fashion discovery. It helps identify what you are seeing and routes you toward products from retailers rather than replacing the shopping destination.",
   },
 ];
 
@@ -301,7 +314,7 @@ export default function Home() {
     applicationCategory: "ShoppingApplication",
     operatingSystem: "iOS, Android, Web",
     description:
-      "AI-powered visual fashion search for identifying clothes from photos, screenshots, videos, and social inspiration.",
+      "AI-powered visual fashion search for identifying clothes from photos, screenshots, and social inspiration.",
     url: "https://kscan.app",
   };
 
@@ -375,7 +388,7 @@ export default function Home() {
             className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-600 md:mb-8"
             variants={staggerChild}
           >
-            Private beta - 2026
+            Active beta testing on iOS and Android for approved testers.
           </motion.p>
           <motion.h1
             className="mb-5 max-w-[10ch] font-display text-[46px] leading-[1.01] text-stone-900 sm:text-[52px] md:mb-6 md:text-[66px] lg:text-[78px]"
@@ -387,30 +400,25 @@ export default function Home() {
             className="mb-8 max-w-[90%] text-[15px] leading-[1.85] text-stone-500 sm:max-w-[27rem] md:mb-9 md:text-[16px]"
             variants={staggerChild}
           >
-            The fashion you spot in real life - shoppable through visual search.
+            Scan fashion from real life, photos, or screenshots. K Scan identifies the look, finds relevant products and alternatives, saves your discoveries, and helps you style them.
           </motion.p>
           <motion.div
             className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5"
             variants={staggerChild}
           >
-            <div className="flex flex-col items-start gap-2.5">
-              <motion.a
-                href="#waitlist"
-                className="rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
-                {...btnMotion}
-              >
-                Get Early Access
-              </motion.a>
-              <p className="text-[11px] tracking-[0.04em] text-stone-600">
-                No keyword guessing. No endless searching. Find the piece, or the closest available match.
-              </p>
-            </div>
             <motion.a
-              href="#how-it-works"
+              href="#waitlist"
+              className="whitespace-nowrap rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
+              {...btnMotion}
+            >
+              Request Beta Access
+            </motion.a>
+            <motion.a
+              href="/demo"
               className="text-[13px] text-stone-600 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
               {...btnMotion}
             >
-              See the scan flow
+              Watch the Demo
             </motion.a>
           </motion.div>
         </motion.div>
@@ -499,10 +507,10 @@ export default function Home() {
               full look with the right keywords, you can start with the image you already have.
             </p>
             <p>
-              The product is built for AI fashion search across real-world captures, saved images, short-form video
-              moments, and social posts from places like TikTok, Instagram, and Pinterest. K Scan reads fashion-specific
-              signals such as silhouette, material, color, layering, and styling context, then helps surface exact
-              products or close alternatives across retailers.
+              The product is built for AI fashion search across real-world captures, saved images, screenshots or
+              saved frames from short-form videos, and social posts from places like TikTok, Instagram, and Pinterest.
+              K Scan reads fashion-specific signals such as silhouette, material, color, layering, and styling
+              context, then helps surface relevant products and alternatives across retailers.
             </p>
             <div className="flex flex-wrap gap-4 pt-1 text-[13px]">
               <a href="/demo" className="text-violet-600 underline decoration-violet-200 underline-offset-4 transition-colors hover:text-violet-700 hover:decoration-violet-400">
@@ -588,7 +596,7 @@ export default function Home() {
           </div>
         </FadeUp>
 
-        <div className="grid divide-y divide-stone-100 md:grid-cols-3 md:divide-x md:divide-y-0">
+        <div className="grid divide-y divide-stone-100 md:grid-cols-3 md:divide-x md:divide-y-0 lg:grid-cols-5">
           {coreFlow.map(({ step, title, description, image }, idx) => (
             <FadeUp
               key={step}
@@ -606,21 +614,23 @@ export default function Home() {
                 {title}
               </h3>
               <p className="mb-4 text-[15px] leading-[1.82] text-stone-500">{description}</p>
-              <div className="relative mt-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-lg border border-white/10 bg-zinc-950/40 mx-auto lg:max-w-none">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                />
-              </div>
+              {image && (
+                <div className="relative mt-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-lg border border-white/10 bg-zinc-950/40 mx-auto lg:max-w-none">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                  />
+                </div>
+              )}
             </FadeUp>
           ))}
         </div>
       </section>
 
-      {/* Style Memory */}
+      {/* Signature Style */}
       <section id="features" className="bg-white py-20 md:py-32">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <FadeUp className="mb-12 max-w-lg md:mb-28">
@@ -675,7 +685,7 @@ export default function Home() {
             <div className="grid gap-9 rounded-[30px] border border-white/5 bg-zinc-950 px-6 py-10 shadow-[0_24px_70px_rgba(28,22,16,0.12)] md:gap-10 md:rounded-[34px] md:px-10 md:py-12 lg:grid-cols-[0.45fr_0.55fr] lg:items-center lg:px-12">
               <div>
                 <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-indigo-300/85 md:mb-5">
-                  Style Memory
+                  Signature Style
                 </p>
                 <h2 className="mb-5 max-w-xl font-display text-4xl font-medium leading-[1.05] text-white md:text-[52px]">
                   Your taste, remembered privately.
@@ -752,7 +762,7 @@ export default function Home() {
                     AI Stylist
                   </h3>
                   <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    Ask questions, explore styling options, compare looks, and discover new ways to wear what you scan and save. AI Stylist uses your preferences and Signature Style to provide personalized recommendations with clear, relevant explanations.
+                    Style what you own and what you just discovered. Ask Elise what to wear, how to remix a saved look, or which scanned pieces work together. Recommendations use your saved items, preferences, and Signature Style to provide practical guidance with clear explanations.
                   </p>
                 </div>
                 <div className="mx-auto w-full max-w-[560px] lg:mr-0">

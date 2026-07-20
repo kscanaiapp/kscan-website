@@ -35,10 +35,10 @@ const ENVIRONMENTS: Record<EnvironmentView, EnvironmentConfig> = {
   },
   smartglasses: {
     label: "Smart Glasses",
-    title: "Hands-free visual intelligence",
-    focus: "Focus: Hands-free visual intelligence for smart-glasses interfaces.",
+    title: "Hands-free visual intelligence prototype",
+    focus: "Focus: Hands-free visual intelligence for a browser-enabled smart glasses prototype.",
     description:
-      "The same system extends into smart-glasses experiences, keeping visual context available without interrupting movement.",
+      "The same system extends into a browser-enabled smart glasses prototype experience, keeping visual context available without interrupting movement.",
     videoSrc: "/demo/kscan-demo-smartglasses-groupstreet.mp4",
   },
 };

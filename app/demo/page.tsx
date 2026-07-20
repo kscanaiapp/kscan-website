@@ -21,7 +21,7 @@ export default function DemoPage() {
             </h1>
             <p className="mt-6 max-w-2xl text-[15px] leading-[1.9] text-stone-500 md:text-[17px]">
               Two views of the K Scan product roadmap: the current mobile experience built for fashion conversion,
-              and the wearable interface shaping where hands-free commerce goes next.
+              and a browser-enabled smart glasses prototype shaping where hands-free commerce goes next.
             </p>
           </div>
 

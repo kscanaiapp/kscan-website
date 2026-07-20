@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     absolute: "K Scan AI Beta | Product Status and Early Access",
   },
   description:
-    "Follow K Scan AI beta progress across scan-to-style discovery, dressing rooms, StyleChat, TextScan, and upcoming product direction.",
+    "K Scan AI is actively testing on iOS and Android with Scan-to-Closet, TextScan, Dressing Rooms, Share by Link, and the AI Stylist available for approved beta testers.",
   keywords: [
     "K Scan beta",
     "beta access",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "K Scan AI Beta | Product Status and Early Access",
     description:
-      "Follow K Scan AI beta progress across scan-to-style discovery, dressing rooms, StyleChat, TextScan, and upcoming product direction.",
+      "K Scan AI is actively testing on iOS and Android with Scan-to-Closet, TextScan, Dressing Rooms, Share by Link, and the AI Stylist available for approved beta testers.",
     url: "https://kscan.app/beta",
     siteName: "K Scan AI",
     locale: "en_US",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "K Scan AI Beta | Product Status and Early Access",
     description:
-      "Follow K Scan AI beta progress across scan-to-style discovery, dressing rooms, StyleChat, TextScan, and upcoming product direction.",
+      "K Scan AI is actively testing on iOS and Android with Scan-to-Closet, TextScan, Dressing Rooms, Share by Link, and the AI Stylist available for approved beta testers.",
     images: ["/group-street.jpeg"],
   },
 };
@@ -115,7 +115,7 @@ const betaStatus: {
   },
   {
     label: "Smart Glasses *",
-    status: "In Development",
+    status: "Browser-Enabled Prototype",
     dotClass: "bg-indigo-400",
     badgeClass: "border-indigo-200 bg-indigo-50 text-indigo-700",
   },
@@ -176,7 +176,7 @@ const roadmapCards = [
   {
     title: "Smart Closet",
     description:
-      "A connected closet layer for saved scans, Style Memory, StyleChat, and TextScan. We’re exploring how K Scan can help users organize what they own, rediscover saved pieces, describe items by text, and get smarter outfit suggestions from their personal style context.",
+      "A connected closet layer for saved scans, Signature Style, the AI Stylist, and TextScan. We’re exploring how K Scan can help users organize what they own, rediscover saved pieces, describe items by text, and get smarter outfit suggestions from their personal style context.",
     badge: "Research & Design",
   },
   {
@@ -251,9 +251,8 @@ export default function BetaPage() {
             </div>
 
             <p className="mt-4 max-w-md text-[12px] leading-relaxed text-stone-600">
-              Fashion discovery is moving beyond the screen. K Scan is bringing
-              real world style recognition into wearable tech through immersive
-              hands free visual experiences.
+              K Scan is exploring browser-enabled smart glasses prototypes for
+              Meta and Android XR experiences.
             </p>
           </div>
 
@@ -308,11 +307,10 @@ export default function BetaPage() {
               Dressing Rooms &amp; Share by Link
             </h3>
             <p className="text-[13px] leading-relaxed text-stone-500">
-              Plan outfits together, compare looks, react with emoji, and keep
-              every decision in one place. Native in-app chat keeps
-              conversations connected to each look, while Signature Style helps K Scan
-              understand your group&rsquo;s preferences and suggest better options
-              over time based on style, weather, and occasion.
+              Save outfit ideas in Dressing Rooms, compare options, share a
+              link, and keep reactions and conversations connected to each
+              look. Signature Style helps make future suggestions more
+              relevant to the preferences you share.
             </p>
           </div>
 
