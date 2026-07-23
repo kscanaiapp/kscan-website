@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   },
   description: "Restore a K Scan AI account during the 30-day deletion grace period.",
   robots: { index: false, follow: false },
+  // P2-8: never send this URL (which may carry the restoration token) as a
+  // Referer to any subresource or outbound link.
+  referrer: "no-referrer",
   alternates: {
     canonical: "https://kscan.app/account/restore",
   },

@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
 
-type Status = "idle" | "restoring" | "restored" | "failed" | "resending";
+type Status = "idle" | "restoring" | "restored" | "restored_pending_unban" | "failed" | "resending";
 
 export default function AccountRestoreClient() {
   const searchParams = useSearchParams();
@@ -13,6 +13,16 @@ export default function AccountRestoreClient() {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string | null>(null);
   const [email, setEmail] = useState("");
+
+  // P2-8: strip the token from the visible URL and from browser history as
+  // soon as it's captured, so it does not linger in the address bar, history,
+  // or any subsequently-sent Referer header. Runs before the network call.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!window.location.search.includes("token=")) return;
+    const clean = `${window.location.pathname}${window.location.hash}`;
+    window.history.replaceState(null, "", clean);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -36,6 +46,14 @@ export default function AccountRestoreClient() {
           setMessage(
             payload.message ||
               "Your account has been restored. Sign in again in the K Scan app.",
+          );
+          return;
+        }
+        if (response.status === 202 && payload.status === "restored_pending_unban") {
+          setStatus("restored_pending_unban");
+          setMessage(
+            payload.message ||
+              "Your account data has been restored, but re-enabling sign-in is taking longer than expected. Please try again shortly.",
           );
           return;
         }
@@ -92,6 +110,11 @@ export default function AccountRestoreClient() {
 
         {(status === "restoring" || status === "resending") && (
           <p className="mb-6 text-sm text-cyan-200">Working…</p>
+        )}
+        {status === "restored_pending_unban" && (
+          <p className="mb-6 text-sm text-cyan-200">
+            This can take a few minutes. No need to request a new link.
+          </p>
         )}
         {message && <p className="mb-6 text-sm leading-6 text-slate-100">{message}</p>}
 
