@@ -54,12 +54,33 @@ const wellKnownJsonHeaders = [
   { key: "Cache-Control", value: "public, max-age=3600, must-revalidate" },
 ];
 
+// P2-8 hardening: the restoration page's server-rendered HTML embeds the
+// one-time token in its React Server Components hydration payload (Next.js
+// serializes the requested URL, including ?token=..., into a <script> tag —
+// not visible text, not sent to any third party, but present in the raw
+// response body). The site-wide Cache-Control default is absent here (Next
+// falls back to "no-cache, must-revalidate", which still permits a shared or
+// disk cache to STORE the response pending revalidation) and the site-wide
+// Referrer-Policy is the weaker "strict-origin-when-cross-origin". This route
+// needs the strictest values so the token-bearing response is never cached
+// anywhere and the page's own Referrer-Policy HTTP header matches its
+// <meta name="referrer" content="no-referrer"> tag rather than relying on
+// meta/header precedence rules.
+const restorePageHeaders = [
+  { key: "Cache-Control", value: "no-store" },
+  { key: "Referrer-Policy", value: "no-referrer" },
+];
+
 const nextConfig: NextConfig = {
   async headers() {
     return [
       {
         source: "/:path*",
         headers: securityHeaders,
+      },
+      {
+        source: "/account/restore",
+        headers: restorePageHeaders,
       },
       {
         source: "/.well-known/assetlinks.json",

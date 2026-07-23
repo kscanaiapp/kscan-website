@@ -14,16 +14,6 @@ export default function AccountRestoreClient() {
   const [message, setMessage] = useState<string | null>(null);
   const [email, setEmail] = useState("");
 
-  // P2-8: strip the token from the visible URL and from browser history as
-  // soon as it's captured, so it does not linger in the address bar, history,
-  // or any subsequently-sent Referer header. Runs before the network call.
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (!window.location.search.includes("token=")) return;
-    const clean = `${window.location.pathname}${window.location.hash}`;
-    window.history.replaceState(null, "", clean);
-  }, []);
-
   useEffect(() => {
     let cancelled = false;
     async function run() {
@@ -32,6 +22,23 @@ export default function AccountRestoreClient() {
         setMessage("This restoration link is missing or invalid.");
         return;
       }
+
+      // P2-8: strip the token from the visible URL and browser history now
+      // that it's been captured, so it does not linger in the address bar,
+      // history, or any subsequently-sent Referer header. Deliberately runs
+      // AFTER `token` is confirmed valid (not in an independent mount-time
+      // effect): this page is statically prerendered, so useSearchParams()
+      // resolves the real URL asynchronously on the client. An unconditional
+      // history.replaceState() on mount can race ahead of that resolution
+      // and overwrite window.location before Next's router has captured the
+      // original token-bearing URL, permanently losing the token. Scrubbing
+      // here, after `token` is already captured in component state, cannot
+      // race the value we still need.
+      if (typeof window !== "undefined" && window.location.search.includes("token=")) {
+        const clean = `${window.location.pathname}${window.location.hash}`;
+        window.history.replaceState(null, "", clean);
+      }
+
       setStatus("restoring");
       try {
         const response = await fetch("/api/account/restore", {
