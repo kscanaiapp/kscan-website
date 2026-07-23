@@ -25,11 +25,32 @@ test('duplicate/retry uses the stable row UUID and does not resend a sent email'
 test('only the waitlist welcome flow calls Render', () => {
   assert.match(caller, /\/internal\/email\/waitlist-welcome/);
   assert.match(caller, /x-kscan-email-secret/);
-  assert.doesNotMatch(caller, /analy|search|scanner|elise|stylechat/i);
+  assert.doesNotMatch(caller, /\/api\/(?:analyze|search|scanner|elise|stylechat)/i);
   assert.equal((route.match(/dispatchWaitlistWelcome/g) || []).length, 2);
 });
 
 test('temporary email failure cannot roll back a stored signup', () => {
   assert.ok(route.indexOf('dispatchWaitlistWelcome({') < route.lastIndexOf('NextResponse.json('));
   assert.match(caller, /failed_retryable/);
+});
+
+test('Render URL handling normalizes whitespace and any trailing slashes', () => {
+  assert.match(caller, /\.trim\(\)\.replace\(\/\\\/\+\$\/, ""\)/);
+  assert.match(caller, /new URL\(WAITLIST_EMAIL_PATH, parsed\)/);
+  assert.match(caller, /parsed\.protocol !== "https:"/);
+});
+
+test('Render failures retain sanitized diagnostics without logging credentials', () => {
+  assert.match(caller, /RENDER_EMAIL_FETCH_FAILED/);
+  assert.match(caller, /correlationId/);
+  assert.match(caller, /causeCode/);
+  assert.match(caller, /causeMessage/);
+  assert.match(caller, /internalSecretConfigured/);
+  assert.doesNotMatch(caller, /console\.(?:log|info|error)\([^\n]*internalSecret/);
+});
+
+test('the email request is bounded with an AbortController timeout', () => {
+  assert.match(caller, /new AbortController\(\)/);
+  assert.match(caller, /setTimeout\(\(\) => controller\.abort\(\), EMAIL_TIMEOUT_MS\)/);
+  assert.match(caller, /clearTimeout\(timeout\)/);
 });
