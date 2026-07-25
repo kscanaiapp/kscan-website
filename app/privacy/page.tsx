@@ -202,7 +202,7 @@ export default function PrivacyPage() {
             </p>
             <p className="text-[13px]">
               <a
-                href="/docs/kscan-privacy-policy.pdf"
+                href="https://wyyuqfdxucjksghsmhry.supabase.co/storage/v1/object/public/legal-documents/kscan-privacy-policy.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={linkClassName}

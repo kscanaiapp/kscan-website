@@ -224,7 +224,7 @@ export default function TermsSummaryPage() {
           </p>
           <p className="text-[13px]">
             <a
-              href="/docs/kscan-terms-and-conditions.pdf"
+              href="https://wyyuqfdxucjksghsmhry.supabase.co/storage/v1/object/public/legal-documents/kscan-terms-and-conditions.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="text-stone-600 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500"
