@@ -18,6 +18,7 @@ const NAV_ITEMS: NavEntry[] = [
   { id: "demo",         label: "Demo",         type: "route",  value: "/demo" },
   { id: "beta",         label: "Beta Program", type: "route",  value: "/beta" },
   { id: "investors",    label: "Investors",    type: "route",  value: "/investors" },
+  { id: "security",     label: "Security",     type: "route",  value: "/security" },
 ];
 
 export function SiteNav() {
@@ -37,11 +38,6 @@ export function SiteNav() {
     return isHome ? `#${entry.value}` : `/#${entry.value}`;
   }
 
-  // Omit the tab whose route matches the current page
-  const visible = NAV_ITEMS.filter(
-    (item) => !(item.type === "route" && item.value === pathname),
-  );
-
   const ctaHref = isHome ? "#waitlist" : "/#waitlist";
 
   return (
@@ -55,11 +51,12 @@ export function SiteNav() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 text-[13px] text-stone-600 md:flex">
-          {visible.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item.id}
               href={href(item)}
-              className="transition-colors hover:text-stone-900"
+              aria-current={item.type === "route" && item.value === pathname ? "page" : undefined}
+              className={`transition-colors hover:text-stone-900 ${item.type === "route" && item.value === pathname ? "font-medium text-stone-950" : ""}`}
             >
               {item.label}
             </Link>
@@ -83,11 +80,12 @@ export function SiteNav() {
               Home
             </Link>
           )}
-          {visible.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item.id}
               href={href(item)}
-              className="whitespace-nowrap py-4 transition-colors hover:text-stone-900"
+              aria-current={item.type === "route" && item.value === pathname ? "page" : undefined}
+              className={`whitespace-nowrap py-4 transition-colors hover:text-stone-900 ${item.type === "route" && item.value === pathname ? "font-semibold text-stone-950" : ""}`}
             >
               {item.label}
             </Link>

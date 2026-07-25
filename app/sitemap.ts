@@ -6,6 +6,7 @@ const publicRoutes = [
   { path: "", changeFrequency: "weekly" as const, priority: 1.0 },
   { path: "/beta", changeFrequency: "monthly" as const, priority: 0.8 },
   { path: "/demo", changeFrequency: "monthly" as const, priority: 0.8 },
+  { path: "/security", changeFrequency: "monthly" as const, priority: 0.7 },
   { path: "/privacy", changeFrequency: "yearly" as const, priority: 0.3 },
   { path: "/legal/privacy", changeFrequency: "yearly" as const, priority: 0.3 },
   { path: "/legal/terms", changeFrequency: "yearly" as const, priority: 0.3 },
@@ -14,6 +15,7 @@ const publicRoutes = [
   { path: "/support", changeFrequency: "monthly" as const, priority: 0.5 },
   { path: "/legal/delete-account", changeFrequency: "yearly" as const, priority: 0.3 },
   { path: "/legal/delete-policy", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/legal/vulnerability-response", changeFrequency: "yearly" as const, priority: 0.3 },
 ];
 
 const lastModified = new Date().toISOString().split("T")[0];
