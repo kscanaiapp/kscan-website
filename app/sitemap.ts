@@ -13,6 +13,7 @@ const publicRoutes = [
   { path: "/do-not-sell-or-share", changeFrequency: "yearly" as const, priority: 0.3 },
   { path: "/support", changeFrequency: "monthly" as const, priority: 0.5 },
   { path: "/legal/delete-account", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/legal/delete-policy", changeFrequency: "yearly" as const, priority: 0.3 },
 ];
 
 const lastModified = new Date().toISOString().split("T")[0];

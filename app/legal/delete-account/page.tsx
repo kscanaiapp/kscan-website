@@ -122,11 +122,15 @@ export default function DeleteAccountPage() {
               Related Resources
             </h2>
             <p>
-              You can also review the{" "}
+              You can also review our{" "}
+              <Link href="/legal/delete-policy" className={linkClassName}>
+                Deletion Policy
+              </Link>
+              , the{" "}
               <Link href="/legal/privacy" className={linkClassName}>
                 Privacy Policy
-              </Link>{" "}
-              or visit{" "}
+              </Link>
+              , or visit{" "}
               <Link href="/support" className={linkClassName}>
                 Support
               </Link>{" "}
