@@ -216,7 +216,7 @@ const StatusBadge = ({
   badgeClass: string;
 }) => {
   const baseClasses =
-    "inline-flex max-w-full items-center gap-2 rounded-full border px-3 py-1.5 text-center text-[11px] font-medium uppercase leading-tight tracking-[0.12em] whitespace-normal sm:max-w-[15rem]";
+    "inline-flex max-w-[9.5rem] items-center gap-2 rounded-full border px-3 py-1.5 text-center text-[11px] font-medium uppercase leading-tight tracking-[0.12em] whitespace-normal sm:max-w-[15rem]";
   const dot = (
     <span
       className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
@@ -301,9 +301,9 @@ export default function BetaPage() {
               <ul className="space-y-3.5">
                 {betaStatus.map(({ label, storeLink, ...badgeProps }) => (
                   <li key={label} className="min-w-0">
-                    <div className="flex w-full flex-wrap items-start gap-x-3 gap-y-2">
-                      <div className="flex min-w-[7.5rem] flex-1 basis-[7.5rem] items-center gap-2">
-                        <span className="text-[14px] leading-snug text-stone-600">
+                    <div className="flex w-full items-start justify-between gap-x-3">
+                      <div className="flex min-w-0 shrink items-center gap-2">
+                        <span className="text-[14px] leading-snug text-stone-600 break-words">
                           {label}
                         </span>
                         {storeLink ? (
