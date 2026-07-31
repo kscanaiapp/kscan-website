@@ -53,7 +53,6 @@ export const metadata: Metadata = {
 
 type StoreLink = {
   href: string;
-  label: string;
   ariaLabel: string;
   platform: "google-play" | "testflight";
 };
@@ -71,7 +70,6 @@ const betaStatus: {
     status: "Active",
     storeLink: {
       href: "https://play.google.com/store/apps/details?id=com.kscanai.app",
-      label: "Get it on Google Play",
       ariaLabel: "Get K Scan AI on Google Play",
       platform: "google-play",
     },
@@ -83,7 +81,6 @@ const betaStatus: {
     status: "Active",
     storeLink: {
       href: "https://testflight.apple.com/",
-      label: "Open in TestFlight",
       ariaLabel: "Open K Scan AI beta access in TestFlight",
       platform: "testflight",
     },
@@ -185,12 +182,12 @@ function AppleMarkIcon({ className }: { className?: string }) {
   );
 }
 
-function PlatformAccessLink({ storeLink }: { storeLink: StoreLink }) {
+function PlatformIconLink({ storeLink }: { storeLink: StoreLink }) {
   const icon =
     storeLink.platform === "google-play" ? (
-      <GooglePlayIcon className="h-4 w-4 shrink-0" />
+      <GooglePlayIcon className="h-5 w-5" />
     ) : (
-      <AppleMarkIcon className="h-4 w-4 shrink-0 text-stone-800" />
+      <AppleMarkIcon className="h-5 w-5 text-stone-800" />
     );
 
   return (
@@ -199,10 +196,9 @@ function PlatformAccessLink({ storeLink }: { storeLink: StoreLink }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={storeLink.ariaLabel}
-      className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-md px-1 text-[12px] font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F0EA]"
+      className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-stone-700 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F0EA]"
     >
       {icon}
-      <span>{storeLink.label}</span>
     </a>
   );
 }
@@ -304,14 +300,18 @@ export default function BetaPage() {
               </p>
               <ul className="space-y-3.5">
                 {betaStatus.map(({ label, storeLink, ...badgeProps }) => (
-                  <li key={label} className="min-w-0 space-y-1.5">
-                    <div className="flex flex-wrap items-start gap-x-3 gap-y-2">
-                      <span className="min-w-[7.5rem] flex-1 text-[14px] leading-snug text-stone-600">
-                        {label}
-                      </span>
+                  <li key={label} className="min-w-0">
+                    <div className="flex w-full flex-wrap items-center justify-between gap-x-3 gap-y-2">
+                      <div className="flex min-w-0 flex-1 items-center gap-2">
+                        <span className="min-w-0 text-[14px] leading-snug text-stone-600">
+                          {label}
+                        </span>
+                        {storeLink ? (
+                          <PlatformIconLink storeLink={storeLink} />
+                        ) : null}
+                      </div>
                       <StatusBadge {...badgeProps} />
                     </div>
-                    {storeLink ? <PlatformAccessLink storeLink={storeLink} /> : null}
                   </li>
                 ))}
               </ul>
