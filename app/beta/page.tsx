@@ -51,22 +51,42 @@ export const metadata: Metadata = {
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
+type StoreLink = {
+  href: string;
+  label: string;
+  ariaLabel: string;
+  platform: "google-play" | "testflight";
+};
+
 const betaStatus: {
   label: string;
   status: string;
   statusHref?: string;
+  storeLink?: StoreLink;
   dotClass: string;
   badgeClass: string;
 }[] = [
   {
     label: "Android Beta",
     status: "Active",
+    storeLink: {
+      href: "https://play.google.com/store/apps/details?id=com.kscanai.app",
+      label: "Get it on Google Play",
+      ariaLabel: "Get K Scan AI on Google Play",
+      platform: "google-play",
+    },
     dotClass: "bg-emerald-400",
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
     label: "iOS Beta",
     status: "Active",
+    storeLink: {
+      href: "https://testflight.apple.com/",
+      label: "Open in TestFlight",
+      ariaLabel: "Open K Scan AI beta access in TestFlight",
+      platform: "testflight",
+    },
     dotClass: "bg-emerald-400",
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
@@ -121,6 +141,72 @@ const betaStatus: {
   },
 ];
 
+function GooglePlayIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className={className}
+      focusable="false"
+    >
+      <path
+        fill="#EA4335"
+        d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85C3.34 21.6 3 21.09 3 20.5z"
+      />
+      <path
+        fill="#FBBC04"
+        d="M16.81 15.12 13.69 12l3.12-3.12 3.35 1.91c1.01.57 1.01 1.85 0 2.42l-3.35 1.91z"
+      />
+      <path
+        fill="#4285F4"
+        d="M3.84 21.85 13.69 12l3.12 3.12-10.46 6.87c-1.08.59-2.26.4-2.51-.14z"
+      />
+      <path
+        fill="#34A853"
+        d="M3.84 2.15C4.09 1.61 5.27 1.42 6.35 2.01L16.81 8.88 13.69 12 3.84 2.15z"
+      />
+    </svg>
+  );
+}
+
+function AppleMarkIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className={className}
+      focusable="false"
+    >
+      <path
+        fill="currentColor"
+        d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+      />
+    </svg>
+  );
+}
+
+function PlatformAccessLink({ storeLink }: { storeLink: StoreLink }) {
+  const icon =
+    storeLink.platform === "google-play" ? (
+      <GooglePlayIcon className="h-4 w-4 shrink-0" />
+    ) : (
+      <AppleMarkIcon className="h-4 w-4 shrink-0 text-stone-800" />
+    );
+
+  return (
+    <a
+      href={storeLink.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={storeLink.ariaLabel}
+      className="inline-flex min-h-11 max-w-full items-center gap-2 rounded-md px-1 text-[12px] font-medium text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F0EA]"
+    >
+      {icon}
+      <span>{storeLink.label}</span>
+    </a>
+  );
+}
+
 // Shared status pill renderer — ensures linked and unlinked badges stay identical in size/style.
 const StatusBadge = ({
   status,
@@ -134,7 +220,7 @@ const StatusBadge = ({
   badgeClass: string;
 }) => {
   const baseClasses =
-    "inline-flex w-fit max-w-max shrink-0 items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.12em] leading-none whitespace-nowrap";
+    "inline-flex max-w-full items-center gap-2 rounded-full border px-3 py-1.5 text-center text-[11px] font-medium uppercase leading-tight tracking-[0.12em] whitespace-normal sm:max-w-[15rem]";
   const dot = (
     <span
       className={`inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full ${dotClass}`}
@@ -150,7 +236,7 @@ const StatusBadge = ({
           href={statusHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="leading-none underline decoration-stone-400 underline-offset-2 transition-colors hover:decoration-stone-600 hover:opacity-80"
+          className="underline decoration-stone-400 underline-offset-2 transition-colors hover:decoration-stone-600 hover:opacity-80"
         >
           {status}
         </a>
@@ -217,10 +303,15 @@ export default function BetaPage() {
                 Beta Status
               </p>
               <ul className="space-y-3.5">
-                {betaStatus.map(({ label, ...badgeProps }) => (
-                  <li key={label} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
-                    <span className="text-[14px] text-stone-600">{label}</span>
-                    <StatusBadge {...badgeProps} />
+                {betaStatus.map(({ label, storeLink, ...badgeProps }) => (
+                  <li key={label} className="min-w-0 space-y-1.5">
+                    <div className="flex flex-wrap items-start gap-x-3 gap-y-2">
+                      <span className="min-w-[7.5rem] flex-1 text-[14px] leading-snug text-stone-600">
+                        {label}
+                      </span>
+                      <StatusBadge {...badgeProps} />
+                    </div>
+                    {storeLink ? <PlatformAccessLink storeLink={storeLink} /> : null}
                   </li>
                 ))}
               </ul>
