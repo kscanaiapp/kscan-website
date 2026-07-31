@@ -301,9 +301,9 @@ export default function BetaPage() {
               <ul className="space-y-3.5">
                 {betaStatus.map(({ label, storeLink, ...badgeProps }) => (
                   <li key={label} className="min-w-0">
-                    <div className="flex w-full flex-wrap items-center justify-between gap-x-3 gap-y-2">
-                      <div className="flex min-w-0 flex-1 items-center gap-2">
-                        <span className="min-w-0 text-[14px] leading-snug text-stone-600">
+                    <div className="flex w-full flex-wrap items-start gap-x-3 gap-y-2">
+                      <div className="flex min-w-[7.5rem] flex-1 basis-[7.5rem] items-center gap-2">
+                        <span className="text-[14px] leading-snug text-stone-600">
                           {label}
                         </span>
                         {storeLink ? (
