@@ -58,4 +58,3 @@ export const privateNoStoreHeaders = {
   "Referrer-Policy": "no-referrer",
   "X-Robots-Tag": "noindex, nofollow, noarchive",
 };
-

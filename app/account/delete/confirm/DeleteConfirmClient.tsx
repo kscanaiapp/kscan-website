@@ -67,4 +67,3 @@ export default function DeleteConfirmClient({ csrfToken }: { csrfToken: string }
     </div>
   );
 }
-

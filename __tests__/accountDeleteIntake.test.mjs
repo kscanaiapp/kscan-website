@@ -15,7 +15,6 @@ test("email intake authenticates only and preserves the anti-enumeration contrac
   assert.match(route, /If that email belongs/);
   assert.doesNotMatch(route, /handle-user-deletion/);
 });
-
 test("PKCE callback validates state, exchanges once, and redirects to a scrubbed URL", () => {
   const route = read("app/account/delete/auth/callback/route.ts");
   assert.match(route, /constantTimeTokenEqual/);
@@ -45,4 +44,3 @@ test("sensitive account routes are dynamically rendered and never cache or refer
   assert.match(start, /force-dynamic/);
   assert.match(confirmPage, /force-dynamic/);
 });
-

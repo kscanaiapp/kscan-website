@@ -16,7 +16,6 @@ function accountSupabaseConfig() {
   if (!url || !publishableKey) return null;
   return { url: url.replace(/\/+$/, ""), publishableKey };
 }
-
 export function createAccountDeleteRouteClient(
   request: NextRequest,
   response: NextResponse,
@@ -65,4 +64,3 @@ export function createAccountDeletePageClient(cookieStore: ReadonlyRequestCookie
 export function getAccountDeleteSupabaseConfig() {
   return accountSupabaseConfig();
 }
-

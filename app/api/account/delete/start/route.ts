@@ -24,7 +24,6 @@ const genericBody = {
 function genericResponse() {
   return NextResponse.json(genericBody, { status: 202, headers: privateNoStoreHeaders });
 }
-
 export async function POST(request: NextRequest) {
   const response = genericResponse();
   if (!isSameOriginMutation(request)) return response;
@@ -74,4 +73,3 @@ export async function POST(request: NextRequest) {
   }
   return response;
 }
-
