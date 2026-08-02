@@ -73,6 +73,13 @@ export default function DeleteAccountPage() {
             <ul className="space-y-2 pl-4">
               <li>In app: Sign in to K Scan AI, then go to Privacy and choose Delete Account.</li>
               <li>
+                On the web: Use the{" "}
+                <Link href="/account/delete" className={linkClassName}>
+                  secure account-deletion form
+                </Link>
+                . You must authenticate with a single-use link before any account can be deactivated.
+              </li>
+              <li>
                 Email: Send a request to{" "}
                 <a href="mailto:kscanai.app@gmail.com?subject=Account%20Deletion%20Request" className={linkClassName}>
                   kscanai.app@gmail.com

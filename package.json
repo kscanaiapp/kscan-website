@@ -6,10 +6,12 @@
     "dev": "next dev -H 127.0.0.1",
     "dev:fresh": "powershell -ExecutionPolicy Bypass -File ./scripts/nuke-and-boot.ps1",
     "build": "next build",
+    "test:account-delete": "node --test __tests__/accountDeleteIntake.test.mjs",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.10.0",
     "@supabase/supabase-js": "^2.101.1",
     "framer-motion": "^12.38.0",
     "next": "16.2.2",

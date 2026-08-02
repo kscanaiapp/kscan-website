@@ -71,6 +71,13 @@ const restorePageHeaders = [
   { key: "Referrer-Policy", value: "no-referrer" },
 ];
 
+const accountDeleteHeaders = [
+  { key: "Cache-Control", value: "private, no-store, max-age=0" },
+  { key: "Pragma", value: "no-cache" },
+  { key: "Referrer-Policy", value: "no-referrer" },
+  { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
+];
+
 const nextConfig: NextConfig = {
   async headers() {
     return [
@@ -81,6 +88,14 @@ const nextConfig: NextConfig = {
       {
         source: "/account/restore",
         headers: restorePageHeaders,
+      },
+      {
+        source: "/account/delete/:path*",
+        headers: accountDeleteHeaders,
+      },
+      {
+        source: "/api/account/delete/:path*",
+        headers: accountDeleteHeaders,
       },
       {
         source: "/.well-known/assetlinks.json",
