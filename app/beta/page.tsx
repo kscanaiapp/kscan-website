@@ -289,72 +289,58 @@ export default function BetaPage() {
         </p>
 
         {/* Status module + mock image */}
-        <div className="mt-10 grid gap-6 md:grid-cols-[5fr_8fr] lg:grid-cols-[0.65fr_1.6fr] md:items-stretch">
-          <div className="flex flex-col">
-            <div
-              className={`${surfaces.linenCard} max-w-md p-6`}
-            >
-              <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
-                Beta Status
-              </p>
-              <ul className="space-y-3.5">
-                {betaStatus.map(({ label, storeLink, ...badgeProps }) => (
-                  <li key={label} className="min-w-0">
-                    <div className="flex w-full items-start justify-between gap-x-3">
-                      <div className="flex min-w-0 shrink items-center gap-2">
-                        <span className="text-[14px] leading-snug text-stone-600 break-words">
-                          {label}
-                        </span>
-                        {storeLink ? (
-                          <PlatformIconLink storeLink={storeLink} />
-                        ) : null}
-                      </div>
-                      <StatusBadge {...badgeProps} />
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-5 space-y-1 text-[11px] leading-relaxed text-stone-600">
-                <p>
-                  *{" "}
-                  <a
-                    href="https://kscan-glasses-demo.vercel.app/simulator.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline underline-offset-2 transition-colors hover:text-stone-600"
-                  >
-                    Meta Browser Demo
-                  </a>
-                </p>
-                <p>
-                  **{" "}
-                  <a
-                    href="https://kscan-google-glasses-demo.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline underline-offset-2 transition-colors hover:text-stone-600"
-                  >
-                    Google XR Browser Demo
-                  </a>
-                </p>
-              </div>
-            </div>
-
-            <p className="mt-4 max-w-md text-[12px] leading-relaxed text-stone-600">
-              K Scan is exploring browser-enabled smart glasses prototypes for
-              Meta and Android XR experiences.
+        <div className="mt-10 max-w-md">
+          <div className={`${surfaces.linenCard} p-6`}>
+            <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
+              Beta Status
             </p>
+            <ul className="space-y-3.5">
+              {betaStatus.map(({ label, storeLink, ...badgeProps }) => (
+                <li key={label} className="min-w-0">
+                  <div className="flex w-full items-start justify-between gap-x-3">
+                    <div className="flex min-w-0 shrink items-center gap-2">
+                      <span className="text-[14px] leading-snug text-stone-600 break-words">
+                        {label}
+                      </span>
+                      {storeLink ? (
+                        <PlatformIconLink storeLink={storeLink} />
+                      ) : null}
+                    </div>
+                    <StatusBadge {...badgeProps} />
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 space-y-1 text-[11px] leading-relaxed text-stone-600">
+              <p>
+                *{" "}
+                <a
+                  href="https://kscan-glasses-demo.vercel.app/simulator.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 transition-colors hover:text-stone-600"
+                >
+                  Meta Browser Demo
+                </a>
+              </p>
+              <p>
+                **{" "}
+                <a
+                  href="https://kscan-google-glasses-demo.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 transition-colors hover:text-stone-600"
+                >
+                  Google XR Browser Demo
+                </a>
+              </p>
+            </div>
           </div>
 
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-100 shadow-sm md:aspect-auto md:h-full">
-            <Image
-              src="/images/general-mock.png"
-              alt="K Scan smart glasses interface and app bridge mockup"
-              fill
-              sizes="(max-width: 768px) 100vw, 65vw"
-              className="object-contain"
-            />
-          </div>
+          <p className="mt-4 text-[12px] leading-relaxed text-stone-600">
+            K Scan is exploring browser-enabled smart glasses prototypes for
+            Meta and Android XR experiences.
+          </p>
         </div>
       </section>
 
@@ -372,7 +358,7 @@ export default function BetaPage() {
           What We&rsquo;re Testing
         </h2>
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-3">
           {/* Core focus */}
           <div className={`${surfaces.card} p-6`}>
             <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-600">
@@ -415,17 +401,6 @@ export default function BetaPage() {
             <p className="text-[13px] leading-relaxed text-stone-500">
               Ask questions, explore styling options, compare looks, and discover new ways to wear what you scan and save. Elise uses your preferences and Signature Style to provide personalized recommendations with clear, relevant explanations.
             </p>
-          </div>
-
-          {/* Feature preview image */}
-          <div className="overflow-hidden rounded-xl border border-stone-100 shadow-sm">
-            <Image
-              src="/images/rooms-chat-beta.png"
-              alt="Dressing Rooms chat and collaboration preview"
-              width={1536}
-              height={1024}
-              className="h-auto w-full object-contain"
-            />
           </div>
         </div>
 
