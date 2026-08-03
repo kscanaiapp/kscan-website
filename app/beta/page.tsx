@@ -8,25 +8,25 @@ import { surfaces, buttons } from "@/lib/theme";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "K Scan AI Beta | Product Status and Early Access",
+    absolute: "K Scan AI Beta | Product Status and App Access",
   },
   description:
-    "K Scan AI is actively testing on iOS and Android with Scan-to-Closet, TextScan, Dressing Rooms, Share by Link, and the AI Stylist available for approved beta testers.",
+    "Explore the current K Scan AI beta, see which features are live, get the Android app through Google Play, or access the iOS beta through TestFlight.",
   keywords: [
     "K Scan beta",
     "beta access",
     "AI fashion search beta",
     "visual fashion discovery app",
     "fashion recognition beta",
-    "fashion app early access",
+    "fashion app beta access",
   ],
   alternates: {
     canonical: "/beta",
   },
   openGraph: {
-    title: "K Scan AI Beta | Product Status and Early Access",
+    title: "K Scan AI Beta | Product Status and App Access",
     description:
-      "K Scan AI is actively testing on iOS and Android with Scan-to-Closet, TextScan, Dressing Rooms, Share by Link, and the AI Stylist available for approved beta testers.",
+      "Explore the current K Scan AI beta, see which features are live, get the Android app through Google Play, or access the iOS beta through TestFlight.",
     url: "https://kscan.app/beta",
     siteName: "K Scan AI",
     locale: "en_US",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "K Scan AI Beta | Product Status and Early Access",
+    title: "K Scan AI Beta | Product Status and App Access",
     description:
-      "K Scan AI is actively testing on iOS and Android with Scan-to-Closet, TextScan, Dressing Rooms, Share by Link, and the AI Stylist available for approved beta testers.",
+      "Explore the current K Scan AI beta, see which features are live, get the Android app through Google Play, or access the iOS beta through TestFlight.",
     images: ["/group-street.jpeg"],
   },
 };
@@ -126,7 +126,6 @@ const betaStatus: {
   {
     label: "App Native Face Blurring",
     status: "In Development",
-    statusHref: "https://sjkh3b27ibz4g.kimi.page/",
     dotClass: "bg-indigo-400",
     badgeClass: "border-indigo-200 bg-indigo-50 text-indigo-700",
   },
@@ -436,16 +435,10 @@ export default function BetaPage() {
             Mobile Beta Testing
           </h3>
           <p className="text-[13px] leading-relaxed text-stone-500">
-            K Scan is now in active beta testing on iOS and Android for
-            approved testers. Invited users can install the beta through Apple
-            TestFlight or Google Play testing. To request access,{" "}
-            <Link
-              href="/#waitlist"
-              className="underline underline-offset-2 transition-colors hover:text-stone-700"
-            >
-              join the waitlist
-            </Link>{" "}
-            (18+ only) or{" "}
+            K Scan is now available in beta on Android and iOS. Android users
+            can join open testing through Google Play, while iOS users can
+            access the beta through TestFlight. Users must be 18 or older to
+            participate, or{" "}
             <Link
               href="/support"
               className="underline underline-offset-2 transition-colors hover:text-stone-700"
@@ -551,24 +544,34 @@ export default function BetaPage() {
         <hr className="border-stone-100" />
       </div>
 
-      {/* ── 5. Beta Access Reinforcement ───────────────────────────────────── */}
+      {/* ── 5. Get the App ─────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">
         <p className="mb-5 font-mono text-[12px] uppercase tracking-[0.22em] text-stone-500">
-          05. Early Access
+          05. Get the App
         </p>
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-md">
             <h2 className="font-display mb-3 text-[24px] leading-tight text-stone-900 sm:text-[28px]">
-              Not in beta yet?
+              Start Testing K Scan
             </h2>
             <p className="text-[14px] leading-relaxed text-stone-500">
-              Request early access and help shape K Scan before launch.
-              Invitations are sent in limited waves. You must be 18 or older to participate.
+              Download the Android beta through Google Play or access the iOS beta through
+              TestFlight. Beta users can also send feedback directly to the K Scan team.
             </p>
           </div>
-          <Link href="/#waitlist" className={`fashion-cursor ${buttons.primaryLg} flex-shrink-0`}>
-            Request Beta Access
-          </Link>
+          <div className="flex flex-shrink-0 flex-col items-start gap-4 sm:items-end">
+            <Link href="/download" className={`fashion-cursor ${buttons.primaryLg}`}>
+              Get the App
+            </Link>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScTd8Oc14bwTFOl5q8jPsQ5-RbzdxlkM8zqBjJJvU2v0Ry68g/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[13px] text-stone-600 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
+            >
+              Send Beta Feedback
+            </a>
+          </div>
         </div>
       </section>
     </main>

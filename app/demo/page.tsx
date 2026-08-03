@@ -87,17 +87,17 @@ export default function DemoPage() {
           <section className="mt-16 rounded-[30px] border border-stone-200/80 bg-[#F4F0EA] px-6 py-8 shadow-[0_16px_36px_rgba(35,28,22,0.06)] md:mt-20 md:px-8 md:py-10">
             <p className="text-[11px] uppercase tracking-[0.18em] text-stone-600">Next Step</p>
             <h2 className="mt-4 font-display text-[34px] leading-[1.06] text-stone-900 md:text-[42px]">
-              Continue from the demo.
+              Continue from the Demo
             </h2>
             <p className="mt-4 max-w-2xl text-[15px] leading-[1.85] text-stone-500">
-              Join the waitlist for early product access, or continue to the investor portal for protected materials.
+              Get the K Scan beta to try the current mobile experience, or continue to the investor portal for protected materials.
             </p>
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <Link
-                href="/#waitlist"
-                className="rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
+                href="/download"
+                className="fashion-cursor rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
               >
-                Join Waitlist
+                Get the App
               </Link>
               <Link
                 href="/investors"

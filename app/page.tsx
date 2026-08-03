@@ -69,7 +69,7 @@ const featureList = [
   },
   {
     title: "One View, Multiple Retailers",
-    body: "See the closest match or the best alternative across indexed retailers. No tab-switching. No dead ends.",
+    body: "Explore relevant matches and useful alternatives across indexed retailers. Compare relevant matches and alternatives across retailer pathways in one view.",
   },
   {
     title: "Price Tier Awareness",
@@ -109,7 +109,7 @@ const faqs = [
   {
     question: "Can K Scan identify outfits from screenshots?",
     answer:
-      "Yes. K Scan is being built for screenshots as well as camera captures, so you can use inspiration from TikTok, Instagram, Pinterest, editorial images, or saved photos without needing to describe the outfit manually.",
+      "Yes. K Scan supports photos and screenshots, so you can scan inspiration from TikTok, Instagram, Pinterest, editorial images, or saved photos without describing the outfit manually.",
   },
   {
     question: "Can it find affordable alternatives?",
@@ -119,7 +119,7 @@ const faqs = [
   {
     question: "Does it work with TikTok or Instagram screenshots?",
     answer:
-      "K Scan is designed around social discovery behavior. The goal is to help you move from a screenshot, post, short video, or creator outfit into a clearer shopping path.",
+      "K Scan is designed around social discovery behavior. K Scan helps you move from a screenshot, post, saved video frame, or creator outfit into a clearer shopping path.",
   },
   {
     question: "Is K Scan a retailer or marketplace?",
@@ -388,7 +388,7 @@ export default function Home() {
             className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-600 md:mb-8"
             variants={staggerChild}
           >
-            Active beta testing on iOS and Android for approved testers.
+            Now available in beta on Android and iOS.
           </motion.p>
           <motion.h1
             className="mb-5 max-w-[10ch] font-display text-[46px] leading-[1.01] text-stone-900 sm:text-[52px] md:mb-6 md:text-[66px] lg:text-[78px]"
@@ -407,11 +407,11 @@ export default function Home() {
             variants={staggerChild}
           >
             <motion.a
-              href="#waitlist"
+              href="/download"
               className="fashion-cursor whitespace-nowrap rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
               {...btnMotion}
             >
-              Request Beta Access
+              Get the App
             </motion.a>
             <motion.a
               href="/demo"
@@ -513,14 +513,14 @@ export default function Home() {
               context, then helps surface relevant products and alternatives across retailers.
             </p>
             <div className="flex flex-wrap gap-4 pt-1 text-[13px]">
-              <a href="/demo" className="text-violet-600 underline decoration-violet-200 underline-offset-4 transition-colors hover:text-violet-700 hover:decoration-violet-400">
+              <a href="/download" className="fashion-cursor text-violet-600 underline decoration-violet-200 underline-offset-4 transition-colors hover:text-violet-700 hover:decoration-violet-400">
+                Get the App
+              </a>
+              <a href="/demo" className="text-stone-500 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-800 hover:decoration-stone-400">
                 View the demo
               </a>
               <a href="#how-it-works" className="text-stone-500 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-800 hover:decoration-stone-400">
                 See how it works
-              </a>
-              <a href="#waitlist" className="text-stone-500 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-800 hover:decoration-stone-400">
-                Join the beta waitlist
               </a>
             </div>
           </FadeUp>
@@ -640,7 +640,7 @@ export default function Home() {
             <h2 className="font-display text-4xl font-medium text-stone-900 md:text-[52px]">
               Built for fashion.
               <br />
-              Built to convert.
+              Designed for discovery.
             </h2>
           </FadeUp>
 
@@ -977,14 +977,14 @@ export default function Home() {
         {investorOpen && <InvestorSheet onClose={() => setInvestorOpen(false)} />}
       </AnimatePresence>
 
-      <section id="waitlist" className="bg-white py-14 md:py-40">
+      <section id="get-the-app" className="bg-white py-14 md:py-40">
         <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 md:px-10 md:gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div className="order-2 mx-auto hidden w-full max-w-sm lg:order-1 lg:block lg:max-w-none">
             <div className="relative overflow-hidden rounded-[28px] bg-[#f6f2ec] shadow-[0_16px_38px_rgba(34,28,24,0.06)] ring-1 ring-black/5">
               <div className="relative aspect-[4/5]">
                   <Image
                     src="/white-tan-hat.png"
-                    alt="Editorial pink gown portrait beside the K Scan beta waitlist call to action"
+                    alt="Editorial pink gown portrait beside the K Scan Get the App call to action"
                     fill
                     sizes="(max-width: 1024px) 80vw, 32vw"
                     className="object-cover object-[center_20%] opacity-88"
@@ -1001,7 +1001,7 @@ export default function Home() {
                 <div className="relative aspect-[4/5]">
                   <Image
                     src="/white-tan-hat.png"
-                    alt="Editorial pink gown portrait beside the K Scan beta waitlist call to action"
+                    alt="Editorial pink gown portrait beside the K Scan Get the App call to action"
                     fill
                     sizes="80vw"
                     className="object-cover object-[center_20%] opacity-88"
@@ -1011,77 +1011,98 @@ export default function Home() {
               </div>
             </div>
             <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600 md:mb-6">
-              Priority Beta Access
+              Available in Beta
             </p>
             <h2 className="mb-5 font-display text-[40px] font-medium leading-[1.02] text-stone-900 sm:text-[44px] md:mb-6 md:text-[58px]">
-              Beta Waitlist
+              Start Scanning Today
             </h2>
             <p className="mx-auto mb-8 max-w-xs text-[15px] leading-[1.82] text-stone-600 md:mb-10 lg:mx-0">
-              Private beta access. Invitations are sent in limited waves. Be among the first to try K Scan.
+              K Scan is now available in beta. Get the Android app through Google Play or access the iOS beta through TestFlight.
             </p>
 
-            {submissionState === "success" ? (
-              <motion.p
-                className="font-display text-[22px] italic text-stone-600"
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            <div className="mx-auto mb-10 flex max-w-sm flex-col items-center gap-4 sm:flex-row sm:justify-center lg:mx-0 lg:justify-start">
+              <a
+                href="/download"
+                className="fashion-cursor w-full rounded-full bg-violet-600 px-8 py-4 text-center text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.16)] transition-colors hover:bg-violet-700 sm:w-auto"
               >
-                Your access request is in.
-              </motion.p>
-            ) : submissionState === "duplicate" ? (
-              <motion.p
-                className="font-display text-[22px] italic text-stone-600"
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                Get the App
+              </a>
+              <a
+                href="/beta"
+                className="text-[13px] text-stone-600 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
               >
-                You&apos;ve already requested access.
-              </motion.p>
-            ) : (
-              <form onSubmit={handleSubmit} className="mx-auto flex max-w-sm flex-col gap-3 sm:flex-row sm:gap-2.5 lg:mx-0">
-                <input
-                  type="text"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  className="hidden"
-                  aria-hidden="true"
-                />
-                <input
-                  type="email"
-                  required
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full flex-1 rounded-full border border-stone-200 bg-white px-6 py-4 text-[14px] text-stone-900 placeholder:text-stone-600 focus:border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-100 sm:w-auto"
-                />
-                <motion.button
-                  type="submit"
-                  disabled={submissionState === "loading"}
-                  className="w-full rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.16)] transition-colors hover:bg-violet-700 disabled:opacity-60 sm:w-auto"
-                  {...btnMotion}
-                >
-                  {submissionState === "loading" ? "Requesting..." : "Get Early Access"}
-                </motion.button>
-              </form>
-            )}
+                View Beta Details
+              </a>
+            </div>
 
-            {submissionState === "error" ? (
-              <p className="mt-6 text-[11px] tracking-wide text-stone-600">{submissionMessage}</p>
-            ) : (
-              <p className="mx-auto mt-3 max-w-md text-xs leading-relaxed text-stone-500 lg:mx-0">
-                By joining, you confirm you are 18 or older and agree to receive K Scan early access and product updates. We use your email only for
-                waitlist, launch, and product access communications.{" "}
-                <a
-                  href="/legal/privacy"
-                  className="text-cyan-400/80 underline decoration-cyan-400/30 underline-offset-4 transition hover:text-cyan-300 hover:decoration-cyan-300/60"
-                >
-                  Read our Privacy Policy
-                </a>
-                .
+            <div className="mx-auto max-w-sm rounded-[24px] border border-stone-200 bg-[#F5F3EF] p-6 text-left lg:mx-0">
+              <h3 className="font-display text-[18px] font-medium text-stone-900">Get Beta Updates</h3>
+              <p className="mt-2 text-[13px] leading-relaxed text-stone-500">
+                Receive K Scan product updates, beta news, and release announcements.
               </p>
-            )}
+
+              {submissionState === "success" ? (
+                <motion.p
+                  className="mt-4 font-display text-[16px] italic text-stone-600"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  You&apos;re signed up for updates.
+                </motion.p>
+              ) : submissionState === "duplicate" ? (
+                <motion.p
+                  className="mt-4 font-display text-[16px] italic text-stone-600"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  You&apos;re already signed up for updates.
+                </motion.p>
+              ) : (
+                <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-2.5 sm:flex-row">
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    aria-hidden="true"
+                  />
+                  <input
+                    type="email"
+                    required
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full flex-1 rounded-full border border-stone-200 bg-white px-5 py-3 text-[14px] text-stone-900 placeholder:text-stone-600 focus:border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-100 sm:w-auto"
+                  />
+                  <motion.button
+                    type="submit"
+                    disabled={submissionState === "loading"}
+                    className="w-full rounded-full bg-stone-900 px-6 py-3 text-[13px] font-medium text-white transition-colors hover:bg-stone-800 disabled:opacity-60 sm:w-auto"
+                    {...btnMotion}
+                  >
+                    {submissionState === "loading" ? "Submitting..." : "Keep Me Updated"}
+                  </motion.button>
+                </form>
+              )}
+
+              {submissionState === "error" ? (
+                <p className="mt-4 text-[11px] tracking-wide text-stone-600">{submissionMessage}</p>
+              ) : (
+                <p className="mt-4 text-[11px] leading-relaxed text-stone-500">
+                  By subscribing, you agree to receive K Scan product and beta updates. You can unsubscribe at any time.{" "}
+                  <a
+                    href="/legal/privacy"
+                    className="text-violet-600 underline decoration-violet-200 underline-offset-4 transition-colors hover:text-violet-700 hover:decoration-violet-400"
+                  >
+                    Read our Privacy Policy
+                  </a>
+                  .
+                </p>
+              )}
+            </div>
           </FadeUp>
         </div>
       </section>

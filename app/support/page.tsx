@@ -54,7 +54,7 @@ export default function SupportPage() {
               Camera and Scan Troubleshooting
             </h2>
             <ul className="space-y-2 pl-4">
-              <li>Confirm camera permission is granted in iOS Settings.</li>
+              <li>Confirm camera permission is granted in your device settings.</li>
               <li>Ensure stable network connectivity before scanning.</li>
               <li>Retry a scan if the backend request times out, especially after inactivity.</li>
             </ul>
@@ -89,7 +89,7 @@ export default function SupportPage() {
 
           <section className="space-y-4">
             <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              Reviewer and Tester Help
+              Beta App Support
             </h2>
             <ul className="space-y-2 pl-4">
               <li>
@@ -99,13 +99,12 @@ export default function SupportPage() {
                 </a>
                 .
               </li>
-              <li>Include device model, iOS version, and timestamp when possible.</li>
+              <li>
+                Include device model, operating-system version, K Scan app version, and the
+                approximate time of the issue.
+              </li>
             </ul>
           </section>
-        </div>
-
-        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-600">
-          <p>&copy; 2026 K SCAN AI. All rights reserved.</p>
         </div>
       </section>
     </main>

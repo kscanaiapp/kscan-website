@@ -611,7 +611,7 @@ export default function StyleParseHero({
                       <div className="grid grid-cols-2 gap-3">
                         {[
                           { label: "Lock Time",   value: "Fast" },
-                          { label: "Input Types", value: "Video / Still" },
+                          { label: "Input Types", value: "Camera / Upload" },
                         ].map(m => (
                           <div
                             key={m.label}
