@@ -40,9 +40,10 @@ export default function TermsSummaryPage() {
 
         <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <p>
-            K Scan AI is a fashion-focused visual discovery, StyleChat, and shopping-assistance platform. This Terms
-            Summary is a plain-language summary only. The full Terms and Conditions and Privacy Policy remain the
-            controlling documents.
+            K Scan AI is a fashion-focused visual discovery, AI styling, and shopping-assistance platform. Elise is K
+            Scan&rsquo;s AI stylist. StyleChat is her conversational capability. This Terms Summary is a
+            plain-language summary only. The full Terms and Conditions and Privacy Policy remain the controlling
+            documents.
           </p>
         </div>
 
@@ -232,10 +233,6 @@ export default function TermsSummaryPage() {
               Download Terms and Conditions PDF
             </a>
           </p>
-        </div>
-
-        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-600">
-          <p>&copy; 2026 K SCAN AI. All rights reserved.</p>
         </div>
       </section>
     </main>

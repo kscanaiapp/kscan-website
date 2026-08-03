@@ -44,9 +44,10 @@ export default function PrivacyPage() {
         <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <p>
             K Scan AI is intended for users 18 and older and is not directed to children or minors. Users under 18
-            should not use the Service. Users should upload clothing-focused images only. Images, StyleChat messages,
-            and related content may be processed through secure cloud systems and AI providers to provide scan results,
-            StyleChat, product matching, shopping links, support, safety, and service improvement.
+            should not use the Service. Users should upload clothing-focused images only. Images, Elise AI Stylist
+            messages, including her StyleChat conversational capability, and related content may be processed through
+            secure cloud systems and AI providers to provide scan results, AI Stylist conversations, product matching,
+            shopping links, support, safety, and service improvement.
           </p>
 
           <section aria-labelledby="data-protection" className="space-y-4">
@@ -64,10 +65,10 @@ export default function PrivacyPage() {
               <div>
                 <h3 className="font-semibold text-stone-700">Cloud and AI Processing:</h3>
                 <p>
-                  Images, StyleChat messages, and related content may be processed through secure cloud systems and AI
-                  providers to provide scan results, StyleChat, product matching, shopping links, support, safety, and
-                  service improvement. AI outputs and product matches may be incomplete, inaccurate, unavailable, or
-                  based on similar rather than exact matches.
+                  Images, Elise messages, and related content may be processed through secure cloud systems and AI
+                  providers to provide scan results, AI Stylist conversations, product matching, shopping links,
+                  support, safety, and service improvement. AI outputs and product matches may be incomplete,
+                  inaccurate, unavailable, or based on similar rather than exact matches.
                 </p>
               </div>
               <div>
@@ -102,10 +103,11 @@ export default function PrivacyPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-semibold text-stone-700">No Microphone in Initial Release:</h3>
+                <h3 className="font-semibold text-stone-700">Microphone and Spoken Responses:</h3>
                 <p>
-                  The current iOS App Store submission build does not request microphone permission or collect voice,
-                  speech-recognition, raw audio, or voiceprint data.
+                  K Scan does not request microphone permission on Android or iOS. The AI Stylist&apos;s optional
+                  spoken responses use text-to-speech and do not involve microphone recording, voice data collection,
+                  or voiceprints. Spoken responses are not enabled in the current release.
                 </p>
               </div>
             </div>

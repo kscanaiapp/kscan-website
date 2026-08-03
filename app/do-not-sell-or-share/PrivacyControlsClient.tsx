@@ -466,11 +466,6 @@ export function PrivacyControlsClient() {
             .
           </p>
         </section>
-
-        {/* ── Page footer ────────────────────────────────────────────────── */}
-        <div className="border-t border-stone-100 pt-8 text-[13px] text-stone-600">
-          <p>&copy; 2026 K SCAN AI. All rights reserved.</p>
-        </div>
       </div>
     </>
   );

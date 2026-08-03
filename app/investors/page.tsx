@@ -20,7 +20,7 @@ const moatPoints = [
   },
   {
     title: "Privacy-First Architecture",
-    body: "The platform direction emphasizes edge-aware processing and local PII masking before cloud transit, supporting a more privacy-conscious model for visual commerce.",
+    body: "K Scan uses a privacy-aware architecture with user-controlled capture, encrypted transmission, clear cloud-processing disclosures, and no facial-recognition or biometric-identification purpose.",
   },
 ];
 
@@ -28,22 +28,22 @@ const archSteps = [
   { step: "01", title: "Visual Input", body: "Camera capture, screenshot, or video frame from any surface." },
   { step: "02", title: "Fashion Parsing", body: "Silhouette, material, layering, and brand cues read from the full look." },
   { step: "03", title: "Match Retrieval", body: "Ranked results pulled from indexed retailer catalogs." },
-  { step: "04", title: "Retailer Routing", body: "Pricing, availability, and purchase paths surfaced across commerce endpoints." },
-  { step: "05", title: "Save or Purchase", body: "User saves, compares, or moves directly to transaction." },
+  { step: "04", title: "Retailer Routing", body: "Product options, available pricing signals, and retailer pathways are surfaced where available." },
+  { step: "05", title: "Save or Continue to Retailer", body: "User saves, compares, or moves directly to transaction." },
 ];
 
 const progressCards = [
   {
     title: "Built",
-    body: "Prototype product experience, brand system, and investor-facing materials are in place.",
+    body: "The mobile beta is live, with Scan-to-Closet, TextScan, Dressing Rooms, Share by Link, and the AI Stylist available for active testing.",
   },
   {
     title: "In Validation",
-    body: "User flow refinement, match-routing logic, and initial private-beta readiness are underway.",
+    body: "K Scan is validating scan reliability, product-result quality, saved-scan behavior, collaboration workflows, and beta retention across Android and iOS.",
   },
   {
     title: "Next",
-    body: "Controlled testing, expanded commerce-link pathways, and tighter measurement of discovery-to-click behavior.",
+    body: "Improve discovery-to-retailer conversion measurement, deepen retailer pathways, expand tester feedback loops, and refine the mobile experience.",
   },
 ];
 

@@ -226,16 +226,15 @@ export function LegalDocument({
         ))}
       </div>
 
-      <div className="mt-14 space-y-3 border-t border-stone-100 pt-8 text-[13px] text-stone-400">
-        {downloadHref && downloadLabel ? (
+      {downloadHref && downloadLabel ? (
+        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-400">
           <p>
             <a href={downloadHref} target="_blank" rel="noopener noreferrer" className={linkClassName}>
               {downloadLabel}
             </a>
           </p>
-        ) : null}
-        <p>&copy; 2026 K SCAN AI. All rights reserved.</p>
-      </div>
+        </div>
+      ) : null}
     </article>
   );
 }

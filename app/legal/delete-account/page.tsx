@@ -149,10 +149,6 @@ export default function DeleteAccountPage() {
             </p>
           </section>
         </div>
-
-        <div className="mt-14 border-t border-stone-100 pt-8 text-[13px] text-stone-600">
-          <p>&copy; 2026 K SCAN AI. All rights reserved.</p>
-        </div>
       </section>
     </main>
   );
