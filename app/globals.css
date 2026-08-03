@@ -98,8 +98,9 @@ a {
 }
 
 /* ── Branded hanger cursor: approved high-intent public CTAs only ───────── */
+/* Safari does not support SVG cursors, so it falls through to the PNG. */
 @media (hover: hover) and (pointer: fine) {
   .fashion-cursor:not(:disabled):not([aria-disabled="true"]):hover {
-    cursor: url("/cursors/hanger.svg") 12 2, pointer;
+    cursor: url("/cursors/hanger.svg") 12 2, url("/cursors/hanger.png") 12 2, pointer;
   }
 }

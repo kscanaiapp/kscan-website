@@ -38,7 +38,7 @@ const cardBase =
   "flex flex-col rounded-[24px] border border-stone-200/80 bg-white p-6 shadow-[0_16px_36px_rgba(35,28,22,0.05)] md:p-8";
 
 const actionButton =
-  "mt-6 inline-flex items-center justify-center gap-2.5 rounded-full bg-violet-600 px-7 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.16)] transition-colors hover:bg-violet-700";
+  "fashion-cursor mt-6 inline-flex items-center justify-center gap-2.5 rounded-full bg-violet-600 px-7 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.16)] transition-colors hover:bg-violet-700";
 
 export function PlatformDownload() {
   const [platform, setPlatform] = useState<Platform>("unknown");

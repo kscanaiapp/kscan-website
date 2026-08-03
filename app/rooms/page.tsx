@@ -30,7 +30,7 @@ export default function MissingRoomPage() {
         <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <Link
             href="/demo"
-            className="rounded-full bg-[#C7A86B] px-8 py-4 text-[14px] font-semibold uppercase tracking-[0.16em] text-stone-950 shadow-[0_18px_36px_rgba(64,48,24,0.16)] transition-colors hover:bg-[#B6924E]"
+            className="fashion-cursor rounded-full bg-[#C7A86B] px-8 py-4 text-[14px] font-semibold uppercase tracking-[0.16em] text-stone-950 shadow-[0_18px_36px_rgba(64,48,24,0.16)] transition-colors hover:bg-[#B6924E]"
           >
             Preview K Scan
           </Link>
