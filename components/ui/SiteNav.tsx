@@ -39,8 +39,6 @@ export function SiteNav() {
     return isHome ? `#${entry.value}` : `/#${entry.value}`;
   }
 
-  const ctaHref = isHome ? "#waitlist" : "/#waitlist";
-
   return (
     <header className={`sticky top-0 z-50 border-b transition-all duration-300 ease-in-out ${isScrolled ? "border-stone-100 bg-[#FAFAF8]/92 backdrop-blur-md" : "border-transparent bg-transparent"}`}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-10">
@@ -65,8 +63,8 @@ export function SiteNav() {
         </nav>
 
         {/* CTA */}
-        <Link href={ctaHref} className={buttons.primarySm}>
-          Join Waitlist
+        <Link href="/download" className={`fashion-cursor whitespace-nowrap ${buttons.primarySm}`}>
+          Get the App
         </Link>
       </div>
 

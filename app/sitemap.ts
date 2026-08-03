@@ -4,6 +4,7 @@ const siteUrl = "https://kscan.app";
 
 const publicRoutes = [
   { path: "", changeFrequency: "weekly" as const, priority: 1.0 },
+  { path: "/download", changeFrequency: "monthly" as const, priority: 0.9 },
   { path: "/beta", changeFrequency: "monthly" as const, priority: 0.8 },
   { path: "/demo", changeFrequency: "monthly" as const, priority: 0.8 },
   { path: "/security", changeFrequency: "monthly" as const, priority: 0.7 },
