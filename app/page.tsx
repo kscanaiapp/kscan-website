@@ -408,14 +408,14 @@ export default function Home() {
           >
             <motion.a
               href="#waitlist"
-              className="whitespace-nowrap rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
+              className="fashion-cursor whitespace-nowrap rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
               {...btnMotion}
             >
               Request Beta Access
             </motion.a>
             <motion.a
               href="/demo"
-              className="text-[13px] text-stone-600 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
+              className="fashion-cursor text-[13px] text-stone-600 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
               {...btnMotion}
             >
               Watch the Demo

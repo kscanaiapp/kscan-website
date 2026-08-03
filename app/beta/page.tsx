@@ -566,7 +566,7 @@ export default function BetaPage() {
               Invitations are sent in limited waves. You must be 18 or older to participate.
             </p>
           </div>
-          <Link href="/#waitlist" className={`${buttons.primaryLg} flex-shrink-0`}>
+          <Link href="/#waitlist" className={`fashion-cursor ${buttons.primaryLg} flex-shrink-0`}>
             Request Beta Access
           </Link>
         </div>

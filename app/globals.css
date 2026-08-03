@@ -96,3 +96,10 @@ a {
     animation: none;
   }
 }
+
+/* ── Branded hanger cursor: approved high-intent public CTAs only ───────── */
+@media (hover: hover) and (pointer: fine) {
+  .fashion-cursor:not(:disabled):not([aria-disabled="true"]):hover {
+    cursor: url("/cursors/hanger.svg") 16 2, pointer;
+  }
+}
