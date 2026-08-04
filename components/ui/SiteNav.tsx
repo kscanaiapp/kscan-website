@@ -10,21 +10,21 @@ type NavEntry = {
   label: string;
   type: "anchor" | "route";
   value: string;
+  cursor: boolean;
 };
 
 const NAV_ITEMS: NavEntry[] = [
-  { id: "how-it-works", label: "How It Works", type: "anchor", value: "how-it-works" },
-  { id: "features",     label: "Features",     type: "anchor", value: "features" },
-  { id: "demo",         label: "Demo",         type: "route",  value: "/demo" },
-  { id: "beta",         label: "Beta Program", type: "route",  value: "/beta" },
-  { id: "investors",    label: "Investors",    type: "route",  value: "/investors" },
-  { id: "security",     label: "Security",     type: "route",  value: "/security" },
+  { id: "how-it-works", label: "How It Works", type: "anchor", value: "how-it-works", cursor: true },
+  { id: "features",     label: "Features",     type: "anchor", value: "features",     cursor: true },
+  { id: "demo",         label: "Demo",         type: "route",  value: "/demo",        cursor: true },
+  { id: "beta",         label: "Beta Program", type: "route",  value: "/beta",        cursor: true },
+  { id: "investors",    label: "Investors",    type: "route",  value: "/investors",   cursor: false },
+  { id: "security",     label: "Security",     type: "route",  value: "/security",    cursor: false },
 ];
 
 export function SiteNav() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const isInvestorRoute = pathname.startsWith("/investors");
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -55,7 +55,7 @@ export function SiteNav() {
               key={item.id}
               href={href(item)}
               aria-current={item.type === "route" && item.value === pathname ? "page" : undefined}
-              className={`transition-colors hover:text-stone-900 ${item.type === "route" && item.value === pathname ? "font-medium text-stone-950" : ""} ${item.id === "investors" && !isInvestorRoute ? "fashion-cursor" : ""}`}
+              className={`transition-colors hover:text-stone-900 ${item.type === "route" && item.value === pathname ? "font-medium text-stone-950" : ""} ${item.cursor ? "fashion-cursor" : ""}`}
             >
               {item.label}
             </Link>
@@ -84,7 +84,7 @@ export function SiteNav() {
               key={item.id}
               href={href(item)}
               aria-current={item.type === "route" && item.value === pathname ? "page" : undefined}
-              className={`whitespace-nowrap py-4 transition-colors hover:text-stone-900 ${item.type === "route" && item.value === pathname ? "font-semibold text-stone-950" : ""} ${item.id === "investors" && !isInvestorRoute ? "fashion-cursor" : ""}`}
+              className={`whitespace-nowrap py-4 transition-colors hover:text-stone-900 ${item.type === "route" && item.value === pathname ? "font-semibold text-stone-950" : ""} ${item.cursor ? "fashion-cursor" : ""}`}
             >
               {item.label}
             </Link>
