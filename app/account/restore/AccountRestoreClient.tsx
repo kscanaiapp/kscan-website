@@ -52,7 +52,7 @@ export default function AccountRestoreClient() {
           setStatus("restored");
           setMessage(
             payload.message ||
-              "Your account has been restored. Sign in again in the K Scan app.",
+              "Your account has been restored. Sign in again in the K Scan AI app.",
           );
           return;
         }
@@ -109,7 +109,7 @@ export default function AccountRestoreClient() {
       <SiteNav />
       <section className="mx-auto max-w-xl px-6 py-16 md:px-10 md:py-24">
         <p className="mb-3 text-xs uppercase tracking-[0.24em] text-cyan-300/80">Account</p>
-        <h1 className="mb-4 text-3xl font-medium tracking-tight">Restore your K Scan account</h1>
+        <h1 className="mb-4 text-3xl font-medium tracking-tight">Restore your K Scan AI account</h1>
         <p className="mb-8 text-base leading-7 text-slate-300">
           Deletion requests keep your cloud data for 30 days. Use the emailed link once before that
           deadline. After restore, sign in again — previous sessions stay signed out.
@@ -130,7 +130,7 @@ export default function AccountRestoreClient() {
             href="https://kscan.app"
             className="inline-flex rounded-md bg-cyan-300 px-5 py-3 text-sm font-semibold text-black"
           >
-            Open K Scan
+            Open K Scan AI
           </Link>
         )}
 

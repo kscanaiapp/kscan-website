@@ -45,7 +45,7 @@ export const termsAndConditions: LegalDocumentData = {
         {
           type: "definition",
           term: "Elise:",
-          text: `K Scan's AI stylist interface. StyleChat is Elise's conversational capability.`,
+          text: `The K Scan AI stylist interface. StyleChat is Elise's conversational capability.`,
         },
         {
           type: "definition",
@@ -80,7 +80,7 @@ export const termsAndConditions: LegalDocumentData = {
         {
           type: "definition",
           term: "Digital Features:",
-          text: `Future subscriptions, premium AI capabilities, account upgrades, digital entitlements, or other digital services sold by K Scan inside an app.`,
+          text: `Future subscriptions, premium AI capabilities, account upgrades, digital entitlements, or other digital services sold by K Scan AI inside an app.`,
         },
       ],
     },
@@ -119,7 +119,7 @@ export const termsAndConditions: LegalDocumentData = {
             `Maintain the confidentiality of login credentials and authentication methods.`,
             `Use only accounts and authentication methods you are authorized to use.`,
             `Accept responsibility for activity under your account unless prohibited by law.`,
-            `Notify K Scan promptly if you suspect unauthorized access or account misuse.`,
+            `Notify K Scan AI promptly if you suspect unauthorized access or account misuse.`,
             `Do not share accounts, impersonate another person, or attempt to bypass access controls.`,
           ],
         },
@@ -145,11 +145,11 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `The K Scan Privacy Policy is incorporated into these Terms by reference. It explains how K Scan processes account information, selected images, AI prompts, Elise and StyleChat content, generated speech, device-local Recent Scans, account-backed Dressing Rooms, approximate location, diagnostics, and shopping interactions.`,
+          text: `The K Scan AI Privacy Policy is incorporated into these Terms by reference. It explains how K Scan AI processes account information, selected images, AI prompts, Elise and StyleChat content, generated speech, device-local Recent Scans, account-backed Dressing Rooms, approximate location, diagnostics, and shopping interactions.`,
         },
         {
           type: "paragraph",
-          text: `K Scan does not sell raw uploaded scans, raw images, biometric templates, faceprints, voiceprints, government identification, payment-card information, or sensitive personal information for independent third-party use. The current mobile release does not use third-party advertising SDKs or Advertising ID for targeted advertising.`,
+          text: `K Scan AI does not sell raw uploaded scans, raw images, biometric templates, faceprints, voiceprints, government identification, payment-card information, or sensitive personal information for independent third-party use. The current mobile release does not use third-party advertising SDKs or Advertising ID for targeted advertising.`,
         },
       ],
     },
@@ -159,7 +159,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `You retain ownership of your User Content. By submitting User Content, you grant K Scan a limited, non-exclusive, worldwide, royalty-free license to host, process, analyze, reproduce as technically necessary, transmit, display to you and users you authorize, moderate, preserve, and otherwise use the content to:`,
+          text: `You retain ownership of your User Content. By submitting User Content, you grant K Scan AI a limited, non-exclusive, worldwide, royalty-free license to host, process, analyze, reproduce as technically necessary, transmit, display to you and users you authorize, moderate, preserve, and otherwise use the content to:`,
         },
         {
           type: "bullets",
@@ -174,7 +174,7 @@ export const termsAndConditions: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `This license does not transfer ownership of raw uploaded images to K Scan and does not authorize K Scan to sell raw image files or re-identifiable image datasets to independent data buyers. You represent that you have the rights and permissions needed to submit and share your User Content.`,
+          text: `This license does not transfer ownership of raw uploaded images to K Scan AI and does not authorize K Scan AI to sell raw image files or re-identifiable image datasets to independent data buyers. You represent that you have the rights and permissions needed to submit and share your User Content.`,
         },
       ],
     },
@@ -192,7 +192,7 @@ export const termsAndConditions: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `Text and spoken AI Outputs may be inaccurate, unavailable, delayed, offensive, or incomplete. Voice availability, voice characteristics, provider choice, audio quality, and provider quota may change. K Scan does not guarantee that Spoken Responses will be available for every avatar, message, device, network, or account state.`,
+          text: `Text and spoken AI Outputs may be inaccurate, unavailable, delayed, offensive, or incomplete. Voice availability, voice characteristics, provider choice, audio quality, and provider quota may change. K Scan AI does not guarantee that Spoken Responses will be available for every avatar, message, device, network, or account state.`,
         },
         {
           type: "paragraph",
@@ -210,7 +210,7 @@ export const termsAndConditions: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `Images may be resized, compressed, and processed locally and through cloud systems and authorized AI providers. K Scan does not currently guarantee automatic face blurring, bystander filtering, license-plate masking, or automatic removal of sensitive information before upload.`,
+          text: `Images may be resized, compressed, and processed locally and through cloud systems and authorized AI providers. K Scan AI does not currently guarantee automatic face blurring, bystander filtering, license-plate masking, or automatic removal of sensitive information before upload.`,
         },
         {
           type: "paragraph",
@@ -228,7 +228,7 @@ export const termsAndConditions: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `Device-local records may be lost if you delete them, clear app data, uninstall the app, replace the device, or experience device failure. K Scan does not guarantee cross-device restoration of device-local Recent Scans. A server-side account deletion may not remove a local copy on an offline or disconnected device; you are responsible for deleting local records or clearing app data when appropriate.`,
+          text: `Device-local records may be lost if you delete them, clear app data, uninstall the app, replace the device, or experience device failure. K Scan AI does not guarantee cross-device restoration of device-local Recent Scans. A server-side account deletion may not remove a local copy on an offline or disconnected device; you are responsible for deleting local records or clearing app data when appropriate.`,
         },
       ],
     },
@@ -260,7 +260,7 @@ export const termsAndConditions: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `Users may report problematic content or behavior through available in-app tools or by contacting kscanai.app@gmail.com. K Scan may review, restrict, remove, preserve, or disable access to content, rooms, messages, accounts, or AI-related material that K Scan reasonably believes violates these Terms, law, safety requirements, platform policy, or the rights of others.`,
+          text: `Users may report problematic content or behavior through available in-app tools or by contacting kscanai.app@gmail.com. K Scan AI may review, restrict, remove, preserve, or disable access to content, rooms, messages, accounts, or AI-related material that K Scan AI reasonably believes violates these Terms, law, safety requirements, platform policy, or the rights of others.`,
         },
       ],
     },
@@ -288,15 +288,15 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `K Scan is a fashion discovery and shopping-assistance service, not a retailer, marketplace, product authenticator, warehouse, seller, or merchant of record for third-party physical goods. K Scan may display product matches and links from multiple retailers or marketplaces without favoring a single closed inventory system.`,
+          text: `K Scan AI is a fashion discovery and shopping-assistance service, not a retailer, marketplace, product authenticator, warehouse, seller, or merchant of record for third-party physical goods. K Scan AI may display product matches and links from multiple retailers or marketplaces without favoring a single closed inventory system.`,
         },
         {
           type: "paragraph",
-          text: `K Scan does not guarantee product authenticity, identity, price, availability, currency, fit, quality, legality, shipping, taxes, fulfillment, returns, refunds, warranties, seller legitimacy, or customer support. All third-party purchases and disputes are between you and the applicable retailer, marketplace, seller, or provider.`,
+          text: `K Scan AI does not guarantee product authenticity, identity, price, availability, currency, fit, quality, legality, shipping, taxes, fulfillment, returns, refunds, warranties, seller legitimacy, or customer support. All third-party purchases and disputes are between you and the applicable retailer, marketplace, seller, or provider.`,
         },
         {
           type: "paragraph",
-          text: `Displaying a product, brand, retailer, or marketplace does not establish an official partnership, sponsorship, endorsement, or guarantee unless K Scan expressly confirms a verified relationship. K Scan may receive referral or affiliate compensation from qualifying outbound links where permitted.`,
+          text: `Displaying a product, brand, retailer, or marketplace does not establish an official partnership, sponsorship, endorsement, or guarantee unless K Scan AI expressly confirms a verified relationship. K Scan AI may receive referral or affiliate compensation from qualifying outbound links where permitted.`,
         },
       ],
     },
@@ -306,11 +306,11 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `Outbound shopping links for physical goods lead to third-party retailers or marketplaces and are not completed through K Scan. K Scan does not process payment-card information for those transactions.`,
+          text: `Outbound shopping links for physical goods lead to third-party retailers or marketplaces and are not completed through K Scan AI. K Scan AI does not process payment-card information for those transactions.`,
         },
         {
           type: "paragraph",
-          text: `If K Scan later sells Digital Features, subscriptions, premium AI capabilities, account upgrades, or digital entitlements inside an app, it will use Google Play Billing, Apple In-App Purchase, or other required payment methods where platform rules require them. Additional terms, billing disclosures, and refund rules may apply.`,
+          text: `If K Scan AI later sells Digital Features, subscriptions, premium AI capabilities, account upgrades, or digital entitlements inside an app, it will use Google Play Billing, Apple In-App Purchase, or other required payment methods where platform rules require them. Additional terms, billing disclosures, and refund rules may apply.`,
         },
       ],
     },
@@ -341,7 +341,7 @@ export const termsAndConditions: LegalDocumentData = {
             `Do not use the Service for unauthorized surveillance, stalking, fraud, exploitation, harassment, or privacy invasion.`,
             `Do not attack, scrape, decompile, disrupt, overload, or bypass rate limits, authentication, content controls, or security measures.`,
             `Do not submit malicious prompts, attempt prompt injection against protected systems, extract protected system instructions, or misuse AI providers.`,
-            `Do not misrepresent AI Outputs, retailer listings, product authenticity, or K Scan's relationship with any retailer or brand.`,
+            `Do not misrepresent AI Outputs, retailer listings, product authenticity, or K Scan AI's relationship with any retailer or brand.`,
           ],
         },
       ],
@@ -352,7 +352,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `The Service, including software, AI workflows, recommendation systems, visual-analysis systems, interface design, graphics, trade dress, brand elements, documentation, and related technology, is owned by K Scan or its licensors. No ownership rights are transferred to users. All rights not expressly granted are reserved.`,
+          text: `The Service, including software, AI workflows, recommendation systems, visual-analysis systems, interface design, graphics, trade dress, brand elements, documentation, and related technology, is owned by K Scan AI or its licensors. No ownership rights are transferred to users. All rights not expressly granted are reserved.`,
         },
       ],
     },
@@ -362,7 +362,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `The Service depends on third-party providers for authentication, hosting, databases, storage, AI, text-to-speech, product search, and retailer links. Third-party services may be unavailable, changed, rate-limited, or governed by their own terms. K Scan is not responsible for third-party services beyond obligations imposed by law or applicable agreements.`,
+          text: `The Service depends on third-party providers for authentication, hosting, databases, storage, AI, text-to-speech, product search, and retailer links. Third-party services may be unavailable, changed, rate-limited, or governed by their own terms. K Scan AI is not responsible for third-party services beyond obligations imposed by law or applicable agreements.`,
         },
       ],
     },
@@ -372,7 +372,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE." TO THE MAXIMUM EXTENT PERMITTED BY LAW, K SCAN DISCLAIMS EXPRESS AND IMPLIED WARRANTIES, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, ACCURACY, AVAILABILITY, ERROR-FREE OPERATION, PRODUCT AUTHENTICITY, RETAILER PERFORMANCE, AI OUTPUT ACCURACY, AND UNINTERRUPTED SERVICE.`,
+          text: `THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE." TO THE MAXIMUM EXTENT PERMITTED BY LAW, K SCAN AI DISCLAIMS EXPRESS AND IMPLIED WARRANTIES, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, ACCURACY, AVAILABILITY, ERROR-FREE OPERATION, PRODUCT AUTHENTICITY, RETAILER PERFORMANCE, AI OUTPUT ACCURACY, AND UNINTERRUPTED SERVICE.`,
         },
         {
           type: "paragraph",
@@ -386,11 +386,11 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `TO THE MAXIMUM EXTENT PERMITTED BY LAW, K SCAN WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, EXEMPLARY, OR PUNITIVE DAMAGES; LOSS OF PROFITS, DATA, GOODWILL, OR BUSINESS INTERRUPTION; RELIANCE ON AI OUTPUTS; THIRD-PARTY PRODUCTS OR FRAUD; USER CONTENT; RETAILER TRANSACTIONS; OR PROVIDER OR PLATFORM ACTIONS.`,
+          text: `TO THE MAXIMUM EXTENT PERMITTED BY LAW, K SCAN AI WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, EXEMPLARY, OR PUNITIVE DAMAGES; LOSS OF PROFITS, DATA, GOODWILL, OR BUSINESS INTERRUPTION; RELIANCE ON AI OUTPUTS; THIRD-PARTY PRODUCTS OR FRAUD; USER CONTENT; RETAILER TRANSACTIONS; OR PROVIDER OR PLATFORM ACTIONS.`,
         },
         {
           type: "paragraph",
-          text: `K Scan's total liability for any claim will not exceed the greater of amounts paid by you to K Scan in the preceding 12 months or $100 USD, unless prohibited by law. Nothing in these Terms limits liability that cannot lawfully be limited.`,
+          text: `K Scan AI's total liability for any claim will not exceed the greater of amounts paid by you to K Scan AI in the preceding 12 months or $100 USD, unless prohibited by law. Nothing in these Terms limits liability that cannot lawfully be limited.`,
         },
       ],
     },
@@ -400,7 +400,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `To the extent permitted by law, you agree to defend, indemnify, and hold harmless K Scan and its officers, directors, employees, contractors, affiliates, and agents from claims, damages, losses, liabilities, and expenses arising from your User Content, misuse of the Service, violation of these Terms, violation of law, or infringement of third-party rights. This provision does not apply where prohibited by applicable consumer or privacy law.`,
+          text: `To the extent permitted by law, you agree to defend, indemnify, and hold harmless K Scan AI and its officers, directors, employees, contractors, affiliates, and agents from claims, damages, losses, liabilities, and expenses arising from your User Content, misuse of the Service, violation of these Terms, violation of law, or infringement of third-party rights. This provision does not apply where prohibited by applicable consumer or privacy law.`,
         },
       ],
     },
@@ -410,7 +410,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `K Scan may suspend, restrict, or terminate access for violations, suspected abuse, fraud, unlawful activity, security concerns, repeated reports, harmful content, platform-compliance issues, operational reasons, or risk to users, providers, or the Service. Upon termination, your right to use the Service ends. Provisions that by their nature should survive will remain in effect.`,
+          text: `K Scan AI may suspend, restrict, or terminate access for violations, suspected abuse, fraud, unlawful activity, security concerns, repeated reports, harmful content, platform-compliance issues, operational reasons, or risk to users, providers, or the Service. Upon termination, your right to use the Service ends. Provisions that by their nature should survive will remain in effect.`,
         },
       ],
     },
@@ -424,7 +424,7 @@ export const termsAndConditions: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `Cloud account deletion does not necessarily remove device-local Recent Scans on an offline or disconnected device. To remove local records, delete them in the app, clear app data, or uninstall the app. K Scan may retain limited information where permitted for security, fraud prevention, dispute resolution, tax, accounting, legal compliance, or backup integrity.`,
+          text: `Cloud account deletion does not necessarily remove device-local Recent Scans on an offline or disconnected device. To remove local records, delete them in the app, clear app data, or uninstall the app. K Scan AI may retain limited information where permitted for security, fraud prevention, dispute resolution, tax, accounting, legal compliance, or backup integrity.`,
         },
       ],
     },
@@ -434,7 +434,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `These Terms are governed by the laws of the State of Ohio, United States, without regard to conflict-of-law principles, except that mandatory consumer protections in your jurisdiction may apply. Before filing a claim, you agree to contact K Scan at kscanai.app@gmail.com and allow 30 days for informal resolution. Court proceedings not subject to mandatory consumer-law venues will be brought in state or federal courts located in Cuyahoga County, Ohio, unless applicable law provides otherwise.`,
+          text: `These Terms are governed by the laws of the State of Ohio, United States, without regard to conflict-of-law principles, except that mandatory consumer protections in your jurisdiction may apply. Before filing a claim, you agree to contact K Scan AI at kscanai.app@gmail.com and allow 30 days for informal resolution. Court proceedings not subject to mandatory consumer-law venues will be brought in state or federal courts located in Cuyahoga County, Ohio, unless applicable law provides otherwise.`,
         },
       ],
     },
@@ -444,7 +444,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `If you obtain the app through Google Play, the Apple App Store, TestFlight, or another marketplace, your use must also comply with that marketplace's terms and policies. App marketplaces are not responsible for K Scan support, AI Outputs, User Content, retailer transactions, or other matters except as required by their terms or law.`,
+          text: `If you obtain the app through Google Play, the Apple App Store, TestFlight, or another marketplace, your use must also comply with that marketplace's terms and policies. App marketplaces are not responsible for K Scan AI support, AI Outputs, User Content, retailer transactions, or other matters except as required by their terms or law.`,
         },
       ],
     },
@@ -454,7 +454,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `K Scan aims to support accessible digital experiences. Contact kscanai.app@gmail.com if you encounter an accessibility barrier. These Terms are provided in English; translations are for convenience unless applicable law requires otherwise.`,
+          text: `K Scan AI aims to support accessible digital experiences. Contact kscanai.app@gmail.com if you encounter an accessibility barrier. These Terms are provided in English; translations are for convenience unless applicable law requires otherwise.`,
         },
       ],
     },
@@ -464,7 +464,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `K Scan may update these Terms as the Service, providers, platform rules, or law changes. If changes are material, K Scan may provide additional notice or request renewed acceptance where required. Continued use after updated Terms become effective constitutes acceptance except where law requires another form of consent.`,
+          text: `K Scan AI may update these Terms as the Service, providers, platform rules, or law changes. If changes are material, K Scan AI may provide additional notice or request renewed acceptance where required. Continued use after updated Terms become effective constitutes acceptance except where law requires another form of consent.`,
         },
       ],
     },
@@ -474,7 +474,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `These Terms and the Privacy Policy constitute the agreement between you and K Scan regarding the Service unless additional written terms apply to a specific beta, API, enterprise, partner, or commercial relationship. If a provision is unenforceable, the remaining provisions remain effective. Failure to enforce a provision is not a waiver. You may not assign these Terms without consent. K Scan may assign them in connection with an affiliate, restructuring, merger, acquisition, or sale of assets.`,
+          text: `These Terms and the Privacy Policy constitute the agreement between you and K Scan AI regarding the Service unless additional written terms apply to a specific beta, API, enterprise, partner, or commercial relationship. If a provision is unenforceable, the remaining provisions remain effective. Failure to enforce a provision is not a waiver. You may not assign these Terms without consent. K Scan AI may assign them in connection with an affiliate, restructuring, merger, acquisition, or sale of assets.`,
         },
       ],
     },
@@ -513,7 +513,7 @@ export const termsAndConditions: LegalDocumentData = {
             ["Microphone", "Not requested or used for Spoken Responses"],
             ["Location", "Approximate only for optional weather-aware context; no precise/background location"],
             ["Advertising", "No third-party advertising SDK or Advertising ID for targeted advertising"],
-            ["Retail checkout", "Completed with third-party retailers; K Scan is not merchant of record"],
+            ["Retail checkout", "Completed with third-party retailers; K Scan AI is not merchant of record"],
             ["Face blurring", "Not guaranteed in the current release"],
             ["Age", "18 and older"],
           ],

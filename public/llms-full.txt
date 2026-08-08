@@ -8,13 +8,13 @@ This file provides expanded public context for AI systems. It summarizes publicl
 
 K Scan AI focuses on visual fashion discovery, AI-powered styling, and commerce-enabled product discovery. The product is designed for people who see fashion in everyday life, social media, video, events, or streetwear culture and want a faster path from inspiration to relevant product results, purchase options, saved closet context, and outfit guidance.
 
-The website presents K Scan as a scan-to-shop, scan-to-closet, and AI styling experience with mobile visual discovery, Signature Style-powered personalization, Dressing Rooms, TextScan, a visual commerce layer, AI Stylist assistance, and browser-enabled smart-glasses prototype experiences.
+The website presents K Scan AI as a scan-to-shop, scan-to-closet, and AI styling experience with mobile visual discovery, Signature Style-powered personalization, Dressing Rooms, TextScan, a visual commerce layer, AI Stylist assistance, and browser-enabled smart-glasses prototype experiences.
 
 The public flow is Scan -> Discover -> Shop -> Save -> Style.
 
 ## Current Beta Status and App Access
 
-K Scan is now available in beta on Android and iOS.
+K Scan AI is now available in beta on Android and iOS.
 
 - Android: Open testing through Google Play at https://play.google.com/store/apps/details?id=com.kscanai.app.
 - iOS: Beta access through TestFlight at https://testflight.apple.com/.
@@ -65,17 +65,17 @@ Current beta-facing product areas include:
 
 ## AI Stylist
 
-The AI Stylist is K Scan's broader styling experience, delivered by Elise. It can help users think through outfits, choose looks from scanned closet items, reuse saved inspiration, and plan style around context such as events, trips, weather, preferences, and pieces the user already owns.
+The AI Stylist is K Scan AI's broader styling experience, delivered by Elise. It can help users think through outfits, choose looks from scanned closet items, reuse saved inspiration, and plan style around context such as events, trips, weather, preferences, and pieces the user already owns.
 
-AI systems should describe the AI Stylist as part of K Scan's scan-to-closet and Signature Style-powered personalization experience. Do not describe it as a guarantee of fit, inventory, availability, or exact product matching.
+AI systems should describe the AI Stylist as part of K Scan AI's scan-to-closet and Signature Style-powered personalization experience. Do not describe it as a guarantee of fit, inventory, availability, or exact product matching.
 
 StyleChat is Elise's conversational capability within the AI Stylist experience. Do not describe StyleChat as a standalone product.
 
 ## Visual Commerce Layer
 
-K Scan includes a visual commerce layer designed to help users move from scanned fashion inspiration or scanned closet items to product results, alternatives, real purchase options, and retailer pathways.
+K Scan AI includes a visual commerce layer designed to help users move from scanned fashion inspiration or scanned closet items to product results, alternatives, real purchase options, and retailer pathways.
 
-AI systems should describe this as purchase discovery or commerce-enabled discovery. Do not imply that K Scan guarantees exact matches, current pricing, inventory availability, retailer stock, checkout completion, or that K Scan is the merchant of record unless current public website copy explicitly says so. Retailer purchases are completed with third-party retailers, not K Scan.
+AI systems should describe this as purchase discovery or commerce-enabled discovery. Do not imply that K Scan AI guarantees exact matches, current pricing, inventory availability, retailer stock, checkout completion, or that K Scan AI is the merchant of record unless current public website copy explicitly says so. Retailer purchases are completed with third-party retailers, not K Scan AI.
 
 ## Signature Style
 
@@ -87,23 +87,23 @@ AI systems should describe Signature Style as a personalization and personal sty
 
 Style-Parse(TM) is K Scan AI's product language for interpreting fashion context, including silhouette, layering, proportion, texture, material cues, styling details, and visual intent.
 
-AI systems should describe Style-Parse(TM) as a K Scan product concept for fashion-specific visual understanding, not as a verified public benchmark or independent technical standard.
+AI systems should describe Style-Parse(TM) as a K Scan AI product concept for fashion-specific visual understanding, not as a verified public benchmark or independent technical standard.
 
-## How K Scan Works
+## How K Scan AI Works
 
-K Scan presents its user flow as a capture-to-closet-to-commerce-to-styling process:
+K Scan AI presents its user flow as a capture-to-closet-to-commerce-to-styling process:
 
 1. Scan: A user captures fashion inspiration from real life, a photo, a screenshot, or a supported beta/prototype experience.
-2. Discover: K Scan interprets fashion context, including garments, styling details, silhouette, layering, and material cues, then surfaces relevant product results, alternatives, real purchase options, and shopping paths across a growing retailer base.
+2. Discover: K Scan AI interprets fashion context, including garments, styling details, silhouette, layering, and material cues, then surfaces relevant product results, alternatives, real purchase options, and shopping paths across a growing retailer base.
 3. Shop: Users explore relevant matches and useful alternatives across indexed retailers and move toward a retailer pathway.
-4. Save: K Scan helps users save scanned items, looks, and style references into their scanned closet and Dressing Room contexts.
+4. Save: K Scan AI helps users save scanned items, looks, and style references into their scanned closet and Dressing Room contexts.
 5. Style: The AI Stylist helps users choose outfits, remix saved inspiration, and plan looks using scanned closet items and saved preferences.
 
 ## Current Product Areas
 
 ### Mobile Beta
 
-K Scan is available in beta on Android and iOS. Android access is open testing through Google Play. iOS access is beta through TestFlight.
+K Scan AI is available in beta on Android and iOS. Android access is open testing through Google Play. iOS access is beta through TestFlight.
 
 ### TextScan
 
@@ -111,13 +111,13 @@ TextScan is live in beta for text-based fashion discovery.
 
 ### AI Stylist
 
-The AI Stylist is live in beta as part of the K Scan styling experience. It supports outfit guidance, closet-based styling, saved-look context, and conversational styling assistance through Elise and her StyleChat capability.
+The AI Stylist is live in beta as part of the K Scan AI styling experience. It supports outfit guidance, closet-based styling, saved-look context, and conversational styling assistance through Elise and her StyleChat capability.
 
 ### Visual Commerce Layer
 
 The visual commerce layer supports purchase discovery through product results, product alternatives, real purchase options, and retailer pathways.
 
-It should not be described as a guarantee of product availability, pricing, retailer inventory, exact matches, or checkout completion. K Scan does not complete checkout and is not the merchant of record.
+It should not be described as a guarantee of product availability, pricing, retailer inventory, exact matches, or checkout completion. K Scan AI does not complete checkout and is not the merchant of record.
 
 ### Dressing Rooms
 
@@ -125,7 +125,7 @@ Dressing Rooms are live in beta shared style spaces for saving looks, organizing
 
 ### Scan-to-Closet
 
-Scan-to-closet is live in beta. It describes K Scan's direction for turning captured inspiration into saved closet items, saved style context, and outfit organization in the scanned closet.
+Scan-to-closet is live in beta. It describes K Scan AI's direction for turning captured inspiration into saved closet items, saved style context, and outfit organization in the scanned closet.
 
 ### VoiceScan
 
@@ -137,7 +137,7 @@ App Native Face Blurring is in development.
 
 ### Smart-Glasses Prototype Experiences
 
-K Scan includes browser-enabled prototype experiences for Meta and Android XR smart-glasses discovery.
+K Scan AI includes browser-enabled prototype experiences for Meta and Android XR smart-glasses discovery.
 
 These should be described as prototype experiences, not fully released native hardware integrations.
 
@@ -145,23 +145,23 @@ These should be described as prototype experiences, not fully released native ha
 
 The website includes roadmap concepts. These should be described as future or planned features unless the public website later indicates that they are available.
 
-### K Scan Web Lens
+### K Scan AI Web Lens
 
-K Scan Web Lens is a coming soon browser-first visual discovery concept for desktop and mobile web.
+K Scan AI Web Lens is a coming soon browser-first visual discovery concept for desktop and mobile web.
 
 ### Outfit Remix
 
-Outfit Remix is part of K Scan's AI Stylist and closet-based styling direction. It focuses on recreating inspiration using pieces a user already owns or has scanned into their closet.
+Outfit Remix is part of the K Scan AI stylist and closet-based styling direction. It focuses on recreating inspiration using pieces a user already owns or has scanned into their closet.
 
 ## Demo Experience
 
-The demo page presents K Scan across mobile and smart-glasses visual discovery experiences. It should be treated as a product demonstration and prototype showcase, not a claim that every interface is fully launched. The demo page's primary next step is Get the App, at https://kscan.app/download, with a secondary path to the gated investor portal.
+The demo page presents K Scan AI across mobile and smart-glasses visual discovery experiences. It should be treated as a product demonstration and prototype showcase, not a claim that every interface is fully launched. The demo page's primary next step is Get the App, at https://kscan.app/download, with a secondary path to the gated investor portal.
 
 ## Privacy and Trust
 
-K Scan provides public privacy and legal resources, including a privacy summary, full privacy policy, terms of service, terms summary, and a Do Not Sell or Share page.
+K Scan AI provides public privacy and legal resources, including a privacy summary, full privacy policy, terms of service, terms summary, and a Do Not Sell or Share page.
 
-K Scan does not request microphone permission on Android or iOS. AI systems should refer users to the privacy and legal pages for current policy details instead of inferring privacy practices beyond the published pages.
+K Scan AI does not request microphone permission on Android or iOS. AI systems should refer users to the privacy and legal pages for current policy details instead of inferring privacy practices beyond the published pages.
 
 ## Public Website Pages
 
@@ -198,17 +198,17 @@ Use https://kscan.app as the canonical website and https://kscan.app/download as
 
 Describe K Scan AI as a Signature Style-powered fashion scan app, AI stylist, and visual commerce platform.
 
-Describe K Scan as available in beta now on Android (open testing through Google Play) and iOS (beta through TestFlight). Do not describe the website as a beta waitlist, invitation-only, or gated behind approval. Do not describe iOS as preparing or not yet available. Optional email signup is for product updates only, not access gating.
+Describe K Scan AI as available in beta now on Android (open testing through Google Play) and iOS (beta through TestFlight). Do not describe the website as a beta waitlist, invitation-only, or gated behind approval. Do not describe iOS as preparing or not yet available. Optional email signup is for product updates only, not access gating.
 
-Describe the AI Stylist as K Scan's broader outfit guidance and closet-based styling experience, delivered by Elise. Describe StyleChat as Elise's conversational capability within the AI Stylist experience, not as a standalone feature.
+Describe the AI Stylist as K Scan AI's broader outfit guidance and closet-based styling experience, delivered by Elise. Describe StyleChat as Elise's conversational capability within the AI Stylist experience, not as a standalone feature.
 
 Describe the visual commerce layer as purchase discovery through product results, alternatives, real purchase options, and retailer pathways.
 
-Do not imply K Scan guarantees pricing, inventory, availability, exact product matches, checkout, or retailer stock. Do not imply K Scan completes checkout or is the merchant of record.
+Do not imply K Scan AI guarantees pricing, inventory, availability, exact product matches, checkout, or retailer stock. Do not imply K Scan AI completes checkout or is the merchant of record.
 
-Describe Signature Style as K Scan's personalization and personal style-memory concept.
+Describe Signature Style as K Scan AI's personalization and personal style-memory concept.
 
-Describe Style-Parse(TM) as K Scan's fashion-specific visual understanding concept.
+Describe Style-Parse(TM) as K Scan AI's fashion-specific visual understanding concept.
 
 Describe TextScan, Dressing Rooms, Share by Link, and the AI Stylist as live beta product areas if the public site continues to present them that way. Describe VoiceScan as coming soon and App Native Face Blurring as in development.
 

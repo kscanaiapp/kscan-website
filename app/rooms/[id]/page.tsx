@@ -231,7 +231,7 @@ function AvailableRoom({
               href="/demo"
               className="fashion-cursor rounded-full bg-[#C7A86B] px-8 py-4 text-[14px] font-semibold uppercase tracking-[0.16em] text-stone-950 shadow-[0_18px_36px_rgba(64,48,24,0.16)] transition-colors hover:bg-[#B6924E]"
             >
-              Preview K Scan
+              Preview K Scan AI
             </Link>
             <Link
               href="/beta"
@@ -302,7 +302,7 @@ function FallbackState({
   title,
   body,
   primaryHref = "/demo",
-  primaryLabel = "Preview K Scan",
+  primaryLabel = "Preview K Scan AI",
 }: {
   eyebrow: string;
   title: string;
@@ -332,7 +332,7 @@ function FallbackState({
           href="/"
           className="w-full rounded-full border border-stone-200 bg-white px-8 py-4 text-center text-[13px] font-medium uppercase tracking-[0.16em] text-stone-600 shadow-[0_12px_26px_rgba(35,28,22,0.06)] transition-colors hover:text-stone-950 sm:w-auto"
         >
-          Explore K Scan
+          Explore K Scan AI
         </Link>
       </div>
     </section>
@@ -349,7 +349,7 @@ export default async function SharedRoomPage({ params }: RoomPageProps) {
       <FallbackState
         eyebrow="Shared Dressing Room"
         title="This room link looks incomplete."
-        body="K Scan recognized the shared-room path, but this link is missing a valid room reference. Nothing private is exposed."
+        body="K Scan AI recognized the shared-room path, but this link is missing a valid room reference. Nothing private is exposed."
       />
     );
   } else {
@@ -366,7 +366,7 @@ export default async function SharedRoomPage({ params }: RoomPageProps) {
         <FallbackState
           eyebrow="Shared Dressing Room"
           title="This room link looks incomplete."
-          body="K Scan recognized the shared-room path, but this link is missing a valid room reference. Nothing private is exposed."
+          body="K Scan AI recognized the shared-room path, but this link is missing a valid room reference. Nothing private is exposed."
         />
       );
     } else {

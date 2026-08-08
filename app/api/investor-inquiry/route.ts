@@ -9,7 +9,7 @@ import { checkRateLimit, getClientIp } from "@/lib/serverRateLimit";
 
 const INQUIRY_TABLE = "investor_inquiries";
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const INVESTOR_REPLY_BODY = `Thank you for requesting access to K Scan’s confidential investor materials.
+const INVESTOR_REPLY_BODY = `Thank you for requesting access to K Scan AI's confidential investor materials.
 
 We’ve received your request and will review it shortly. If there is a fit, we’ll follow up with access details or next steps.
 
@@ -49,7 +49,7 @@ async function notifyByEmail(data: {
 
   try {
     await resend.emails.send({
-      from: "K Scan <hello@info.kscan.app>",
+      from: "K Scan AI <hello@info.kscan.app>",
       to: "kscanai.app@gmail.com",
       replyTo: "kscanai.app@gmail.com",
       subject: `New Investor Inquiry from ${data.name}`,
@@ -80,10 +80,10 @@ async function sendAutoReply(email: string): Promise<boolean> {
 
   try {
     await resend.emails.send({
-      from: "K Scan <hello@info.kscan.app>",
+      from: "K Scan AI <hello@info.kscan.app>",
       to: email,
       replyTo: "kscanai.app@gmail.com",
-      subject: "K Scan Investor Access Request Received",
+      subject: "K Scan AI Investor Access Request Received",
       text: INVESTOR_REPLY_BODY,
     });
     return true;

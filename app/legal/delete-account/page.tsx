@@ -61,7 +61,7 @@ export default function DeleteAccountPage() {
               Sign in with Apple
             </h2>
             <p>
-              Where applicable, K Scan will revoke or disconnect Sign in with Apple credentials as part of account
+              Where applicable, K Scan AI will revoke or disconnect Sign in with Apple credentials as part of account
               deletion in accordance with Apple&apos;s account-deletion requirements.
             </p>
           </section>
@@ -101,7 +101,7 @@ export default function DeleteAccountPage() {
               Data Retained
             </h2>
             <p>
-              K Scan may retain information where required or permitted for legal compliance, security, fraud
+              K Scan AI may retain information where required or permitted for legal compliance, security, fraud
               prevention, dispute resolution, accounting or tax obligations, or de-identified and aggregated analytics.
             </p>
           </section>

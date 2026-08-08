@@ -16,11 +16,11 @@ const moatPoints = [
   },
   {
     title: "Retailer-Neutral Infrastructure",
-    body: "K Scan is positioned as a conversion layer across commerce endpoints rather than a closed marketplace, preserving flexibility across brands, catalogs, and monetization paths.",
+    body: "K Scan AI is positioned as a conversion layer across commerce endpoints rather than a closed marketplace, preserving flexibility across brands, catalogs, and monetization paths.",
   },
   {
     title: "Privacy-First Architecture",
-    body: "K Scan uses a privacy-aware architecture with user-controlled capture, encrypted transmission, clear cloud-processing disclosures, and no facial-recognition or biometric-identification purpose.",
+    body: "K Scan AI uses a privacy-aware architecture with user-controlled capture, encrypted transmission, clear cloud-processing disclosures, and no facial-recognition or biometric-identification purpose.",
   },
 ];
 
@@ -39,7 +39,7 @@ const progressCards = [
   },
   {
     title: "In Validation",
-    body: "K Scan is validating scan reliability, product-result quality, saved-scan behavior, collaboration workflows, and beta retention across Android and iOS.",
+    body: "K Scan AI is validating scan reliability, product-result quality, saved-scan behavior, collaboration workflows, and beta retention across Android and iOS.",
   },
   {
     title: "Next",
@@ -219,7 +219,7 @@ export default function InvestorsPage() {
               The Commerce Layer for Fashion Discovery
             </h1>
             <p className="mt-6 max-w-xl text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
-              K Scan turns real-world fashion inspiration into ranked retail matches, pricing, and purchase paths.
+              K Scan AI turns real-world fashion inspiration into ranked retail matches, pricing, and purchase paths.
               Built for fashion-specific intent, architected to stay retailer-neutral, and designed for a mobile-first
               world moving toward wearables.
             </p>
@@ -245,7 +245,7 @@ export default function InvestorsPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-[22px]">
               <Image
                 src="/group-street.jpeg"
-                alt="Street-style group image supporting the K Scan investor briefing"
+                alt="Street-style group image supporting the K Scan AI investor briefing"
                 fill
                 priority
                 sizes="(max-width: 1024px) 90vw, 40vw"
@@ -266,11 +266,11 @@ export default function InvestorsPage() {
           <SectionLabel n="02" text="Executive Summary" />
           <div className="max-w-2xl">
             <h2 className="font-display text-[28px] leading-[1.1] text-stone-900 md:text-[36px]">
-              K Scan is building the commerce layer for fashion discovery.
+              K Scan AI is building the commerce layer for fashion discovery.
             </h2>
             <p className="mt-6 text-[15px] leading-[1.9] text-stone-500">
               Fashion discovery increasingly starts outside traditional ecommerce search: on the street, in video, in
-              social feeds, and in everyday life. K Scan is building the layer that translates that visual intent into
+              social feeds, and in everyday life. K Scan AI is building the layer that translates that visual intent into
               shoppable outcomes across retailers.
             </p>
             <p className="mt-4 text-[15px] leading-[1.9] text-stone-500">
@@ -294,7 +294,7 @@ export default function InvestorsPage() {
               have matured enough to support a new interface layer between inspiration and purchase.
             </p>
             <p className="mt-4 text-[15px] leading-[1.9] text-stone-500">
-              K Scan is being built for that shift.
+              K Scan AI is being built for that shift.
             </p>
           </div>
           <div className="rounded-[24px] border border-stone-200/80 bg-white p-6 md:p-8">
@@ -318,9 +318,9 @@ export default function InvestorsPage() {
               A specific, high-value moment that existing tools fail to capture.
             </h2>
             <p className="mt-6 text-[15px] leading-[1.9] text-stone-500">
-              K Scan is not trying to solve visual search broadly. It is focused on a specific, high-value moment: when
+              K Scan AI is not trying to solve visual search broadly. It is focused on a specific, high-value moment: when
               a user sees a look they want and existing tools fail to turn that moment into action. By centering the
-              product on fashion-specific cues: silhouette, material, layering, and styling context. K Scan aims to close
+              product on fashion-specific cues: silhouette, material, layering, and styling context. K Scan AI aims to close
               the gap between inspiration and transaction more effectively than generic object recognition.
             </p>
           </div>
@@ -349,7 +349,7 @@ export default function InvestorsPage() {
           <SectionLabel n="06" text="Product Architecture" />
           <div className="mb-8 max-w-lg">
             <h2 className="font-display text-[28px] leading-[1.1] text-stone-900 md:text-[36px]">
-              K Scan sits between inspiration and transaction.
+              K Scan AI sits between inspiration and transaction.
             </h2>
           </div>
 
@@ -387,7 +387,7 @@ export default function InvestorsPage() {
           <p className="mt-6 text-[15px] leading-[1.9] text-stone-500">
             The opportunity is not simply apparel ecommerce. It is the conversion layer between fashion discovery and
             commerce. As more purchase intent originates in images, video, public environments, and creator-led
-            channels, the value shifts toward systems that can capture and route that intent in real time. K Scan is
+            channels, the value shifts toward systems that can capture and route that intent in real time. K Scan AI is
             being built around that interface shift.
           </p>
         </div>
@@ -461,7 +461,7 @@ export default function InvestorsPage() {
             Leadership
           </h2>
           <p className="mt-6 text-[15px] leading-[1.9] text-stone-500">
-            K Scan is being built around a focused thesis: fashion-specific discovery should convert as easily as
+            K Scan AI is being built around a focused thesis: fashion-specific discovery should convert as easily as
             traditional search. The company combines product direction, premium brand sensibility, and privacy-aware
             commerce architecture to pursue that opportunity.
           </p>
@@ -628,7 +628,7 @@ export default function InvestorsPage() {
               Schedule a Conversation
             </h2>
             <p className="mt-2 max-w-sm text-[14px] leading-[1.85] text-stone-500">
-              For investor or strategic partner conversations, schedule time through K Scan&apos;s booking link.
+              For investor or strategic partner conversations, schedule time through K Scan AI&apos;s booking link.
             </p>
           </div>
           <a

@@ -25,20 +25,20 @@ export default function MissingRoomPage() {
           This room link looks incomplete.
         </h1>
         <p className="mt-6 max-w-2xl text-[16px] leading-[1.9] text-stone-600 md:text-[18px]">
-          K Scan recognized the shared-room path, but there is no room reference in this link. Nothing private is exposed.
+          K Scan AI recognized the shared-room path, but there is no room reference in this link. Nothing private is exposed.
         </p>
         <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <Link
             href="/demo"
             className="fashion-cursor rounded-full bg-[#C7A86B] px-8 py-4 text-[14px] font-semibold uppercase tracking-[0.16em] text-stone-950 shadow-[0_18px_36px_rgba(64,48,24,0.16)] transition-colors hover:bg-[#B6924E]"
           >
-            Preview K Scan
+            Preview K Scan AI
           </Link>
           <Link
             href="/"
             className="rounded-full border border-stone-200 bg-white px-8 py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-stone-600 shadow-[0_12px_26px_rgba(35,28,22,0.06)] transition-colors hover:text-stone-950"
           >
-            Explore K Scan
+            Explore K Scan AI
           </Link>
         </div>
       </section>

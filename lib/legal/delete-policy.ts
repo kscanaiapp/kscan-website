@@ -60,7 +60,7 @@ export const deletePolicy: LegalDocumentData = {
           type: "bullets",
           items: [
             `The account becomes eligible for permanent deletion during a secure deletion cycle.`,
-            `Once final purge is complete, K Scan cannot restore the account or reconstruct covered account data.`,
+            `Once final purge is complete, K Scan AI cannot restore the account or reconstruct covered account data.`,
           ],
         },
       ],

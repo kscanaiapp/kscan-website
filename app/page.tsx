@@ -19,17 +19,17 @@ const coreFlow = [
     description: "Capture a look from real life, a photo, or a screenshot.",
     image: {
       src: "/how-it-works/capture-frame-the-look.png",
-      alt: "K Scan capture mockup showing a fashion look framed through a camera viewfinder.",
+      alt: "K Scan AI capture mockup showing a fashion look framed through a camera viewfinder.",
     },
   },
   {
     step: "02",
     title: "Discover",
     description:
-      "K Scan identifies the clothing, color, silhouette, material, and relevant style context.",
+      "K Scan AI identifies the clothing, color, silhouette, material, and relevant style context.",
     image: {
       src: "/how-it-works/identify-style-parse.png",
-      alt: "K Scan identify mockup showing fashion attributes detected inside an outfit photo.",
+      alt: "K Scan AI identify mockup showing fashion attributes detected inside an outfit photo.",
     },
   },
   {
@@ -39,7 +39,7 @@ const coreFlow = [
       "Explore product results, alternatives, real purchase options, and retailer pathways.",
     image: {
       src: "/how-it-works/match-shop-results.png",
-      alt: "K Scan match results mockup showing product results and retailer pathways from a scanned outfit.",
+      alt: "K Scan AI match results mockup showing product results and retailer pathways from a scanned outfit.",
     },
   },
   {
@@ -61,11 +61,11 @@ const coreFlow = [
 const featureList = [
   {
     title: "Fashion-First Intelligence",
-    body: "We do not just identify objects. K Scan reads proportion, layering, silhouette, and intent so each piece is understood in context.",
+    body: "We do not just identify objects. K Scan AI reads proportion, layering, silhouette, and intent so each piece is understood in context.",
   },
   {
     title: "Built for Speed and Context",
-    body: "Designed for photos, screenshots, and saved video frames, K Scan turns real-world inspiration into ranked matches. Capture the look and move on.",
+    body: "Designed for photos, screenshots, and saved video frames, K Scan AI turns real-world inspiration into ranked matches. Capture the look and move on.",
   },
   {
     title: "One View, Multiple Retailers",
@@ -77,7 +77,7 @@ const featureList = [
   },
   {
     title: "Personalized Recall",
-    body: "Saved scans, saved items, and styling preferences help K Scan understand your taste over time.",
+    body: "Saved scans, saved items, and styling preferences help K Scan AI understand your taste over time.",
   },
   {
     title: "Dressing Rooms",
@@ -104,27 +104,27 @@ const faqs = [
   {
     question: "How does AI fashion search work?",
     answer:
-      "K Scan analyzes a photo, screenshot, or a saved frame from a video for fashion signals like garment type, silhouette, color, material, styling context, and brand cues. Those signals are used to surface relevant products and alternatives across retailer pathways.",
+      "K Scan AI analyzes a photo, screenshot, or a saved frame from a video for fashion signals like garment type, silhouette, color, material, styling context, and brand cues. Those signals are used to surface relevant products and alternatives across retailer pathways.",
   },
   {
-    question: "Can K Scan identify outfits from screenshots?",
+    question: "Can K Scan AI identify outfits from screenshots?",
     answer:
-      "Yes. K Scan supports photos and screenshots, so you can scan inspiration from TikTok, Instagram, Pinterest, editorial images, or saved photos without describing the outfit manually.",
+      "Yes. K Scan AI supports photos and screenshots, so you can scan inspiration from TikTok, Instagram, Pinterest, editorial images, or saved photos without describing the outfit manually.",
   },
   {
     question: "Can it find affordable alternatives?",
     answer:
-      "K Scan is designed to surface relevant products and useful alternatives when the original piece is unavailable, sold out, or outside your price range.",
+      "K Scan AI is designed to surface relevant products and useful alternatives when the original piece is unavailable, sold out, or outside your price range.",
   },
   {
     question: "Does it work with TikTok or Instagram screenshots?",
     answer:
-      "K Scan is designed around social discovery behavior. K Scan helps you move from a screenshot, post, saved video frame, or creator outfit into a clearer shopping path.",
+      "K Scan AI is designed around social discovery behavior. K Scan AI helps you move from a screenshot, post, saved video frame, or creator outfit into a clearer shopping path.",
   },
   {
-    question: "Is K Scan a retailer or marketplace?",
+    question: "Is K Scan AI a retailer or marketplace?",
     answer:
-      "No. K Scan is a visual commerce layer for fashion discovery. It helps identify what you are seeing and routes you toward products from retailers rather than replacing the shopping destination.",
+      "No. K Scan AI is a visual commerce layer for fashion discovery. It helps identify what you are seeing and routes you toward products from retailers rather than replacing the shopping destination.",
   },
 ];
 
@@ -247,7 +247,7 @@ function InvestorSheet({ onClose }: { onClose: () => void }) {
         </div>
 
         <p className="mb-7 text-[14px] leading-[1.78] text-stone-400">
-          The K Scan deck and supporting materials are shared privately. Tap below to continue to the protected portal, or reach us directly if you haven&apos;t received access credentials.
+          The K Scan AI deck and supporting materials are shared privately. Tap below to continue to the protected portal, or reach us directly if you haven&apos;t received access credentials.
         </p>
 
         <div className="space-y-3">
@@ -400,7 +400,7 @@ export default function Home() {
             className="mb-8 max-w-[90%] text-[15px] leading-[1.85] text-stone-500 sm:max-w-[27rem] md:mb-9 md:text-[16px]"
             variants={staggerChild}
           >
-            Scan fashion from real life, photos, or screenshots. K Scan identifies the look, finds relevant products and alternatives, saves your discoveries, and helps you style them.
+            Scan fashion from real life, photos, or screenshots. K Scan AI identifies the look, finds relevant products and alternatives, saves your discoveries, and helps you style them.
           </motion.p>
           <motion.div
             className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5"
@@ -437,7 +437,7 @@ export default function Home() {
                 >
                 <Image
                   src="/images/homepage-street-discovery.png"
-                  alt="Street fashion discovery scene showing K Scan visual search callouts around a tailored look"
+                  alt="Street fashion discovery scene showing K Scan AI visual search callouts around a tailored look"
                   fill
                   priority
                   sizes="(max-width: 768px) 92vw, 46vw"
@@ -502,14 +502,14 @@ export default function Home() {
 
           <FadeUp delay={0.06} className="space-y-5 text-[15px] leading-[1.88] text-stone-500">
             <p>
-              K Scan helps people find clothes from photos, identify outfits from screenshots, and turn visual
+              K Scan AI helps people find clothes from photos, identify outfits from screenshots, and turn visual
               inspiration into a practical shopping path. Instead of trying to describe a jacket, dress, sneaker, or
               full look with the right keywords, you can start with the image you already have.
             </p>
             <p>
               The product is built for AI fashion search across real-world captures, saved images, screenshots or
               saved frames from short-form videos, and social posts from places like TikTok, Instagram, and Pinterest.
-              K Scan reads fashion-specific signals such as silhouette, material, color, layering, and styling
+              K Scan AI reads fashion-specific signals such as silhouette, material, color, layering, and styling
               context, then helps surface relevant products and alternatives across retailers.
             </p>
             <div className="flex flex-wrap gap-4 pt-1 text-[13px]">
@@ -578,7 +578,7 @@ export default function Home() {
               <div className="relative aspect-[16/10] w-full bg-[#F2EEE7]">
                 <Image
                   src="/demo/how-it-works-1.png"
-                  alt="K Scan interface showing a captured outfit moving into matched shopping results"
+                  alt="K Scan AI interface showing a captured outfit moving into matched shopping results"
                   fill
                   sizes="(max-width: 768px) 100vw, 46vw"
                   className="object-cover object-[center_18%] md:object-center"
@@ -590,7 +590,7 @@ export default function Home() {
                 Live Product Flow
               </p>
               <p className="text-[14px] leading-[1.78] text-stone-500">
-                No more “I’ll find it later.” K Scan closes the gap between inspiration and action.
+                No more “I’ll find it later.” K Scan AI closes the gap between inspiration and action.
               </p>
             </div>
           </div>
@@ -649,7 +649,7 @@ export default function Home() {
               <div className="relative aspect-[5/4]">
                 <Image
                   src="/group-street.jpeg"
-                  alt="Kathleen in a white leisure set illustrating K Scan's fashion-first feature system"
+                  alt="Kathleen in a white leisure set illustrating K Scan AI's fashion-first feature system"
                   fill
                   sizes="(max-width: 768px) 92vw, 48vw"
                   className="object-cover object-[center_25%]"
@@ -672,7 +672,7 @@ export default function Home() {
               <div className="relative aspect-[7/2] lg:aspect-[4/1]">
                 <Image
                   src="/images/shoes_and_bag_hero.png"
-                  alt="K Scan fashion product preview with leather shoes and a structured bag"
+                  alt="K Scan AI fashion product preview with leather shoes and a structured bag"
                   fill
                   sizes="(max-width: 768px) 92vw, (max-width: 1280px) 86vw, 1200px"
                   className="object-cover object-[center_85%]"
@@ -691,7 +691,7 @@ export default function Home() {
                   Your taste, remembered privately.
                 </h2>
                 <p className="max-w-xl text-[15px] leading-[1.82] text-stone-300/75">
-                  K Scan learns from saved looks, fit feedback, and recurring style signals so future matches feel more personal without turning style into identity.
+                  K Scan AI learns from saved looks, fit feedback, and recurring style signals so future matches feel more personal without turning style into identity.
                 </p>
                 <span className="mt-7 inline-flex rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-[13px] font-medium leading-relaxed text-stone-100 shadow-[0_18px_48px_rgba(0,0,0,0.18)]">
                   Built from style signals, not personal identity.
@@ -719,7 +719,7 @@ export default function Home() {
                   <div className="relative aspect-[1672/941]">
                     <Image
                       src="/images/dressing-rooms-v6.png"
-                      alt="K Scan Dressing Rooms preview showing shared styling and link sharing"
+                      alt="K Scan AI Dressing Rooms preview showing shared styling and link sharing"
                       fill
                       sizes="(max-width: 1024px) 92vw, 56vw"
                       className="object-contain"
@@ -788,7 +788,7 @@ export default function Home() {
                     Coming Soon
                   </p>
                   <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
-                    K Scan Web Lens
+                    K Scan AI Web Lens
                   </h3>
                   <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
                     A browser-first visual search experience designed to move from inspiration to discovery across desktop and mobile, with future-ready try-on pathways.
@@ -811,7 +811,7 @@ export default function Home() {
                     Outfit Remix
                   </h3>
                   <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    Recreate inspiration from your own closet. K Scan will help reinterpret favorite looks using pieces you already own, with smart substitutions, layering ideas, and remix guidance when there is no exact match.
+                    Recreate inspiration from your own closet. K Scan AI will help reinterpret favorite looks using pieces you already own, with smart substitutions, layering ideas, and remix guidance when there is no exact match.
                   </p>
                 </div>
                 <div className="hidden h-20 w-20 flex-shrink-0 rounded-full border border-cyan-200/20 bg-cyan-200/5 shadow-[0_0_44px_rgba(125,211,252,0.12)] md:block" />
@@ -833,10 +833,10 @@ export default function Home() {
               The Fashion Intelligence Engine
             </h2>
             <p className="mb-5 text-[15px] leading-[1.88] text-stone-500">
-              Built for real-world fashion discovery. K Scan reads silhouette, material, layering, and context for fast visual matching.
+              Built for real-world fashion discovery. K Scan AI reads silhouette, material, layering, and context for fast visual matching.
             </p>
             <p className="mb-5 text-[15px] leading-[1.88] text-stone-500">
-              Unlike generic image search, K Scan is designed to understand how fashion works together. It interprets the full look, then maps it to closer matches and more useful alternatives across retailers.
+              Unlike generic image search, K Scan AI is designed to understand how fashion works together. It interprets the full look, then maps it to closer matches and more useful alternatives across retailers.
             </p>
           </div>
 
@@ -984,7 +984,7 @@ export default function Home() {
               <div className="relative aspect-[4/5]">
                   <Image
                     src="/white-tan-hat.png"
-                    alt="Editorial pink gown portrait beside the K Scan Get the App call to action"
+                    alt="Editorial pink gown portrait beside the K Scan AI Get the App call to action"
                     fill
                     sizes="(max-width: 1024px) 80vw, 32vw"
                     className="object-cover object-[center_20%] opacity-88"
@@ -1001,7 +1001,7 @@ export default function Home() {
                 <div className="relative aspect-[4/5]">
                   <Image
                     src="/white-tan-hat.png"
-                    alt="Editorial pink gown portrait beside the K Scan Get the App call to action"
+                    alt="Editorial pink gown portrait beside the K Scan AI Get the App call to action"
                     fill
                     sizes="80vw"
                     className="object-cover object-[center_20%] opacity-88"
@@ -1017,7 +1017,7 @@ export default function Home() {
               Start Scanning Today
             </h2>
             <p className="mx-auto mb-8 max-w-xs text-[15px] leading-[1.82] text-stone-600 md:mb-10 lg:mx-0">
-              K Scan is now available in beta. Get the Android app through Google Play or access the iOS beta through TestFlight.
+              K Scan AI is now available in beta. Get the Android app through Google Play or access the iOS beta through TestFlight.
             </p>
 
             <div className="mx-auto mb-10 flex max-w-sm flex-col items-center gap-4 sm:flex-row sm:justify-center lg:mx-0 lg:justify-start">
@@ -1038,7 +1038,7 @@ export default function Home() {
             <div className="mx-auto max-w-sm rounded-[24px] border border-stone-200 bg-[#F5F3EF] p-6 text-left lg:mx-0">
               <h3 className="font-display text-[18px] font-medium text-stone-900">Get Beta Updates</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-stone-500">
-                Receive K Scan product updates, beta news, and release announcements.
+                Receive K Scan AI product updates, beta news, and release announcements.
               </p>
 
               {submissionState === "success" ? (
@@ -1092,7 +1092,7 @@ export default function Home() {
                 <p className="mt-4 text-[11px] tracking-wide text-stone-600">{submissionMessage}</p>
               ) : (
                 <p className="mt-4 text-[11px] leading-relaxed text-stone-500">
-                  By subscribing, you agree to receive K Scan product and beta updates. You can unsubscribe at any time.{" "}
+                  By subscribing, you agree to receive K Scan AI product and beta updates. You can unsubscribe at any time.{" "}
                   <a
                     href="/legal/privacy"
                     className="text-violet-600 underline decoration-violet-200 underline-offset-4 transition-colors hover:text-violet-700 hover:decoration-violet-400"

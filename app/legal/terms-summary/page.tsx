@@ -82,7 +82,7 @@ export default function TermsSummaryPage() {
             <h3 className="mb-2 text-[15px] font-semibold text-stone-700 md:text-[16px]">Raw Scan Protection:</h3>
             <p>
               K Scan AI does not sell raw uploaded scans or images, biometric identifiers, face templates, faceprints,
-              or sensitive personal information. K Scan is not designed for facial recognition, biometric
+              or sensitive personal information. K Scan AI is not designed for facial recognition, biometric
               identification, identity profiling, or surveillance.
             </p>
           </div>
@@ -140,7 +140,7 @@ export default function TermsSummaryPage() {
               Third-Party Retailers:
             </h3>
             <p>
-              Retailer purchases are completed with third-party retailers or marketplaces, not K Scan. Retailer
+              Retailer purchases are completed with third-party retailers or marketplaces, not K Scan AI. Retailer
               purchases are not Apple In-App Purchases or Google Play Billing purchases. Third-party retailer payment,
               shipping, taxes, returns, refunds, sizing, authenticity, warranties, seller policies, and customer
               support are governed by that third party&apos;s terms and policies.
@@ -152,9 +152,9 @@ export default function TermsSummaryPage() {
               Pricing and Availability:
             </h3>
             <p>
-              K Scan does not guarantee product authenticity, pricing, availability, sizing, quality, legality,
+              K Scan AI does not guarantee product authenticity, pricing, availability, sizing, quality, legality,
               shipping, fulfillment, returns, refunds, warranties, or seller legitimacy. Additional terms may apply to
-              future subscriptions, premium features, APIs, enterprise tools, or paid services. If K Scan later sells
+              future subscriptions, premium features, APIs, enterprise tools, or paid services. If K Scan AI later sells
               digital features inside the app, those digital features will use Apple In-App Purchase or Google Play
               Billing where required.
             </p>
@@ -195,18 +195,18 @@ export default function TermsSummaryPage() {
             consent withdrawal, or opt-out choices for certain data uses.
           </p>
           <p>
-            K Scan may review, restrict, remove, disable access to, preserve, or moderate user content, rooms,
+            K Scan AI may review, restrict, remove, disable access to, preserve, or moderate user content, rooms,
             messages, accounts, or AI-related content that violates the Terms, platform policies, law, or safety
-            rules. K Scan may act promptly, including within 24 hours where required by platform policy, legal
+            rules. K Scan AI may act promptly, including within 24 hours where required by platform policy, legal
             obligation, safety risk, or internal escalation standards.
           </p>
           <p>
-            K Scan may suspend or terminate accounts that violate the Terms, platform policies, law, or safety rules.
-            K Scan may also suspend or terminate access for violations, suspected abuse, fraud, unlawful activity,
+            K Scan AI may suspend or terminate accounts that violate the Terms, platform policies, law, or safety rules.
+            K Scan AI may also suspend or terminate access for violations, suspected abuse, fraud, unlawful activity,
             safety risks, security concerns, nonpayment, operational reasons, or risk to the Service.
           </p>
           <p>
-            Your use of K Scan is also governed by the Privacy Policy. K Scan AI&apos;s liability, disclaimers,
+            Your use of K Scan AI is also governed by the Privacy Policy. K Scan AI&apos;s liability, disclaimers,
             acceptable-use rules, platform terms, dispute provisions, and other legal terms are governed by the full
             Terms and Conditions.
           </p>

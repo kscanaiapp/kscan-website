@@ -30,7 +30,7 @@ const ENVIRONMENTS: Record<EnvironmentView, EnvironmentConfig> = {
     title: "Mobile-first visual discovery",
     focus: "Focus: Mobile-first visual discovery and conversion flow.",
     description:
-      "K Scan turns product inspiration into a polished mobile journey built for search, selection, and conversion.",
+      "K Scan AI turns product inspiration into a polished mobile journey built for search, selection, and conversion.",
     videoSrc: "/demo/kscan-demo-v16.mp4",
   },
   smartglasses: {
@@ -254,7 +254,7 @@ export function DemoEnvironmentSwitcher() {
                     loop
                     playsInline
                     preload={isActive ? "metadata" : "none"}
-                    aria-label={`${config.label} K Scan product demo video`}
+                    aria-label={`${config.label} K Scan AI product demo video`}
                     onLoadedData={() =>
                       setLoadedViews((current) => ({
                         ...current,

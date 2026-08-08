@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Explore the current K Scan AI beta, see which features are live, get the Android app through Google Play, or access the iOS beta through TestFlight.",
   keywords: [
-    "K Scan beta",
+    "K Scan AI beta",
     "beta access",
     "AI fashion search beta",
     "visual fashion discovery app",
@@ -257,7 +257,7 @@ const roadmapCards = [
   {
     title: "Smart Closet",
     description:
-      "A connected closet layer for saved scans, Signature Style, the AI Stylist, and TextScan. We’re exploring how K Scan can help users organize what they own, rediscover saved pieces, describe items by text, and get smarter outfit suggestions from their personal style context.",
+      "A connected closet layer for saved scans, Signature Style, the AI Stylist, and TextScan. We’re exploring how K Scan AI can help users organize what they own, rediscover saved pieces, describe items by text, and get smarter outfit suggestions from their personal style context.",
     badge: "Research & Design",
   },
   {
@@ -281,7 +281,7 @@ export default function BetaPage() {
           01. Beta Center
         </p>
         <h1 className="font-display max-w-xl text-[42px] leading-[1.02] text-stone-900 sm:text-[52px] md:text-[64px]">
-          K Scan Beta Center
+          K Scan AI Beta Center
         </h1>
         <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-stone-500">
           Help shape the future of intelligent closet organization and fashion
@@ -338,7 +338,7 @@ export default function BetaPage() {
           </div>
 
           <p className="mt-4 text-[12px] leading-relaxed text-stone-600">
-            K Scan is exploring browser-enabled smart glasses prototypes for
+            K Scan AI is exploring browser-enabled smart glasses prototypes for
             Meta and Android XR experiences.
           </p>
         </div>
@@ -410,7 +410,7 @@ export default function BetaPage() {
             Mobile Beta Testing
           </h3>
           <p className="text-[13px] leading-relaxed text-stone-500">
-            K Scan is now available in beta on Android and iOS. Android users
+            K Scan AI is now available in beta on Android and iOS. Android users
             can join open testing through Google Play, while iOS users can
             access the beta through TestFlight. Users must be 18 or older to
             participate, or{" "}
@@ -501,7 +501,7 @@ export default function BetaPage() {
           </h2>
           <p className="mb-8 text-[14px] leading-relaxed text-stone-500">
             Found a bug, a confusing moment, or a feature you want prioritized?
-            Send feedback directly to the K Scan team.
+            Send feedback directly to the K Scan AI team.
           </p>
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLScTd8Oc14bwTFOl5q8jPsQ5-RbzdxlkM8zqBjJJvU2v0Ry68g/viewform?usp=header"
@@ -527,11 +527,11 @@ export default function BetaPage() {
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-md">
             <h2 className="font-display mb-3 text-[24px] leading-tight text-stone-900 sm:text-[28px]">
-              Start Testing K Scan
+              Start Testing K Scan AI
             </h2>
             <p className="text-[14px] leading-relaxed text-stone-500">
               Download the Android beta through Google Play or access the iOS beta through
-              TestFlight. Beta users can also send feedback directly to the K Scan team.
+              TestFlight. Beta users can also send feedback directly to the K Scan AI team.
             </p>
           </div>
           <div className="flex flex-shrink-0 flex-col items-start gap-4 sm:items-end">

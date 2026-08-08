@@ -100,7 +100,7 @@ export default function SupportPage() {
                 .
               </li>
               <li>
-                Include device model, operating-system version, K Scan app version, and the
+                Include device model, operating-system version, K Scan AI app version, and the
                 approximate time of the issue.
               </li>
             </ul>

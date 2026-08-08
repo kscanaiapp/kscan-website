@@ -58,8 +58,8 @@ export default function PrivacyPage() {
               <div>
                 <h3 className="font-semibold text-stone-700">No Facial Recognition:</h3>
                 <p>
-                  K Scan is not designed for surveillance, facial recognition, biometric identification, or
-                  identifying people. K Scan does not create biometric templates, faceprints, or identity profiles.
+                  K Scan AI is not designed for surveillance, facial recognition, biometric identification, or
+                  identifying people. K Scan AI does not create biometric templates, faceprints, or identity profiles.
                 </p>
               </div>
               <div>
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
               <div>
                 <h3 className="font-semibold text-stone-700">Face &amp; Bystander Protection:</h3>
                 <p>
-                  K Scan does not currently apply on-device face blurring or bystander-obscuring before upload. If a
+                  K Scan AI does not currently apply on-device face blurring or bystander-obscuring before upload. If a
                   submitted image contains a face, bystander, license plate, private document, or other identifying
                   element, that content may be included in the image transmitted for cloud processing.
                 </p>
@@ -105,7 +105,7 @@ export default function PrivacyPage() {
               <div>
                 <h3 className="font-semibold text-stone-700">Microphone and Spoken Responses:</h3>
                 <p>
-                  K Scan does not request microphone permission on Android or iOS. The AI Stylist&apos;s optional
+                  K Scan AI does not request microphone permission on Android or iOS. The AI Stylist&apos;s optional
                   spoken responses use text-to-speech and do not involve microphone recording, voice data collection,
                   or voiceprints. Spoken responses are not enabled in the current release.
                 </p>
@@ -127,7 +127,7 @@ export default function PrivacyPage() {
               <div>
                 <h3 className="font-semibold text-stone-700">Raw Scan Limits:</h3>
                 <p>
-                  K Scan does not sell raw scans, uploaded images, biometric identifiers, facial recognition data,
+                  K Scan AI does not sell raw scans, uploaded images, biometric identifiers, facial recognition data,
                   payment card data, or sensitive personal information. Limited non-sensitive information may be shared
                   with partners for attribution, analytics, commerce routing, fraud prevention, and service
                   operations. Aggregated, anonymized, or de-identified demand intelligence may be commercialized where
@@ -138,18 +138,18 @@ export default function PrivacyPage() {
               <div>
                 <h3 className="font-semibold text-stone-700">Advertising &amp; Tracking:</h3>
                 <p>
-                  K Scan does not currently use third-party advertising SDKs or collect Advertising ID for targeted
+                  K Scan AI does not currently use third-party advertising SDKs or collect Advertising ID for targeted
                   advertising unless later disclosed.
                 </p>
               </div>
               <div>
                 <h3 className="font-semibold text-stone-700">Service Providers:</h3>
                 <p>
-                  K Scan may share information with providers that help operate the Service, including cloud hosting,
+                  K Scan AI may share information with providers that help operate the Service, including cloud hosting,
                   storage, infrastructure, AI inference, analytics, security, fraud prevention, customer support, email
                   delivery, diagnostics, and app operations partners. If a third-party AI, cloud, or plugin API
                   provider receives submitted scan images, that provider may process those images under its agreement
-                  with K Scan, its applicable provider terms, this Privacy Summary, the full Privacy Policy,
+                  with K Scan AI, its applicable provider terms, this Privacy Summary, the full Privacy Policy,
                   applicable law, platform rules, and user privacy controls.
                 </p>
               </div>

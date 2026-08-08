@@ -11,7 +11,7 @@ export function SiteFooter() {
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:justify-between md:gap-0">
           <div className="text-center md:text-left">
             <div className="mb-1 flex items-center justify-center gap-1.5 md:justify-start">
-              <span className="font-display text-base font-medium text-stone-900">K Scan</span>
+              <span className="font-display text-base font-medium text-stone-900">K Scan AI</span>
               <span className="text-[9px] uppercase tracking-widest text-stone-500">AI</span>
             </div>
             <p className="text-[11px] text-stone-500">Fashion, made shoppable.</p>
@@ -100,7 +100,7 @@ export function SiteFooter() {
                 href="https://x.com/Kscan_app"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow K Scan on X"
+                aria-label="Follow K Scan AI on X"
                 className="flex h-11 w-11 items-center justify-center text-stone-600 transition-colors hover:text-stone-900 focus:outline-none focus-visible:text-stone-900"
               >
                 <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-current">

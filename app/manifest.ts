@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "K Scan AI",
-    short_name: "K Scan",
+    short_name: "K Scan AI",
     description: "Fashion, made shoppable.",
     start_url: "/",
     display: "standalone",

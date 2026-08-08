@@ -51,7 +51,7 @@ async function sendOwnerNotification({
   const maskedEmail = email.replace(/(.{2}).*@/, "$1***@");
 
   const lines = [
-    "New K Scan Waitlist Signup",
+    "New K Scan AI Waitlist Signup",
     "",
     `Email: ${email}`,
     name ? `Name: ${name}` : null,
@@ -64,9 +64,9 @@ async function sendOwnerNotification({
 
   try {
     await resend.emails.send({
-      from: "K Scan <hello@info.kscan.app>",
+      from: "K Scan AI <hello@info.kscan.app>",
       to: alertEmail,
-      subject: "New K Scan Waitlist Signup",
+      subject: "New K Scan AI Waitlist Signup",
       text: lines.join("\n"),
       html: `<pre style="font-family:system-ui,monospace;font-size:14px;line-height:1.7;padding:24px;background:#FAFAF8;color:#111827;">${lines
         .map((line) => (line ? escapeHtml(line) : ""))

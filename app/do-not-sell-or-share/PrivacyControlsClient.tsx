@@ -232,7 +232,7 @@ export function PrivacyControlsClient() {
             rights, consent requirements, and opt-out controls.
           </p>
           <p>
-            Raw uploaded scans and images are not sold. K Scan does not use uploaded scan content for facial
+            Raw uploaded scans and images are not sold. K Scan AI does not use uploaded scan content for facial
             recognition or biometric surveillance.
           </p>
         </div>
@@ -245,7 +245,7 @@ export function PrivacyControlsClient() {
             className="space-y-1.5 rounded-xl border border-indigo-200 bg-indigo-50 px-5 py-4"
           >
             <p className="text-[13px] font-medium text-indigo-800">
-              Your browser is sending a Global Privacy Control signal. Where required by law, K Scan treats
+              Your browser is sending a Global Privacy Control signal. Where required by law, K Scan AI treats
               this as an opt-out request.
             </p>
             {gpcSaveStatus === "saved" && (

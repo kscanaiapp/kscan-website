@@ -20,7 +20,7 @@ export default function DemoPage() {
               Mobile now. Wearables next.
             </h1>
             <p className="mt-6 max-w-2xl text-[15px] leading-[1.9] text-stone-500 md:text-[17px]">
-              Two views of the K Scan product roadmap: the current mobile experience built for fashion conversion,
+              Two views of the K Scan AI product roadmap: the current mobile experience built for fashion conversion,
               and a browser-enabled smart glasses prototype shaping where hands-free commerce goes next.
             </p>
           </div>
@@ -38,7 +38,7 @@ export default function DemoPage() {
               <div className="relative overflow-hidden rounded-[18px]">
                 <Image
                   src="/demo/kscan-demo-image-1.jpeg"
-                  alt="K Scan in the real world - visual inspiration to commerce-ready output"
+                  alt="K Scan AI in the real world - visual inspiration to commerce-ready output"
                   width={1600}
                   height={1067}
                   className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.01]"
@@ -48,7 +48,7 @@ export default function DemoPage() {
             </div>
 
             <p className="mt-5 text-[13px] leading-[1.8] text-stone-600 md:mt-6 md:max-w-2xl">
-              A grounded look at how K Scan appears in the real world - turning visual inspiration into
+              A grounded look at how K Scan AI appears in the real world - turning visual inspiration into
               commerce-ready output without breaking the flow of discovery.
             </p>
           </section>
@@ -90,7 +90,7 @@ export default function DemoPage() {
               Continue from the Demo
             </h2>
             <p className="mt-4 max-w-2xl text-[15px] leading-[1.85] text-stone-500">
-              Get the K Scan beta to try the current mobile experience, or continue to the investor portal for protected materials.
+              Get the K Scan AI beta to try the current mobile experience, or continue to the investor portal for protected materials.
             </p>
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <Link

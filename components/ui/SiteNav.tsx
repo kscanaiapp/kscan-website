@@ -44,7 +44,7 @@ export function SiteNav() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-10">
         {/* Logo — always links back to / */}
         <Link href="/" className="flex items-center gap-1.5">
-          <span className="font-display text-lg font-medium text-stone-900">K Scan</span>
+          <span className="font-display text-lg font-medium text-stone-900">K Scan AI</span>
           <span className="text-[9px] uppercase tracking-widest text-stone-300">AI</span>
         </Link>
 
