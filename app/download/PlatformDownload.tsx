@@ -65,7 +65,7 @@ export function PlatformDownload() {
       name: "iOS",
       description: "Beta access through TestFlight.",
       action: "Open in TestFlight",
-      href: "https://testflight.apple.com/",
+      href: "https://testflight.apple.com/join/UcxK6GVm",
     },
   ];
 

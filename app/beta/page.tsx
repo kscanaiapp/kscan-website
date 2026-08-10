@@ -80,7 +80,7 @@ const betaStatus: {
     label: "iOS Beta",
     status: "Active",
     storeLink: {
-      href: "https://testflight.apple.com/",
+      href: "https://testflight.apple.com/join/UcxK6GVm",
       ariaLabel: "Open K Scan AI beta access in TestFlight",
       platform: "testflight",
     },
