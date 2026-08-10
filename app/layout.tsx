@@ -64,9 +64,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/group-street.jpeg",
-        width: 2048,
-        height: 1365,
+        url: "https://wyyuqfdxucjksghsmhry.supabase.co/storage/v1/object/public/public-assets/open-graph.png",
         alt: "K Scan AI visual fashion search preview",
       },
     ],
