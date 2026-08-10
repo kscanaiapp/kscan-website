@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://wyyuqfdxucjksghsmhry.supabase.co/storage/v1/object/public/public-assets/open-graph.png",
-        alt: "K Scan AI visual fashion search preview",
+        alt: "K Scan AI - See It. Scan It. Style It.",
       },
     ],
     type: "website",
