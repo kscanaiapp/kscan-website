@@ -334,12 +334,24 @@ export default function BetaPage() {
                   Google XR Browser Demo
                 </a>
               </p>
+              <p>
+                ***{" "}
+                <a
+                  href="https://kscan-visionos-demo.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 transition-colors hover:text-stone-600"
+                >
+                  Apple Vision Pro Browser Demo
+                </a>
+              </p>
             </div>
           </div>
 
           <p className="mt-4 text-[12px] leading-relaxed text-stone-600">
             K Scan AI is exploring browser-enabled smart glasses prototypes for
-            Meta and Android XR experiences.
+            Meta and Android XR experiences, alongside a spatial-commerce
+            simulation of the visionOS Experience for Apple Vision Pro.
           </p>
         </div>
       </section>
