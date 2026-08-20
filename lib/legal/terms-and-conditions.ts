@@ -1,15 +1,15 @@
 import type { LegalDocumentData } from "@/components/legal/LegalDocument";
 
 // Full public Terms and Conditions, transcribed verbatim from the authoritative
-// source document supplied for the August 9, 2026 language update.
-// Effective Date: May 13, 2026 | Last Updated: August 9, 2026
+// source document supplied for the August 20, 2026 language update.
+// Effective Date: May 13, 2026 | Last Updated: August 20, 2026
 
 export const termsAndConditions: LegalDocumentData = {
   eyebrow: "K SCAN AI",
   title: "Terms and Conditions",
   subtitle: "Full public terms for the website and current mobile app release",
   effectiveDate: "May 13, 2026",
-  lastUpdated: "August 9, 2026",
+  lastUpdated: "August 20, 2026",
   contactEmail: "kscanai.app@gmail.com",
   governingLinks: [
     { label: "Governing full HTML version:", href: "https://kscan.app/legal/terms", boldLabel: true },

@@ -255,10 +255,10 @@ const roadmapCards = [
     badge: "Expanding in Beta",
   },
   {
-    title: "Smart Closet",
+    title: "Deeper Closet Intelligence",
     description:
-      "A connected closet layer for saved scans, Signature Style, the AI Stylist, and TextScan. We’re exploring how K Scan AI can help users organize what they own, rediscover saved pieces, describe items by text, and get smarter outfit suggestions from their personal style context.",
-    badge: "Research & Design",
+      "Closet is live in beta. We’re exploring deeper organization, personalization, and outfit-planning capabilities, connecting Signature Style and Elise to help K Scan AI make better use of what you already own.",
+    badge: "Exploring",
   },
   {
     title: "Outfit Remix",

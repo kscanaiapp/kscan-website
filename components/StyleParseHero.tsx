@@ -138,7 +138,7 @@ export default function StyleParseHero({
       {/* Eyebrow */}
       <div className="mb-8 md:mb-10">
         <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-stone-600">
-          Style-Parse Engine
+          Fashion Intelligence
         </p>
       </div>
 
@@ -150,7 +150,7 @@ export default function StyleParseHero({
           border:      "1px solid rgba(255,255,255,0.065)",
           boxShadow:   "0 40px 110px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05)",
         }}
-        aria-label="K Scan AI Style-Parse live demo"
+        aria-label="K Scan AI Fashion Intelligence demo"
         role="region"
       >
         {/* Chrome top highlight */}
@@ -585,7 +585,7 @@ export default function StyleParseHero({
               className="mb-7 text-[10px] font-medium uppercase tracking-[0.26em]"
               style={{ color: "rgba(255,255,255,0.16)" }}
             >
-              K Scan AI &nbsp;/&nbsp; Style-Parse
+              K Scan AI &nbsp;/&nbsp; Fashion Intelligence
             </p>
 
             {/* Stage description */}
@@ -760,7 +760,7 @@ export default function StyleParseHero({
             K Scan AI
           </span>
           <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/14">
-            Style-Parse Engine
+            Fashion Intelligence
           </span>
         </div>
       </div>

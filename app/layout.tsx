@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | K Scan AI",
   },
   description:
-    "K Scan AI is a fashion scan app, AI stylist, and visual commerce platform that helps users scan inspiration, discover products and alternatives, save items, and style their scanned closet.",
+    "K Scan AI is a fashion scan app, AI stylist, and visual commerce platform that helps users discover fashion, explore products and alternatives, preserve discoveries in Recent Scans, organize owned items in Closet, and style what they wear.",
   keywords: [
     "AI fashion search",
     "find clothes from photos",

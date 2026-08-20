@@ -34,27 +34,27 @@ const coreFlow = [
   },
   {
     step: "03",
-    title: "Shop",
-    description:
-      "Explore product results, alternatives, real purchase options, and retailer pathways.",
-    image: {
-      src: "/how-it-works/match-shop-results.png",
-      alt: "K Scan AI match results mockup showing product results and retailer pathways from a scanned outfit.",
-    },
-  },
-  {
-    step: "04",
     title: "Save",
     description:
       "Keep items you own in Closet, and revisit fashion discoveries in Recent Scans.",
     image: null,
   },
   {
-    step: "05",
+    step: "04",
     title: "Style",
     description:
-      "Use Signature Style and the AI Stylist to plan outfits and rediscover what you have saved.",
+      "Use Signature Style and Elise to plan outfits, save Looks, and decide together in Dressing Rooms.",
     image: null,
+  },
+  {
+    step: "05",
+    title: "Shop",
+    description:
+      "Explore relevant products, alternatives, and retailer-neutral pathways to complete the look.",
+    image: {
+      src: "/how-it-works/match-shop-results.png",
+      alt: "K Scan AI match results mockup showing product results and retailer pathways from a scanned outfit.",
+    },
   },
 ];
 
@@ -73,7 +73,7 @@ const featureList = [
   },
   {
     title: "Price Tier Awareness",
-    body: "See the designer original or the closest lower-tier option without losing the look.",
+    body: "Explore relevant options across price tiers, including lower-priced alternatives when available.",
   },
   {
     title: "Personalized Recall",
@@ -688,10 +688,10 @@ export default function Home() {
                   Signature Style
                 </p>
                 <h2 className="mb-5 max-w-xl font-display text-4xl font-medium leading-[1.05] text-white md:text-[52px]">
-                  Your taste, remembered privately.
+                  Style signals that make recommendations more relevant.
                 </h2>
                 <p className="max-w-xl text-[15px] leading-[1.82] text-stone-300/75">
-                  K Scan AI learns from saved looks, fit feedback, and recurring style signals so future matches feel more personal without turning style into identity.
+                  Saved items, styling preferences, and feedback can help K Scan AI tailor future recommendations without turning style into personal identity.
                 </p>
                 <span className="mt-7 inline-flex rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-[13px] font-medium leading-relaxed text-stone-100 shadow-[0_18px_48px_rgba(0,0,0,0.18)]">
                   Built from style signals, not personal identity.
@@ -713,44 +713,6 @@ export default function Home() {
           </FadeUp>
 
           <FadeUp className="mt-12 md:mt-16">
-            <div className="grid gap-8 border-t border-stone-100 pt-10 md:gap-10 lg:grid-cols-[minmax(0,0.62fr)_minmax(320px,0.38fr)] lg:items-center">
-              <div className="w-full lg:max-w-[800px]">
-                <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-stone-50 shadow-[0_18px_50px_rgba(28,22,16,0.08)]">
-                  <div className="relative aspect-[1672/941]">
-                    <Image
-                      src="/images/dressing-rooms-v6.png"
-                      alt="K Scan AI Dressing Rooms preview showing shared styling and link sharing"
-                      fill
-                      sizes="(max-width: 1024px) 92vw, 56vw"
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="max-w-md lg:ml-auto">
-                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-600">
-                  {featureList[5].title}
-                </p>
-                <p className="text-[15px] leading-[1.82] text-stone-500">
-                  {featureList[5].body}
-                </p>
-              </div>
-            </div>
-          </FadeUp>
-
-          <FadeUp className="mt-10 md:mt-14">
-            <div className="grid gap-x-12 gap-y-8 border-t border-stone-100 pt-9 md:grid-cols-2 md:gap-x-16 md:pt-10">
-              {[featureList[2], featureList[3]].map(({ title, body }) => (
-                <article key={title}>
-                  <h3 className="mb-3 text-[15px] font-medium text-stone-900">{title}</h3>
-                  <p className="text-[14px] leading-[1.82] text-stone-600">{body}</p>
-                </article>
-              ))}
-            </div>
-          </FadeUp>
-
-          <FadeUp className="mt-10 md:mt-14">
             <div className="grid gap-8 border-t border-stone-100 pt-10 md:gap-10 lg:grid-cols-[minmax(320px,0.42fr)_minmax(0,0.58fr)] lg:items-center">
               <div className="max-w-md">
                 <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-600">
@@ -857,7 +819,45 @@ export default function Home() {
             </div>
           </FadeUp>
 
-          <FadeUp className="mt-5 md:mt-6">
+          <FadeUp className="mt-12 md:mt-16">
+            <div className="grid gap-8 border-t border-stone-100 pt-10 md:gap-10 lg:grid-cols-[minmax(0,0.62fr)_minmax(320px,0.38fr)] lg:items-center">
+              <div className="w-full lg:max-w-[800px]">
+                <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-stone-50 shadow-[0_18px_50px_rgba(28,22,16,0.08)]">
+                  <div className="relative aspect-[1672/941]">
+                    <Image
+                      src="/images/dressing-rooms-v6.png"
+                      alt="K Scan AI Dressing Rooms preview showing shared styling and link sharing"
+                      fill
+                      sizes="(max-width: 1024px) 92vw, 56vw"
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="max-w-md lg:ml-auto">
+                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-600">
+                  {featureList[5].title}
+                </p>
+                <p className="text-[15px] leading-[1.82] text-stone-500">
+                  {featureList[5].body}
+                </p>
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp className="mt-10 md:mt-14">
+            <div className="grid gap-x-12 gap-y-8 border-t border-stone-100 pt-9 md:grid-cols-2 md:gap-x-16 md:pt-10">
+              {[featureList[2], featureList[3]].map(({ title, body }) => (
+                <article key={title}>
+                  <h3 className="mb-3 text-[15px] font-medium text-stone-900">{title}</h3>
+                  <p className="text-[14px] leading-[1.82] text-stone-600">{body}</p>
+                </article>
+              ))}
+            </div>
+          </FadeUp>
+
+          <FadeUp className="mt-10 md:mt-14">
             <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
               <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
               <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
@@ -923,7 +923,7 @@ export default function Home() {
               <div className="relative aspect-[5/6] overflow-hidden rounded-[22px]">
                 <Image
                   src="/texture-dinner.png"
-                  alt="Kathleen in a leather-forward look used for the technical Style-Parse section"
+                  alt="Kathleen in a leather-forward look used for the technical Fashion Intelligence section"
                   fill
                   sizes="(max-width: 768px) 92vw, 31rem"
                   className="object-cover object-[center_22%]"
@@ -932,7 +932,7 @@ export default function Home() {
 
                 <div className="absolute left-4 right-4 top-4 flex items-center justify-between rounded-full border border-white/20 bg-black/20 px-4 py-2 backdrop-blur-sm">
                   <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/68">
-                    Style-Parse
+                    Fashion Intelligence
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.18em] text-white/48">Context engine</span>
                 </div>

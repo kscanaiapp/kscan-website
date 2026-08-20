@@ -30,7 +30,7 @@ export default function LegalTermsPage() {
       <SiteNav />
       <LegalDocument
         document={termsAndConditions}
-        downloadHref="https://wyyuqfdxucjksghsmhry.supabase.co/storage/v1/object/public/legal-documents/kscan-terms-and-conditions.pdf"
+        downloadHref="https://wyyuqfdxucjksghsmhry.supabase.co/storage/v1/object/public/legal-documents/kscan-terms-and-conditions.pdf?v=2026-08-20"
         downloadLabel="Download Terms and Conditions PDF"
       />
     </main>

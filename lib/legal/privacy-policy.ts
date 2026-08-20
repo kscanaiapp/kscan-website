@@ -1,15 +1,15 @@
 import type { LegalDocumentData } from "@/components/legal/LegalDocument";
 
 // Full public Privacy Policy, transcribed verbatim from the authoritative
-// source document supplied for the August 9, 2026 language update.
-// Effective Date: June 12, 2026 | Last Updated: August 9, 2026
+// source document supplied for the August 20, 2026 language update.
+// Effective Date: June 12, 2026 | Last Updated: August 20, 2026
 
 export const privacyPolicy: LegalDocumentData = {
   eyebrow: "K SCAN AI",
   title: "Privacy Policy",
   subtitle: "Full public policy for the website and current mobile app release",
   effectiveDate: "June 12, 2026",
-  lastUpdated: "August 9, 2026",
+  lastUpdated: "August 20, 2026",
   contactEmail: "kscanai.app@gmail.com",
   governingLinks: [
     { label: "Governing full HTML version:", href: "https://kscan.app/legal/privacy", boldLabel: true },
