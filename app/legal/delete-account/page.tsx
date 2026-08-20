@@ -92,7 +92,7 @@ export default function DeleteAccountPage() {
               Room contents, Dressing Room share links, and user-linked app data where applicable.
             </p>
             <ul className="space-y-2 pl-4">
-              <li>StyleChat conversations, saved style preferences, Style Memory, and personalization context connected to your account.</li>
+              <li>StyleChat conversations, saved style preferences, Signature Style information, and personalization context connected to your account.</li>
             </ul>
           </section>
 
