@@ -50,7 +50,7 @@ export const privacyPolicy: LegalDocumentData = {
             `Recent Scans and their saved shopping snapshots are device-local by default. Cloud Saved Scans synchronization is disabled by default. Account-backed Dressing Rooms and Shared with Me memberships use cloud services.`,
             `The Android app may request approximate location only for optional weather-aware styling. It does not request precise or background location in the current release.`,
             `K Scan does not currently use third-party advertising SDKs or collect Advertising ID for targeted advertising.`,
-            `You may request account deletion. Verified deletion requests are generally processed within 30 days, subject to legal, security, backup, fraud-prevention, and technical limitations.`,
+            `You may request account deletion. A verified deletion request deactivates the account and begins an approximately 30-day recovery period, after which the account becomes eligible for permanent deletion, subject to legal, security, backup, fraud-prevention, and technical limitations.`,
             `Dressing Room safety controls include in-app report-message, report-user, and block-user functions. Blocking is enforced by the backend across access, messaging, share redemption, and contribution rights.`,
             `AI-generated responses can be reported entirely in-app. The report records structured moderation metadata and strictly allowlisted identifiers/context, but does not store the raw AI response, uploaded photos, scan media, or raw image content.`,
             `Mirror Selfie may use user-requested image and pose/body-positioning processing for the fashion experience. It is not used for facial recognition, biometric identification, or creating identity profiles.`,
@@ -378,7 +378,7 @@ export const privacyPolicy: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `Active application systems are generally processed for deletion within 30 days of a verified deletion request. Residual copies may remain in encrypted or access-controlled backups for a limited additional period before expiring through normal backup lifecycle processes, unless a longer period is required or permitted by law.`,
+          text: `A verified deletion request begins an approximately 30-day recovery period. If the account is not restored, active application systems become eligible for deletion after that period. Residual copies may remain in encrypted or access-controlled backups for a limited additional period before expiring through normal backup lifecycle processes, unless a longer period is required or permitted by law.`,
         },
       ],
     },
@@ -392,7 +392,7 @@ export const privacyPolicy: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `Deletion requests are generally processed within 30 days after verification, subject to legal, security, fraud-prevention, dispute-resolution, backup, and technical limitations. K Scan does not claim that deletion is immediate or fully automated across every system.`,
+          text: `A verified deletion request deactivates the account and begins an approximately 30-day recovery period. If the account is not restored, it becomes eligible for permanent deletion, subject to legal, security, fraud-prevention, dispute-resolution, backup, and technical limitations. K Scan does not claim that deletion is immediate or fully automated across every system.`,
         },
         {
           type: "paragraph",

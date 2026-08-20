@@ -45,7 +45,6 @@ export function SiteNav() {
         {/* Logo — always links back to / */}
         <Link href="/" className="flex items-center gap-1.5">
           <span className="font-display text-lg font-medium text-stone-900">K Scan AI</span>
-          <span className="text-[9px] uppercase tracking-widest text-stone-300">AI</span>
         </Link>
 
         {/* Desktop nav */}

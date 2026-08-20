@@ -111,9 +111,11 @@ export default function DeleteAccountPage() {
               Processing Time
             </h2>
             <p>
-              Deletion requests are processed within 30 days unless a legal, security, or technical exception applies.
-              If you have shared Dressing Room links, account deletion processing will revoke those share tokens and
-              make the links inaccessible to anyone who has them, where technically available.
+              A verified deletion request deactivates your account and begins an approximately 30-day recovery
+              period, during which your account may be restored. If the account is not restored and no legal,
+              security, or technical exception applies, it becomes eligible for permanent deletion. If you have
+              shared Dressing Room links, account deletion processing will revoke those share tokens and make the
+              links inaccessible to anyone who has them, where technically available.
             </p>
           </section>
 

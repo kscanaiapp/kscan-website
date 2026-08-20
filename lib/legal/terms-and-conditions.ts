@@ -436,7 +436,7 @@ export const termsAndConditions: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `You may request account deletion through the app, at https://kscan.app/legal/delete-account, or by contacting kscanai.app@gmail.com. Verified requests are generally processed within 30 days, subject to legal, security, backup, fraud-prevention, and technical limitations.`,
+          text: `You may request account deletion through the app, at https://kscan.app/legal/delete-account, or by contacting kscanai.app@gmail.com. A verified deletion request deactivates the account and begins an approximately 30-day recovery period, after which the account becomes eligible for permanent deletion, subject to legal, security, backup, fraud-prevention, and technical limitations.`,
         },
         {
           type: "paragraph",

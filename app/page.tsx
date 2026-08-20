@@ -46,7 +46,7 @@ const coreFlow = [
     step: "04",
     title: "Save",
     description:
-      "Keep scanned items and fashion discoveries in your scanned closet.",
+      "Keep items you own in Closet, and revisit fashion discoveries in Recent Scans.",
     image: null,
   },
   {

@@ -66,7 +66,11 @@ export default function SupportPage() {
             </h2>
             <ul className="space-y-2 pl-4">
               <li>Use the in-app deletion request workflow from Privacy controls.</li>
-              <li>Deletion requests are processed within 30 days unless retention is legally required or permitted.</li>
+              <li>
+                Account deletion begins with deactivation and an approximately 30-day recovery period. If the
+                account is not restored, it becomes eligible for permanent deletion, subject to applicable legal,
+                security, backup, and technical retention requirements.
+              </li>
             </ul>
           </section>
 

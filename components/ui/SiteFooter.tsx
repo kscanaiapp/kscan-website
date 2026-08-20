@@ -12,7 +12,6 @@ export function SiteFooter() {
           <div className="text-center md:text-left">
             <div className="mb-1 flex items-center justify-center gap-1.5 md:justify-start">
               <span className="font-display text-base font-medium text-stone-900">K Scan AI</span>
-              <span className="text-[9px] uppercase tracking-widest text-stone-500">AI</span>
             </div>
             <p className="text-[11px] text-stone-500">Fashion, made shoppable.</p>
           </div>
