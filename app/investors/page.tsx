@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { FormEvent, Fragment, useEffect, useState } from "react";
 import { InvestorDeckLauncher } from "@/components/InvestorDeckLauncher";
 import { SiteNav } from "@/components/ui/SiteNav";
@@ -223,13 +224,22 @@ export default function InvestorsPage() {
               Built for fashion-specific intent, architected to stay retailer-neutral, and designed for a mobile-first
               world moving toward wearables.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <button
-                onClick={scrollToAccess}
-                className="rounded-full bg-stone-900 px-7 py-3.5 text-[13px] font-medium text-white transition-colors hover:bg-stone-800"
-              >
-                Request Investor Materials
-              </button>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-start">
+              <div className="flex flex-col items-start gap-2.5">
+                <button
+                  onClick={scrollToAccess}
+                  className="rounded-full bg-stone-900 px-7 py-3.5 text-[13px] font-medium text-white transition-colors hover:bg-stone-800"
+                >
+                  Request Investor Materials
+                </button>
+                <Link
+                  href="/data-room"
+                  className="fashion-cursor inline-flex items-center gap-1.5 rounded-full border border-stone-300 bg-white px-5 py-2 text-[12px] font-medium text-stone-600 transition-colors hover:border-stone-400 hover:text-stone-900"
+                >
+                  Current Investors
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
               <a
                 href="https://cal.com/k-scan-app"
                 target="_blank"
