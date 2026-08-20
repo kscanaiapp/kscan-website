@@ -153,7 +153,7 @@ export default function PrivacyPage() {
               <div>
                 <h3 className={h3Class}>Fashion Context</h3>
                 <p>
-                  When you intentionally reference or attach authorized K Scan content, Elise may receive fashion
+                  When you intentionally reference or attach authorized K Scan AI content, Elise may receive fashion
                   information such as:
                 </p>
                 <ul className={`mt-3 ${bulletClass}`}>
