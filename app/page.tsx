@@ -751,30 +751,108 @@ export default function Home() {
           </FadeUp>
 
           <FadeUp className="mt-10 md:mt-14">
+            <div className="grid gap-8 border-t border-stone-100 pt-10 md:gap-10 lg:grid-cols-[minmax(320px,0.42fr)_minmax(0,0.58fr)] lg:items-center">
+              <div className="max-w-md">
+                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-600">
+                  Mirror Selfie
+                </p>
+                <h3 className="mb-3 font-display text-[26px] leading-[1.15] text-stone-900 md:text-[30px]">
+                  Turn the mirror into a Closet starting point.
+                </h3>
+                <p className="text-[15px] leading-[1.82] text-stone-500">
+                  Choose a mirror or selfie image and let K Scan AI help identify the fashion you are wearing. Review the detected clothing and move the pieces that are actually yours toward Closet.
+                </p>
+                <p className="mt-4 text-[12px] leading-relaxed text-stone-600">
+                  Available in supported beta flows. Results may vary by image, garment visibility, and release environment.
+                </p>
+              </div>
+              <div className="w-full">
+                <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-stone-50 shadow-[0_18px_50px_rgba(28,22,16,0.08)]">
+                  <div className="relative aspect-[4/5]">
+                    <Image
+                      src="/kathleen-glam.jpg"
+                      alt="Fashionable person taking a mirror selfie to illustrate K Scan AI Mirror Selfie wardrobe intake."
+                      fill
+                      sizes="(max-width: 1024px) 92vw, 40vw"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp className="mt-10 md:mt-14">
             <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
               <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
-              <div className="relative grid gap-7 lg:grid-cols-[minmax(0,0.9fr)_minmax(420px,0.52fr)] lg:items-center lg:gap-10">
+              <div className="relative grid gap-8 lg:grid-cols-[0.55fr_0.45fr] lg:items-start lg:gap-10">
                 <div className="max-w-2xl">
                   <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
                     Live in Beta
                   </p>
                   <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
-                    AI Stylist
+                    Elise, Your AI Stylist
                   </h3>
                   <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    Style what you own and what you just discovered. Ask Elise what to wear, how to remix a saved look, or which scanned pieces work together. Recommendations use your saved items, preferences, and Signature Style to provide practical guidance with clear explanations.
+                    Elise helps turn a scan into a styling decision. Ask how to wear an item, style something from Closet, refine a Saved Look, or use fashion shared through a Dressing Room as context.
+                  </p>
+                  <p className="mt-4 max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
+                    StyleChat is how you talk with her. Where spoken responses are enabled, Elise can also read eligible styling responses aloud.
                   </p>
                 </div>
-                <div className="mx-auto w-full max-w-[560px] lg:mr-0">
-                  <Image
-                    src="/images/stylechat.png"
-                    alt="AI Stylist personalized fashion recommendations interface"
-                    width={1536}
-                    height={1024}
-                    sizes="(max-width: 1024px) 82vw, 46vw"
-                    className="h-auto w-full rounded-[16px]"
-                  />
+                <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2">
+                  {[
+                    { title: "Style This Item", body: "Turn a scan or Closet item into styling ideas." },
+                    { title: "Closet Context", body: "Use the fashion you own as context for outfit suggestions." },
+                    { title: "Dressing Room Context", body: "Refine shared fashion choices with the items being discussed." },
+                    { title: "Spoken Responses", body: "Hear eligible Elise styling responses where voice is enabled." },
+                  ].map(({ title, body }) => (
+                    <div key={title} className="bg-stone-950 p-5">
+                      <h4 className="mb-2 text-[13px] font-medium text-white">{title}</h4>
+                      <p className="text-[12px] leading-[1.6] text-stone-400">{body}</p>
+                    </div>
+                  ))}
                 </div>
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp className="mt-5 md:mt-6">
+            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
+              <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
+              <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
+                <div className="max-w-2xl">
+                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
+                    Coming Soon
+                  </p>
+                  <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
+                    Calendar to Closet
+                  </h3>
+                  <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
+                    A planned way to help connect upcoming plans with Closet and Saved Looks, so Elise can help you think ahead about what to wear.
+                  </p>
+                </div>
+                <div className="hidden h-20 w-20 flex-shrink-0 rounded-full border border-cyan-200/20 bg-cyan-200/5 shadow-[0_0_44px_rgba(125,211,252,0.12)] md:block" />
+              </div>
+            </div>
+          </FadeUp>
+
+          <FadeUp className="mt-5 md:mt-6">
+            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
+              <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
+              <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
+                <div className="max-w-2xl">
+                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
+                    Exploring
+                  </p>
+                  <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
+                    A More Present Elise
+                  </h3>
+                  <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
+                    We are continuing to explore richer ways for Elise to feel present across the K Scan AI experience.
+                  </p>
+                </div>
+                <div className="hidden h-20 w-20 flex-shrink-0 rounded-full border border-cyan-200/20 bg-cyan-200/5 shadow-[0_0_44px_rgba(125,211,252,0.12)] md:block" />
               </div>
             </div>
           </FadeUp>
