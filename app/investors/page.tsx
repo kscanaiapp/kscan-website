@@ -170,8 +170,8 @@ export default function InvestorsPage() {
       setForm((prev) => ({ ...prev, [key]: e.target.value }));
   }
 
-  function scrollToAccess() {
-    document.getElementById("investor-access")?.scrollIntoView({ behavior: "smooth" });
+  function scrollToInvestorSignup() {
+    document.getElementById("investor-signup")?.scrollIntoView({ behavior: "smooth" });
   }
 
   async function handleInquirySubmit(e: FormEvent<HTMLFormElement>) {
@@ -227,7 +227,7 @@ export default function InvestorsPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-start">
               <div className="flex flex-col items-start gap-2.5">
                 <button
-                  onClick={scrollToAccess}
+                  onClick={scrollToInvestorSignup}
                   className="rounded-full bg-stone-900 px-7 py-3.5 text-[13px] font-medium text-white transition-colors hover:bg-stone-800"
                 >
                   Request Investor Materials
@@ -487,7 +487,7 @@ export default function InvestorsPage() {
                 Access Gate
               </p>
               <h2 className="font-display text-[30px] leading-[1.08] text-stone-900 md:text-[36px]">
-                Confidential Investor Materials
+                Potential Investors
               </h2>
               <p className="mt-4 text-[14px] leading-[1.85] text-stone-500">
                 Secure access to deck materials, market framing, and company overview.
@@ -653,7 +653,7 @@ export default function InvestorsPage() {
       </section>
 
       {/* ─── Inquiry form (for those without the password) ────────────────── */}
-      <section className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
+      <section id="investor-signup" className="mx-auto max-w-6xl px-6 pb-20 md:px-10 md:pb-28">
         <div className="grid gap-8 rounded-[30px] border border-stone-200/80 bg-[#F5F3EF] p-6 md:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-12">
           <div>
             <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
