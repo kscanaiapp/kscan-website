@@ -503,7 +503,14 @@ export default function Home() {
           <FadeUp delay={0.06} className="space-y-5 text-[15px] leading-[1.88] text-stone-500">
             <p>
               K Scan AI helps people find clothes from photos, identify outfits from screenshots, and turn visual
-              inspiration into a practical shopping path. Instead of trying to describe a jacket, dress, sneaker, or
+              inspiration, including inspiration captured with{" "}
+              <a
+                href="/wearables"
+                className="text-violet-600 underline decoration-violet-200 underline-offset-4 transition-colors hover:text-violet-700 hover:decoration-violet-400"
+              >
+                smart glasses
+              </a>
+              , into a practical shopping path. Instead of trying to describe a jacket, dress, sneaker, or
               full look with the right keywords, you can start with the image you already have.
             </p>
             <p>
