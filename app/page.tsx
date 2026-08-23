@@ -732,7 +732,7 @@ export default function Home() {
                 <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-stone-50 shadow-[0_18px_50px_rgba(28,22,16,0.08)]">
                   <div className="relative aspect-[4/5]">
                     <Image
-                      src="/kathleen-glam.jpg"
+                      src="/mirror-selfie.jpeg"
                       alt="Fashionable person taking a mirror selfie to illustrate K Scan AI Mirror Selfie wardrobe intake."
                       fill
                       sizes="(max-width: 1024px) 92vw, 40vw"
