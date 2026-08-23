@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>K Scan AI — Wearable Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0a0a; --glass:rgba(255,255,255,0.06); --glass-border:rgba(255,255,255,0.12);
+  --glass-strong:rgba(255,255,255,0.10); --hairline-strong:rgba(255,255,255,0.22);
+  --text:#fff; --text-secondary:rgba(255,255,255,0.55);
+  --text-dim:rgba(255,255,255,0.35); --cyan:#00D4FF; --cyan-dim:rgba(0,212,255,0.25);
+  --plum:#6B2D5C; --gold:#D4AF37; --success:#00E5A0; --warning:#FFB800; --error:#FF4757;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --ease-out:cubic-bezier(0.16,1,0.3,1); --ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+}
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html,body { width:100%; height:100%; overflow:hidden; background:var(--bg); font-family:var(--font); color:var(--text); }
+#app { position:relative; width:100%; height:100%; overflow:hidden; }
+:focus-visible { outline:2px solid var(--cyan); outline-offset:3px; border-radius:6px; }
+
+/* ===== WORLD ===== */
+.world-layer { position:absolute; inset:0; z-index:1; }
+.bg-image { position:absolute; inset:0; background:center/cover no-repeat; transition:opacity 0.6s ease, transform 10s ease, filter 1.2s ease; transform:scale(1.02); }
+.bg-image.scanning { transform:scale(1.06); }
+.bg-image.privacy-active { filter:blur(14px) brightness(0.45); }
+.bg-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.6) 100%); pointer-events:none; }
+.scene-vignette { position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity 1.5s; }
+.scene-vignette.vintage { background:radial-gradient(ellipse at 30% 50%,rgba(212,175,55,0.08) 0%,transparent 60%); }
+.scene-vignette.street { background:radial-gradient(ellipse at 70% 40%,rgba(0,212,255,0.06) 0%,transparent 60%); }
+.scene-vignette.airport { background:radial-gradient(ellipse at 50% 30%,rgba(255,255,255,0.04) 0%,transparent 60%); }
+.scene-vignette.active { opacity:1; }
+.privacy-overlay {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 30% 40% at 25% 30%,rgba(0,0,0,0.45) 0%,transparent 70%),
+    radial-gradient(ellipse 25% 35% at 75% 25%,rgba(0,0,0,0.4) 0%,transparent 70%),
+    radial-gradient(ellipse 20% 30% at 50% 20%,rgba(0,0,0,0.35) 0%,transparent 70%);
+  opacity:0; transition:opacity 0.6s ease; pointer-events:none;
+}
+.privacy-overlay.active { opacity:1; }
+.privacy-label { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:11px; font-weight:500; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-secondary); opacity:0; transition:opacity 0.4s; display:flex; align-items:center; gap:8px; pointer-events:none; }
+.privacy-label.active { opacity:1; }
+.privacy-dot { width:6px; height:6px; border-radius:50%; background:var(--success); animation:pulseDot 1.5s infinite; }
+@keyframes pulseDot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* ===== SCENE TRANSITION ===== */
+.scene-transition { position:absolute; inset:0; z-index:50; background:var(--bg); opacity:0; pointer-events:none; transition:opacity 0.8s ease; }
+.scene-transition.active { opacity:1; pointer-events:auto; }
+.scene-title { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; opacity:0; transition:all 0.8s var(--ease-out); }
+.scene-title.visible { opacity:1; }
+.scene-title h2 { font-size:clamp(18px,3vw,28px); font-weight:300; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:8px; }
+.scene-title p { font-size:13px; color:var(--text-secondary); letter-spacing:0.05em; }
+
+/* ===== SCAN TARGETS ===== */
+.targets-layer { position:absolute; inset:0; z-index:5; }
+.scan-target { position:absolute; width:90px; height:90px; transform:translate(-50%,-50%); cursor:pointer; display:flex; align-items:center; justify-content:center; background:none; border:none; padding:0; }
+.target-core { width:8px; height:8px; border-radius:50%; background:var(--cyan); opacity:0; transform:scale(0); transition:all 0.4s var(--ease-out); box-shadow:0 0 12px var(--cyan-dim),0 0 24px var(--cyan-dim); }
+.target-ring { position:absolute; inset:0; border:1.5px solid var(--cyan); border-radius:50%; opacity:0; transform:scale(0.6); transition:all 0.5s var(--ease-out); }
+.target-cross { position:absolute; inset:0; opacity:0; transition:opacity 0.3s; }
+.target-cross::before,.target-cross::after { content:''; position:absolute; background:var(--cyan); }
+.target-cross::before { width:1px; height:20px; left:50%; top:50%; transform:translate(-50%,-50%); }
+.target-cross::after { width:20px; height:1px; left:50%; top:50%; transform:translate(-50%,-50%); }
+.target-label { position:absolute; top:calc(100% + 8px); left:50%; transform:translateX(-50%); font-size:10px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--text); opacity:0; transition:all 0.3s; white-space:nowrap; text-shadow:0 1px 8px rgba(0,0,0,0.8); pointer-events:none; }
+.scan-target:hover .target-core,.scan-target:focus-visible .target-core,.scan-target.active .target-core { opacity:0.9; transform:scale(1); }
+.scan-target:hover .target-ring,.scan-target:focus-visible .target-ring,.scan-target.active .target-ring { opacity:0.5; transform:scale(1); }
+.scan-target:hover .target-label,.scan-target:focus-visible .target-label { opacity:1; }
+.scan-target.locked .target-core { opacity:1; transform:scale(1.2); background:var(--success); box-shadow:0 0 20px rgba(0,229,160,0.5); }
+.scan-target.locked .target-ring { opacity:1; border-color:var(--success); animation:targetLockRing 1.2s var(--ease-out) forwards; }
+.scan-target.locked .target-cross { opacity:1; }
+.scan-target.locked .target-label { opacity:0; }
+@keyframes targetLockRing { 0%{transform:scale(1);opacity:1} 50%{transform:scale(1.8);opacity:0.6} 100%{transform:scale(1.4);opacity:0.9} }
+@keyframes targetPulse { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.7} 50%{transform:translate(-50%,-50%) scale(1.1);opacity:1} }
+.scan-target.hint { animation:targetPulse 2.5s ease-in-out infinite; }
+.scan-target.hint .target-core { opacity:0.6; transform:scale(1); }
+.scan-target.hint .target-ring { opacity:0.3; transform:scale(1); }
+.scan-target.scanned .target-core { background:var(--success); opacity:0.5; }
+.scan-target.scanned .target-ring { border-color:var(--success); opacity:0.3; }
+
+/* ===== TOP BAR ===== */
+.top-bar { position:absolute; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:20px 28px; pointer-events:none; background:linear-gradient(180deg,rgba(0,0,0,0.35) 0%,transparent 100%); }
+.top-bar > * { pointer-events:auto; }
+.brand { display:flex; align-items:center; gap:10px; font-size:15px; font-weight:600; letter-spacing:0.08em; }
+.brand-mark { width:24px; height:24px; position:relative; }
+.brand-mark::before { content:'\2726'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:18px; }
+.live-badge { display:flex; align-items:center; gap:6px; font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-secondary); opacity:0; transform:translateY(-10px); transition:all 0.4s var(--ease-out); }
+.live-badge.visible { opacity:1; transform:translateY(0); }
+.live-dot { width:6px; height:6px; border-radius:50%; background:var(--cyan); animation:liveBlink 2s infinite; }
+@keyframes liveBlink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.top-meta { display:flex; align-items:center; gap:20px; font-size:12px; color:var(--text-secondary); opacity:0; transition:opacity 0.4s; }
+.top-meta.visible { opacity:1; }
+.confidence-pill { display:flex; align-items:center; gap:6px; background:var(--glass); border:1px solid var(--glass-border); padding:4px 10px; border-radius:100px; backdrop-filter:blur(10px); }
+.confidence-ring-mini { width:14px; height:14px; border-radius:50%; border:2px solid rgba(255,255,255,0.15); border-top-color:var(--cyan); animation:spin 1s linear infinite; }
+.confidence-ring-mini.done { animation:none; border-color:var(--success); }
+@keyframes spin { to{transform:rotate(360deg)} }
+.scene-indicator { font-size:11px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-dim); opacity:0; transition:opacity 0.4s; }
+.scene-indicator.visible { opacity:1; }
+
+/* ===== HUD ===== */
+.hud-layer { position:absolute; inset:0; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; padding:80px 20px; }
+.hud-content { pointer-events:auto; }
+.meta-hud { text-align:center; max-width:560px; }
+.meta-hud .hud-text { font-size:clamp(28px,5vw,44px); font-weight:300; line-height:1.25; letter-spacing:-0.02em; text-shadow:0 4px 30px rgba(0,0,0,0.6); opacity:0; transform:translateY(24px); transition:all 0.6s var(--ease-out); }
+.meta-hud .hud-text.visible { opacity:1; transform:translateY(0); }
+.meta-hud .hud-sub { margin-top:12px; font-size:15px; font-weight:400; color:var(--text-secondary); opacity:0; transform:translateY(16px); transition:all 0.5s var(--ease-out) 0.1s; }
+.meta-hud .hud-sub.visible { opacity:1; transform:translateY(0); }
+.voice-wave { display:flex; align-items:center; justify-content:center; gap:3px; height:40px; margin-top:24px; opacity:0; transition:opacity 0.4s; }
+.voice-wave.visible { opacity:1; }
+.voice-bar { width:3px; background:var(--cyan); border-radius:2px; animation:voiceBar 0.5s ease-in-out infinite alternate; }
+.voice-bar:nth-child(1){height:8px;animation-delay:0s}
+.voice-bar:nth-child(2){height:16px;animation-delay:0.1s}
+.voice-bar:nth-child(3){height:24px;animation-delay:0.2s}
+.voice-bar:nth-child(4){height:16px;animation-delay:0.15s}
+.voice-bar:nth-child(5){height:8px;animation-delay:0.05s}
+@keyframes voiceBar { from{transform:scaleY(0.4)} to{transform:scaleY(1)} }
+
+.google-hud { width:100%; max-width:480px; perspective:1000px; }
+.result-card { background:var(--glass); backdrop-filter:blur(24px) saturate(1.2); border:1px solid var(--glass-border); border-radius:24px; padding:28px; width:100%; opacity:0; transform:translateY(40px) scale(0.96) rotateX(8deg); transition:all 0.6s var(--ease-out); box-shadow:0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08); }
+.result-card.visible { opacity:1; transform:translateY(0) scale(1) rotateX(0deg); }
+.card-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:20px; }
+.card-product { display:flex; gap:16px; align-items:center; }
+.card-img-wrap { position:relative; width:80px; height:80px; border-radius:16px; overflow:hidden; background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02)); flex-shrink:0; }
+.card-img-wrap img { width:100%; height:100%; object-fit:cover; }
+.card-confidence-ring { position:absolute; inset:-4px; pointer-events:none; }
+.card-confidence-ring svg { width:100%; height:100%; transform:rotate(-90deg); }
+.card-confidence-ring circle { fill:none; stroke-width:3; }
+.card-confidence-ring .ring-track { stroke:rgba(255,255,255,0.1); }
+.card-confidence-ring .ring-fill { stroke:var(--cyan); stroke-linecap:round; stroke-dasharray:283; stroke-dashoffset:283; transition:stroke-dashoffset 1.2s var(--ease-out); }
+.card-confidence-ring .ring-fill.animate { stroke-dashoffset:var(--offset); }
+.card-info h3 { font-size:18px; font-weight:500; line-height:1.3; }
+.card-info .merchant { font-size:13px; color:var(--text-secondary); margin-top:2px; }
+.card-info .price { font-size:20px; font-weight:600; margin-top:6px; letter-spacing:-0.01em; }
+.card-badge { font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; border-radius:100px; background:rgba(0,212,255,0.12); color:var(--cyan); border:1px solid rgba(0,212,255,0.2); }
+.card-tier-label { font-size:11px; color:var(--text-dim); letter-spacing:0.05em; margin-bottom:12px; }
+.card-actions { display:flex; gap:10px; margin-top:20px; }
+.card-btn { flex:1; display:flex; align-items:center; justify-content:center; gap:6px; padding:12px; border-radius:14px; border:1px solid var(--glass-border); background:var(--glass-strong); color:var(--text); font-size:13px; font-weight:500; cursor:pointer; transition:all 0.2s; backdrop-filter:blur(10px); font-family:inherit; }
+.card-btn:hover { background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.25); }
+.card-btn.primary { background:var(--text); color:var(--bg); border-color:var(--text); }
+.card-btn .icon { font-size:14px; }
+
+/* ===== BRANCHING ===== */
+.branch-panel { position:absolute; left:50%; bottom:104px; transform:translateX(-50%) translateY(20px); z-index:30; display:flex; flex-direction:column; align-items:center; gap:10px; opacity:0; pointer-events:none; transition:all 0.5s var(--ease-out); }
+.branch-panel.visible { opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+.branch-label { font-size:11px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px; }
+.branch-options { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+.branch-btn { padding:10px 20px; border-radius:100px; border:1px solid var(--glass-border); background:var(--glass-strong); backdrop-filter:blur(16px); color:var(--text); font-size:13px; font-weight:500; cursor:pointer; transition:all 0.25s; white-space:nowrap; font-family:inherit; }
+.branch-btn:hover { background:rgba(255,255,255,0.15); border-color:var(--cyan); transform:translateY(-1px); }
+.branch-btn.highlight { background:rgba(0,212,255,0.15); border-color:var(--cyan); }
+
+/* ===== ELISE BUBBLE ===== */
+.elise-bubble { position:absolute; left:28px; bottom:104px; z-index:25; max-width:320px; background:var(--glass-strong); backdrop-filter:blur(20px) saturate(1.2); border:1px solid var(--glass-border); border-radius:20px; padding:16px 18px; opacity:0; transform:translateX(-20px); transition:all 0.5s var(--ease-out); box-shadow:0 12px 40px rgba(0,0,0,0.3); pointer-events:none; }
+.elise-bubble.visible { opacity:1; transform:translateX(0); }
+.elise-bubble-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.elise-bubble-avatar { width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,var(--plum),var(--cyan)); display:flex; align-items:center; justify-content:center; font-size:12px; }
+.elise-bubble-name { font-size:12px; font-weight:600; }
+.elise-bubble-text { font-size:13px; line-height:1.6; color:var(--text-secondary); }
+.elise-bubble-text strong { color:var(--text); font-weight:500; }
+
+/* ===== SCAN LINE / TOAST ===== */
+.scan-line { position:absolute; left:10%; right:10%; height:2px; background:linear-gradient(90deg,transparent,var(--cyan),transparent); box-shadow:0 0 30px rgba(0,212,255,0.4),0 0 60px rgba(0,212,255,0.2); opacity:0; pointer-events:none; z-index:15; }
+.scan-line.active { animation:scanSweep 1.5s ease-in-out; opacity:1; }
+@keyframes scanSweep { 0%{top:15%;opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{top:85%;opacity:0} }
+.save-toast { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); display:flex; align-items:center; gap:10px; background:var(--glass-strong); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:16px; padding:14px 24px; font-size:15px; font-weight:500; opacity:0; pointer-events:none; z-index:30; transition:all 0.4s var(--ease-out); }
+.save-toast.visible { opacity:1; }
+.save-toast .check { color:var(--success); font-size:18px; }
+
+/* ===== HANDOFF CHIP ===== */
+.handoff-chip { position:fixed; z-index:120; display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:16px; background:var(--glass-strong); backdrop-filter:blur(20px); border:1px solid var(--glass-border); box-shadow:0 12px 40px rgba(0,0,0,0.45); opacity:0; transform:translate(-50%,-50%) scale(1); pointer-events:none; transition:left 0.75s var(--ease-spring), top 0.75s var(--ease-spring), transform 0.75s var(--ease-spring), opacity 0.25s ease; }
+.handoff-chip img { width:32px; height:32px; border-radius:8px; object-fit:cover; }
+.handoff-chip span { font-size:13px; font-weight:500; white-space:nowrap; }
+.phone-frame.receiving { animation:phonePulse 0.6s var(--ease-out); }
+@keyframes phonePulse {
+  0%{ box-shadow:0 25px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08); }
+  40%{ box-shadow:0 25px 80px rgba(0,0,0,0.5),0 0 0 3px var(--cyan); }
+  100%{ box-shadow:0 25px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08); }
+}
+
+/* ===== PHONE ===== */
+.phone-companion { position:absolute; right:28px; top:50%; transform:translateY(-50%); z-index:25; width:300px; opacity:0; pointer-events:none; transition:all 0.6s var(--ease-out); }
+.phone-companion.visible { opacity:1; pointer-events:auto; }
+.phone-frame { background:#1a1a1a; border-radius:40px; padding:10px; box-shadow:0 25px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.08); position:relative; }
+.phone-notch { position:absolute; top:10px; left:50%; transform:translateX(-50%); width:100px; height:24px; background:#1a1a1a; border-radius:0 0 16px 16px; z-index:2; }
+.phone-screen { background:var(--bg); border-radius:32px; overflow:hidden; height:560px; position:relative; display:flex; flex-direction:column; }
+.phone-home-indicator { position:absolute; bottom:8px; left:50%; transform:translateX(-50%); width:120px; height:4px; background:rgba(255,255,255,0.3); border-radius:2px; }
+.phone-status-bar { display:flex; justify-content:space-between; align-items:center; padding:14px 24px 6px; font-size:13px; font-weight:600; }
+.phone-app { flex:1; overflow-y:auto; position:relative; }
+.phone-app::-webkit-scrollbar { display:none; }
+.phone-lock { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(180deg,#1a1a2e 0%,#0a0a0a 100%); transition:opacity 0.5s; }
+.phone-lock.hidden { opacity:0; pointer-events:none; }
+.lock-time { font-size:56px; font-weight:300; letter-spacing:-0.02em; }
+.lock-date { font-size:15px; color:var(--text-secondary); margin-top:4px; }
+.lock-notification { margin-top:40px; background:var(--glass-strong); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:16px; padding:14px 16px; width:90%; display:flex; align-items:center; gap:12px; cursor:pointer; transition:all 0.2s; animation:notifSlide 0.6s var(--ease-out); text-align:left; font-family:inherit; color:inherit; }
+@keyframes notifSlide { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.lock-notification:hover { background:rgba(255,255,255,0.12); }
+.notif-icon { width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--plum),var(--cyan)); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+.notif-text { font-size:13px; line-height:1.4; }
+.notif-text strong { font-weight:600; display:block; margin-bottom:2px; }
+.notif-text span { color:var(--text-secondary); font-size:12px; }
+.phone-result { padding:16px 20px 80px; opacity:0; transition:opacity 0.5s; }
+.phone-result.visible { opacity:1; }
+.phone-header { display:flex; align-items:center; gap:8px; margin-bottom:16px; font-size:15px; font-weight:600; }
+.phone-back { width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:var(--glass); border:1px solid var(--glass-border); color:var(--text); font-size:14px; cursor:pointer; transition:all 0.2s; font-family:inherit; flex-shrink:0; }
+.phone-back:hover { background:rgba(255,255,255,0.16); }
+.phone-product-img { width:100%; height:220px; border-radius:16px; object-fit:cover; margin-bottom:16px; background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02)); }
+.phone-product-name { font-size:20px; font-weight:600; }
+.phone-product-merchant { font-size:13px; color:var(--text-secondary); margin-top:2px; }
+.phone-product-price { font-size:28px; font-weight:700; margin-top:8px; letter-spacing:-0.02em; }
+.phone-product-match { display:inline-flex; align-items:center; gap:4px; margin-top:8px; font-size:12px; color:var(--success); background:rgba(0,229,160,0.1); padding:4px 10px; border-radius:100px; }
+.phone-actions { display:flex; gap:8px; margin-top:20px; }
+.phone-btn { flex:1; padding:12px; border-radius:12px; border:none; font-size:14px; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:inherit; }
+.phone-btn.shop { background:var(--text); color:var(--bg); }
+.phone-btn.save { background:var(--glass-strong); color:var(--text); border:1px solid var(--glass-border); }
+.phone-retailers { margin-top:20px; }
+.phone-retailers h4 { font-size:13px; font-weight:600; color:var(--text-secondary); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.05em; }
+.retailer-row { display:flex; align-items:center; justify-content:space-between; width:100%; padding:12px; border-radius:12px; background:var(--glass); margin-bottom:6px; border:1px solid var(--glass-border); color:var(--text); font-family:inherit; cursor:pointer; transition:all 0.2s; text-align:left; }
+.retailer-row:hover { background:rgba(255,255,255,0.1); border-color:var(--hairline-strong); }
+.retailer-name { font-size:14px; font-weight:500; }
+.retailer-price { font-size:14px; font-weight:600; }
+.retailer-tag { font-size:10px; padding:2px 8px; border-radius:100px; margin-left:8px; }
+.tag-resale { background:rgba(212,175,55,0.15); color:var(--gold); }
+.tag-retail { background:rgba(0,212,255,0.15); color:var(--cyan); }
+
+/* ===== ELISE PANEL ===== */
+.elise-panel { position:absolute; left:28px; top:50%; transform:translateY(-50%) translateX(-20px); z-index:26; width:340px; max-height:66vh; background:var(--glass-strong); backdrop-filter:blur(24px) saturate(1.2); border:1px solid var(--glass-border); border-radius:24px; padding:20px; opacity:0; pointer-events:none; transition:all 0.5s var(--ease-out); box-shadow:0 20px 60px rgba(0,0,0,0.3); display:flex; flex-direction:column; }
+.elise-panel.visible { opacity:1; pointer-events:auto; transform:translateY(-50%) translateX(0); }
+.elise-header { display:flex; align-items:center; gap:10px; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--glass-border); }
+.elise-avatar { width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,var(--plum),var(--cyan)); display:flex; align-items:center; justify-content:center; font-size:14px; }
+.elise-header span { font-size:15px; font-weight:600; flex:1; }
+.elise-close { width:28px; height:28px; border-radius:50%; border:none; background:var(--glass); color:var(--text); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; font-family:inherit; }
+.elise-close:hover { background:rgba(255,255,255,0.15); }
+.elise-chat { flex:1; overflow-y:auto; margin-bottom:12px; min-height:120px; }
+.elise-chat::-webkit-scrollbar { width:4px; }
+.elise-chat::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); border-radius:2px; }
+.chat-msg { margin-bottom:12px; max-width:90%; animation:msgIn 0.4s var(--ease-out); }
+@keyframes msgIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.chat-msg.user { margin-left:auto; text-align:right; }
+.chat-msg.user .msg-bubble { background:var(--cyan); color:var(--bg); border-bottom-right-radius:4px; }
+.msg-bubble { display:inline-block; padding:10px 14px; border-radius:16px; background:var(--glass); font-size:13px; line-height:1.5; border:1px solid var(--glass-border); }
+.chat-msg.elise .msg-bubble { border-bottom-left-radius:4px; }
+.elise-commands { display:flex; flex-wrap:wrap; gap:6px; }
+.elise-cmd { padding:8px 14px; border-radius:100px; border:1px solid var(--glass-border); background:var(--glass); color:var(--text); font-size:12px; font-weight:500; cursor:pointer; transition:all 0.2s; white-space:nowrap; font-family:inherit; }
+.elise-cmd:hover { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.25); }
+.typing-indicator { display:flex; align-items:center; gap:4px; padding:10px 14px; }
+.typing-indicator span { width:6px; height:6px; border-radius:50%; background:var(--text-dim); animation:typingBounce 1.4s infinite ease-in-out both; }
+.typing-indicator span:nth-child(1){animation-delay:-0.32s}
+.typing-indicator span:nth-child(2){animation-delay:-0.16s}
+@keyframes typingBounce { 0%,80%,100%{transform:scale(0.6)} 40%{transform:scale(1)} }
+
+/* ===== MEMORY / LOG / CONTROLS ===== */
+.memory-hud { position:absolute; top:80px; left:28px; z-index:24; background:var(--glass-strong); backdrop-filter:blur(16px); border:1px solid var(--glass-border); border-radius:16px; padding:14px 18px; max-width:220px; opacity:0; pointer-events:none; transition:all 0.4s; font-size:12px; }
+.memory-hud.visible { opacity:1; }
+.memory-hud h4 { font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-dim); margin-bottom:10px; }
+.memory-item { display:flex; align-items:center; gap:8px; padding:6px 0; border-bottom:1px solid var(--glass-border); }
+.memory-item:last-child { border-bottom:none; }
+.memory-item img { width:28px; height:28px; border-radius:6px; object-fit:cover; background:var(--glass); }
+.memory-item-info { flex:1; }
+.memory-item-name { font-size:12px; font-weight:500; }
+.memory-item-meta { font-size:10px; color:var(--text-dim); margin-top:1px; }
+.controls { position:absolute; top:20px; right:28px; z-index:31; display:flex; gap:8px; }
+.ctrl-btn { width:40px; height:40px; border-radius:12px; background:var(--glass-strong); backdrop-filter:blur(10px); border:1px solid var(--glass-border); color:var(--text); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; font-family:inherit; }
+.ctrl-btn:hover { background:rgba(255,255,255,0.15); }
+.ctrl-btn.active { background:var(--text); color:var(--bg); }
+.ctrl-btn small { font-size:10px; font-weight:600; }
+.scene-selector { position:absolute; top:68px; right:28px; z-index:31; opacity:0; pointer-events:none; transform:translateY(-10px); transition:all 0.3s; }
+.scene-selector.visible { opacity:1; pointer-events:auto; transform:translateY(0); }
+.scene-option { display:flex; align-items:center; gap:10px; padding:10px 16px; background:var(--glass-strong); backdrop-filter:blur(16px); border:1px solid var(--glass-border); border-radius:12px; margin-bottom:6px; cursor:pointer; transition:all 0.2s; font-size:13px; width:190px; color:var(--text); font-family:inherit; text-align:left; }
+.scene-option:hover { background:rgba(255,255,255,0.12); border-color:var(--cyan); }
+.scene-option.active { border-color:var(--cyan); background:rgba(0,212,255,0.1); }
+.scene-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.adventure-log { position:absolute; bottom:64px; left:28px; z-index:24; opacity:0; transition:opacity 0.4s; pointer-events:none; }
+.adventure-log.visible { opacity:1; }
+.adventure-log-item { display:flex; align-items:center; gap:8px; font-size:11px; color:var(--text-dim); margin-bottom:6px; animation:logIn 0.4s var(--ease-out); }
+@keyframes logIn { from{opacity:0;transform:translateX(-10px)} to{opacity:1;transform:translateX(0)} }
+.adventure-log-dot { width:5px; height:5px; border-radius:50%; background:var(--success); }
+
+/* ===== FILM PROGRESS ===== */
+.film-progress { position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:30; width:76%; max-width:560px; opacity:0; transition:opacity 0.5s; pointer-events:none; }
+.film-progress.visible { opacity:1; }
+.film-progress-bar { height:3px; background:rgba(255,255,255,0.1); border-radius:2px; overflow:hidden; }
+.film-progress-fill { height:100%; width:0%; background:var(--cyan); border-radius:2px; transition:width 0.3s linear; box-shadow:0 0 10px rgba(0,212,255,0.4); }
+.film-acts { display:flex; justify-content:space-between; margin-top:8px; font-size:10px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-dim); }
+.film-acts span { transition:color 0.3s; }
+.film-acts span.active { color:var(--cyan); }
+
+/* ===== TAGLINE / PROMPT ===== */
+.tagline-overlay { position:absolute; inset:0; z-index:40; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.7); backdrop-filter:blur(10px); opacity:0; pointer-events:none; transition:opacity 0.8s ease; }
+.tagline-overlay.visible { opacity:1; pointer-events:auto; }
+.tagline-content { text-align:center; padding:40px; }
+.tagline-logo { font-size:14px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; margin-bottom:20px; opacity:0; transform:translateY(20px); transition:all 0.6s var(--ease-out); }
+.tagline-text { font-size:clamp(20px,4vw,32px); font-weight:300; line-height:1.4; max-width:500px; margin:0 auto 32px; opacity:0; transform:translateY(20px); transition:all 0.6s var(--ease-out) 0.15s; }
+.tagline-btn { padding:14px 32px; border-radius:100px; border:1px solid var(--text); background:var(--text); color:var(--bg); font-size:14px; font-weight:600; cursor:pointer; opacity:0; transform:translateY(20px); transition:opacity 0.6s var(--ease-out) 0.3s, transform 0.6s var(--ease-out) 0.3s, background 0.25s ease, color 0.25s ease; font-family:inherit; }
+.tagline-btn:hover { background:transparent; color:var(--text); }
+.tagline-overlay.visible .tagline-logo,.tagline-overlay.visible .tagline-text,.tagline-overlay.visible .tagline-btn { opacity:1; transform:translateY(0); }
+.prompt-text { position:absolute; bottom:64px; left:50%; transform:translateX(-50%); font-size:14px; color:var(--text-secondary); letter-spacing:0.05em; opacity:0; transition:all 0.5s; z-index:16; pointer-events:none; background:var(--glass-strong); backdrop-filter:blur(10px); padding:10px 20px; border-radius:100px; border:1px solid var(--glass-border); text-align:center; }
+.prompt-text.visible { opacity:1; }
+
+/* ===== OUTFIT / HERO MOMENT ===== */
+.outfit-items { display:flex; flex-direction:column; gap:10px; margin-top:16px; }
+.outfit-item { display:flex; align-items:center; gap:12px; padding:10px; border-radius:12px; background:var(--glass); border:1px solid var(--glass-border); }
+.outfit-item img { width:48px; height:48px; border-radius:8px; object-fit:cover; flex-shrink:0; }
+.outfit-item-info { flex:1; }
+.outfit-item-info .name { font-size:13px; font-weight:500; }
+.outfit-item-info .price { font-size:12px; color:var(--text-secondary); margin-top:1px; }
+.hero-moment { position:absolute; inset:0; z-index:35; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); opacity:0; pointer-events:none; transition:opacity 0.6s; }
+.hero-moment.visible { opacity:1; }
+.hero-moment-content { text-align:center; padding:40px; }
+.hero-moment-title { font-size:clamp(24px,4vw,40px); font-weight:300; letter-spacing:-0.01em; margin-bottom:16px; }
+.hero-moment-sub { font-size:15px; color:var(--text-secondary); max-width:400px; margin:0 auto; line-height:1.6; }
+.hero-moment-stat { display:inline-flex; align-items:center; gap:8px; margin-top:20px; padding:10px 20px; border-radius:100px; background:var(--glass-strong); border:1px solid var(--glass-border); font-size:14px; font-weight:500; }
+.attribute-flicker { position:absolute; font-size:13px; font-weight:500; color:var(--cyan); text-shadow:0 0 20px rgba(0,212,255,0.5); pointer-events:none; opacity:0; transform:translateY(10px); transition:all 0.4s var(--ease-out); z-index:14; }
+.attribute-flicker.visible { opacity:1; transform:translateY(0); }
+
+/* ===== CONCEPT DISCLOSURE ===== */
+.concept-badge { position:absolute; bottom:20px; right:28px; z-index:29; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); background:var(--glass); border:1px solid var(--glass-border); padding:6px 12px; border-radius:100px; backdrop-filter:blur(10px); cursor:pointer; transition:all 0.2s; font-family:inherit; }
+.concept-badge:hover { color:var(--text-secondary); border-color:var(--hairline-strong); }
+.concept-note { position:absolute; bottom:56px; right:28px; z-index:29; max-width:330px; background:var(--glass-strong); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:16px; padding:16px 18px; font-size:12px; line-height:1.6; color:var(--text-secondary); opacity:0; pointer-events:none; transform:translateY(8px); transition:all 0.3s var(--ease-out); }
+.concept-note.visible { opacity:1; pointer-events:auto; transform:translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:900px) {
+  .phone-companion { right:50%; top:auto; bottom:16px; transform:translateX(50%); width:86%; max-width:320px; }
+  .phone-companion.visible { transform:translateX(50%) translateY(0); }
+  .phone-screen { height:440px; }
+  .elise-panel { left:50%; top:auto; bottom:16px; transform:translateX(-50%) translateY(20px); width:90%; max-width:340px; max-height:46vh; }
+  .elise-panel.visible { transform:translateX(-50%) translateY(0); }
+  .elise-bubble { left:50%; bottom:auto; top:72px; transform:translateX(-50%) translateY(-10px); width:88%; max-width:340px; }
+  .elise-bubble.visible { transform:translateX(-50%) translateY(0); }
+  .branch-panel { width:94%; bottom:auto; top:120px; transform:translateX(-50%) translateY(-10px); }
+  .branch-panel.visible { transform:translateX(-50%) translateY(0); }
+  .top-bar { padding:14px 16px; }
+  .scene-indicator { display:none; }
+  .controls { top:14px; right:16px; }
+  .scene-selector { right:16px; }
+  .memory-hud, .adventure-log { display:none; }
+  .film-progress { width:88%; bottom:56px; }
+  .concept-badge { bottom:16px; right:16px; }
+  .concept-note { bottom:50px; right:16px; left:16px; max-width:none; }
+  .prompt-text { bottom:100px; width:86%; }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+<div class="world-layer">
+  <div class="bg-image" id="bgImage"></div>
+  <div class="bg-overlay"></div>
+  <div class="scene-vignette" id="sceneVignette"></div>
+  <div class="privacy-overlay" id="privacyOverlay">
+    <div class="privacy-label" id="privacyLabel"><div class="privacy-dot"></div>Privacy Check</div>
+  </div>
+</div>
+
+<div class="scene-transition" id="sceneTransition">
+  <div class="scene-title" id="sceneTitle">
+    <h2 id="sceneTitleText">Vintage Consignment</h2>
+    <p id="sceneTitleSub">New York, NY</p>
+  </div>
+</div>
+
+<div class="scan-line" id="scanLine"></div>
+<div class="targets-layer" id="targetsLayer"></div>
+
+<div class="top-bar">
+  <div class="brand">
+    <div class="brand-mark"></div>
+    <span>K SCAN</span>
+    <div class="live-badge" id="liveBadge"><div class="live-dot"></div>Scanning</div>
+  </div>
+  <div class="top-meta" id="topMeta">
+    <div class="confidence-pill">
+      <div class="confidence-ring-mini" id="confidenceRingMini"></div>
+      <span id="confidenceText">Analyzing</span>
+    </div>
+    <span id="scanMode">Outfit</span>
+  </div>
+  <div class="scene-indicator" id="sceneIndicator">Vintage Consignment</div>
+</div>
+
+<div class="hud-layer" id="hudLayer" data-mode="meta">
+  <div class="hud-content" id="hudContent"></div>
+</div>
+
+<div class="branch-panel" id="branchPanel">
+  <div class="branch-label" id="branchLabel">What would you like to do?</div>
+  <div class="branch-options" id="branchOptions"></div>
+</div>
+
+<div class="elise-bubble" id="eliseBubble">
+  <div class="elise-bubble-header">
+    <div class="elise-bubble-avatar">&#10022;</div>
+    <div class="elise-bubble-name">Elise</div>
+  </div>
+  <div class="elise-bubble-text" id="eliseBubbleText"></div>
+</div>
+
+<div class="save-toast" id="saveToast">
+  <span class="check">&#10003;</span>
+  <span id="saveToastText">Saved to Closet</span>
+</div>
+
+<div class="hero-moment" id="heroMoment">
+  <div class="hero-moment-content">
+    <div class="hero-moment-title" id="heroMomentTitle"></div>
+    <div class="hero-moment-sub" id="heroMomentSub"></div>
+    <div class="hero-moment-stat" id="heroMomentStat"></div>
+  </div>
+</div>
+
+<div class="prompt-text" id="promptText">Try K Scan</div>
+
+<div class="phone-companion" id="phoneCompanion">
+  <div class="phone-frame" id="phoneFrame">
+    <div class="phone-notch"></div>
+    <div class="phone-screen" id="phoneScreen">
+      <div class="phone-status-bar"><span id="phoneTime">9:41</span><span>5G</span></div>
+      <div class="phone-app" id="phoneApp">
+        <div class="phone-lock" id="phoneLock">
+          <div class="lock-time" id="lockTime">9:41</div>
+          <div class="lock-date" id="lockDate">Sunday, August 23</div>
+          <button class="lock-notification" id="lockNotification" style="display:none;">
+            <div class="notif-icon">&#10022;</div>
+            <div class="notif-text"><strong>K Scan</strong><span id="notifPreview">New scan result</span></div>
+          </button>
+        </div>
+        <div class="phone-result" id="phoneResult"></div>
+      </div>
+    </div>
+    <div class="phone-home-indicator"></div>
+  </div>
+</div>
+
+<div class="elise-panel" id="elisePanel">
+  <div class="elise-header">
+    <div class="elise-avatar">&#10022;</div>
+    <span>Elise</span>
+    <button class="elise-close" id="eliseClose" aria-label="Close Elise">&times;</button>
+  </div>
+  <div class="elise-chat" id="eliseChat"></div>
+  <div class="elise-commands" id="eliseCommands"></div>
+</div>
+
+<div class="memory-hud" id="memoryHud">
+  <h4>Session Memory</h4>
+  <div id="memoryList"></div>
+</div>
+
+<div class="adventure-log" id="adventureLog"></div>
+
+<div class="controls">
+  <button class="ctrl-btn" id="sceneBtn" title="Change scene" aria-label="Change scene">&#9678;</button>
+  <button class="ctrl-btn" id="modeToggle" title="Toggle platform (M)"><small>META</small></button>
+  <button class="ctrl-btn" id="audioToggle" title="Toggle audio (A)" aria-label="Toggle audio">&#128266;</button>
+  <button class="ctrl-btn" id="loopToggle" title="Toggle loop (L)" aria-label="Toggle loop">&#8635;</button>
+  <button class="ctrl-btn" id="filmToggle" title="Play demo (Space)" aria-label="Play demo">&#9654;</button>
+  <button class="ctrl-btn" id="resetBtn" title="Reset (R)" aria-label="Reset">&#8634;</button>
+</div>
+
+<div class="scene-selector" id="sceneSelector"></div>
+
+<div class="film-progress" id="filmProgress">
+  <div class="film-progress-bar"><div class="film-progress-fill" id="filmProgressFill"></div></div>
+  <div class="film-acts"><span>Discovery</span><span>Intelligence</span><span>Elise</span><span>Continuity</span><span>Payoff</span></div>
+</div>
+
+<button class="concept-badge" id="conceptBadge">Concept Simulation</button>
+<div class="concept-note" id="conceptNote">
+  Product concept preview. Runs entirely in the browser &mdash; no camera, no wearable hardware,
+  no live backend. Brands, prices, imagery and match results are illustrative fixtures, not live
+  inventory or real offers. Privacy masking is represented here; on-device implementation is
+  tracked separately.
+</div>
+
+<div class="tagline-overlay visible" id="taglineOverlay">
+  <div class="tagline-content">
+    <div class="tagline-logo">K SCAN AI</div>
+    <div class="tagline-text">See it. Understand it.<br>Find it. Act on it.</div>
+    <button class="tagline-btn" id="startBtn">Enter Experience</button>
+  </div>
+</div>
+
+</div>
+<script>
+'use strict';
+
+/* ===================== AUDIO ===================== */
+let audioCtx=null, audioEnabled=true;
+function initAudio(){ if(!audioCtx){ try{ audioCtx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } }
+function playTone(freq,type,duration,vol){
+  if(!audioEnabled||!audioCtx) return;
+  vol=vol||0.08;
+  try{
+    const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+    osc.type=type; osc.frequency.setValueAtTime(freq,audioCtx.currentTime);
+    gain.gain.setValueAtTime(vol,audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+duration);
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime+duration);
+  }catch(e){}
+}
+function toneAck(){ playTone(880,'sine',0.12,0.06); playTone(1100,'sine',0.15,0.04); }
+function toneCapture(){ playTone(1200,'sine',0.06,0.04); }
+function toneSuccess(){ playTone(523,'sine',0.15,0.06); setTimeout(function(){playTone(659,'sine',0.15,0.06);},100); setTimeout(function(){playTone(784,'sine',0.25,0.06);},200); }
+function toneSave(){ playTone(880,'sine',0.1,0.05); setTimeout(function(){playTone(1100,'sine',0.2,0.05);},100); }
+function toneTransition(){ playTone(440,'sine',0.3,0.04); setTimeout(function(){playTone(330,'sine',0.4,0.04);},200); }
+
+/* ===================== SCENES ===================== */
+const SCENES={
+  vintage:{ id:'vintage', name:'Vintage Consignment', location:'New York, NY',
+    bg:'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1920&q=80',
+    vignette:'vintage', dot:'var(--gold)', targets:['jacket','boots','bag','scarf'] },
+  street:{ id:'street', name:'Street Style', location:'Shibuya, Tokyo',
+    bg:'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=1920&q=80',
+    vignette:'street', dot:'var(--cyan)', targets:['outfit','sunglasses','sneakers'] },
+  airport:{ id:'airport', name:'Airport Terminal', location:'Heathrow, London',
+    bg:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80',
+    vignette:'airport', dot:'var(--text)', targets:['travelSneakers','luggage','watch'] }
+};
+
+/* ===================== PRODUCTS ===================== */
+const PRODUCTS={
+  jacket:{ id:'jacket', name:'Brown Suede Bomber', category:'Outerwear', confidence:91,
+    scene:'vintage', position:{left:38,top:44}, attrs:['Suede','Cropped','Bomber'],
+    exact:{name:'AllSaints Suede Bomber',price:499,merchant:'AllSaints',image:'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80'},
+    close:{name:'Aritzia Suede Bomber',price:289,merchant:'Aritzia',image:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80'},
+    similar:{name:'Mango Brown Leather Jacket',price:179,merchant:'Mango',image:'https://images.unsplash.com/photo-1520975661595-6453be3f7070?w=400&q=80'},
+    affordable:{name:'ASOS Faux Suede Bomber',price:89,merchant:'ASOS',image:'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80'},
+    resale:{name:'Pre-owned Suede Bomber',price:165,merchant:'The RealReal',image:'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80'},
+    elise:{
+      what:"That's a cropped brown suede bomber jacket. The silhouette is very on-trend \u2014 boxy cut, hits right at the waist.",
+      cheaper:"I found a similar faux suede version for $89 at ASOS. There's also a leather alternative at Mango for $179.",
+      suit:"This would look excellent with your black jeans. The cropped length hits at exactly the right spot to elongate your legs.",
+      own:"You own two black jackets, but nothing in brown suede. This would fill a nice gap in your wardrobe.",
+      shoes:"Black combat boots or clean white sneakers would work perfectly. Your Dr. Martens would be the ideal match.",
+      save:"Saved to your Closet. I've tagged it under 'Jackets' and 'Want'."
+    }},
+  boots:{ id:'boots', name:'Black Combat Boots', category:'Footwear', confidence:94,
+    scene:'vintage', position:{left:52,top:76}, attrs:['Leather','Lug sole','Combat'],
+    exact:{name:'Dr. Martens Jadon',price:220,merchant:'Dr. Martens',image:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80'},
+    close:{name:'Steve Madden Troopa',price:99,merchant:'Steve Madden',image:'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=400&q=80'},
+    similar:{name:'ASOS Chunky Boots',price:65,merchant:'ASOS',image:'https://images.unsplash.com/photo-1605812860427-4024433a70fd?w=400&q=80'},
+    affordable:{name:'H&M Combat Boots',price:49,merchant:'H&M',image:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80'},
+    resale:{name:'Pre-owned Docs',price:140,merchant:'Depop',image:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80'},
+    elise:{
+      what:"Those are black leather combat boots with a lug sole \u2014 very likely Dr. Martens or a close style match.",
+      cheaper:"I found similar chunky boots at ASOS for $65, and H&M has a pair for $49.",
+      suit:"These work with almost everything you own. They'd especially complement the cropped jeans in your Closet.",
+      own:"You already own a pair of black combat boots \u2014 the Dr. Martens Jadon. These look very similar.",
+      shoes:"Since these are boots, try pairing them with a midi skirt or cropped trousers to show them off.",
+      save:"Saved to your Closet. Noting that you may already own something very similar."
+    }},
+  bag:{ id:'bag', name:'Leather Crossbody', category:'Accessory', confidence:87,
+    scene:'vintage', position:{left:62,top:52}, attrs:['Leather','Structured','Crossbody'],
+    exact:{name:'Bottega Veneta Andiamo',price:3200,merchant:'Bottega Veneta',image:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80'},
+    close:{name:'Coach Tabby',price:395,merchant:'Coach',image:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&q=80'},
+    similar:{name:'Mango Crossbody',price:79,merchant:'Mango',image:'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=400&q=80'},
+    affordable:{name:'Zara City Bag',price:45,merchant:'Zara',image:'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=400&q=80'},
+    resale:{name:'Vintage Leather Bag',price:120,merchant:'The RealReal',image:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80'},
+    elise:{
+      what:"That looks like a structured leather crossbody. The weave detail suggests a Bottega Veneta Andiamo or a similar luxury style.",
+      cheaper:"For a similar look, Mango has a structured crossbody for $79, and Zara has one for $45.",
+      suit:"This would elevate any casual outfit. It pairs beautifully with the neutral tones in your summer Dressing Room.",
+      own:"You don't own anything in this exact style. Your bags tend to be larger totes \u2014 this would be a nice evening option.",
+      shoes:"This bag works with everything, but it would look especially sharp with heeled boots.",
+      save:"Saved to your Closet under 'Bags' and 'Evening'."
+    }},
+  scarf:{ id:'scarf', name:'Cashmere Scarf', category:'Accessory', confidence:88,
+    scene:'vintage', position:{left:28,top:38}, attrs:['Cashmere','Oversized','Camel'],
+    exact:{name:'Acne Studios Canada',price:180,merchant:'Acne Studios',image:'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400&q=80'},
+    close:{name:'Everlane Cashmere',price:98,merchant:'Everlane',image:'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=400&q=80'},
+    similar:{name:'Uniqlo Knit Scarf',price:29,merchant:'Uniqlo',image:'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400&q=80'},
+    affordable:{name:'H&M Woven Scarf',price:17,merchant:'H&M',image:'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=400&q=80'},
+    resale:{name:'Pre-owned Acne',price:85,merchant:'Vestiaire',image:'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400&q=80'},
+    elise:{
+      what:"That's an oversized camel cashmere scarf. Very classic, very versatile.",
+      cheaper:"Everlane has a similar cashmere scarf for $98. Uniqlo's version is $29.",
+      suit:"Camel works beautifully with your skin tone. It would pair well with the brown suede jacket you saved earlier.",
+      own:"You have a grey wool scarf, but nothing in camel cashmere.",
+      shoes:"Scarves are universal, but this would look especially elegant with ankle boots.",
+      save:"Saved to your Closet. Tagged under 'Accessories'."
+    }},
+  outfit:{ id:'outfit', name:'Festival Look', category:'Outfit', confidence:85, isOutfit:true,
+    scene:'street', position:{left:48,top:50}, attrs:['Denim','Leather','Boots'],
+    items:[
+      {name:'Denim Jacket',price:425,merchant:'Denim Tears',image:'https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=400&q=80'},
+      {name:'Mini Skirt',price:198,merchant:'Agolde',image:'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&q=80'},
+      {name:'Combat Boots',price:220,merchant:'Dr. Martens',image:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80'}
+    ],
+    elise:{
+      what:"That's a full festival look \u2014 denim jacket, leather mini skirt, and combat boots.",
+      cheaper:"I can break this down. The jacket has similar options from $89. The skirt from $45. Boots from $49.",
+      suit:"This entire look would suit you well. The proportions work with your height.",
+      own:"You own similar boots, but not this exact jacket and skirt combination. I can build this in a Dressing Room.",
+      shoes:"The boots are the anchor here. Your existing Docs would work perfectly.",
+      save:"I've saved the full look to a new Dressing Room called 'Festival'. You can edit it on your phone."
+    }},
+  sunglasses:{ id:'sunglasses', name:'Oversized Sunglasses', category:'Accessory', confidence:89,
+    scene:'street', position:{left:35,top:32}, attrs:['Acetate','Oversized','Black'],
+    exact:{name:'Saint Laurent SL 461',price:405,merchant:'Saint Laurent',image:'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80'},
+    close:{name:'Ray-Ban Wayfarer',price:163,merchant:'Ray-Ban',image:'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&q=80'},
+    similar:{name:'Quay Oversized',price:65,merchant:'Quay',image:'https://images.unsplash.com/photo-1577803645773-f96470509666?w=400&q=80'},
+    affordable:{name:'AJ Morgan Frames',price:24,merchant:'ASOS',image:'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80'},
+    resale:{name:'Pre-owned YSL',price:280,merchant:'Vestiaire',image:'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80'},
+    elise:{
+      what:"Those are black oversized acetate sunglasses \u2014 bold and architectural.",
+      cheaper:"Quay has a similar oversized shape for $65, and ASOS has budget options starting at $24.",
+      suit:"Oversized frames suit your face shape. They add instant polish to any outfit.",
+      own:"You own one pair of aviators, but no oversized black frames.",
+      shoes:"These would look especially cool with an all-black outfit and combat boots.",
+      save:"Saved to your Closet. Tagged under 'Accessories' and 'Summer'."
+    }},
+  sneakers:{ id:'sneakers', name:'White Trainers', category:'Footwear', confidence:92,
+    scene:'street', position:{left:58,top:72}, attrs:['Leather','Minimal','Low-top'],
+    exact:{name:'Common Projects Achilles',price:425,merchant:'Common Projects',image:'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&q=80'},
+    close:{name:'Veja Campo',price:175,merchant:'Veja',image:'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400&q=80'},
+    similar:{name:'Nike Air Force 1',price:110,merchant:'Nike',image:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80'},
+    affordable:{name:'Adidas Stan Smith',price:85,merchant:'Adidas',image:'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&q=80'},
+    resale:{name:'Pre-owned Achilles',price:280,merchant:'Grailed',image:'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&q=80'},
+    elise:{
+      what:"Those are clean white leather trainers \u2014 a minimalist low-top silhouette.",
+      cheaper:"Veja has a similar clean look for $175. Air Force 1s are $110 and Stan Smiths are $85.",
+      suit:"White trainers are a staple for you \u2014 and they'd balance the brown suede bomber you saved earlier.",
+      own:"You own a pair of white low-tops from last year. These look nearly identical.",
+      shoes:"These are the shoes. Pair them with cropped denim to let the silhouette show.",
+      save:"Saved to your Closet. Flagging that you may already own a very similar pair."
+    }},
+  travelSneakers:{ id:'travelSneakers', name:'Travel Sneakers', category:'Footwear', confidence:90,
+    scene:'airport', position:{left:42,top:68}, attrs:['Knit','Lightweight','Slip-on'],
+    exact:{name:'Allbirds Tree Runners',price:110,merchant:'Allbirds',image:'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400&q=80'},
+    close:{name:"Rothy's The Sneaker",price:125,merchant:"Rothy's",image:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80'},
+    similar:{name:'Adidas Ultraboost',price:180,merchant:'Adidas',image:'https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?w=400&q=80'},
+    affordable:{name:'Vessi Cityscape',price:135,merchant:'Vessi',image:'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400&q=80'},
+    resale:{name:'Pre-owned Allbirds',price:65,merchant:'Poshmark',image:'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400&q=80'},
+    elise:{
+      what:"Those look like lightweight knit travel sneakers \u2014 built for airport comfort.",
+      cheaper:"Vessi has waterproof travel sneakers for $135. Poshmark has pre-owned pairs from $65.",
+      suit:"Ideal for travel. Lightweight, breathable, and they slip off easily at security.",
+      own:"You don't own dedicated travel sneakers. These would be a smart addition for your next trip.",
+      shoes:"These are the shoes. For the rest, I'd suggest your navy chinos and the grey tee from your Closet.",
+      save:"Saved to your 'Travel' collection. I'll remind you before your next trip."
+    }},
+  luggage:{ id:'luggage', name:'Carry-On Luggage', category:'Travel', confidence:86,
+    scene:'airport', position:{left:55,top:55}, attrs:['Polycarbonate','Grooved','Carry-on'],
+    exact:{name:'Rimowa Essential',price:750,merchant:'Rimowa',image:'https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=400&q=80'},
+    close:{name:'Away The Carry-On',price:275,merchant:'Away',image:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80'},
+    similar:{name:'Monos Carry-On',price:255,merchant:'Monos',image:'https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=400&q=80'},
+    affordable:{name:'Basics Hardshell',price:75,merchant:'Amazon',image:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80'},
+    resale:{name:'Pre-owned Rimowa',price:450,merchant:'eBay',image:'https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=400&q=80'},
+    elise:{
+      what:"That's a polycarbonate hard-shell carry-on. The grooved shell suggests a premium luggage brand.",
+      cheaper:"Away has a similar hard-shell for $275. Monos is $255.",
+      suit:"Hard-shell is the right call for your travel style \u2014 lightweight and durable.",
+      own:"You have a soft duffel but no hard-shell carry-on. This would be an upgrade.",
+      shoes:"Pair it with the travel sneakers and a navy blazer for an easy airport look.",
+      save:"Saved to your 'Travel' collection alongside those sneakers."
+    }},
+  watch:{ id:'watch', name:'Minimal Watch', category:'Accessory', confidence:93,
+    scene:'airport', position:{left:48,top:42}, attrs:['Steel','Mesh band','Bauhaus'],
+    exact:{name:'NOMOS Tangente',price:2100,merchant:'NOMOS',image:'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&q=80'},
+    close:{name:'Daniel Wellington Classic',price:199,merchant:'Daniel Wellington',image:'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=400&q=80'},
+    similar:{name:'MVMT Minimal',price:98,merchant:'MVMT',image:'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&q=80'},
+    affordable:{name:'Timex Weekender',price:45,merchant:'Timex',image:'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=400&q=80'},
+    resale:{name:'Pre-owned Tangente',price:1400,merchant:'Chrono24',image:'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&q=80'},
+    elise:{
+      what:"That's a minimalist silver watch on a mesh band \u2014 very Bauhaus-inspired.",
+      cheaper:"Daniel Wellington has a similar look for $199. MVMT is $98, Timex Weekender is $45.",
+      suit:"A minimal silver watch is timeless. It works for travel, meetings, and evenings out.",
+      own:"You own a smartwatch but no classic analog piece.",
+      shoes:"Pair it with the travel sneakers for a smart-casual airport look.",
+      save:"Saved to your Closet. I'll suggest this when you're building travel outfits."
+    }}
+};
+
+const TIER_ORDER=['exact','close','similar','affordable','resale'];
+const TIER_LABELS={exact:'Best Match',close:'Close Match',similar:'Similar Style',affordable:'More Affordable',resale:'Resale Find'};
+const ELISE_COMMANDS=[
+  {key:'what',label:'What is this?'},
+  {key:'cheaper',label:'Anything cheaper?'},
+  {key:'suit',label:'Would this suit me?'},
+  {key:'own',label:'Do I own anything similar?'},
+  {key:'shoes',label:'What shoes would work?'},
+  {key:'save',label:'Save to Closet'}
+];
+const RELATED_SUGGESTIONS=[
+  {saved:'jacket',target:'boots',text:'Those <strong>{target}</strong> would work perfectly with the <strong>{saved}</strong> you saved.'},
+  {saved:'jacket',target:'scarf',text:'That <strong>{target}</strong> would complement the <strong>{saved}</strong> you saved beautifully.'},
+  {saved:'jacket',target:'sneakers',text:'Those <strong>{target}</strong> would work with the <strong>{saved}</strong> you saved earlier.'},
+  {saved:'jacket',target:'outfit',text:'This whole look builds on the <strong>{saved}</strong> you already saved.'},
+  {saved:'boots',target:'bag',text:'That <strong>{target}</strong> would finish the look with your saved <strong>{saved}</strong>.'},
+  {saved:'sneakers',target:'watch',text:'A <strong>{target}</strong> would sharpen up the <strong>{saved}</strong> you saved.'},
+  {saved:'travelSneakers',target:'luggage',text:'That <strong>{target}</strong> pairs naturally with the <strong>{saved}</strong> in your Travel collection.'}
+];
+
+/* ===================== SESSION MEMORY ===================== */
+class SessionMemory {
+  constructor(){ this.clear(); }
+  addScan(product,tier){ this.scannedItems.push({product:product,tier:tier,time:Date.now()}); }
+  addSave(product,tier){ this.savedItems.push({product:product,tier:tier,time:Date.now()}); }
+  hasSaved(id){ return this.savedItems.some(function(s){ return s.product.id===id; }); }
+  hasScanned(id){ return this.scannedItems.some(function(s){ return s.product.id===id; }); }
+  getRecentSaves(n){ return this.savedItems.slice(-(n||3)).reverse(); }
+  getLastSave(){ return this.savedItems[this.savedItems.length-1]||null; }
+  clear(){
+    this.scannedItems=[]; this.savedItems=[]; this.budgetPreference=null;
+    this.activeLooks=[]; this.eliseContext=[]; this.phoneHandoffs=[]; this.dismissedItems=[];
+    this.currentScene='vintage'; this.sceneHistory=[];
+  }
+}
+
+/* ===================== TIMELINE ===================== */
+class TimelineController {
+  constructor(name){ this.name=name||'timeline'; this.events=[]; this.running=false; this.paused=false; this.startTime=0; this.elapsed=0; this.rafId=null; }
+  schedule(delay,fn,label){ this.events.push({delay:delay,fn:fn,label:label||'',executed:false}); return this; }
+  play(){ if(this.running) return this; this.running=true; this.paused=false; this.startTime=performance.now()-this.elapsed; this.tick(); return this; }
+  pause(){ if(!this.running||this.paused) return; this.paused=true; if(this.rafId) cancelAnimationFrame(this.rafId); }
+  resume(){ if(!this.paused) return; this.paused=false; this.startTime=performance.now()-this.elapsed; this.tick(); }
+  stop(){ this.running=false; this.paused=false; this.elapsed=0; this.events.forEach(function(e){ e.executed=false; }); if(this.rafId) cancelAnimationFrame(this.rafId); this.rafId=null; }
+  reset(){ this.stop(); this.events=[]; }
+  tick(){
+    if(!this.running||this.paused) return;
+    this.elapsed=performance.now()-this.startTime;
+    for(let i=0;i<this.events.length;i++){
+      const e=this.events[i];
+      if(!e.executed && this.elapsed>=e.delay){
+        e.executed=true;
+        try{ e.fn(); }catch(err){ console.error('['+this.name+'] '+e.label,err); }
+      }
+    }
+    if(this.events.every(function(e){ return e.executed; })){ this.running=false; this.rafId=null; return; }
+    const self=this;
+    this.rafId=requestAnimationFrame(function(){ self.tick(); });
+  }
+}
+
+/* ===================== SIMULATOR ===================== */
+const $=function(id){ return document.getElementById(id); };
+
+class Simulator {
+  constructor(){
+    this.memory=new SessionMemory();
+    this.timeline=new TimelineController('film');
+    this.scanTimeline=new TimelineController('scan');
+    this.sceneTimeline=new TimelineController('scene');
+    this.handoffTimeline=new TimelineController('handoff');
+    this.state='idle';
+    this.mode='meta';
+    this.currentProduct=null;
+    this.currentTier='exact';
+    this.filmMode=false;
+    this.filmPaused=false;
+    this.loopEnabled=true;
+    this.endScreen=false;
+    this.currentScene='vintage';
+    this.idleTimer=null;
+    this.progressInterval=null;
+    this.loopTimer=null;
+    this.FILM_TOTAL=88000;
+    this.init();
+  }
+
+  allTimelines(){ return [this.timeline,this.scanTimeline,this.sceneTimeline,this.handoffTimeline]; }
+
+  /* ---------- FIX 5C: preload first-film critical imagery ---------- */
+  preloadImages(){
+    const urls=[];
+    Object.keys(SCENES).forEach(function(k){ urls.push(SCENES[k].bg); });
+    const hero=[['jacket',TIER_ORDER],['sneakers',['exact','affordable']]];
+    hero.forEach(function(pair){
+      const prod=PRODUCTS[pair[0]];
+      if(!prod) return;
+      pair[1].forEach(function(t){ if(prod[t]&&prod[t].image) urls.push(prod[t].image); });
+    });
+    urls.filter(function(u,i,a){ return u && a.indexOf(u)===i; }).forEach(function(u){
+      try{ const img=new Image(); img.decoding='async'; img.src=u; }catch(e){}
+    });
+  }
+
+  init(){
+    this.preloadImages();
+    this.renderSceneSelector();
+    this.setupEvents();
+    this.updateClock();
+    setInterval(this.updateClock.bind(this),30000);
+    this.loadScene('vintage',false);
+    $('loopToggle').classList.toggle('active',this.loopEnabled);
+  }
+
+  setupEvents(){
+    const self=this;
+    $('startBtn').addEventListener('click',function(){
+      initAudio();
+      if(self.endScreen){ self.enterExploreMode(); return; }
+      $('taglineOverlay').classList.remove('visible');
+      setTimeout(function(){ self.startFilmMode(); },600);
+    });
+    $('modeToggle').addEventListener('click',this.toggleMode.bind(this));
+    $('audioToggle').addEventListener('click',this.toggleAudio.bind(this));
+    $('loopToggle').addEventListener('click',this.toggleLoop.bind(this));
+    $('resetBtn').addEventListener('click',this.reset.bind(this));
+    $('eliseClose').addEventListener('click',this.closeElise.bind(this));
+    $('sceneBtn').addEventListener('click',this.toggleSceneSelector.bind(this));
+    $('lockNotification').addEventListener('click',this.openPhoneResult.bind(this));
+    $('conceptBadge').addEventListener('click',function(){ $('conceptNote').classList.toggle('visible'); });
+    $('filmToggle').addEventListener('click',function(){
+      initAudio();
+      if(self.filmMode) self.toggleFilmPause(); else self.startFilmMode();
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){ self.closeElise(); self.hideSceneSelector(); $('conceptNote').classList.remove('visible'); }
+      if(e.key==='m'||e.key==='M') self.toggleMode();
+      if(e.key==='a'||e.key==='A') self.toggleAudio();
+      if(e.key==='l'||e.key==='L') self.toggleLoop();
+      if(e.key==='r'||e.key==='R') self.reset();
+      if(e.key===' '){ e.preventDefault(); initAudio(); if(self.filmMode) self.toggleFilmPause(); else self.startFilmMode(); }
+    });
+    ['click','touchstart','keydown'].forEach(function(ev){
+      document.addEventListener(ev,function(){ self.resetIdleTimer(); },{passive:true});
+    });
+    this.resetIdleTimer();
+  }
+
+  /* ---------- idle / proactive Elise (FIX 5) ---------- */
+  resetIdleTimer(){
+    const self=this;
+    if(this.idleTimer) clearTimeout(this.idleTimer);
+    this.idleTimer=setTimeout(function(){ self.onIdle(); },8000);
+  }
+  onIdle(){
+    if(this.state!=='idle') return;
+    this.tryProactiveElise();
+  }
+  tryProactiveElise(){
+    if(this.state!=='idle') return;
+    const self=this;
+    const lastSave=this.memory.getLastSave();
+    if(!lastSave) return;
+    const unscanned=SCENES[this.currentScene].targets
+      .map(function(pid){ return PRODUCTS[pid]; })
+      .filter(function(p){ return p && !self.memory.hasScanned(p.id); });
+    if(!unscanned.length) return;
+    const rule=RELATED_SUGGESTIONS.find(function(r){
+      return r.saved===lastSave.product.id && unscanned.some(function(p){ return p.id===r.target; });
+    });
+    if(rule){
+      const target=PRODUCTS[rule.target];
+      this.showEliseBubble(rule.text.replace('{target}',target.name).replace('{saved}',lastSave.product.name));
+      return;
+    }
+    if(!this.filmMode){
+      const p=unscanned[0];
+      this.showEliseBubble('You have <strong>'+this.memory.savedItems.length+
+        '</strong> saved this session. Want me to look at that <strong>'+p.name+'</strong> next?');
+    }
+  }
+
+  updateClock(){
+    const now=new Date();
+    const time=now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true});
+    const date=now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+    $('phoneTime').textContent=time; $('lockTime').textContent=time; $('lockDate').textContent=date;
+  }
+
+  /* ---------- scenes (FIX 3 + FIX 6) ---------- */
+  renderSceneSelector(){
+    const self=this;
+    const container=$('sceneSelector');
+    container.innerHTML=Object.keys(SCENES).map(function(k){
+      const s=SCENES[k];
+      return '<button class="scene-option'+(s.id===self.currentScene?' active':'')+'" data-scene="'+s.id+'">'+
+        '<span class="scene-dot" style="background:'+s.dot+';"></span><span>'+s.name+'</span></button>';
+    }).join('');
+    container.querySelectorAll('.scene-option').forEach(function(el){
+      el.addEventListener('click',function(){ self.hideSceneSelector(); self.manualSceneChange(el.dataset.scene); });
+    });
+  }
+  toggleSceneSelector(){ $('sceneSelector').classList.toggle('visible'); }
+  hideSceneSelector(){ $('sceneSelector').classList.remove('visible'); }
+
+  loadScene(sceneId,animate){
+    const scene=SCENES[sceneId];
+    if(!scene) return;
+    const self=this;
+    this.currentScene=sceneId;
+    this.memory.currentScene=sceneId;
+    this.memory.sceneHistory.push(sceneId);
+    this.scanTimeline.stop();
+    const bg=$('bgImage'), vignette=$('sceneVignette'), indicator=$('sceneIndicator');
+    const apply=function(){
+      bg.style.backgroundImage="url('"+scene.bg+"')";
+      bg.style.opacity='1';
+      vignette.className='scene-vignette '+scene.vignette+' active';
+      indicator.textContent=scene.name;
+      indicator.classList.add('visible');
+      self.renderTargets();
+      self.renderSceneSelector();
+    };
+    if(!animate){ apply(); this.state='idle'; return; }
+    this.state='transitioning';
+    const trans=$('sceneTransition'), title=$('sceneTitle');
+    $('sceneTitleText').textContent=scene.name;
+    $('sceneTitleSub').textContent=scene.location;
+    const t=this.sceneTimeline; t.reset();
+    t.schedule(0,function(){ trans.classList.add('active'); toneTransition(); },'fade-in');
+    t.schedule(300,function(){ title.classList.add('visible'); },'title-in');
+    t.schedule(1200,function(){ bg.style.opacity='0'; },'bg-out');
+    t.schedule(1800,function(){ apply(); title.classList.remove('visible'); trans.classList.remove('active'); },'swap');
+    t.schedule(2600,function(){ self.state='idle'; },'done');
+    t.play();
+  }
+
+  manualSceneChange(sceneId){
+    if(sceneId===this.currentScene) return;
+    const self=this;
+    this.stopFilm();
+    this.returnToWorld();
+    this.loadScene(sceneId,true);
+    this.sceneTimeline.schedule(3000,function(){
+      $('promptText').textContent='Try K Scan \u2014 select any item';
+      $('promptText').classList.add('visible');
+    },'prompt');
+  }
+
+  renderTargets(){
+    const self=this;
+    const layer=$('targetsLayer');
+    layer.innerHTML='';
+    SCENES[this.currentScene].targets.forEach(function(pid){
+      const p=PRODUCTS[pid];
+      if(!p) return;
+      const el=document.createElement('button');
+      el.className='scan-target hint';
+      el.dataset.id=p.id;
+      el.setAttribute('aria-label','Scan '+p.name);
+      el.style.left=p.position.left+'%';
+      el.style.top=p.position.top+'%';
+      el.innerHTML='<span class="target-core"></span><span class="target-ring"></span><span class="target-cross"></span><span class="target-label">'+p.name+'</span>';
+      el.addEventListener('click',function(){
+        initAudio();
+        // FIX 2: reject before pausing, so a mid-scan click can never freeze playback
+        if(self.state==='scanning'||self.state==='transitioning') return;
+        if(self.filmMode) self.pauseFilm(true);
+        self.triggerScan(p.id);
+      });
+      layer.appendChild(el);
+    });
+  }
+
+  toggleMode(){
+    this.mode=this.mode==='meta'?'google':'meta';
+    $('hudLayer').dataset.mode=this.mode;
+    $('modeToggle').innerHTML='<small>'+this.mode.toUpperCase()+'</small>';
+    if(this.state==='result') this.showResult();
+  }
+  toggleAudio(){ audioEnabled=!audioEnabled; $('audioToggle').textContent=audioEnabled?'\uD83D\uDD0A':'\uD83D\uDD07'; }
+  toggleLoop(){ this.loopEnabled=!this.loopEnabled; $('loopToggle').classList.toggle('active',this.loopEnabled); }
+
+  /* ---------- scan lifecycle (FIX 3) ---------- */
+  triggerScan(productId){
+    // FIX 2: refuse inappropriate starts outright
+    if(this.state==='scanning'||this.state==='transitioning'||this.state==='phone') return;
+    const self=this;
+    const p=PRODUCTS[productId];
+    if(!p) { console.warn('[kscan] unknown product',productId); return; }
+
+    // FIX 2: cancel stale sequencing so no prior UI state leaks into the new scan
+    this.scanTimeline.reset();
+    this.handoffTimeline.reset();
+    document.querySelectorAll('.handoff-chip').forEach(function(c){ c.remove(); });
+    $('phoneCompanion').classList.remove('visible');
+    $('phoneLock').classList.remove('hidden');
+    $('phoneResult').classList.remove('visible');
+    $('lockNotification').style.display='none';
+    $('scanLine').classList.remove('active');
+    $('privacyOverlay').classList.remove('active');
+    $('privacyLabel').classList.remove('active');
+    $('bgImage').classList.remove('privacy-active');
+
+    this.hideBranchPanel();
+    this.hideEliseBubble();
+    this.closeElise();
+    this.currentProduct=p;
+    this.currentTier='exact';
+
+    let anchored=false;
+    document.querySelectorAll('.scan-target').forEach(function(t){
+      t.classList.remove('locked','active','hint');
+      if(t.dataset.id===productId){ t.classList.add('locked'); anchored=true; }
+      else if(self.memory.hasScanned(t.dataset.id)) t.classList.add('scanned');
+    });
+    if(!anchored) console.warn('[kscan] no target in scene "'+this.currentScene+'" for "'+productId+'"');
+
+    this.state='scanning';
+    this.memory.addScan(p,this.currentTier);
+    this.logAdventure('Scanned '+p.name);
+    this.updateMemoryHud();
+
+    const bg=$('bgImage'), privacy=$('privacyOverlay'), privacyLabel=$('privacyLabel');
+    const scanLine=$('scanLine'), confRing=$('confidenceRingMini'), confText=$('confidenceText');
+    bg.classList.add('scanning');
+    $('liveBadge').classList.add('visible');
+    $('topMeta').classList.add('visible');
+    confRing.classList.remove('done');
+    confText.textContent='Scanning';
+    $('scanMode').textContent=p.category;
+
+    const st=this.scanTimeline; st.reset();
+    st.schedule(200,function(){ toneAck(); self.showHudText('Got it',''); },'ack');
+    st.schedule(700,function(){ toneCapture(); self.showHudText('Capturing',''); scanLine.classList.add('active'); },'capture');
+    st.schedule(2200,function(){ scanLine.classList.remove('active'); },'sweep-end');
+    st.schedule(1200,function(){
+      self.showHudText('','Checking privacy\u2026');
+      bg.classList.add('privacy-active'); privacy.classList.add('active'); privacyLabel.classList.add('active');
+    },'privacy');
+    st.schedule(2500,function(){
+      bg.classList.remove('privacy-active'); privacy.classList.remove('active'); privacyLabel.classList.remove('active');
+      self.showHudText('Analyzing',''); confText.textContent='Analyzing';
+    },'analyze');
+    (p.attrs||['Analyzing']).forEach(function(a,i){
+      st.schedule(2600+i*400,function(){ self.showAttribute(a); },'attr-'+i);
+    });
+    st.schedule(4800,function(){
+      toneSuccess();
+      confRing.classList.add('done');
+      confText.textContent=p.confidence+'% match';
+      self.state='result';
+      self.showResult();
+      self.showBranchPanel();
+    },'result');
+    st.play();
+  }
+
+  showHudText(main,sub){
+    const hud=$('hudContent');
+    if(this.mode==='meta'){
+      hud.innerHTML='<div class="meta-hud"><div class="hud-text'+(main?' visible':'')+'">'+main+'</div>'+
+        (sub?'<div class="hud-sub visible">'+sub+'</div>':'')+
+        '<div class="voice-wave'+(this.state==='scanning'?' visible':'')+'">'+
+        '<span class="voice-bar"></span><span class="voice-bar"></span><span class="voice-bar"></span><span class="voice-bar"></span><span class="voice-bar"></span></div></div>';
+      requestAnimationFrame(function(){ const t=hud.querySelector('.hud-text'); if(t&&main) t.classList.add('visible'); });
+    } else {
+      hud.innerHTML='<div class="google-hud"><div class="result-card"><div style="text-align:center;padding:40px 20px;">'+
+        '<div style="font-size:15px;color:var(--text-secondary);margin-bottom:12px;">'+main+'</div>'+
+        (sub?'<div style="font-size:13px;color:var(--text-dim);">'+sub+'</div>':'')+'</div></div></div>';
+      requestAnimationFrame(function(){ const c=hud.querySelector('.result-card'); if(c) c.classList.add('visible'); });
+    }
+  }
+
+  showAttribute(text){
+    const el=document.createElement('div');
+    el.className='attribute-flicker visible';
+    el.textContent=text;
+    el.style.left=(40+Math.random()*20)+'%';
+    el.style.top=(35+Math.random()*20)+'%';
+    $('app').appendChild(el);
+    setTimeout(function(){ el.classList.remove('visible'); setTimeout(function(){ el.remove(); },400); },700);
+  }
+
+  showResult(){
+    const p=this.currentProduct;
+    if(!p) return;
+    const tier=this.currentTier, hud=$('hudContent');
+    if(this.mode==='meta'){
+      let text,sub;
+      if(p.isOutfit){ text=p.name; sub=p.confidence+'% confidence \u00B7 '+p.items.length+' items identified'; }
+      else { const item=p[tier]; text=item.name; sub='$'+item.price+' \u00B7 '+item.merchant+' \u00B7 '+TIER_LABELS[tier]; }
+      hud.innerHTML='<div class="meta-hud"><div class="hud-text visible">'+text+'</div>'+
+        '<div class="hud-sub visible">'+sub+'</div>'+
+        '<div class="card-actions" style="margin-top:28px;justify-content:center;">'+
+        '<button class="card-btn" data-act="save"><span class="icon">\u2665</span> Save</button>'+
+        '<button class="card-btn" data-act="phone"><span class="icon">\uD83D\uDCF1</span> Phone</button>'+
+        '<button class="card-btn" data-act="elise"><span class="icon">\u2726</span> Elise</button>'+
+        (p.isOutfit?'':'<button class="card-btn" data-act="next"><span class="icon">\u2192</span> Next</button>')+
+        '</div></div>';
+    } else {
+      let cardHtml;
+      if(p.isOutfit){
+        cardHtml='<div class="card-tier-label">Complete Outfit \u00B7 '+p.confidence+'% confidence</div><div class="outfit-items">'+
+          p.items.map(function(it){
+            return '<div class="outfit-item"><img src="'+it.image+'" alt="" onerror="this.style.display=\'none\'">'+
+              '<div class="outfit-item-info"><div class="name">'+it.name+'</div><div class="price">$'+it.price+' \u00B7 '+it.merchant+'</div></div></div>';
+          }).join('')+'</div>';
+      } else {
+        const item=p[tier], offset=283-(283*p.confidence/100);
+        cardHtml='<div class="card-tier-label">'+TIER_LABELS[tier]+'</div><div class="card-header"><div class="card-product">'+
+          '<div class="card-img-wrap"><img src="'+item.image+'" alt="" onerror="this.style.display=\'none\'">'+
+          '<div class="card-confidence-ring"><svg viewBox="0 0 100 100"><circle class="ring-track" cx="50" cy="50" r="45"/>'+
+          '<circle class="ring-fill" cx="50" cy="50" r="45" style="--offset:'+offset+'px"/></svg></div></div>'+
+          '<div class="card-info"><h3>'+item.name+'</h3><div class="merchant">'+item.merchant+'</div>'+
+          '<div class="price">$'+item.price+'</div></div></div><div class="card-badge">'+p.confidence+'%</div></div>';
+      }
+      hud.innerHTML='<div class="google-hud"><div class="result-card">'+cardHtml+
+        '<div class="card-actions">'+
+        '<button class="card-btn" data-act="save"><span class="icon">\u2665</span> Save</button>'+
+        '<button class="card-btn" data-act="phone"><span class="icon">\uD83D\uDCF1</span> Phone</button>'+
+        '<button class="card-btn primary" data-act="elise"><span class="icon">\u2726</span> Elise</button>'+
+        (p.isOutfit?'':'<button class="card-btn" data-act="next" aria-label="Next match">\u2192</button>')+
+        '</div></div></div>';
+      requestAnimationFrame(function(){
+        const c=hud.querySelector('.result-card');
+        if(c){ c.classList.add('visible');
+          const ring=c.querySelector('.ring-fill');
+          if(ring) requestAnimationFrame(function(){ ring.classList.add('animate'); });
+        }
+      });
+    }
+    const self=this;
+    hud.querySelectorAll('[data-act]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        const a=btn.dataset.act;
+        if(a==='save') self.saveItem();
+        else if(a==='phone') self.handoffToPhone();
+        else if(a==='elise') self.openElise();
+        else if(a==='next') self.nextTier();
+      });
+    });
+  }
+
+  nextTier(){
+    if(!this.currentProduct||this.currentProduct.isOutfit) return;
+    const idx=TIER_ORDER.indexOf(this.currentTier);
+    this.currentTier=TIER_ORDER[(idx+1)%TIER_ORDER.length];
+    this.showResult();
+  }
+
+  /* ---------- branching (FIX 7) ---------- */
+  showBranchPanel(){
+    // FIX 1: branches belong to Explore, not uninterrupted Film Mode
+    if(this.filmMode && !this.filmPaused) return;
+    const self=this;
+    $('branchLabel').textContent='What would you like to do?';
+    const branches=[
+      {key:'shop',label:'\uD83D\uDECD Shop It'},
+      {key:'elise',label:'\u2726 Ask Elise'},
+      {key:'style',label:'\uD83D\uDC57 Style It'},
+      {key:'phone',label:'\uD83D\uDCF1 Send to Phone'},
+      {key:'explore',label:'\u2192 Keep Exploring'}
+    ];
+    const options=$('branchOptions');
+    options.innerHTML=branches.map(function(b){
+      return '<button class="branch-btn'+(b.key==='elise'?' highlight':'')+'" data-branch="'+b.key+'">'+b.label+'</button>';
+    }).join('');
+    options.querySelectorAll('.branch-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){ self.takeBranch(btn.dataset.branch); });
+    });
+    $('branchPanel').classList.add('visible');
+  }
+  hideBranchPanel(){ $('branchPanel').classList.remove('visible'); }
+
+  takeBranch(branch){
+    this.hideBranchPanel();
+    if(branch==='shop') this.showCommerceBranch();
+    else if(branch==='elise') this.openElise();
+    else if(branch==='style') this.showStyleBranch();
+    else if(branch==='phone') this.handoffToPhone();
+    else if(branch==='explore') this.returnToWorld();
+  }
+
+  showCommerceBranch(){
+    const self=this;
+    const p=this.currentProduct;
+    if(!p) return;
+    if(p.isOutfit){ this.handoffToPhone(); return; }
+    const budget=this.memory.budgetPreference||200;
+    const opts=[
+      {tier:'exact',label:'Best Match'},
+      {tier:'resale',label:'Resale'},
+      {tier:'affordable',label:'Under $'+budget},
+      {tier:'similar',label:'Similar Style'}
+    ].filter(function(o){ return p[o.tier]; });
+    $('branchLabel').textContent='How do you want to shop it?';
+    const options=$('branchOptions');
+    options.innerHTML=opts.map(function(o){
+      return '<button class="branch-btn" data-tier="'+o.tier+'">'+o.label+' \u00B7 $'+p[o.tier].price+'</button>';
+    }).join('')+'<button class="branch-btn" data-tier="__back">Back</button>';
+    options.querySelectorAll('.branch-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        const t=btn.dataset.tier;
+        self.hideBranchPanel();
+        if(t==='__back'){ self.showBranchPanel(); return; }
+        self.currentTier=t;
+        self.showResult();
+        self.logAdventure('Chose '+TIER_LABELS[t]+' \u2014 '+p.name);
+        setTimeout(function(){ self.handoffToPhone(); },900);
+      });
+    });
+    $('branchPanel').classList.add('visible');
+  }
+
+  showStyleBranch(){
+    const self=this;
+    const p=this.currentProduct;
+    const moment=$('heroMoment');
+    const lastSave=this.memory.getLastSave();
+    $('heroMomentTitle').textContent='Look Understood';
+    if(p.isOutfit){
+      $('heroMomentSub').textContent=p.name+' decomposed into '+p.items.length+' key pieces.';
+      $('heroMomentStat').innerHTML='\u2726 '+p.confidence+'% outfit confidence';
+    } else {
+      $('heroMomentSub').textContent=this.memory.savedItems.length
+        ? 'This '+p.name.toLowerCase()+' would complete the look with what you saved.'
+        : 'Style this with pieces from your Closet.';
+      $('heroMomentStat').innerHTML=lastSave?'\u2726 Pairs with '+lastSave.product.name:'\u2726 New style opportunity';
+    }
+    moment.classList.add('visible');
+    setTimeout(function(){ moment.classList.remove('visible'); },3000);
+    setTimeout(function(){ self.returnToWorld(); },3600);
+  }
+
+  /* ---------- Elise ---------- */
+  showEliseBubble(html){
+    const bubble=$('eliseBubble');
+    $('eliseBubbleText').innerHTML=html;
+    bubble.classList.add('visible');
+    setTimeout(function(){ bubble.classList.remove('visible'); },6500);
+  }
+  hideEliseBubble(){ $('eliseBubble').classList.remove('visible'); }
+
+  openElise(){
+    if(this.state==='result'||this.state==='phone') this.state='elise';
+    $('elisePanel').classList.add('visible');
+    this.renderEliseCommands();
+  }
+  closeElise(){
+    $('elisePanel').classList.remove('visible');
+    if(this.state==='elise') this.state='result';
+  }
+  renderEliseCommands(){
+    const self=this;
+    const container=$('eliseCommands');
+    container.innerHTML=ELISE_COMMANDS.map(function(c){
+      return '<button class="elise-cmd" data-cmd="'+c.key+'">'+c.label+'</button>';
+    }).join('');
+    container.querySelectorAll('.elise-cmd').forEach(function(btn){
+      btn.addEventListener('click',function(){ self.askElise(btn.dataset.cmd); });
+    });
+  }
+  askElise(command){
+    if(!this.currentProduct) return;
+    const self=this;
+    const chat=$('eliseChat');
+    const found=ELISE_COMMANDS.find(function(c){ return c.key===command; });
+    const cmdLabel=found?found.label:command;
+
+    const userMsg=document.createElement('div');
+    userMsg.className='chat-msg user';
+    userMsg.innerHTML='<div class="msg-bubble">'+cmdLabel+'</div>';
+    chat.appendChild(userMsg);
+    chat.scrollTop=chat.scrollHeight;
+
+    const typing=document.createElement('div');
+    typing.className='chat-msg elise';
+    typing.innerHTML='<div class="msg-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
+    chat.appendChild(typing);
+    chat.scrollTop=chat.scrollHeight;
+
+    let response=this.currentProduct.elise[command]||"I'm not sure about that yet.";
+    if(command==='cheaper' && this.memory.budgetPreference){
+      response='You asked me to keep things under $'+this.memory.budgetPreference+'. '+response;
+    }
+    if(command==='suit' && this.memory.hasSaved(this.currentProduct.id)){
+      response='Since you already saved this, I think you know the answer \u2014 but yes. '+response;
+    }
+    setTimeout(function(){
+      typing.remove();
+      const msg=document.createElement('div');
+      msg.className='chat-msg elise';
+      msg.innerHTML='<div class="msg-bubble">'+response+'</div>';
+      chat.appendChild(msg);
+      chat.scrollTop=chat.scrollHeight;
+      if(command==='save') self.saveItem();
+      if(command==='cheaper' && !self.currentProduct.isOutfit){
+        self.currentTier='affordable';
+        setTimeout(function(){ self.showResult(); },300);
+      }
+    },800+Math.random()*400);
+  }
+
+  /* ---------- save / handoff (FIX 8) ---------- */
+  saveItem(){
+    if(!this.currentProduct) return;
+    toneSave();
+    this.memory.addSave(this.currentProduct,this.currentTier);
+    this.logAdventure('Saved '+this.currentProduct.name);
+    this.updateMemoryHud();
+    this.showToast('Saved '+this.currentProduct.name+' to Closet','\u2713');
+  }
+
+  showToast(text,glyph){
+    const toast=$('saveToast');
+    toast.querySelector('.check').textContent=glyph||'\u2713';
+    $('saveToastText').textContent=text;
+    toast.classList.add('visible');
+    if(this._toastTimer) clearTimeout(this._toastTimer);
+    this._toastTimer=setTimeout(function(){ toast.classList.remove('visible'); },2200);
+  }
+
+  handoffToPhone(){
+    if(!this.currentProduct) return;
+    const self=this;
+    const p=this.currentProduct;
+    const item=p.isOutfit?p.items[0]:p[this.currentTier];
+
+    // FIX 3: Elise finishes -> UI clears -> item travels -> phone receives
+    this.closeElise();
+    this.hideEliseBubble();
+    this.hideBranchPanel();
+
+    this.state='phone';
+    toneAck();
+
+    const phone=$('phoneCompanion');
+    phone.classList.add('visible');
+    $('notifPreview').textContent=p.isOutfit?p.name:item.name;
+
+    const hudRect=$('hudContent').getBoundingClientRect();
+    const chip=document.createElement('div');
+    chip.className='handoff-chip';
+    chip.innerHTML='<img src="'+item.image+'" alt="" onerror="this.style.display=\'none\'"><span>'+
+      (p.isOutfit?p.name:item.name)+'</span>';
+    chip.style.left=(hudRect.left+hudRect.width/2)+'px';
+    chip.style.top=(hudRect.top+hudRect.height/2)+'px';
+    document.body.appendChild(chip);
+
+    const ht=this.handoffTimeline; ht.reset();
+    ht.schedule(30,function(){ chip.style.opacity='1'; },'chip-in');
+    ht.schedule(140,function(){
+      const scr=$('phoneScreen').getBoundingClientRect();
+      chip.style.left=(scr.left+scr.width/2)+'px';
+      chip.style.top=(scr.top+scr.height*0.62)+'px';
+      chip.style.transform='translate(-50%,-50%) scale(0.62)';
+    },'chip-fly');
+    ht.schedule(900,function(){
+      $('phoneFrame').classList.add('receiving');
+      $('lockNotification').style.display='flex';
+      toneSuccess();
+      chip.style.opacity='0';
+    },'chip-land');
+    ht.schedule(1250,function(){
+      chip.remove();
+      $('phoneFrame').classList.remove('receiving');
+    },'cleanup');
+    ht.schedule(2200,function(){ self.openPhoneResult(); },'open');
+    ht.play();
+
+    this.memory.phoneHandoffs.push({product:p,tier:this.currentTier,time:Date.now()});
+    this.logAdventure('Sent '+p.name+' to phone');
+  }
+
+  openPhoneResult(){
+    $('phoneLock').classList.add('hidden');
+    const p=this.currentProduct;
+    if(!p) return;
+    const resultEl=$('phoneResult');
+    let html;
+    if(p.isOutfit){
+      html='<div class="phone-header"><button class="phone-back" data-phone-back="1" aria-label="Back to lock screen">\u2190</button> '+p.name+'</div>'+
+        '<div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">'+p.confidence+'% outfit match</div>'+
+        p.items.map(function(it){
+          return '<div class="outfit-item" style="margin-bottom:8px;"><img src="'+it.image+'" alt="" onerror="this.style.display=\'none\'">'+
+            '<div class="outfit-item-info"><div class="name">'+it.name+'</div><div class="price">$'+it.price+' \u00B7 '+it.merchant+'</div></div></div>';
+        }).join('');
+    } else {
+      const item=p[this.currentTier];
+      const tier=this.currentTier;
+      html='<div class="phone-header"><button class="phone-back" data-phone-back="1" aria-label="Back to lock screen">\u2190</button> Scan Result</button></div>'.replace('</button></div>','</div>')+
+        '<img class="phone-product-img" src="'+item.image+'" alt="" onerror="this.style.display=\'none\'">'+
+        '<div class="phone-product-name">'+item.name+'</div>'+
+        '<div class="phone-product-merchant">'+item.merchant+'</div>'+
+        '<div class="phone-product-price">$'+item.price+'</div>'+
+        '<div class="phone-product-match">\u2726 '+p.confidence+'% visual match</div>'+
+        '<div class="phone-actions"><button class="phone-btn shop" data-phone-shop="'+item.merchant+'">Shop Now</button>'+
+        '<button class="phone-btn save" data-phone-save="1">Save</button></div>'+
+        '<div class="phone-retailers"><h4>Also Available At</h4>'+
+        TIER_ORDER.filter(function(t){ return t!==tier && p[t]; }).map(function(t){
+          const it=p[t];
+          const tag=t==='resale'?'<span class="retailer-tag tag-resale">Resale</span>':'<span class="retailer-tag tag-retail">Retail</span>';
+          return '<button class="retailer-row" data-retailer-tier="'+t+'"><span class="retailer-name">'+it.merchant+tag+'</span><span class="retailer-price">$'+it.price+'</span></button>';
+        }).join('')+'</div>';
+    }
+    resultEl.innerHTML=html;
+    resultEl.classList.add('visible');
+    const self=this;
+    const saveBtn=resultEl.querySelector('[data-phone-save]');
+    if(saveBtn) saveBtn.addEventListener('click',function(){ self.saveItem(); });
+
+    const backBtn=resultEl.querySelector('[data-phone-back]');
+    if(backBtn) backBtn.addEventListener('click',function(){ self.closePhoneResult(); });
+
+    const shopBtn=resultEl.querySelector('[data-phone-shop]');
+    if(shopBtn) shopBtn.addEventListener('click',function(){
+      toneSave();
+      self.showToast('Opening '+shopBtn.dataset.phoneShop+' \u2014 affiliate handoff simulated','\u2197');
+      self.logAdventure('Retailer handoff \u2014 '+shopBtn.dataset.phoneShop);
+    });
+
+    resultEl.querySelectorAll('[data-retailer-tier]').forEach(function(row){
+      row.addEventListener('click',function(){
+        self.currentTier=row.dataset.retailerTier;
+        self.openPhoneResult();
+        if(self.state==='result') self.showResult();
+        self.logAdventure('Compared '+TIER_LABELS[self.currentTier]+' on phone');
+      });
+    });
+  }
+
+  closePhoneResult(){
+    $('phoneResult').classList.remove('visible');
+    $('phoneLock').classList.remove('hidden');
+    $('lockNotification').style.display='flex';
+  }
+
+  /* ---------- film (FIX 2 + FIX 4) ---------- */
+  startFilmMode(){
+    const self=this;
+    this.reset();
+    this.filmMode=true;
+    this.filmPaused=false;
+    this.endScreen=false;
+    $('filmProgress').classList.add('visible');
+    $('filmToggle').innerHTML='&#10074;&#10074;';
+    $('promptText').classList.remove('visible');
+    document.querySelectorAll('.scan-target').forEach(function(t){ t.classList.remove('hint'); });
+
+    const tl=this.timeline;
+    tl.reset();
+    // Act 1-4: hero path, self-contained by ~50s
+    tl.schedule(1500,function(){ self.showPrompt('Try K Scan'); },'prompt');
+    tl.schedule(4000,function(){ self.showVoiceInput('K Scan that jacket'); },'v1');
+    tl.schedule(4500,function(){ self.triggerScan('jacket'); },'scan-jacket');
+    tl.schedule(12000,function(){ self.showVoiceInput('Anything cheaper?'); },'v2');
+    tl.schedule(13000,function(){ self.currentTier='affordable'; self.showResult(); },'tier');
+    tl.schedule(18000,function(){ self.showVoiceInput('Would this suit me?'); },'v3');
+    tl.schedule(19000,function(){ self.simulateElise('suit'); },'elise-1');
+    tl.schedule(26000,function(){ self.showVoiceInput('Do I own anything similar?'); },'v4');
+    tl.schedule(27000,function(){ self.simulateElise('own'); },'elise-2');
+    tl.schedule(34000,function(){ self.showVoiceInput('Save it and show me on my phone'); },'v5');
+    tl.schedule(36000,function(){ self.saveItem(); },'save-1');
+    tl.schedule(38000,function(){ self.handoffToPhone(); },'handoff');
+    tl.schedule(50000,function(){ self.returnToWorld(); },'return-1');
+    // Act 5: cross-scene memory callback (scans a product that EXISTS in the new scene)
+    tl.schedule(52000,function(){ self.loadScene('street',true); },'scene-street');
+    tl.schedule(57000,function(){
+      self.showEliseBubble('Those <strong>White Trainers</strong> would work with the <strong>Brown Suede Bomber</strong> you saved earlier.');
+    },'memory-callback');
+    tl.schedule(61000,function(){ self.showVoiceInput('K Scan those trainers'); },'v6');
+    tl.schedule(62000,function(){ self.triggerScan('sneakers'); },'scan-sneakers');
+    tl.schedule(71000,function(){ self.saveItem(); },'save-2');
+    tl.schedule(74000,function(){ self.returnToWorld(); },'return-2');
+    tl.schedule(77000,function(){ self.showTagline(); },'tagline');
+    tl.schedule(this.FILM_TOTAL,function(){ self.endFilm(); },'end');
+    tl.play();
+
+    this.progressInterval=setInterval(this.updateFilmProgress.bind(this),100);
+  }
+
+  pauseFilm(force){
+    this.filmPaused=(force===true)?true:!this.filmPaused;
+    $('filmToggle').innerHTML=this.filmPaused?'&#9654;':'&#10074;&#10074;';
+    const act=this.filmPaused?'pause':'resume';
+    this.allTimelines().forEach(function(t){ t[act](); });
+  }
+  toggleFilmPause(){ this.pauseFilm(); }
+
+  updateFilmProgress(){
+    if(!this.filmMode||this.filmPaused) return;
+    const pct=Math.min(100,(this.timeline.elapsed/this.FILM_TOTAL)*100);
+    $('filmProgressFill').style.width=pct+'%';
+    const acts=document.querySelectorAll('.film-acts span');
+    acts.forEach(function(a){ a.classList.remove('active'); });
+    const i=pct<20?0:pct<40?1:pct<60?2:pct<80?3:4;
+    if(acts[i]) acts[i].classList.add('active');
+  }
+
+  stopFilm(){
+    this.filmMode=false;
+    this.filmPaused=false;
+    this.allTimelines().forEach(function(t){ t.reset(); });
+    if(this.progressInterval){ clearInterval(this.progressInterval); this.progressInterval=null; }
+    if(this.loopTimer){ clearTimeout(this.loopTimer); this.loopTimer=null; }
+    $('filmProgress').classList.remove('visible');
+    $('filmProgressFill').style.width='0%';
+    $('filmToggle').innerHTML='&#9654;';
+  }
+
+  endFilm(){
+    const self=this;
+    this.stopFilm();
+    $('promptText').textContent='Try K Scan \u2014 select any item';
+    $('promptText').classList.add('visible');
+    document.querySelectorAll('.scan-target').forEach(function(t){
+      if(!self.memory.hasScanned(t.dataset.id)) t.classList.add('hint');
+    });
+    if(this.loopEnabled){
+      this.loopTimer=setTimeout(function(){ self.startFilmMode(); },6000);
+    }
+  }
+
+  showPrompt(text){
+    const el=$('promptText');
+    el.textContent=text;
+    el.classList.add('visible');
+    setTimeout(function(){ el.classList.remove('visible'); },4000);
+  }
+  showVoiceInput(text){
+    if(this.mode==='meta') this.showHudText('','\u201C'+text+'\u201D');
+    else this.showPrompt('\u201C'+text+'\u201D');
+  }
+  simulateElise(command){
+    const self=this;
+    this.openElise();
+    setTimeout(function(){ self.askElise(command); },400);
+  }
+  enterExploreMode(){
+    const self=this;
+    this.endScreen=false;
+    this.stopFilm();                 // cancels loop timer + all timelines
+    $('taglineOverlay').classList.remove('visible');
+    this.returnToWorld();            // NOTE: deliberately does not clear session memory
+    $('promptText').textContent='Try K Scan \u2014 select any item';
+    $('promptText').classList.add('visible');
+    document.querySelectorAll('.scan-target').forEach(function(t){
+      if(!self.memory.hasScanned(t.dataset.id)) t.classList.add('hint');
+    });
+    this.updateMemoryHud();
+    this.resetIdleTimer();
+  }
+
+  showTagline(){
+    this.endScreen=true;
+    const o=$('taglineOverlay');
+    o.querySelector('.tagline-logo').textContent='K SCAN AI';
+    o.querySelector('.tagline-text').innerHTML='See it. Understand it.<br>Find it. Act on it.';
+    o.querySelector('.tagline-btn').textContent='Explore It Yourself';
+    o.classList.add('visible');
+  }
+
+  /* ---------- world / utils ---------- */
+  returnToWorld(){
+    const self=this;
+    this.scanTimeline.stop();
+    this.handoffTimeline.stop();
+    this.clearHud();
+    this.closeElise();
+    this.hideBranchPanel();
+    this.hideEliseBubble();
+    $('taglineOverlay').classList.remove('visible');
+    $('phoneCompanion').classList.remove('visible');
+    $('phoneLock').classList.remove('hidden');
+    $('phoneResult').classList.remove('visible');
+    $('lockNotification').style.display='none';
+    $('bgImage').classList.remove('scanning','privacy-active');
+    $('privacyOverlay').classList.remove('active');
+    $('privacyLabel').classList.remove('active');
+    $('liveBadge').classList.remove('visible');
+    $('topMeta').classList.remove('visible');
+    $('scanLine').classList.remove('active');
+    document.querySelectorAll('.handoff-chip').forEach(function(c){ c.remove(); });
+    document.querySelectorAll('.scan-target').forEach(function(t){
+      t.classList.remove('locked');
+      if(self.memory.hasScanned(t.dataset.id)) t.classList.add('scanned');
+      else t.classList.add('hint');
+    });
+    if(this.state!=='transitioning') this.state='idle';
+  }
+
+  clearHud(){ $('hudContent').innerHTML=''; }
+
+  logAdventure(text){
+    const log=$('adventureLog');
+    const item=document.createElement('div');
+    item.className='adventure-log-item';
+    item.innerHTML='<span class="adventure-log-dot"></span><span>'+text+'</span>';
+    log.appendChild(item);
+    log.classList.add('visible');
+    while(log.children.length>5) log.removeChild(log.firstChild);
+  }
+
+  updateMemoryHud(){
+    const list=$('memoryList');
+    const saves=this.memory.getRecentSaves(3);
+    if(!saves.length){ list.innerHTML='<div style="color:var(--text-dim);font-size:11px;">No items saved yet</div>'; }
+    else {
+      list.innerHTML=saves.map(function(s){
+        const img=s.product.isOutfit?s.product.items[0].image:((s.product[s.tier]||{}).image||'');
+        return '<div class="memory-item"><img src="'+img+'" alt="" onerror="this.style.display=\'none\'">'+
+          '<div class="memory-item-info"><div class="memory-item-name">'+s.product.name+'</div>'+
+          '<div class="memory-item-meta">'+TIER_LABELS[s.tier]+'</div></div></div>';
+      }).join('');
+    }
+    $('memoryHud').classList.add('visible');
+  }
+
+  reset(){
+    this.stopFilm();
+    this.endScreen=false;
+    this.memory.clear();
+    this.currentProduct=null;
+    this.currentTier='exact';
+    this.state='idle';
+    this.returnToWorld();
+    this.clearHud();
+    $('adventureLog').innerHTML='';
+    $('adventureLog').classList.remove('visible');
+    $('memoryHud').classList.remove('visible');
+    $('memoryList').innerHTML='';
+    $('eliseChat').innerHTML='';
+    $('heroMoment').classList.remove('visible');
+    $('promptText').textContent='Try K Scan';
+    $('promptText').classList.add('visible');
+    this.loadScene('vintage',false);
+  }
+}
+
+const sim=new Simulator();
+window.sim=sim;
+
+</script>
+</body>
+</html>

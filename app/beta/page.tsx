@@ -289,70 +289,71 @@ export default function BetaPage() {
         </p>
 
         {/* Status module + mock image */}
-        <div className="mt-10 max-w-md">
-          <div className={`${surfaces.linenCard} p-6`}>
-            <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
-              Beta Status
-            </p>
-            <ul className="space-y-3.5">
-              {betaStatus.map(({ label, storeLink, ...badgeProps }) => (
-                <li key={label} className="min-w-0">
-                  <div className="flex w-full items-start justify-between gap-x-3">
-                    <div className="flex min-w-0 shrink items-center gap-2">
-                      <span className="text-[14px] leading-snug text-stone-600 break-words">
-                        {label}
-                      </span>
-                      {storeLink ? (
-                        <PlatformIconLink storeLink={storeLink} />
-                      ) : null}
+        <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:items-start">
+          <div className="max-w-md">
+            <div className={`${surfaces.linenCard} p-6`}>
+              <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
+                Beta Status
+              </p>
+              <ul className="space-y-3.5">
+                {betaStatus.map(({ label, storeLink, ...badgeProps }) => (
+                  <li key={label} className="min-w-0">
+                    <div className="flex w-full items-start justify-between gap-x-3">
+                      <div className="flex min-w-0 shrink items-center gap-2">
+                        <span className="text-[14px] leading-snug text-stone-600 break-words">
+                          {label}
+                        </span>
+                        {storeLink ? (
+                          <PlatformIconLink storeLink={storeLink} />
+                        ) : null}
+                      </div>
+                      <StatusBadge {...badgeProps} />
                     </div>
-                    <StatusBadge {...badgeProps} />
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-5 space-y-1 text-[11px] leading-relaxed text-stone-600">
-              <p>
-                *{" "}
-                <a
-                  href="https://kscan-glasses-demo.vercel.app/simulator.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2 transition-colors hover:text-stone-600"
-                >
-                  Meta Browser Demo
-                </a>
-              </p>
-              <p>
-                **{" "}
-                <a
-                  href="https://kscan-google-glasses-demo.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2 transition-colors hover:text-stone-600"
-                >
-                  Google XR Browser Demo
-                </a>
-              </p>
-              <p>
-                ***{" "}
-                <a
-                  href="https://kscan-visionos-demo.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline underline-offset-2 transition-colors hover:text-stone-600"
-                >
-                  Apple Vision Pro Browser Demo
-                </a>
-              </p>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-5 space-y-1 text-[11px] leading-relaxed text-stone-600">
+                <p>
+                  *{" "}
+                  <a
+                    href="/simulator/kscan-simulator-v5_3.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 transition-colors hover:text-stone-600"
+                  >
+                    Smart Glasses Demo
+                  </a>
+                </p>
+                <p>
+                  **{" "}
+                  <a
+                    href="https://kscan-visionos-demo.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 transition-colors hover:text-stone-600"
+                  >
+                    Apple Vision Pro Browser Demo
+                  </a>
+                </p>
+              </div>
             </div>
+
+            <p className="mt-4 text-[12px] leading-relaxed text-stone-600">
+              K Scan AI is exploring browser-enabled smart glasses prototypes for
+              Meta and Android XR experiences, alongside a spatial-commerce
+              simulation of the visionOS Experience for Apple Vision Pro.
+            </p>
           </div>
 
-          <p className="mt-4 text-[12px] leading-relaxed text-stone-600">
-            K Scan AI is exploring browser-enabled smart glasses prototypes for
-            Meta and Android XR experiences, alongside a spatial-commerce
-            simulation of the visionOS Experience for Apple Vision Pro.
-          </p>
+          <div className="overflow-hidden rounded-[24px] border border-stone-200/80 shadow-[0_16px_36px_rgba(35,28,22,0.06)]">
+            <Image
+              src="/glasses-HUD.jpeg"
+              alt="Concept view through a K Scan AI smart glasses heads-up display, overlaying fashion recognition and product information on a real-world scene"
+              width={2752}
+              height={1536}
+              className="h-full w-full object-cover"
+            />
+          </div>
         </div>
       </section>
 

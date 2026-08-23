@@ -3,9 +3,9 @@ import type { NextConfig } from "next";
 const contentSecurityPolicy = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-  "style-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' data: blob: https:",
-  "font-src 'self' data:",
+  "font-src 'self' data: https://fonts.gstatic.com",
   "media-src 'self' blob: data: https: https://*.vercel.app",
   "connect-src 'self' https://*.supabase.co https://api.resend.com https://*.vercel.app",
   "frame-ancestors 'none'",

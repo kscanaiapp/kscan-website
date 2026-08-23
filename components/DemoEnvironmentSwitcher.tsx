@@ -215,6 +215,14 @@ export function DemoEnvironmentSwitcher() {
               </button>
             );
           })}
+          <a
+            href="/simulator/kscan-simulator-v5_3.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative isolate flex min-h-[2.75rem] items-center justify-center rounded-full px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-stone-300/88 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111111] sm:px-7"
+          >
+            <span className="relative z-10">Simulator</span>
+          </a>
         </div>
       </div>
 
