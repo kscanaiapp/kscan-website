@@ -339,9 +339,10 @@ export default function BetaPage() {
             </div>
 
             <p className="mt-4 text-[12px] leading-relaxed text-stone-600">
-              K Scan AI is exploring browser-enabled smart glasses prototypes for
-              Meta and Android XR experiences, alongside a spatial-commerce
-              simulation of the visionOS Experience for Apple Vision Pro.
+              K Scan AI is exploring browser-enabled smart glasses experiences
+              through a unified simulated demo environment, alongside a
+              spatial-commerce simulation of the visionOS Experience for Apple
+              Vision Pro.
             </p>
           </div>
 
