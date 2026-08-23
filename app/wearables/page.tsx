@@ -112,8 +112,8 @@ export default function WearablesPage() {
           <div className={`${surfaces.imageFrame}`}>
             <div className="relative aspect-[4/3] overflow-hidden rounded-[18px]">
               <Image
-                src="/group-street.jpeg"
-                alt="Stylish person wearing modern smart glasses in a premium urban street-style setting"
+                src="/wearables-telfar.jpeg"
+                alt="Smart glasses HUD view on a city street identifying a stylish outfit, tagging the jacket, top, and bag in real time"
                 fill
                 priority
                 sizes="(max-width: 1024px) 92vw, 46vw"
@@ -184,7 +184,7 @@ export default function WearablesPage() {
           <div className={`${surfaces.imageFrame}`}>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[18px]">
               <Image
-                src="/mirror-selfie.jpeg"
+                src="/wearables-city-color.jpeg"
                 alt="Smart glasses worn on the head with a phone in hand, illustrating the transition from capture on glasses to continued discovery on the K Scan AI phone app"
                 fill
                 sizes="(max-width: 1024px) 92vw, 42vw"
@@ -206,8 +206,8 @@ export default function WearablesPage() {
           <div className={`${surfaces.imageFrame} order-2 lg:order-1`}>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[18px]">
               <Image
-                src="/k2-cafe.png"
-                alt="Real-world street style and travel moment worth capturing as fashion inspiration"
+                src="/wearables-face-blur.jpeg"
+                alt="Smart glasses HUD view in a lobby showing Privacy Lens active with bystander protection while an outfit is detected for capture"
                 fill
                 sizes="(max-width: 1024px) 92vw, 42vw"
                 className="object-cover object-[center_30%]"
