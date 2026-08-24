@@ -9,14 +9,28 @@ import { checkRateLimit, getClientIp } from "@/lib/serverRateLimit";
 
 const INQUIRY_TABLE = "investor_inquiries";
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const INVESTOR_REPLY_BODY = `Thank you for requesting access to K Scan AI's confidential investor materials.
+const INVESTOR_PORTAL_URL = "https://kscan.app/investors";
 
-We’ve received your request and will review it shortly. If there is a fit, we’ll follow up with access details or next steps.
+function buildInvestorReplyBody(investorAccessPassword: string): string {
+  return `Thank you for your interest in K Scan AI.
 
-For questions, you can reach us at kscanai.app@gmail.com.
+You now have access to our Potential Investors section, where you can review our current investor materials, including the Investor Brief and Pitch Deck.
+
+Visit:
+
+${INVESTOR_PORTAL_URL}
+
+When prompted, enter the investor access password:
+
+${investorAccessPassword}
+
+Please keep these materials and access credentials confidential and do not distribute them without permission.
+
+If you have any questions or would like to discuss K Scan AI further, contact us at kscanai.app@gmail.com.
 
 K Scan AI
 See it. Scan it. Style it.`;
+}
 
 const bodySchema = z.object({
   name: z.string().trim().min(1, "Name is required."),
@@ -78,13 +92,19 @@ async function sendAutoReply(email: string): Promise<boolean> {
     return false;
   }
 
+  const investorAccessPassword = process.env.INVESTOR_ACCESS_PASSWORD;
+  if (!investorAccessPassword) {
+    console.error("[investor-inquiry] INVESTOR_ACCESS_PASSWORD is not configured.");
+    return false;
+  }
+
   try {
     await resend.emails.send({
       from: "K Scan AI <hello@info.kscan.app>",
       to: email,
       replyTo: "kscanai.app@gmail.com",
-      subject: "K Scan AI Investor Access Request Received",
-      text: INVESTOR_REPLY_BODY,
+      subject: "K Scan AI Potential Investor Access",
+      text: buildInvestorReplyBody(investorAccessPassword),
     });
     return true;
   } catch (err) {
