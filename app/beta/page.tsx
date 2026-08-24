@@ -348,8 +348,8 @@ export default function BetaPage() {
 
           <div className="overflow-hidden rounded-[24px] border border-stone-200/80 shadow-[0_16px_36px_rgba(35,28,22,0.06)]">
             <Image
-              src="/glasses-HUD.jpeg"
-              alt="Concept view through a K Scan AI smart glasses heads-up display, overlaying fashion recognition and product information on a real-world scene"
+              src="/wearables-telfar.jpeg"
+              alt="Concept view through a K Scan AI smart glasses heads-up display, identifying a Telfar bag and other fashion items on a city street"
               width={2752}
               height={1536}
               className="h-full w-full object-cover"

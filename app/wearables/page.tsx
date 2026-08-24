@@ -112,8 +112,8 @@ export default function WearablesPage() {
           <div className={`${surfaces.imageFrame}`}>
             <div className="relative aspect-[4/3] overflow-hidden rounded-[18px]">
               <Image
-                src="/wearables-telfar.jpeg"
-                alt="Smart glasses HUD view on a city street identifying a stylish outfit, tagging the jacket, top, and bag in real time"
+                src="/glasses-HUD.jpeg"
+                alt="Smart glasses HUD view on a city street identifying a woman's trench coat, trousers, and blouse in real time"
                 fill
                 priority
                 sizes="(max-width: 1024px) 92vw, 46vw"
