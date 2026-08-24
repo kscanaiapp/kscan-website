@@ -1,15 +1,15 @@
 import type { LegalDocumentData } from "@/components/legal/LegalDocument";
 
 // Full public Privacy Policy, transcribed verbatim from the authoritative
-// source document supplied for the August 20, 2026 language update.
-// Effective Date: June 12, 2026 | Last Updated: August 20, 2026
+// source document supplied for the August 24, 2026 language update.
+// Effective Date: June 12, 2026 | Last Updated: August 24, 2026
 
 export const privacyPolicy: LegalDocumentData = {
   eyebrow: "K SCAN AI",
   title: "Privacy Policy",
-  subtitle: "Full public policy for the website and current mobile app release",
+  subtitle: "Full public policy for the website and K Scan AI mobile applications",
   effectiveDate: "June 12, 2026",
-  lastUpdated: "August 20, 2026",
+  lastUpdated: "August 24, 2026",
   contactEmail: "kscanai.app@gmail.com",
   governingLinks: [
     { label: "Governing full HTML version:", href: "https://kscan.app/legal/privacy", boldLabel: true },
@@ -21,11 +21,11 @@ export const privacyPolicy: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `K Scan AI ("we," "our," or "us") respects your privacy. This Privacy Policy explains how we collect, use, disclose, retain, and protect information when you use the K Scan AI website, Android application, current mobile releases, APIs, AI systems, Elise and her StyleChat conversational capability, Scanner, Recent Scans, Closet and saved style content, Saved Looks, Dressing Rooms, shopping-assistance tools, and related services (collectively, the "Service").`,
+          text: `K Scan AI ("K Scan AI," "we," "our," or "us") respects your privacy. This Privacy Policy explains how we collect, use, disclose, retain, and protect information when you use the K Scan AI website, Android and iOS mobile applications, APIs, AI systems, Elise and her StyleChat conversational capability, Scanner, Recent Scans, Closet and saved style content, Saved Looks, Dressing Rooms, shopping-assistance tools, and related services (collectively, the "Service").`,
         },
         {
           type: "paragraph",
-          text: `K Scan AI is a fashion-specific visual discovery, style-assistance, and shopping-assistance service. Depending on the current release and feature used, users may scan or select fashion-related images, receive AI-generated item and style results, view retailer-neutral shopping options, save fashion content, use Elise for conversational styling support, receive optional spoken stylist responses, organize or share items through Dressing Rooms, and use optional weather-aware styling context.`,
+          text: `K Scan AI is a fashion-specific visual discovery, style-assistance, and shopping-assistance service. K Scan AI mobile applications are available through Google Play and the Apple App Store. Depending on the platform and feature used, users may scan or select fashion-related images, receive AI-generated item and style results, view retailer-neutral shopping options, save fashion content, use Elise for conversational styling support, receive optional spoken stylist responses, organize or share items through Dressing Rooms, and use optional weather-aware styling context.`,
         },
         {
           type: "paragraph",
@@ -42,18 +42,18 @@ export const privacyPolicy: LegalDocumentData = {
           items: [
             `K Scan AI is intended for users 18 years of age and older. The Service is not directed to children or minors.`,
             `Camera and image-picker access are used only when you choose to capture or select fashion-related images.`,
-            `The current Android scan flow may support selecting and reviewing up to five images before submission and may identify multiple garments across those images.`,
+            `The mobile scan flow may support selecting and reviewing up to five images before submission and may identify multiple garments across those images.`,
             `On supported photo-library or gallery upload flows, K Scan AI may prepare a new image copy on your device before analysis by resizing or re-encoding the image and removing source metadata that is not needed for the Service. This preparation does not itself provide face or license-plate masking and is not guaranteed across every image path unless separately disclosed.`,
-            `The current verified release does not have active local face detection, automatic face blurring, automatic bystander masking, or automatic license-plate masking on the connected mobile upload path. Avoid submitting sensitive or non-fashion content.`,
+            `K Scan AI does not currently have active local face detection, automatic face blurring, automatic bystander masking, or automatic license-plate masking on the connected mobile upload path. Avoid submitting sensitive or non-fashion content.`,
             `K Scan AI is not designed for surveillance, facial recognition, biometric identification, or identifying people. K Scan AI does not create or retain biometric templates, faceprints, face geometry, or identity profiles.`,
-            `Images, prompts, Elise messages, style context, and related information may be processed through K Scan AI cloud systems and authorized AI or infrastructure providers. The current release is not device-only or cloud-free.`,
+            `Images, prompts, Elise messages, style context, and related information may be processed through K Scan AI cloud systems and authorized AI or infrastructure providers. The Service is not device-only or cloud-free.`,
             `Elise may use a bounded recent conversation window, authorized fashion content that you select or reference, and non-sensitive style preferences to personalize responses. K Scan AI is designed not to infer sensitive personal traits from your photographs, wardrobe, name, or voice.`,
-            `Elise spoken responses use text-to-speech. The feature does not record your voice, and the current Android app does not request microphone permission.`,
+            `Elise spoken responses use text-to-speech. The feature does not record your voice, and the mobile apps do not request microphone permission for Elise spoken responses.`,
             `Recent Scans and their saved shopping snapshots are device-local by default. Cloud Saved Scans synchronization is disabled by default. Account-backed Closet, Style Library, Dressing Room, Shared with Me, and related content may use cloud services where the feature is enabled.`,
-            `The Android app may request approximate foreground location only for optional weather-aware styling. For this feature, location supplied to the styling service is rounded rather than sent as precise GPS coordinates, and K Scan AI does not store raw precise coordinates for weather-aware styling. The current Android release does not request precise or background location.`,
+            `The mobile apps may request foreground location for optional weather-aware styling. Depending on platform and operating-system settings, you may be able to control the precision of the permission you grant. For weather-aware styling, K Scan AI uses approximate, rounded location context rather than storing raw precise GPS coordinates, and K Scan AI does not use background location for this feature.`,
             `K Scan AI does not currently use third-party advertising SDKs or collect Advertising ID for targeted advertising.`,
             `When an account-deletion request is accepted, K Scan AI deactivates the account and uses a limited restoration period of approximately 30 days. If the account is not restored and no legal, security, or technical hold applies, it becomes eligible for permanent deletion. Deletion is not an instantaneous erase operation.`,
-            `Dressing Room safety controls include in-app report-message, report-user, and block-user functions. Blocking is enforced across relevant authorization surfaces in the current release.`,
+            `Dressing Room safety controls include in-app report-message, report-user, and block-user functions. Blocking is enforced across relevant authorization surfaces.`,
             `AI-generated responses can be reported in-app. The report is designed to store structured moderation information and limited allowlisted identifiers or context rather than the raw AI response, uploaded photos, scan media, or raw image content.`,
             `Mirror Selfie may use user-requested image and pose/body-positioning processing for the fashion experience. It is not used for facial recognition, biometric identification, or creating identity profiles.`,
           ],
@@ -66,11 +66,11 @@ export const privacyPolicy: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `This Policy applies to the K Scan AI website, Android app, current mobile releases and any explicitly identified beta or preview features, APIs, AI systems, and related services unless a separate privacy notice applies. It covers information you provide, information generated through use of the Service, information stored locally on your device, information stored in K Scan AI cloud systems, and information processed by authorized service providers.`,
+          text: `This Policy applies to the K Scan AI website, Android and iOS mobile applications available through Google Play and the Apple App Store, APIs, AI systems, and related services unless a separate privacy notice applies. It covers information you provide, information generated through use of the Service, information stored locally on your device, information stored in K Scan AI cloud systems, and information processed by authorized service providers.`,
         },
         {
           type: "paragraph",
-          text: `The current Android application uses package com.kscanai.app. Platform Data Safety disclosures, App Store privacy disclosures where applicable, and in-app disclosures should be read together with this Policy. If a feature materially changes data collection or processing, K Scan AI will update this Policy and required platform disclosures before or when the change is enabled.`,
+          text: `K Scan AI distributes its mobile applications through Google Play and the Apple App Store. Google Play Data Safety disclosures, Apple App Privacy disclosures, and in-app disclosures should be read together with this Policy. If a feature materially changes data collection or processing, K Scan AI will update this Policy and required platform disclosures before or when the change is enabled.`,
         },
       ],
     },
@@ -84,7 +84,7 @@ export const privacyPolicy: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `K Scan AI does not knowingly collect personal information from children or minors. If we learn that we collected information from a person under 18, we will take reasonable steps to delete or restrict it, subject to legal, safety, security, fraud-prevention, backup, and technical requirements. K Scan AI does not participate in Google Play Families or Designed for Families for the current release posture.`,
+          text: `K Scan AI does not knowingly collect personal information from children or minors. If we learn that we collected information from a person under 18, we will take reasonable steps to delete or restrict it, subject to legal, safety, security, fraud-prevention, backup, and technical requirements. K Scan AI does not participate in Google Play Families or Designed for Families.`,
         },
       ],
     },
@@ -180,7 +180,7 @@ export const privacyPolicy: LegalDocumentData = {
         { type: "subheading", text: "4.2 Camera, Image Picker, Multi-Image Scan, and Local Image Preparation" },
         {
           type: "paragraph",
-          text: `When you intentionally start a scan or select images, K Scan AI may access the camera or the images you select through the operating-system image picker. The current Android release may support selecting and reviewing between one and five images before submission. You can remove selected images before starting analysis.`,
+          text: `When you intentionally start a scan or select images, K Scan AI may access the camera or the images you select through the operating-system image picker. The mobile scan flow may support selecting and reviewing between one and five images before submission. You can remove selected images before starting analysis.`,
         },
         {
           type: "paragraph",
@@ -196,7 +196,7 @@ export const privacyPolicy: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `The current verified connected mobile release does not have active local face detection, automatic face blurring, automatic bystander masking, automatic license-plate detection, or automatic license-plate masking on the applicable upload path. Local metadata stripping or image re-encoding is not the same as face or license-plate masking. If an image contains a face, bystander, license plate, private document, or other identifying visual element, that element may be included in the image transmitted for remote analysis. Do not submit sensitive or non-fashion content unless you intend that content to be processed as part of your request.`,
+          text: `K Scan AI does not currently have active local face detection, automatic face blurring, automatic bystander masking, automatic license-plate detection, or automatic license-plate masking on the applicable mobile upload path. Local metadata stripping or image re-encoding is not the same as face or license-plate masking. If an image contains a face, bystander, license plate, private document, or other identifying visual element, that element may be included in the image transmitted for remote analysis. Do not submit sensitive or non-fashion content unless you intend that content to be processed as part of your request.`,
         },
         {
           type: "paragraph",
@@ -209,7 +209,7 @@ export const privacyPolicy: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `Cloud Saved Scans synchronization is disabled by default in the current release. Device-local records do not automatically become available on another device. Clearing app data or uninstalling the app may remove device-local records. Account deletion from K Scan AI cloud systems may not erase a local copy that remains on a disconnected device; you may also delete local records through the app, clear app data, or uninstall the app.`,
+          text: `Cloud Saved Scans synchronization is disabled by default. Device-local records do not automatically become available on another device. Clearing app data or uninstalling the app may remove device-local records. Account deletion from K Scan AI cloud systems may not erase a local copy that remains on a disconnected device; you may also delete local records through the app, clear app data, or uninstall the app.`,
         },
         { type: "subheading", text: "4.4 Closet, Style Library, Saved Looks, and Account-Backed Content" },
         {
@@ -247,7 +247,7 @@ export const privacyPolicy: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `Spoken Responses do not record your voice. The current Android release does not request microphone permission, does not collect raw microphone audio, and does not create voiceprints or biometric voice identifiers. Spoken Responses may be unavailable because of network conditions, provider availability, account limits, or provider quota.`,
+          text: `Spoken Responses do not record your voice. The mobile apps do not request microphone permission for Elise spoken responses, do not collect raw microphone audio through that feature, and do not create voiceprints or biometric voice identifiers. Spoken Responses may be unavailable because of network conditions, provider availability, account limits, or provider quota.`,
         },
         { type: "subheading", text: "4.6 Dressing Rooms, Shared with Me, Messaging, Sharing, and Safety" },
         {
@@ -273,12 +273,12 @@ export const privacyPolicy: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `When you open a third-party retailer or marketplace link, you leave K Scan AI and the third party's privacy policy applies. K Scan AI does not intentionally provide raw uploaded images to retailers for their independent use unless separately disclosed. K Scan AI may receive referral or affiliate compensation from qualifying outbound links, but the current mobile release does not use third-party advertising SDKs or Advertising ID for targeted advertising.`,
+          text: `When you open a third-party retailer or marketplace link, you leave K Scan AI and the third party's privacy policy applies. K Scan AI does not intentionally provide raw uploaded images to retailers for their independent use unless separately disclosed. K Scan AI may receive referral or affiliate compensation from qualifying outbound links, but the mobile apps do not use third-party advertising SDKs or Advertising ID for targeted advertising.`,
         },
         { type: "subheading", text: "4.8 Approximate Location and Weather-Aware Styling" },
         {
           type: "paragraph",
-          text: `The current Android app may request approximate foreground location for optional weather-aware styling or localization. It does not request precise location or background location for the current weather-aware styling feature. If you deny approximate location, core scanning, saving, Dressing Rooms, and Elise text functionality remain available, although weather-aware styling may be limited.`,
+          text: `The mobile apps may request foreground location for optional weather-aware styling or localization. Depending on platform and operating-system settings, users may be able to choose the precision of location access. For weather-aware styling, K Scan AI uses approximate, rounded location context and does not store raw precise GPS coordinates for that feature. K Scan AI does not use background location for weather-aware styling. If you deny location access, core scanning, saving, Dressing Rooms, and Elise text functionality remain available, although weather-aware styling may be limited.`,
         },
         {
           type: "paragraph",
@@ -291,7 +291,7 @@ export const privacyPolicy: LegalDocumentData = {
         { type: "subheading", text: "4.9 Device, App, Diagnostics, Security, and Elise Service Metadata" },
         {
           type: "paragraph",
-          text: `We may process device type, operating system, app version, package and build information, language settings, IP address, request metadata, authentication identifiers, app interactions, feature usage, error information, performance information, and security or fraud-prevention signals. The precise data depends on the feature used and the production configuration. The current app does not use a third-party targeted-advertising SDK or collect Advertising ID.`,
+          text: `We may process device type, operating system, app version, package and build information, language settings, IP address, request metadata, authentication identifiers, app interactions, feature usage, error information, performance information, and security or fraud-prevention signals. The precise data depends on the feature used and the production configuration. K Scan AI does not use a third-party targeted-advertising SDK or collect Advertising ID.`,
         },
         {
           type: "paragraph",
@@ -400,7 +400,7 @@ export const privacyPolicy: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `K Scan AI may use first-party operational logs and basic usage information to maintain security, understand feature performance, diagnose errors, and improve the Service. The current mobile release does not use third-party advertising SDKs, does not collect Advertising ID for targeted advertising, and does not track users across third-party apps or websites for targeted advertising.`,
+          text: `K Scan AI may use first-party operational logs and basic usage information to maintain security, understand feature performance, diagnose errors, and improve the Service. The mobile apps do not use third-party advertising SDKs, do not collect Advertising ID for targeted advertising, and do not track users across third-party apps or websites for targeted advertising.`,
         },
         {
           type: "paragraph",
@@ -537,7 +537,7 @@ export const privacyPolicy: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `The current mobile release does not use third-party advertising SDKs or Advertising ID for targeted advertising. K Scan AI does not sell raw scans, uploaded images, Elise messages, private user-generated content, biometric data, raw precise GPS coordinates, or sensitive personal information to third-party data buyers for independent use. Some permitted analytics, commerce, attribution, or other disclosures may be considered sale or sharing under broad state-law definitions; where required, K Scan AI will provide applicable opt-out controls. Requests may be submitted through available in-app controls, https://kscan.app/legal/delete-account, or kscanai.app@gmail.com.`,
+          text: `The mobile apps do not use third-party advertising SDKs or Advertising ID for targeted advertising. K Scan AI does not sell raw scans, uploaded images, Elise messages, private user-generated content, biometric data, raw precise GPS coordinates, or sensitive personal information to third-party data buyers for independent use. Some permitted analytics, commerce, attribution, or other disclosures may be considered sale or sharing under broad state-law definitions; where required, K Scan AI will provide applicable opt-out controls. Requests may be submitted through available in-app controls, https://kscan.app/legal/delete-account, or kscanai.app@gmail.com.`,
         },
       ],
     },
@@ -601,7 +601,7 @@ export const privacyPolicy: LegalDocumentData = {
       blocks: [
         {
           type: "paragraph",
-          text: `In the current release, shopping actions route users to third-party pages for physical goods. K Scan AI does not process payment-card information for those purchases. If K Scan AI later offers paid digital features or subscriptions in the app, it will use Google Play Billing, Apple In-App Purchase, or other required payment methods and will update applicable disclosures.`,
+          text: `Shopping actions route users to third-party pages for physical goods. K Scan AI does not process payment-card information for those purchases. If K Scan AI later offers paid digital features or subscriptions in the app, it will use Google Play Billing, Apple In-App Purchase, or other required payment methods and will update applicable disclosures.`,
         },
       ],
     },
