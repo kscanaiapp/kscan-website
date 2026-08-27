@@ -370,20 +370,44 @@ export default function TestCenterPage() {
           What We&rsquo;re Testing
         </h2>
 
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-3 sm:items-start">
           {/* Current focus */}
           <div className={`${surfaces.card} p-6`}>
             <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-600">
               Current Focus
             </p>
-            <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
-              Scan-to-Closet
-            </h3>
-            <p className="text-[13px] leading-relaxed text-stone-500">
-              We&apos;re focused on making scan-to-closet fast, reliable, and
-              useful in real wardrobe workflows, including AI tagging, closet
-              organization, and wardrobe management end to end.
-            </p>
+            <div className="space-y-6">
+              <div>
+                <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
+                  Scan-to-Closet
+                </h3>
+                <p className="text-[13px] leading-relaxed text-stone-500">
+                  We&apos;re focused on making scan-to-closet fast, reliable, and
+                  useful in real wardrobe workflows, including AI tagging, closet
+                  organization, and wardrobe management end to end.
+                </p>
+              </div>
+              <div>
+                <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
+                  Smarter Product Matching
+                </h3>
+                <p className="text-[13px] leading-relaxed text-stone-500">
+                  Improving how K Scan identifies brands, materials, silhouettes, and
+                  product details, then connects each scan to more relevant shopping
+                  results across retailers.
+                </p>
+              </div>
+              <div>
+                <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
+                  Scanner Accuracy &amp; Recognition
+                </h3>
+                <p className="text-[13px] leading-relaxed text-stone-500">
+                  Refining item detection, brand awareness, duplicate handling, and
+                  multi-item recognition so scans are more accurate without slowing down
+                  the experience.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Newly released — Dressing Rooms */}
@@ -391,15 +415,39 @@ export default function TestCenterPage() {
             <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-600">
               Newly Released
             </p>
-            <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
-              Dressing Rooms &amp; Share by Link
-            </h3>
-            <p className="text-[13px] leading-relaxed text-stone-500">
-              Save outfit ideas in Dressing Rooms, compare options, share a
-              link, and keep reactions and conversations connected to each
-              look. Signature Style helps make future suggestions more
-              relevant to the preferences you share.
-            </p>
+            <div className="space-y-6">
+              <div>
+                <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
+                  Dressing Rooms &amp; Share by Link
+                </h3>
+                <p className="text-[13px] leading-relaxed text-stone-500">
+                  Save outfit ideas in Dressing Rooms, compare options, share a
+                  link, and keep reactions and conversations connected to each
+                  look. Signature Style helps make future suggestions more
+                  relevant to the preferences you share.
+                </p>
+              </div>
+              <div>
+                <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
+                  Signature Style
+                </h3>
+                <p className="text-[13px] leading-relaxed text-stone-500">
+                  K Scan can learn from the preferences you choose to share, helping
+                  Elise make future outfit, styling, and discovery suggestions more
+                  relevant to you.
+                </p>
+              </div>
+              <div>
+                <h3 className="mb-3 text-[15px] font-semibold text-stone-900">
+                  Multi-Item Outfit Scanning
+                </h3>
+                <p className="text-[13px] leading-relaxed text-stone-500">
+                  K Scan can identify multiple fashion items within a single image and
+                  return separate results for each piece, making full-look scanning more
+                  useful.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Live — Elise */}
