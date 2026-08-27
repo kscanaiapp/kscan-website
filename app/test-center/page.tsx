@@ -77,9 +77,9 @@ const productStatus: {
   },
   {
     label: "iOS",
-    status: "COMING SOON",
-    dotClass: "bg-orange-400",
-    badgeClass: "border-orange-200 bg-orange-50 text-orange-700",
+    status: "ACTIVE",
+    dotClass: "bg-emerald-400",
+    badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
   {
     label: "Scan-to-Closet",
