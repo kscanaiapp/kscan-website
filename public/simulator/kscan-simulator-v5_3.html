@@ -201,8 +201,7 @@ html,body { width:100%; height:100%; overflow:hidden; background:var(--bg); font
 .phone-result { padding:16px 20px 80px; opacity:0; transition:opacity 0.5s; }
 .phone-result.visible { opacity:1; }
 .phone-header { display:flex; align-items:center; gap:8px; margin-bottom:16px; font-size:15px; font-weight:600; }
-.phone-back { width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:var(--glass); border:1px solid var(--glass-border); color:var(--text); font-size:14px; cursor:pointer; transition:all 0.2s; font-family:inherit; flex-shrink:0; }
-.phone-back:hover { background:rgba(255,255,255,0.16); }
+.phone-back { width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:50%; border:none; padding:0; background:var(--glass); color:var(--text); cursor:pointer; font-family:inherit; flex-shrink:0; }
 .phone-product-img { width:100%; height:220px; border-radius:16px; object-fit:cover; margin-bottom:16px; background:linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02)); }
 .phone-product-name { font-size:20px; font-weight:600; }
 .phone-product-merchant { font-size:13px; color:var(--text-secondary); margin-top:2px; }
@@ -214,8 +213,7 @@ html,body { width:100%; height:100%; overflow:hidden; background:var(--bg); font
 .phone-btn.save { background:var(--glass-strong); color:var(--text); border:1px solid var(--glass-border); }
 .phone-retailers { margin-top:20px; }
 .phone-retailers h4 { font-size:13px; font-weight:600; color:var(--text-secondary); margin-bottom:10px; text-transform:uppercase; letter-spacing:0.05em; }
-.retailer-row { display:flex; align-items:center; justify-content:space-between; width:100%; padding:12px; border-radius:12px; background:var(--glass); margin-bottom:6px; border:1px solid var(--glass-border); color:var(--text); font-family:inherit; cursor:pointer; transition:all 0.2s; text-align:left; }
-.retailer-row:hover { background:rgba(255,255,255,0.1); border-color:var(--hairline-strong); }
+.retailer-row { display:flex; align-items:center; justify-content:space-between; padding:12px; border-radius:12px; background:var(--glass); margin-bottom:6px; border:1px solid var(--glass-border); }
 .retailer-name { font-size:14px; font-weight:500; }
 .retailer-price { font-size:14px; font-weight:600; }
 .retailer-tag { font-size:10px; padding:2px 8px; border-radius:100px; margin-left:8px; }
@@ -258,7 +256,8 @@ html,body { width:100%; height:100%; overflow:hidden; background:var(--bg); font
 .memory-item-info { flex:1; }
 .memory-item-name { font-size:12px; font-weight:500; }
 .memory-item-meta { font-size:10px; color:var(--text-dim); margin-top:1px; }
-.controls { position:absolute; top:20px; right:28px; z-index:31; display:flex; gap:8px; }
+.controls { position:absolute; top:20px; right:28px; z-index:31; display:flex; gap:8px; max-width:calc(100% - 140px); overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none; }
+.controls::-webkit-scrollbar { display:none; }
 .ctrl-btn { width:40px; height:40px; border-radius:12px; background:var(--glass-strong); backdrop-filter:blur(10px); border:1px solid var(--glass-border); color:var(--text); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; font-family:inherit; }
 .ctrl-btn:hover { background:rgba(255,255,255,0.15); }
 .ctrl-btn.active { background:var(--text); color:var(--bg); }
@@ -331,7 +330,8 @@ html,body { width:100%; height:100%; overflow:hidden; background:var(--bg); font
   .branch-panel.visible { transform:translateX(-50%) translateY(0); }
   .top-bar { padding:14px 16px; }
   .scene-indicator { display:none; }
-  .controls { top:14px; right:16px; }
+  .controls { top:14px; right:16px; max-width:calc(100% - 120px); gap:6px; }
+  .ctrl-btn { width:36px; height:36px; font-size:14px; }
   .scene-selector { right:16px; }
   .memory-hud, .adventure-log { display:none; }
   .film-progress { width:88%; bottom:56px; }
@@ -343,6 +343,7 @@ html,body { width:100%; height:100%; overflow:hidden; background:var(--bg); font
   *,*::before,*::after { animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
 }
 </style>
+<base target="_blank">
 </head>
 <body>
 <div id="app">
@@ -526,11 +527,11 @@ const SCENES={
 const PRODUCTS={
   jacket:{ id:'jacket', name:'Brown Suede Bomber', category:'Outerwear', confidence:91,
     scene:'vintage', position:{left:38,top:44}, attrs:['Suede','Cropped','Bomber'],
-    exact:{name:'AllSaints Suede Bomber',price:499,merchant:'AllSaints',image:'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80'},
-    close:{name:'Aritzia Suede Bomber',price:289,merchant:'Aritzia',image:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80'},
-    similar:{name:'Mango Brown Leather Jacket',price:179,merchant:'Mango',image:'https://images.unsplash.com/photo-1520975661595-6453be3f7070?w=400&q=80'},
-    affordable:{name:'ASOS Faux Suede Bomber',price:89,merchant:'ASOS',image:'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80'},
-    resale:{name:'Pre-owned Suede Bomber',price:165,merchant:'The RealReal',image:'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80'},
+    exact:{name:'AllSaints Suede Bomber',price:499,merchant:'AllSaints',image:'/simulator/products/jacket-exact.jpg'},
+    close:{name:'Aritzia Suede Bomber',price:289,merchant:'Aritzia',image:'/simulator/products/jacket-close.jpg'},
+    similar:{name:'Mango Brown Leather Jacket',price:179,merchant:'Mango',image:'/simulator/products/jacket-similar.jpg'},
+    affordable:{name:'ASOS Faux Suede Bomber',price:89,merchant:'ASOS',image:'/simulator/products/jacket-affordable.jpg'},
+    resale:{name:'Pre-owned Suede Bomber',price:165,merchant:'The RealReal',image:'/simulator/products/jacket-resale.jpg'},
     elise:{
       what:"That's a cropped brown suede bomber jacket. The silhouette is very on-trend \u2014 boxy cut, hits right at the waist.",
       cheaper:"I found a similar faux suede version for $89 at ASOS. There's also a leather alternative at Mango for $179.",
@@ -539,22 +540,22 @@ const PRODUCTS={
       shoes:"Black combat boots or clean white sneakers would work perfectly. Your Dr. Martens would be the ideal match.",
       save:"Saved to your Closet. I've tagged it under 'Jackets' and 'Want'."
     }},
-  boots:{ id:'boots', name:'Black Combat Boots', category:'Footwear', confidence:94,
-    scene:'vintage', position:{left:52,top:76}, attrs:['Leather','Lug sole','Combat'],
-    exact:{name:'Dr. Martens Jadon',price:220,merchant:'Dr. Martens',image:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80'},
-    close:{name:'Steve Madden Troopa',price:99,merchant:'Steve Madden',image:'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=400&q=80'},
-    similar:{name:'ASOS Chunky Boots',price:65,merchant:'ASOS',image:'https://images.unsplash.com/photo-1605812860427-4024433a70fd?w=400&q=80'},
-    affordable:{name:'H&M Combat Boots',price:49,merchant:'H&M',image:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80'},
-    resale:{name:'Pre-owned Docs',price:140,merchant:'Depop',image:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80'},
+  boots:{ id:'boots', name:'Louboutin Miss Z', category:'Footwear', confidence:94,
+    scene:'vintage', position:{left:52,top:76}, attrs:['Canvas','Slingback','Pump'],
+    exact:{name:'Christian Louboutin Miss Z Canvas Slingback Pump',price:1095,merchant:'Christian Louboutin',image:'https://kimi-web-img.kimi.ai/img/www.bluefly.com/1911b60862ba5942d6a6f9fdda1c76a89cbbadba.jpg'},
+    close:{name:'Jimmy Choo Saeda Slingback',price:895,merchant:'Jimmy Choo',image:'https://kimi-web-img.kimi.ai/img/www.bluefly.com/5b7551a3727c1c42b5dc17f2a35b8ed2561a6307.jpg'},
+    similar:{name:'Sam Edelman Hazel Pump',price:140,merchant:'Sam Edelman',image:'https://kimi-web-img.kimi.ai/img/www.bluefly.com/24ef1fe977d6a7029c1b3bdaca152a853cd7293f.jpg'},
+    affordable:{name:'Charles Keith Slingback',price:69,merchant:'Charles & Keith',image:'https://kimi-web-img.kimi.ai/img/www.bluefly.com/1911b60862ba5942d6a6f9fdda1c76a89cbbadba.jpg'},
+    resale:{name:'Pre-owned Louboutin Miss Z',price:750,merchant:'The RealReal',image:'https://kimi-web-img.kimi.ai/img/www.bluefly.com/1911b60862ba5942d6a6f9fdda1c76a89cbbadba.jpg'},
     elise:{
-      what:"Those are black leather combat boots with a lug sole \u2014 very likely Dr. Martens or a close style match.",
-      cheaper:"I found similar chunky boots at ASOS for $65, and H&M has a pair for $49.",
-      suit:"These work with almost everything you own. They'd especially complement the cropped jeans in your Closet.",
-      own:"You already own a pair of black combat boots \u2014 the Dr. Martens Jadon. These look very similar.",
-      shoes:"Since these are boots, try pairing them with a midi skirt or cropped trousers to show them off.",
-      save:"Saved to your Closet. Noting that you may already own something very similar."
+      what:"That's a Christian Louboutin Miss Z Canvas Slingback Pump. The watercolor canvas and signature red sole make it unmistakable.",
+      cheaper:"Sam Edelman has a similar silhouette for $140. Charles & Keith has a slingback version for $69.",
+      suit:"These would elevate any outfit — the pointed toe elongates the leg beautifully. They'd pair perfectly with your cropped trousers.",
+      own:"You don't own anything in this silhouette. Your shoe collection leans toward boots and sneakers — this would be a strong statement piece.",
+      shoes:"Since these are pumps, they'd work with everything from tailored trousers to a midi dress. The canvas keeps them from feeling too formal.",
+      save:"Saved to your Closet. Tagged under 'Shoes' and 'Statement'."
     }},
-  bag:{ id:'bag', name:'Leather Crossbody', category:'Accessory', confidence:87,
+bag:{ id:'bag', name:'Leather Crossbody', category:'Accessory', confidence:87,
     scene:'vintage', position:{left:62,top:52}, attrs:['Leather','Structured','Crossbody'],
     exact:{name:'Bottega Veneta Andiamo',price:3200,merchant:'Bottega Veneta',image:'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80'},
     close:{name:'Coach Tabby',price:395,merchant:'Coach',image:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&q=80'},
@@ -616,11 +617,11 @@ const PRODUCTS={
     }},
   sneakers:{ id:'sneakers', name:'White Trainers', category:'Footwear', confidence:92,
     scene:'street', position:{left:58,top:72}, attrs:['Leather','Minimal','Low-top'],
-    exact:{name:'Common Projects Achilles',price:425,merchant:'Common Projects',image:'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&q=80'},
-    close:{name:'Veja Campo',price:175,merchant:'Veja',image:'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400&q=80'},
-    similar:{name:'Nike Air Force 1',price:110,merchant:'Nike',image:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&q=80'},
-    affordable:{name:'Adidas Stan Smith',price:85,merchant:'Adidas',image:'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&q=80'},
-    resale:{name:'Pre-owned Achilles',price:280,merchant:'Grailed',image:'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&q=80'},
+    exact:{name:'Common Projects Achilles',price:425,merchant:'Common Projects',image:'/simulator/products/sneakers-exact.jpg'},
+    close:{name:'Veja Campo',price:175,merchant:'Veja',image:'/simulator/products/sneakers-close.jpg'},
+    similar:{name:'Nike Air Force 1',price:110,merchant:'Nike',image:'/simulator/products/sneakers-similar.jpg'},
+    affordable:{name:'Adidas Stan Smith',price:85,merchant:'Adidas',image:'/simulator/products/sneakers-affordable.jpg'},
+    resale:{name:'Pre-owned Achilles',price:280,merchant:'Grailed',image:'/simulator/products/sneakers-resale.jpg'},
     elise:{
       what:"Those are clean white leather trainers \u2014 a minimalist low-top silhouette.",
       cheaper:"Veja has a similar clean look for $175. Air Force 1s are $110 and Stan Smiths are $85.",
@@ -687,7 +688,7 @@ const ELISE_COMMANDS=[
   {key:'save',label:'Save to Closet'}
 ];
 const RELATED_SUGGESTIONS=[
-  {saved:'jacket',target:'boots',text:'Those <strong>{target}</strong> would work perfectly with the <strong>{saved}</strong> you saved.'},
+  {saved:'jacket',target:'boots',text:'Those <strong>{target}</strong> would be a stunning pairing with the <strong>{saved}</strong> you saved.'},
   {saved:'jacket',target:'scarf',text:'That <strong>{target}</strong> would complement the <strong>{saved}</strong> you saved beautifully.'},
   {saved:'jacket',target:'sneakers',text:'Those <strong>{target}</strong> would work with the <strong>{saved}</strong> you saved earlier.'},
   {saved:'jacket',target:'outfit',text:'This whole look builds on the <strong>{saved}</strong> you already saved.'},
@@ -1287,16 +1288,10 @@ class Simulator {
     this.memory.addSave(this.currentProduct,this.currentTier);
     this.logAdventure('Saved '+this.currentProduct.name);
     this.updateMemoryHud();
-    this.showToast('Saved '+this.currentProduct.name+' to Closet','\u2713');
-  }
-
-  showToast(text,glyph){
     const toast=$('saveToast');
-    toast.querySelector('.check').textContent=glyph||'\u2713';
-    $('saveToastText').textContent=text;
+    $('saveToastText').textContent='Saved '+this.currentProduct.name+' to Closet';
     toast.classList.add('visible');
-    if(this._toastTimer) clearTimeout(this._toastTimer);
-    this._toastTimer=setTimeout(function(){ toast.classList.remove('visible'); },2200);
+    setTimeout(function(){ toast.classList.remove('visible'); },2000);
   }
 
   handoffToPhone(){
@@ -1356,63 +1351,64 @@ class Simulator {
     const p=this.currentProduct;
     if(!p) return;
     const resultEl=$('phoneResult');
+    const self=this;
+    const activeItem=p.isOutfit?null:p[this.currentTier];
     let html;
     if(p.isOutfit){
-      html='<div class="phone-header"><button class="phone-back" data-phone-back="1" aria-label="Back to lock screen">\u2190</button> '+p.name+'</div>'+
+      html='<div class="phone-header"><button class="phone-back" data-phone-back="1" aria-label="Back">←</button> '+p.name+'</div>'+
         '<div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">'+p.confidence+'% outfit match</div>'+
         p.items.map(function(it){
           return '<div class="outfit-item" style="margin-bottom:8px;"><img src="'+it.image+'" alt="" onerror="this.style.display=\'none\'">'+
-            '<div class="outfit-item-info"><div class="name">'+it.name+'</div><div class="price">$'+it.price+' \u00B7 '+it.merchant+'</div></div></div>';
+            '<div class="outfit-item-info"><div class="name">'+it.name+'</div><div class="price">$'+it.price+' · '+it.merchant+'</div></div></div>';
         }).join('');
     } else {
-      const item=p[this.currentTier];
       const tier=this.currentTier;
-      html='<div class="phone-header"><button class="phone-back" data-phone-back="1" aria-label="Back to lock screen">\u2190</button> Scan Result</button></div>'.replace('</button></div>','</div>')+
-        '<img class="phone-product-img" src="'+item.image+'" alt="" onerror="this.style.display=\'none\'">'+
-        '<div class="phone-product-name">'+item.name+'</div>'+
-        '<div class="phone-product-merchant">'+item.merchant+'</div>'+
-        '<div class="phone-product-price">$'+item.price+'</div>'+
-        '<div class="phone-product-match">\u2726 '+p.confidence+'% visual match</div>'+
-        '<div class="phone-actions"><button class="phone-btn shop" data-phone-shop="'+item.merchant+'">Shop Now</button>'+
+      html='<div class="phone-header"><button class="phone-back" data-phone-back="1" aria-label="Back">←</button> Scan Result</div>'+
+        '<img class="phone-product-img" src="'+activeItem.image+'" alt="" onerror="this.style.display=\'none\'">'+
+        '<div class="phone-product-name">'+activeItem.name+'</div>'+
+        '<div class="phone-product-merchant">'+activeItem.merchant+'</div>'+
+        '<div class="phone-product-price">$'+activeItem.price+'</div>'+
+        '<div class="phone-product-match">✦ '+p.confidence+'% visual match</div>'+
+        '<div class="phone-actions"><button class="phone-btn shop" data-phone-shop="1">Shop Now</button>'+
         '<button class="phone-btn save" data-phone-save="1">Save</button></div>'+
         '<div class="phone-retailers"><h4>Also Available At</h4>'+
         TIER_ORDER.filter(function(t){ return t!==tier && p[t]; }).map(function(t){
           const it=p[t];
           const tag=t==='resale'?'<span class="retailer-tag tag-resale">Resale</span>':'<span class="retailer-tag tag-retail">Retail</span>';
-          return '<button class="retailer-row" data-retailer-tier="'+t+'"><span class="retailer-name">'+it.merchant+tag+'</span><span class="retailer-price">$'+it.price+'</span></button>';
+          return '<div class="retailer-row"><span class="retailer-name">'+it.merchant+tag+'</span><span class="retailer-price">$'+it.price+'</span></div>';
         }).join('')+'</div>';
     }
     resultEl.innerHTML=html;
     resultEl.classList.add('visible');
-    const self=this;
-    const saveBtn=resultEl.querySelector('[data-phone-save]');
-    if(saveBtn) saveBtn.addEventListener('click',function(){ self.saveItem(); });
-
     const backBtn=resultEl.querySelector('[data-phone-back]');
     if(backBtn) backBtn.addEventListener('click',function(){ self.closePhoneResult(); });
-
+    const saveBtn=resultEl.querySelector('[data-phone-save]');
+    if(saveBtn) saveBtn.addEventListener('click',function(){ self.saveItem(); });
     const shopBtn=resultEl.querySelector('[data-phone-shop]');
-    if(shopBtn) shopBtn.addEventListener('click',function(){
-      toneSave();
-      self.showToast('Opening '+shopBtn.dataset.phoneShop+' \u2014 affiliate handoff simulated','\u2197');
-      self.logAdventure('Retailer handoff \u2014 '+shopBtn.dataset.phoneShop);
-    });
-
-    resultEl.querySelectorAll('[data-retailer-tier]').forEach(function(row){
-      row.addEventListener('click',function(){
-        self.currentTier=row.dataset.retailerTier;
-        self.openPhoneResult();
-        if(self.state==='result') self.showResult();
-        self.logAdventure('Compared '+TIER_LABELS[self.currentTier]+' on phone');
+    if(shopBtn && activeItem){
+      shopBtn.addEventListener('click',function(){
+        toneSuccess();
+        self.logAdventure('Opened retailer for '+activeItem.name);
+        const toast=$('saveToast');
+        $('saveToastText').textContent='Opening '+activeItem.merchant+'...';
+        toast.classList.add('visible');
+        setTimeout(function(){ toast.classList.remove('visible'); },2000);
       });
-    });
+    }
   }
 
   closePhoneResult(){
     $('phoneResult').classList.remove('visible');
     $('phoneLock').classList.remove('hidden');
-    $('lockNotification').style.display='flex';
+    $('lockNotification').style.display='none';
+    $('phoneCompanion').classList.remove('visible');
+    this.state='result';
+    if(this.currentProduct){
+      this.showResult();
+      this.showBranchPanel();
+    }
   }
+
 
   /* ---------- film (FIX 2 + FIX 4) ---------- */
   startFilmMode(){
