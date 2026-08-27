@@ -78,6 +78,11 @@ const productStatus: {
   {
     label: "iOS",
     status: "ACTIVE",
+    storeLink: {
+      href: "https://testflight.apple.com/join/UcxK6GVm",
+      ariaLabel: "Get K Scan AI for iOS",
+      platform: "apple",
+    },
     dotClass: "bg-emerald-400",
     badgeClass: "border-emerald-200 bg-emerald-50 text-emerald-700",
   },
