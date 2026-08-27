@@ -97,8 +97,8 @@ export default function WearablesPage() {
             </div>
 
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-              <Link href="/beta" className={`fashion-cursor ${buttons.primaryLg}`}>
-                View Beta Program
+              <Link href="/test-center" className={`fashion-cursor ${buttons.primaryLg}`}>
+                Visit Test Center
               </Link>
               <Link
                 href="/download"
@@ -262,13 +262,13 @@ export default function WearablesPage() {
             </h2>
             <p className="text-[14px] leading-[1.75] text-stone-500">
               K Scan AI&rsquo;s smart glasses direction is still in controlled testing. If you are
-              interested in future access, product updates, or demos, you can follow the beta program and
+              interested in product updates or demos, you can visit the Test Center and follow
               current platform progress.
             </p>
           </div>
           <div className="flex flex-shrink-0 flex-col items-start gap-4 sm:flex-row sm:items-center">
-            <Link href="/beta" className={`fashion-cursor ${buttons.primaryLg}`}>
-              View Beta Program
+            <Link href="/test-center" className={`fashion-cursor ${buttons.primaryLg}`}>
+              Visit Test Center
             </Link>
             <Link
               href="/download"

@@ -94,14 +94,14 @@ export async function generateMetadata({ params }: RoomPageProps): Promise<Metad
       absolute: displayTitle,
     },
     description:
-      "Open a shared K Scan AI dressing room and explore scan-to-closet beta access.",
+      "Open a shared K Scan AI dressing room and explore scan-to-closet features.",
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
       title: displayTitle,
       description:
-        "Open a shared K Scan AI dressing room and explore scan-to-closet beta access.",
+        "Open a shared K Scan AI dressing room and explore scan-to-closet features.",
       url: canonicalUrl,
       siteName: "K Scan AI",
       locale: "en_US",
@@ -121,7 +121,7 @@ export async function generateMetadata({ params }: RoomPageProps): Promise<Metad
       card: "summary_large_image",
       title: displayTitle,
       description:
-        "Open a shared K Scan AI dressing room and explore scan-to-closet beta access.",
+        "Open a shared K Scan AI dressing room and explore scan-to-closet features.",
       images: [PREVIEW_IMAGE_URL],
     },
   };
@@ -234,10 +234,10 @@ function AvailableRoom({
               Preview K Scan AI
             </Link>
             <Link
-              href="/beta"
+              href="/test-center"
               className="fashion-cursor rounded-full border border-stone-200 bg-white px-8 py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-stone-600 shadow-[0_12px_26px_rgba(35,28,22,0.06)] transition-colors hover:text-stone-950"
             >
-              Join the Beta
+              Visit Test Center
             </Link>
           </div>
         </div>

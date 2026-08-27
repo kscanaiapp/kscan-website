@@ -52,10 +52,10 @@ export default function DownloadPage() {
 
         <p className="mt-8 text-[13px] text-stone-500">
           <Link
-            href="/beta"
+            href="/test-center"
             className="underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-800 hover:decoration-stone-500"
           >
-            View Beta Details
+            Visit Test Center
           </Link>
         </p>
       </section>

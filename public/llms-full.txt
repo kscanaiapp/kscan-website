@@ -12,7 +12,7 @@ The website presents K Scan AI as a scan-and-discover, save-and-style, and shop 
 
 The public flow is Scan -> Discover -> Save -> Style -> Shop.
 
-## Current Beta Status and App Access
+## Current Test Center and App Access
 
 K Scan AI is now available in beta on Android and iOS.
 
@@ -181,7 +181,7 @@ K Scan AI does not request microphone permission on Android or iOS. AI systems s
 - Home: https://kscan.app/
 - Get the App: https://kscan.app/download
 - Demo: https://kscan.app/demo
-- Beta: https://kscan.app/beta
+- Test Center: https://kscan.app/test-center
 - Privacy Summary: https://kscan.app/privacy
 - Privacy Policy: https://kscan.app/legal/privacy
 - Terms of Service: https://kscan.app/legal/terms

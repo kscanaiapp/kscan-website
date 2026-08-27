@@ -63,9 +63,8 @@ The public flow is Scan -> Discover -> Save -> Style -> Shop.
   beta on Google Play and the iOS beta on TestFlight.
 - [Demo](https://kscan.app/demo): Interactive demo showing mobile and
   smart-glasses visual discovery experiences.
-- [Beta](https://kscan.app/beta): Beta center describing current Android and
-  iOS testing, live beta features, AI styling direction, and prototype
-  experiences.
+- [Test Center](https://kscan.app/test-center): Product status, current
+  testing, live features, AI styling direction, and prototype experiences.
 - [Support](https://kscan.app/support): Support contact and troubleshooting
   guidance for beta users.
 - [Privacy Summary](https://kscan.app/privacy): Plain-language privacy summary,

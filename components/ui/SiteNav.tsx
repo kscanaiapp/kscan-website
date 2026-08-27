@@ -17,7 +17,7 @@ const NAV_ITEMS: NavEntry[] = [
   { id: "how-it-works", label: "How It Works", type: "anchor", value: "how-it-works", cursor: true },
   { id: "features",     label: "Features",     type: "anchor", value: "features",     cursor: true },
   { id: "demo",         label: "Demo",         type: "route",  value: "/demo",        cursor: true },
-  { id: "beta",         label: "Beta Program", type: "route",  value: "/beta",        cursor: true },
+  { id: "test-center",  label: "Test Center",  type: "route",  value: "/test-center", cursor: true },
   { id: "investors",    label: "Investors",    type: "route",  value: "/investors",   cursor: false },
   { id: "security",     label: "Security",     type: "route",  value: "/security",    cursor: false },
 ];

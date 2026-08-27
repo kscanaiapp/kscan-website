@@ -5,7 +5,7 @@ const siteUrl = "https://kscan.app";
 const publicRoutes = [
   { path: "", changeFrequency: "weekly" as const, priority: 1.0 },
   { path: "/download", changeFrequency: "monthly" as const, priority: 0.9 },
-  { path: "/beta", changeFrequency: "monthly" as const, priority: 0.8 },
+  { path: "/test-center", changeFrequency: "monthly" as const, priority: 0.8 },
   { path: "/demo", changeFrequency: "monthly" as const, priority: 0.8 },
   { path: "/wearables", changeFrequency: "monthly" as const, priority: 0.6 },
   { path: "/security", changeFrequency: "monthly" as const, priority: 0.7 },
@@ -20,12 +20,9 @@ const publicRoutes = [
   { path: "/legal/vulnerability-response", changeFrequency: "yearly" as const, priority: 0.3 },
 ];
 
-const lastModified = new Date().toISOString().split("T")[0];
-
 export default function sitemap(): MetadataRoute.Sitemap {
   return publicRoutes.map((route) => ({
     url: `${siteUrl}${route.path}`,
-    lastModified,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));

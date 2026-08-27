@@ -27,10 +27,10 @@ export function SiteFooter() {
             {/* Legal links — wrap on mobile, single row on md+ */}
             <div className="flex flex-wrap items-center justify-center">
               <Link
-                href="/beta"
+                href="/test-center"
                 className="flex h-11 items-center justify-center px-2 text-stone-600 transition-colors hover:text-stone-900 focus:outline-none focus-visible:text-stone-900"
               >
-                Beta
+                Test Center
               </Link>
               <span aria-hidden="true" className="hidden select-none text-stone-400 md:inline">|</span>
               <Link

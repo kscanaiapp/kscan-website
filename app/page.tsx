@@ -1113,10 +1113,10 @@ export default function Home() {
                 Get the App
               </a>
               <a
-                href="/beta"
+                href="/test-center"
                 className="text-[13px] text-stone-600 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
               >
-                View Beta Details
+                Visit Test Center
               </a>
             </div>
 
