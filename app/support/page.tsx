@@ -6,21 +6,21 @@ export const metadata: Metadata = {
     absolute: "Support | K Scan AI",
   },
   description:
-    "Get help with K Scan AI, including account support, privacy requests, data export questions, and beta access guidance.",
+    "Get help with K Scan AI on iOS and Android, including account support, privacy requests, and data export questions.",
   alternates: {
     canonical: "https://kscan.app/support",
   },
   openGraph: {
     title: "Support | K Scan AI",
     description:
-      "Get help with K Scan AI, including account support, privacy requests, data export questions, and beta access guidance.",
+      "Get help with K Scan AI on iOS and Android, including account support, privacy requests, and data export questions.",
     url: "https://kscan.app/support",
   },
   twitter: {
     card: "summary_large_image",
     title: "Support | K Scan AI",
     description:
-      "Get help with K Scan AI, including account support, privacy requests, data export questions, and beta access guidance.",
+      "Get help with K Scan AI on iOS and Android, including account support, privacy requests, and data export questions.",
   },
 };
 
@@ -36,6 +36,11 @@ export default function SupportPage() {
         <h1 className="font-display text-[38px] leading-[1.05] text-stone-900 sm:text-[46px] md:text-[56px]">
           K Scan AI Support
         </h1>
+
+        <p className="mt-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
+          K Scan AI is available on iOS and Android. This page covers support for the K Scan AI app on both
+          platforms.
+        </p>
 
         <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
           <section className="space-y-2">
@@ -83,21 +88,11 @@ export default function SupportPage() {
 
           <section className="space-y-4">
             <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              Beta Support Expectations
-            </h2>
-            <ul className="space-y-2 pl-4">
-              <li>Initial response times may vary during beta.</li>
-              <li>Feature behavior may change as reliability and safety updates ship.</li>
-            </ul>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              Beta App Support
+              App Support
             </h2>
             <ul className="space-y-2 pl-4">
               <li>
-                Testers can report crashes, permission issues, and scan-result concerns to{" "}
+                Report crashes, permission issues, and scan-result concerns to{" "}
                 <a href="mailto:kscanai.app@gmail.com" className={linkClassName}>
                   kscanai.app@gmail.com
                 </a>
@@ -107,6 +102,16 @@ export default function SupportPage() {
                 Include device model, operating-system version, K Scan AI app version, and the
                 approximate time of the issue.
               </li>
+            </ul>
+          </section>
+
+          <section className="space-y-4">
+            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
+              Beta Testers
+            </h2>
+            <ul className="space-y-2 pl-4">
+              <li>If you are using a beta or pre-release build (such as TestFlight), initial response times may vary.</li>
+              <li>Feature behavior may change as reliability and safety updates ship.</li>
             </ul>
           </section>
         </div>
