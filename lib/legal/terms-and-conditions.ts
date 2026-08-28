@@ -25,7 +25,7 @@ export const termsAndConditions: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `K Scan AI currently operates a production Android application and may make iOS, TestFlight, beta, preview, or other platform versions available from time to time. Particular features may be identified as beta, preview, experimental, staged, or platform-specific. Those features may contain errors, interruptions, incomplete functionality, provider limits, or changes, and these Terms apply to them unless separate terms are provided.`,
+          text: `K Scan AI operates production mobile applications on Android and iOS, distributed through Google Play and the Apple App Store, and may make TestFlight, beta, preview, or other pre-release versions available from time to time. Particular features may be identified as beta, preview, experimental, staged, or platform-specific. Those features may contain errors, interruptions, incomplete functionality, provider limits, or changes, and these Terms apply to them unless separate terms are provided.`,
         },
         {
           type: "paragraph",
@@ -577,7 +577,7 @@ export const termsAndConditions: LegalDocumentData = {
           type: "table",
           head: ["Topic", "Current position"],
           rows: [
-            ["Android release posture", "Current production release; package com.kscanai.app. Other mobile or TestFlight versions may be made available separately.",],
+            ["Mobile release posture", "Current production releases; package / bundle identifier com.kscanai.app on Android and iOS. Pre-release and TestFlight versions may be made available separately.",],
             ["Scanning", "One to five selected images may be reviewed before submission; multiple garments may be returned; richer fashion metadata is preserved across supported flows.",],
             ["Recent Scans", "Device-local by default; saved commerce snapshots and canonical scan identity may reopen locally.",],
             ["Cloud Saved Scans", "Disabled by default in the current release unless a feature expressly states otherwise.",],
