@@ -564,12 +564,11 @@ export default function InvestorsPage() {
                 </div>
               ) : deckState === "ready" ? (
                 <div className="flex min-h-[420px] flex-col items-center justify-center rounded-[24px] border border-stone-200/80 bg-white px-8 py-10 text-center shadow-[0_22px_50px_rgba(35,28,22,0.08)]">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-stone-600">Pitch Deck</p>
-                  <h3 className="mt-4 font-display text-[32px] leading-[1.08] text-stone-900">
-                    Investor deck is ready.
+                  <h3 className="font-display text-[32px] leading-[1.08] text-stone-900">
+                    Investor information is ready.
                   </h3>
                   <p className="mt-4 max-w-sm text-[14px] leading-[1.8] text-stone-500">
-                    Open the deck in a dedicated tab for the best review experience across mobile and desktop.
+                    Open the materials in dedicated tabs for the best review experience across mobile and desktop.
                   </p>
                   <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
                     <InvestorDeckLauncher
@@ -588,6 +587,12 @@ export default function InvestorsPage() {
                       className="inline-flex rounded-full border border-stone-300 bg-white px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-stone-700 transition-colors hover:border-stone-400 hover:text-stone-900"
                     >
                       Read Investor Memo
+                    </InvestorDeckLauncher>
+                    <InvestorDeckLauncher
+                      href="/api/investor/competitive-analysis"
+                      className="inline-flex rounded-full border border-stone-300 bg-white px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.14em] text-stone-700 transition-colors hover:border-stone-400 hover:text-stone-900"
+                    >
+                      Competitive Analysis
                     </InvestorDeckLauncher>
                     <InvestorDeckLauncher
                       href="/investors/revenue-brief"
