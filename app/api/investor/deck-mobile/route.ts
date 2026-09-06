@@ -77,7 +77,10 @@ function prepareMobileDeckHtml(html: string) {
     .replaceAll("/docs/kscan-deck-no9.pdf", "/api/investor/deck")
     .replaceAll("/docs/kscan-investor-deck.pdf", "/api/investor/deck")
     .replaceAll("docs/kscan-deck-no9.pdf", "/api/investor/deck")
-    .replaceAll("docs/kscan-investor-deck.pdf", "/api/investor/deck");
+    .replaceAll("docs/kscan-investor-deck.pdf", "/api/investor/deck")
+    .replaceAll("./kscanaipreseeddeck29.pdf", "/api/investor/deck")
+    .replaceAll("/kscanaipreseeddeck29.pdf", "/api/investor/deck")
+    .replaceAll("kscanaipreseeddeck29.pdf", "/api/investor/deck");
 }
 
 function rateLimitMobileDeckRequest(request: Request) {
