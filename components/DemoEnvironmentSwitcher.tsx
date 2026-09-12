@@ -18,6 +18,9 @@ type IconProps = {
   className?: string;
 };
 
+const KPLUS_DEMO_URL =
+  "https://wyyuqfdxucjksghsmhry.supabase.co/storage/v1/object/public/public-assets/kplusdemoship13.html";
+
 const DEFAULT_VIEW: EnvironmentView = "mobile";
 const EASE = [0.22, 1, 0.36, 1] as const;
 const TOGGLE_DURATION = 0.3;
@@ -332,9 +335,22 @@ export function DemoEnvironmentSwitcher() {
               <p className="text-[10px] font-medium uppercase tracking-[0.26em] text-stone-700">
                 Active Environment
               </p>
-              <h2 className="mt-2.5 font-display text-[28px] leading-[1.04] text-stone-900 md:text-[34px]">
-                {activeEnvironment.title}
-              </h2>
+              <div className="mt-2.5 flex flex-wrap items-center gap-2.5">
+                <h2 className="font-display text-[28px] leading-[1.04] text-stone-900 md:text-[34px]">
+                  {activeEnvironment.title}
+                </h2>
+                {activeView === "mobile" ? (
+                  <a
+                    href={KPLUS_DEMO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open K+ experience demo"
+                    className="inline-flex min-h-[1.75rem] items-center justify-center rounded-full border border-cyan-500/30 bg-cyan-500/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-cyan-700 transition-colors hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:text-cyan-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F0EA]"
+                  >
+                    K+
+                  </a>
+                ) : null}
+              </div>
             </div>
             <div className="space-y-2.5">
               <p className="text-[12px] font-medium uppercase tracking-[0.14em] text-stone-700">
