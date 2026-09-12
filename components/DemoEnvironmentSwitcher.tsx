@@ -18,8 +18,7 @@ type IconProps = {
   className?: string;
 };
 
-const KPLUS_DEMO_URL =
-  "https://wyyuqfdxucjksghsmhry.supabase.co/storage/v1/object/public/public-assets/kplusdemoship13.html";
+const KPLUS_DEMO_URL = "/demo/kplusdemoship13.html";
 
 const DEFAULT_VIEW: EnvironmentView = "mobile";
 const EASE = [0.22, 1, 0.36, 1] as const;
