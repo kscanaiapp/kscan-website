@@ -11,6 +11,8 @@ const publicRoutes = [
   { path: "/security", changeFrequency: "monthly" as const, priority: 0.7 },
   { path: "/privacy", changeFrequency: "yearly" as const, priority: 0.3 },
   { path: "/legal/privacy", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/billing", changeFrequency: "yearly" as const, priority: 0.3 },
+  { path: "/legal/refund-policy", changeFrequency: "yearly" as const, priority: 0.3 },
   { path: "/legal/terms", changeFrequency: "yearly" as const, priority: 0.3 },
   { path: "/legal/terms-summary", changeFrequency: "yearly" as const, priority: 0.3 },
   { path: "/do-not-sell-or-share", changeFrequency: "yearly" as const, priority: 0.3 },
