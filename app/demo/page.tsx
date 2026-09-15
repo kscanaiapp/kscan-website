@@ -84,6 +84,82 @@ export default function DemoPage() {
             </Suspense>
           </section>
 
+          <section className="mt-16 md:mt-20">
+            <div className="mb-8 flex items-center gap-5 md:mb-10">
+              <div aria-hidden="true" className="h-px flex-1 bg-stone-200" />
+              <p className="shrink-0 text-[10px] font-medium uppercase tracking-[0.28em] text-stone-600">
+                Explore the Experiences
+              </p>
+              <div aria-hidden="true" className="h-px flex-1 bg-stone-200" />
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="rounded-[24px] border border-violet-200/70 bg-white p-7 shadow-[0_16px_36px_rgba(35,28,22,0.06)]">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-violet-700">
+                  K+ Preview
+                </p>
+                <h3 className="mt-3 font-display text-[22px] leading-[1.15] text-stone-900">
+                  Explore the K+ experience
+                </h3>
+                <p className="mt-3 text-[13px] leading-[1.75] text-stone-500">
+                  Explore an interactive preview of the advanced K Scan AI experience.
+                </p>
+                <a
+                  href="/demo/kplusdemoship13.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fashion-cursor mt-6 inline-flex items-center justify-center rounded-full bg-violet-600 px-6 py-3 text-[13px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
+                >
+                  Launch K+ Demo
+                </a>
+              </div>
+
+              <div className="rounded-[24px] border border-cyan-200/70 bg-white p-7 shadow-[0_16px_36px_rgba(35,28,22,0.06)]">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-700">
+                  Smart Glasses Prototype
+                </p>
+                <h3 className="mt-3 font-display text-[22px] leading-[1.15] text-stone-900">
+                  Experience the Smart Glasses Simulator
+                </h3>
+                <p className="mt-3 text-[13px] leading-[1.75] text-stone-500">
+                  Step into a simulated K Scan AI smart-glasses experience and explore how hands-free
+                  fashion discovery could work in the world around you.
+                </p>
+                <a
+                  href="/simulator/kscan-simulator-v5_3.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fashion-cursor mt-6 inline-flex items-center justify-center rounded-full bg-stone-900 px-6 py-3 text-[13px] font-medium text-white shadow-[0_14px_30px_rgba(15,23,42,0.16)] transition-colors hover:bg-stone-800"
+                >
+                  Launch Smart Glasses Simulator
+                </a>
+                <p className="mt-3 text-[11px] leading-[1.6] text-stone-400">
+                  A simulated, pre-production prototype exploring a future direction &mdash; not a
+                  shipping hardware product.
+                </p>
+              </div>
+
+              <div className="rounded-[24px] border border-stone-200/80 bg-[#F4F0EA] p-7">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-stone-600">
+                  Privacy Concept
+                </p>
+                <h3 className="mt-3 font-display text-[20px] leading-[1.15] text-stone-900">
+                  Privacy Lens Concept
+                </h3>
+                <p className="mt-3 text-[13px] leading-[1.75] text-stone-500">
+                  Explore a privacy-focused prototype designed around reducing unnecessary bystander
+                  exposure during visual capture.
+                </p>
+                <Link
+                  href="/wearables"
+                  className="mt-6 inline-flex items-center text-[13px] text-stone-600 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
+                >
+                  See the Privacy Direction
+                </Link>
+              </div>
+            </div>
+          </section>
+
           <section className="mt-16 rounded-[30px] border border-stone-200/80 bg-[#F4F0EA] px-6 py-8 shadow-[0_16px_36px_rgba(35,28,22,0.06)] md:mt-20 md:px-8 md:py-10">
             <p className="text-[11px] uppercase tracking-[0.18em] text-stone-600">Next Step</p>
             <h2 className="mt-4 font-display text-[34px] leading-[1.06] text-stone-900 md:text-[42px]">
