@@ -51,7 +51,7 @@ export function SiteFooter() {
                 href="/billing"
                 className="flex h-11 items-center justify-center px-2 text-stone-600 transition-colors hover:text-stone-900 focus:outline-none focus-visible:text-stone-900"
               >
-                Billing, Cancellation &amp; Refunds
+                Billing
               </Link>
               <span aria-hidden="true" className="hidden select-none text-stone-400 md:inline">|</span>
               <Link
