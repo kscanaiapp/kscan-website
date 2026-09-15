@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     absolute: "Shared Dressing Room | K Scan AI",
   },
   description:
-    "Open a shared K Scan AI dressing room and explore scan-to-closet beta access.",
+    "Open a shared K Scan AI dressing room and explore scan-to-closet features.",
   alternates: {
     canonical: "/rooms",
   },
