@@ -981,54 +981,6 @@ export default function Home() {
         </FadeUp>
       </section>
 
-      <section className="border-y border-stone-100 bg-[#F5F3EF] py-10 md:py-20">
-        <FadeUp>
-          <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 md:flex-row md:items-end md:justify-between md:gap-7 md:px-10">
-            <div className="space-y-3">
-              <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600">
-                K Scan AI
-              </p>
-              <h3 className="max-w-xl font-display text-[26px] font-medium leading-snug text-stone-900 md:text-[32px]">
-                Private materials for
-                <br className="hidden md:block" /> qualified investors.
-              </h3>
-              <p className="max-w-sm text-[13px] leading-[1.72] text-stone-500 md:hidden">
-                The deck and supporting materials are available to qualified investors under private access.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 md:items-end">
-              {/* Mobile: opens bottom sheet */}
-              <motion.button
-                onClick={() => setInvestorOpen(true)}
-                className="flex w-full items-center justify-center gap-2.5 rounded-full bg-stone-900 px-7 py-4 text-[14px] font-medium text-white transition-colors hover:bg-stone-800 md:hidden"
-                {...btnMotion}
-              >
-                <LockIcon />
-                Access Investor Materials
-              </motion.button>
-
-              {/* Desktop: direct link */}
-              <motion.a
-                href="/investors"
-                className="hidden items-center gap-2 rounded-full bg-stone-900 px-7 py-3.5 text-center text-[14px] font-medium text-white transition-colors hover:bg-stone-800 md:flex"
-                {...btnMotion}
-              >
-                <LockIcon />
-                Enter Secure Portal
-              </motion.a>
-
-              <a
-                href="mailto:kscanai.app@gmail.com"
-                className="text-center text-[12px] text-stone-600 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400 md:text-right"
-              >
-                or request credentials
-              </a>
-            </div>
-          </div>
-        </FadeUp>
-      </section>
-
       <section aria-labelledby="faq-heading" className="bg-white py-16 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:px-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
           <FadeUp>
@@ -1056,11 +1008,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Investor bottom sheet — AnimatePresence for smooth exit */}
-      <AnimatePresence>
-        {investorOpen && <InvestorSheet onClose={() => setInvestorOpen(false)} />}
-      </AnimatePresence>
 
       <section id="get-the-app" className="bg-white py-14 md:py-40">
         <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 md:px-10 md:gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
@@ -1191,6 +1138,59 @@ export default function Home() {
           </FadeUp>
         </div>
       </section>
+
+      <section className="border-y border-stone-100 bg-[#F5F3EF] py-10 md:py-20">
+        <FadeUp>
+          <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 md:flex-row md:items-end md:justify-between md:gap-7 md:px-10">
+            <div className="space-y-3">
+              <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600">
+                K Scan AI
+              </p>
+              <h3 className="max-w-xl font-display text-[26px] font-medium leading-snug text-stone-900 md:text-[32px]">
+                Private materials for
+                <br className="hidden md:block" /> potential investors.
+              </h3>
+              <p className="max-w-sm text-[13px] leading-[1.72] text-stone-500 md:hidden">
+                The deck and supporting materials are available to potential investors under private access.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 md:items-end">
+              {/* Mobile: opens bottom sheet */}
+              <motion.button
+                onClick={() => setInvestorOpen(true)}
+                className="flex w-full items-center justify-center gap-2.5 rounded-full bg-stone-900 px-7 py-4 text-[14px] font-medium text-white transition-colors hover:bg-stone-800 md:hidden"
+                {...btnMotion}
+              >
+                <LockIcon />
+                Access Investor Materials
+              </motion.button>
+
+              {/* Desktop: direct link */}
+              <motion.a
+                href="/investors"
+                className="hidden items-center gap-2 rounded-full bg-stone-900 px-7 py-3.5 text-center text-[14px] font-medium text-white transition-colors hover:bg-stone-800 md:flex"
+                {...btnMotion}
+              >
+                <LockIcon />
+                Enter Secure Portal
+              </motion.a>
+
+              <a
+                href="mailto:kscanai.app@gmail.com"
+                className="text-center text-[12px] text-stone-600 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400 md:text-right"
+              >
+                or request credentials
+              </a>
+            </div>
+          </div>
+        </FadeUp>
+      </section>
+
+      {/* Investor bottom sheet — AnimatePresence for smooth exit */}
+      <AnimatePresence>
+        {investorOpen && <InvestorSheet onClose={() => setInvestorOpen(false)} />}
+      </AnimatePresence>
     </main>
   );
 }
