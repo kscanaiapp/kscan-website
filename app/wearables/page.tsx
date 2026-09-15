@@ -7,21 +7,21 @@ import { surfaces, buttons } from "@/lib/theme";
 // ─── Metadata ─────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: { absolute: "Wearables | K Scan AI" },
+  title: { absolute: "Smart Glasses | K Scan AI" },
   description:
     "K Scan AI is exploring connected smart glasses experiences that help people capture fashion inspiration in the moment and continue discovery, saving, and shopping on their phone.",
   keywords: [
     "K Scan AI smart glasses",
     "connected smart glasses fashion",
-    "wearable fashion discovery",
+    "smart glasses fashion discovery",
     "Meta Ray-Ban smart glasses shopping",
-    "AI fashion search wearables",
+    "AI fashion search smart glasses",
   ],
   alternates: {
     canonical: "/wearables",
   },
   openGraph: {
-    title: "Wearables | K Scan AI",
+    title: "Smart Glasses | K Scan AI",
     description:
       "K Scan AI is exploring connected smart glasses experiences that help people capture fashion inspiration in the moment and continue discovery, saving, and shopping on their phone.",
     url: "https://kscan.app/wearables",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wearables | K Scan AI",
+    title: "Smart Glasses | K Scan AI",
     description:
       "K Scan AI is exploring connected smart glasses experiences that help people capture fashion inspiration in the moment and continue discovery, saving, and shopping on their phone.",
     images: ["/group-street.jpeg"],
@@ -80,7 +80,7 @@ export default function WearablesPage() {
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-14">
           <div>
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-600">
-              K Scan AI for Wearables
+              K Scan AI for Smart Glasses
             </p>
             <h1 className="font-display max-w-md text-[42px] leading-[1.02] text-stone-900 sm:text-[52px] md:text-[62px]">
               Fashion discovery, now in view
@@ -245,7 +245,7 @@ export default function WearablesPage() {
               Designed with privacy in mind
             </h2>
             <p className="text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-              K Scan AI&rsquo;s wearable and mobile privacy architecture is designed to apply privacy
+              K Scan AI&rsquo;s smart glasses and mobile privacy architecture is designed to apply privacy
               protections at the capture boundary before analysis. Privacy Lens technology is part of that
               direction, while certification and broader rollout remain in progress.
             </p>
@@ -258,7 +258,7 @@ export default function WearablesPage() {
         <div className={`${surfaces.linenCard} flex flex-col gap-8 p-8 md:flex-row md:items-center md:justify-between md:p-12`}>
           <div className="max-w-lg">
             <h2 className="font-display mb-3 text-[26px] leading-tight text-stone-900 sm:text-[30px]">
-              Want early access to wearable experiences?
+              Want early access to smart glasses experiences?
             </h2>
             <p className="text-[14px] leading-[1.75] text-stone-500">
               K Scan AI&rsquo;s smart glasses direction is still in controlled testing. If you are

@@ -17,7 +17,7 @@ export default function DemoPage() {
           <div className="max-w-3xl">
             <p className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-600">Demo</p>
             <h1 className="font-display text-[42px] leading-[1.02] text-stone-900 sm:text-[52px] md:text-[68px]">
-              Mobile now. Wearables next.
+              Mobile now. Smart glasses next.
             </h1>
             <p className="mt-6 max-w-2xl text-[15px] leading-[1.9] text-stone-500 md:text-[17px]">
               Two views of the K Scan AI product roadmap: the current mobile experience built for fashion conversion,
