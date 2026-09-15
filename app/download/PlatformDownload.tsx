@@ -65,10 +65,7 @@ export function PlatformDownload() {
       name: "iOS",
       description: "Available on the App Store.",
       action: "Download on the App Store",
-      // TODO(App Store URL): placeholder pending the verified production Apple App Store
-      // listing URL for K Scan AI (app has been approved; real URL not yet available).
-      // Replace with the real https://apps.apple.com/app/id<NUMERIC_ID> link before shipping.
-      href: "https://apps.apple.com/app/idPENDING-VERIFICATION",
+      href: "https://apps.apple.com/us/app/k-scan-ai/id6785093920",
     },
   ];
 
