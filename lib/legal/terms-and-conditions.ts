@@ -595,7 +595,7 @@ export const termsAndConditions: LegalDocumentData = {
             ["Closet", "Account-backed wardrobe truth for items identified by the user as owned; richer canonical fashion metadata preserved through supported flows.",],
             ["Saved Looks", "Account-backed outfit/styling groupings that may include garment context, occasion, dress code, and setting information.",],
             ["Image preparation", "Supported image-selection flows may re-encode selected images on-device and remove unneeded source metadata before remote analysis; this is not face or plate masking.",],
-            ["Signature Style / Style DNA", "Uses non-sensitive fashion preference signals. Some feedback reasons and controls may remain device-local while compact summaries or account-backed style memory may support personalization.",],
+            ["Signature Style", "Uses non-sensitive fashion preference signals. Some feedback reasons and controls may remain device-local while compact summaries or account-backed style memory may support personalization.",],
             ["Account deletion", "Accepted request deactivates the account; current restoration period is generally 30 days; eligible accounts then proceed to verified permanent purge subject to holds, shared-content rules, and technical/provider limits.",],
             ["Shared-room deletion treatment", "A shared Dressing Room may be transferred to another eligible participant; content required for the surviving collaboration may remain after the deleting account is purged.",],
           ],

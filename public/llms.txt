@@ -157,7 +157,8 @@ record.
 Describe Signature Style as: saved items, styling preferences, feedback, and
 other authorized style signals that can help K Scan AI make recommendations
 more relevant. Do not describe Signature Style as a persistent personal
-style-memory system across devices. Do not use "StyleDNA."
+style-memory system across devices. Do not use any alternate or legacy name
+for this feature; "Signature Style" is the only correct product name.
 
 Describe roadmap features as coming soon or in development unless the public
 website indicates they are currently live.
