@@ -45,9 +45,9 @@ channel.
 3. Organize: Recent Scans keeps what a user discovered, Closet keeps what
    they own, and Saved Inspiration keeps what they want to come back to.
 4. Style: Signature Style adds a user's preferences to the picture. Elise
-   offers outfit guidance through StyleChat, and Dressing Rooms let users
-   compare options and decide together; a Dressing Room session can produce
-   a Saved Look.
+   offers outfit guidance through StyleChat, Dressing Rooms let users
+   compare options and decide together, and Saved Looks can represent
+   user-created outfit or styling groupings.
 5. Shop: Users explore retailer-neutral matches and alternatives across
    price tiers, then continue to the retailer to complete the purchase.
 
@@ -62,8 +62,7 @@ does not mean owned. Saved does not mean owned.
   enter Closet automatically.
 - Saved Inspiration: discoveries or inspiration a user intentionally saves
   to revisit, distinct from both Recent Scans and Closet.
-- Saved Looks: outfit or styling groupings a user creates, typically from
-  Closet items, scanned items, or a Dressing Room session. Saved Looks are
+- Saved Looks: outfit or styling groupings a user creates. Saved Looks are
   distinct from Saved Inspiration and should not be described as the same
   concept.
 
