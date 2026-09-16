@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/group-street.jpeg",
-        alt: "K Scan AI: fashion scanning and styling app",
+        alt: "Three women in coordinated street-style outfits walking and talking on a city sidewalk",
         width: 2048,
         height: 1365,
       },

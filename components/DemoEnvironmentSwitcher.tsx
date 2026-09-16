@@ -190,7 +190,7 @@ export function DemoEnvironmentSwitcher() {
         <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-stone-700/90">
           Environment Switcher
         </p>
-        <div className="inline-flex items-center rounded-full border border-stone-500/30 bg-[#101010] p-1 shadow-[0_10px_24px_rgba(0,0,0,0.24)] ring-1 ring-white/5">
+        <div className="flex w-full max-w-full flex-wrap items-center justify-center gap-1.5 rounded-[26px] border border-stone-500/30 bg-[#101010] p-1.5 shadow-[0_10px_24px_rgba(0,0,0,0.24)] ring-1 ring-white/5 sm:w-auto sm:flex-nowrap sm:gap-0 sm:rounded-full sm:p-1">
           {(Object.keys(ENVIRONMENTS) as EnvironmentView[]).map((view) => {
             const config = ENVIRONMENTS[view];
             const isActive = view === activeView;
@@ -201,7 +201,7 @@ export function DemoEnvironmentSwitcher() {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => handleSwitch(view)}
-                className="relative isolate min-h-[2.75rem] rounded-full px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-stone-300/88 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111111] sm:px-7"
+                className="relative isolate min-h-[2.75rem] rounded-full px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-stone-300/88 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111111] sm:px-7 sm:tracking-[0.16em]"
               >
                 {isActive ? (
                   <motion.span
@@ -221,7 +221,7 @@ export function DemoEnvironmentSwitcher() {
             href="/simulator/kscan-simulator-v5_3.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative isolate flex min-h-[2.75rem] items-center justify-center rounded-full px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-stone-300/88 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111111] sm:px-7"
+            className="relative isolate flex min-h-[2.75rem] items-center justify-center rounded-full px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-stone-300/88 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300/55 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111111] sm:px-7 sm:tracking-[0.16em]"
           >
             <span className="relative z-10">Simulator</span>
           </a>

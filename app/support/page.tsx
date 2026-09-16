@@ -107,10 +107,15 @@ export default function SupportPage() {
 
           <section className="space-y-4">
             <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              Beta Testers
+              Pre-Release Builds
             </h2>
             <ul className="space-y-2 pl-4">
-              <li>If you are using a beta or pre-release build (such as TestFlight), initial response times may vary.</li>
+              <li>
+                The standard K Scan AI app is publicly available on the App Store and Google Play. This
+                section applies only to a small number of testers using a separate pre-release build (such
+                as TestFlight).
+              </li>
+              <li>If you are using a pre-release build, initial response times may vary.</li>
               <li>Feature behavior may change as reliability and safety updates ship.</li>
             </ul>
           </section>

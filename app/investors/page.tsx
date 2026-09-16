@@ -36,15 +36,15 @@ const archSteps = [
 const progressCards = [
   {
     title: "Built",
-    body: "The mobile beta is live, with Scan-to-Closet, TextScan, Dressing Rooms, Share by Link, and the AI Stylist available for active testing.",
+    body: "K Scan AI is available on iOS and Android, with visual search and Closet, Dressing Rooms, Share by Link, and the Elise AI Stylist live in the app.",
   },
   {
     title: "In Validation",
-    body: "K Scan AI is validating scan reliability, product-result quality, saved-scan behavior, collaboration workflows, and beta retention across Android and iOS.",
+    body: "K Scan AI is validating scan reliability, product-result quality, saved-scan behavior, collaboration workflows, and user retention across Android and iOS.",
   },
   {
     title: "Next",
-    body: "Improve discovery-to-retailer conversion measurement, deepen retailer pathways, expand tester feedback loops, and refine the mobile experience.",
+    body: "Improve discovery-to-retailer conversion measurement, deepen retailer pathways, expand user feedback loops, and refine the mobile experience.",
   },
 ];
 
@@ -255,7 +255,7 @@ export default function InvestorsPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-[22px]">
               <Image
                 src="/group-street.jpeg"
-                alt="Street-style group image supporting the K Scan AI investor briefing"
+                alt="Three women in coordinated street-style outfits walking and talking on a city sidewalk"
                 fill
                 priority
                 sizes="(max-width: 1024px) 90vw, 40vw"

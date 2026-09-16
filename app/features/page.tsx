@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         url: "/group-street.jpeg",
         width: 2048,
         height: 1365,
-        alt: "K Scan AI visual fashion search and styling features",
+        alt: "Three women in coordinated street-style outfits walking and talking on a city sidewalk",
       },
     ],
     type: "website",
@@ -409,7 +409,7 @@ export default function FeaturesPage() {
               id="features-hero-heading"
               className="mb-6 font-display text-[40px] font-medium leading-[1.02] text-stone-900 sm:text-[48px] md:text-[62px]"
             >
-              See it. Scan it.
+              See it. Scan it.{" "}
               <br />
               Style it. Shop it.
             </h1>
@@ -446,7 +446,7 @@ export default function FeaturesPage() {
               <div className="relative aspect-[5/4]">
                 <Image
                   src="/group-street.jpeg"
-                  alt="Street-style fashion look of the kind K Scan AI identifies, scans, and turns into shoppable product matches."
+                  alt="Three women in coordinated street-style outfits walking and talking on a city sidewalk"
                   fill
                   priority
                   sizes="(max-width: 1024px) 92vw, 46vw"

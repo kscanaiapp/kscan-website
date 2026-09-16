@@ -133,7 +133,7 @@ export default function DemoPage() {
                 >
                   Launch Smart Glasses Simulator
                 </a>
-                <p className="mt-3 text-[11px] leading-[1.6] text-stone-400">
+                <p className="mt-3 text-[11px] leading-[1.6] text-stone-600">
                   A simulated, pre-production prototype exploring a future direction &mdash; not a
                   shipping hardware product.
                 </p>
