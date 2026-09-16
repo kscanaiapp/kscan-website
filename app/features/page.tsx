@@ -419,9 +419,13 @@ export default function FeaturesPage() {
               retailers &mdash; all in one app.
             </p>
 
-            <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-[13px] font-medium text-violet-800">
+            <p className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-[13px] font-medium text-violet-800">
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-violet-600" />
               Available now on iOS and Android.
+            </p>
+
+            <p className="mb-8 max-w-xl text-[15px] leading-[1.7] text-stone-600">
+              K Scan AI is available today on the App Store and Google Play.
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -770,8 +774,8 @@ export default function FeaturesPage() {
               What’s Next
             </h2>
             <p className="text-[16px] leading-[1.8] text-stone-600 md:text-[17px]">
-              Future-facing directions for K Scan AI. These are previews and prototypes, not part of the current
-              shipping app.
+              See where K Scan AI is going next &mdash; from advanced K+ experiences to connected smart glasses
+              concepts.
             </p>
           </div>
 
@@ -780,7 +784,7 @@ export default function FeaturesPage() {
               status="Preview"
               heading="K+"
               body="K+ is the future premium layer of K Scan AI, exploring more advanced styling, planning, and personalized fashion experiences."
-              footnote="K+ is not a shipping paid membership. The preview is an interactive concept experience."
+              footnote="K+ is not a paid membership today. The preview is an interactive concept experience."
               cta={{ href: "/demo/kplusdemoship13.html", label: "Explore K+ Preview", external: true }}
             />
 
@@ -825,10 +829,9 @@ export default function FeaturesPage() {
           </div>
 
           <div className={`${surfaces.card} mx-auto max-w-md p-6 text-left`}>
-            <h3 className="font-display text-[18px] font-medium text-stone-900">Get Beta Updates</h3>
+            <h3 className="font-display text-[18px] font-medium text-stone-900">Be first to know what’s next</h3>
             <p className="mt-2 text-[13px] leading-relaxed text-stone-500">
-              Be first to hear about upcoming K Scan AI features and opportunities to test what’s next. The current
-              app is available now on iOS and Android &mdash; this is for what comes after it.
+              Hear about new K Scan AI features as they arrive, plus early looks at what we’re building.
             </p>
             <MicroCta href="/#beta-updates">Sign up for updates</MicroCta>
           </div>
