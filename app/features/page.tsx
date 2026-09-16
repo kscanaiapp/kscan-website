@@ -67,7 +67,6 @@ const PROOF_POINTS = [
   "Available on iOS + Android",
   "AI-powered fashion search",
   "Retailer-neutral discovery",
-  "Mirror Selfie on iOS",
 ];
 
 const PILLARS = [
@@ -75,34 +74,6 @@ const PILLARS = [
   { id: "organize", label: "Organize" },
   { id: "style", label: "Style" },
   { id: "shop", label: "Shop" },
-];
-
-// ─── Platform availability matrix ─────────────────────────────────────────
-
-type Availability = "Available" | "Where enabled" | "—";
-
-const AVAILABILITY_ROWS: {
-  feature: string;
-  ios: Availability;
-  android: Availability;
-  note: string;
-}[] = [
-  { feature: "Visual Search", ios: "Available", android: "Available", note: "Core scanning experience" },
-  { feature: "Photos / Screenshots", ios: "Available", android: "Available", note: "Camera roll and screenshots" },
-  { feature: "Mirror Selfie", ios: "Available", android: "—", note: "iOS only" },
-  { feature: "Closet", ios: "Available", android: "Available", note: "Items you own" },
-  { feature: "Recent Scans", ios: "Available", android: "Available", note: "Discoveries, not owned items" },
-  { feature: "Saved Inspiration", ios: "Available", android: "Available", note: "Saved, not owned" },
-  { feature: "Signature Style", ios: "Available", android: "Available", note: "Personalization signals" },
-  { feature: "Elise / StyleChat", ios: "Available", android: "Available", note: "AI stylist conversation" },
-  {
-    feature: "Spoken Responses",
-    ios: "Where enabled",
-    android: "Where enabled",
-    note: "Optional spoken Elise responses",
-  },
-  { feature: "Dressing Rooms", ios: "Available", android: "Available", note: "Shared outfit planning" },
-  { feature: "Commerce Discovery", ios: "Available", android: "Available", note: "Retailer-neutral pathways" },
 ];
 
 // ─── Structured-data feature list ─────────────────────────────────────────
@@ -122,7 +93,7 @@ const SCHEMA_FEATURES: { name: string; description: string }[] = [
   {
     name: "Mirror Selfie",
     description:
-      "Turn a mirror or selfie photo into a Closet starting point. Available on iOS.",
+      "Turn a mirror or selfie photo into a Closet starting point. K Scan AI identifies the fashion you are wearing so you can move what is yours toward Closet.",
   },
   {
     name: "Closet",
@@ -201,13 +172,14 @@ function FeatureMeta({
   dark = false,
 }: {
   status: Status;
-  platforms: string;
+  /** Omit where a feature carries no platform qualifier. */
+  platforms?: string;
   dark?: boolean;
 }) {
   return (
     <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-2">
       <StatusBadge status={status} dark={dark} />
-      <PlatformTag dark={dark}>{platforms}</PlatformTag>
+      {platforms ? <PlatformTag dark={dark}>{platforms}</PlatformTag> : null}
     </div>
   );
 }
@@ -268,7 +240,8 @@ function FeatureBlock({
   id?: string;
   name: string;
   status: Status;
-  platforms: string;
+  /** Omit where a feature carries no platform qualifier. */
+  platforms?: string;
   children: React.ReactNode;
   image?: { src: string; alt: string; position?: string };
   imageAspect?: string;
@@ -597,7 +570,6 @@ export default function FeaturesPage() {
             <FeatureBlock
               name="Mirror Selfie"
               status="Live"
-              platforms="iOS"
               image={{
                 src: "/mirror-selfie.jpeg",
                 alt: "Mirror selfie used as a Closet starting point in K Scan AI.",
@@ -611,7 +583,7 @@ export default function FeaturesPage() {
                 the items that are actually yours toward Closet.
               </p>
               <p className="text-[13px] text-stone-500">
-                Available on iOS. Results may vary by image, garment visibility, and release environment.
+                Results may vary by image, garment visibility, and release environment.
               </p>
             </FeatureBlock>
           </div>
@@ -813,90 +785,6 @@ export default function FeaturesPage() {
               </p>
             </FeatureBlock>
           </div>
-        </div>
-      </section>
-
-      {/* ── Platform availability matrix ──────────────────────────────── */}
-      <section
-        aria-labelledby="availability-heading"
-        className="bg-[#FAFAF8] py-16 md:py-24"
-      >
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <h2
-            id="availability-heading"
-            className="mb-4 font-display text-[32px] font-medium leading-[1.06] text-stone-900 md:text-[42px]"
-          >
-            Platform Availability
-          </h2>
-          <p className="mb-10 max-w-2xl text-[15px] leading-[1.8] text-stone-600">
-            What is live in the current K Scan AI app on each platform.
-          </p>
-
-          <div
-            role="region"
-            aria-labelledby="availability-heading"
-            tabIndex={0}
-            className="-mx-6 overflow-x-auto px-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 md:mx-0 md:px-0"
-          >
-            <table className="w-full min-w-[34rem] border-collapse text-left">
-              <caption className="sr-only">
-                K Scan AI feature availability on iOS and Android, with notes on conditional availability.
-              </caption>
-              <thead>
-                <tr className="border-b border-stone-300">
-                  <th scope="col" className="py-3 pr-4 text-[11px] font-medium uppercase tracking-[0.14em] text-stone-600">
-                    Feature
-                  </th>
-                  <th scope="col" className="px-4 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-stone-600">
-                    iOS
-                  </th>
-                  <th scope="col" className="px-4 py-3 text-[11px] font-medium uppercase tracking-[0.14em] text-stone-600">
-                    Android
-                  </th>
-                  <th scope="col" className="py-3 pl-4 text-[11px] font-medium uppercase tracking-[0.14em] text-stone-600">
-                    Note
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {AVAILABILITY_ROWS.map((row) => (
-                  <tr key={row.feature} className="border-b border-stone-200/80">
-                    <th
-                      scope="row"
-                      className="py-4 pr-4 text-[14px] font-medium text-stone-900"
-                    >
-                      {row.feature}
-                    </th>
-                    <td className="px-4 py-4 text-[13px] text-stone-600">
-                      {row.ios === "—" ? (
-                        <span>
-                          <span aria-hidden="true">&mdash;</span>
-                          <span className="sr-only">Not available</span>
-                        </span>
-                      ) : (
-                        row.ios
-                      )}
-                    </td>
-                    <td className="px-4 py-4 text-[13px] text-stone-600">
-                      {row.android === "—" ? (
-                        <span>
-                          <span aria-hidden="true">&mdash;</span>
-                          <span className="sr-only">Not available</span>
-                        </span>
-                      ) : (
-                        row.android
-                      )}
-                    </td>
-                    <td className="py-4 pl-4 text-[13px] text-stone-500">{row.note}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <p className="mt-6 max-w-2xl text-[13px] leading-[1.7] text-stone-500">
-            Availability reflects the current release and can change between updates.
-          </p>
         </div>
       </section>
 
