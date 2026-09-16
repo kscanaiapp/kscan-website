@@ -50,17 +50,11 @@ export const metadata: Metadata = {
 
 // ─── Status vocabulary ────────────────────────────────────────────────────
 
-type Status = "Live" | "Coming Soon" | "Exploring" | "Preview";
-
-const STATUS_LEGEND: { status: Status; meaning: string }[] = [
-  { status: "Live", meaning: "Available now." },
-  { status: "Coming Soon", meaning: "Planned for a future release." },
-  { status: "Exploring", meaning: "Active product research and direction." },
-  {
-    status: "Preview",
-    meaning: "An interactive or future-facing experience that is not part of the current shipping app.",
-  },
-];
+/**
+ * Badges mark a future-state distinction only. A feature that is part of the
+ * current product carries no badge.
+ */
+type Status = "Coming Soon" | "Exploring" | "Preview";
 
 /** Verified, non-numeric product facts. No usage metrics are published here. */
 const PROOF_POINTS = [
@@ -141,7 +135,6 @@ const SCHEMA_FEATURES: { name: string; description: string }[] = [
 // ─── Presentational pieces ────────────────────────────────────────────────
 
 const STATUS_STYLES: Record<Status, string> = {
-  Live: "bg-violet-50 text-violet-800 ring-violet-200",
   "Coming Soon": "bg-stone-100 text-stone-700 ring-stone-300",
   Exploring: "bg-white text-stone-600 ring-stone-300",
   Preview: "bg-indigo-50 text-indigo-800 ring-indigo-200",
@@ -171,14 +164,17 @@ function FeatureMeta({
   platforms,
   dark = false,
 }: {
-  status: Status;
+  /** Omit for features that are part of the current product. */
+  status?: Status;
   /** Omit where a feature carries no platform qualifier. */
   platforms?: string;
   dark?: boolean;
 }) {
+  if (!status && !platforms) return null;
+
   return (
     <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-2">
-      <StatusBadge status={status} dark={dark} />
+      {status ? <StatusBadge status={status} dark={dark} /> : null}
       {platforms ? <PlatformTag dark={dark}>{platforms}</PlatformTag> : null}
     </div>
   );
@@ -239,7 +235,8 @@ function FeatureBlock({
 }: {
   id?: string;
   name: string;
-  status: Status;
+  /** Omit for features that are part of the current product. */
+  status?: Status;
   /** Omit where a feature carries no platform qualifier. */
   platforms?: string;
   children: React.ReactNode;
@@ -468,28 +465,6 @@ export default function FeaturesPage() {
         </ul>
       </section>
 
-      {/* ── Release-status legend ─────────────────────────────────────── */}
-      <section aria-labelledby="status-legend-heading" className="border-y border-stone-200/70 bg-white py-10 md:py-12">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <h2
-            id="status-legend-heading"
-            className="mb-6 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600"
-          >
-            Release Status
-          </h2>
-          <dl className="grid gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
-            {STATUS_LEGEND.map(({ status, meaning }) => (
-              <div key={status}>
-                <dt className="mb-2">
-                  <StatusBadge status={status} />
-                </dt>
-                <dd className="text-[13px] leading-[1.7] text-stone-600">{meaning}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
       {/* ── Pillar navigation ─────────────────────────────────────────── */}
       <nav
         aria-label="Feature sections"
@@ -528,7 +503,6 @@ export default function FeaturesPage() {
           <div className="space-y-14 md:space-y-20">
             <FeatureBlock
               name="Visual Search"
-              status="Live"
               platforms="iOS + Android"
               image={{
                 src: "/how-it-works/identify-style-parse.png",
@@ -548,7 +522,6 @@ export default function FeaturesPage() {
 
             <FeatureBlock
               name="Screenshots & Saved Frames"
-              status="Live"
               platforms="iOS + Android"
               reverse
               image={{
@@ -569,7 +542,6 @@ export default function FeaturesPage() {
 
             <FeatureBlock
               name="Mirror Selfie"
-              status="Live"
               image={{
                 src: "/mirror-selfie.jpeg",
                 alt: "Mirror selfie used as a Closet starting point in K Scan AI.",
@@ -583,7 +555,7 @@ export default function FeaturesPage() {
                 the items that are actually yours toward Closet.
               </p>
               <p className="text-[13px] text-stone-500">
-                Results may vary by image, garment visibility, and release environment.
+                Results may vary by image quality and garment visibility.
               </p>
             </FeatureBlock>
           </div>
@@ -615,7 +587,7 @@ export default function FeaturesPage() {
           </div>
 
           <div className="space-y-14 md:space-y-20">
-            <FeatureBlock name="Closet" status="Live" platforms="iOS + Android">
+            <FeatureBlock name="Closet" platforms="iOS + Android">
               <p>Closet is for the fashion you own.</p>
               <p>
                 Keep owned pieces organized so they can become useful context for styling and outfit planning.
@@ -623,7 +595,7 @@ export default function FeaturesPage() {
               </p>
             </FeatureBlock>
 
-            <FeatureBlock name="Recent Scans" status="Live" platforms="iOS + Android">
+            <FeatureBlock name="Recent Scans" platforms="iOS + Android">
               <p>Every discovery has somewhere to go.</p>
               <p>
                 Recent Scans keeps your visual searches available so you can revisit products and ideas without
@@ -631,7 +603,7 @@ export default function FeaturesPage() {
               </p>
             </FeatureBlock>
 
-            <FeatureBlock name="Saved Inspiration" status="Live" platforms="iOS + Android">
+            <FeatureBlock name="Saved Inspiration" platforms="iOS + Android">
               <p>Save the inspiration you want to return to without treating it as something you own.</p>
               <p>
                 Saving is its own layer. Recent Scans holds what you discovered, Closet holds what you own, and
@@ -660,7 +632,6 @@ export default function FeaturesPage() {
             <FeatureBlock
               id="elise"
               name="Elise, Your AI Stylist"
-              status="Live"
               platforms="iOS + Android"
               image={{
                 src: "/images/stylechat.png",
@@ -677,7 +648,7 @@ export default function FeaturesPage() {
               </p>
             </FeatureBlock>
 
-            <FeatureBlock id="signature-style" name="Signature Style" status="Live" platforms="iOS + Android">
+            <FeatureBlock id="signature-style" name="Signature Style" platforms="iOS + Android">
               <p>Saved items, styling preferences, and feedback help sharpen future recommendations.</p>
               <p>
                 Signature Style gives K Scan AI more context about the preferences you share over time &mdash; built
@@ -688,7 +659,6 @@ export default function FeaturesPage() {
             <FeatureBlock
               id="dressing-rooms"
               name="Dressing Rooms"
-              status="Live"
               platforms="iOS + Android"
               reverse
               image={{
@@ -705,7 +675,7 @@ export default function FeaturesPage() {
               </p>
             </FeatureBlock>
 
-            <FeatureBlock name="Spoken Responses" status="Live" platforms="Where voice is enabled">
+            <FeatureBlock name="Spoken Responses" platforms="Where voice is enabled">
               <p>Elise can read eligible styling responses aloud where spoken responses are supported and enabled.</p>
               <p className="text-[13px] text-stone-500">
                 Spoken responses are an optional output capability, separate from voice-driven scanning.
@@ -751,7 +721,6 @@ export default function FeaturesPage() {
           <div className="space-y-14 md:space-y-20">
             <FeatureBlock
               name="One View, Multiple Retailers"
-              status="Live"
               platforms="iOS + Android"
               image={{
                 src: "/how-it-works/match-shop-results.png",
@@ -768,7 +737,6 @@ export default function FeaturesPage() {
 
             <FeatureBlock
               name="Price-Tier Awareness"
-              status="Live"
               platforms="iOS + Android"
               reverse
               image={{
