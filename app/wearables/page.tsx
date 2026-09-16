@@ -14,7 +14,6 @@ export const metadata: Metadata = {
     "K Scan AI smart glasses",
     "connected smart glasses fashion",
     "smart glasses fashion discovery",
-    "Meta Ray-Ban smart glasses shopping",
     "AI fashion search smart glasses",
   ],
   alternates: {
@@ -32,7 +31,7 @@ export const metadata: Metadata = {
         url: "/group-street.jpeg",
         width: 2048,
         height: 1365,
-        alt: "Stylish person wearing smart glasses in an urban street-style setting",
+        alt: "Three women in coordinated street-style outfits walking and talking on a city sidewalk",
       },
     ],
     type: "website",
@@ -83,7 +82,7 @@ export default function WearablesPage() {
               K Scan AI for Smart Glasses
             </p>
             <h1 className="font-display max-w-md text-[42px] leading-[1.02] text-stone-900 sm:text-[52px] md:text-[62px]">
-              Fashion discovery, now in view
+              Fashion discovery, closer to the moment
             </h1>
             <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-stone-500 md:text-[16px]">
               K Scan AI is extending visual fashion discovery to connected smart glasses, helping people
@@ -93,7 +92,7 @@ export default function WearablesPage() {
 
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] text-indigo-700">
               <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-400" aria-hidden="true" />
-              Currently in pre-production and controlled testing
+              Prototype and pre-production &mdash; not commercially available
             </div>
 
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
@@ -113,7 +112,7 @@ export default function WearablesPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-[18px]">
               <Image
                 src="/glasses-HUD.jpeg"
-                alt="Smart glasses HUD view on a city street identifying a woman's trench coat, trousers, and blouse in real time"
+                alt="Illustrative Smart Glasses HUD concept highlighting a woman's trench coat, trousers, and blouse on a city street"
                 fill
                 priority
                 sizes="(max-width: 1024px) 92vw, 46vw"
@@ -140,7 +139,7 @@ export default function WearablesPage() {
           </p>
           <p>
             K Scan AI is exploring connected smart glasses experiences, including browser-enabled
-            workflows designed for devices such as Meta Ray-Ban smart glasses. The goal is simple: make
+            workflows built for consumer smart glasses with a connected browser. The goal is simple: make
             it easier to capture fashion inspiration in the moment, then continue the deeper discovery,
             saving, and shopping experience on your phone.
           </p>
@@ -185,7 +184,7 @@ export default function WearablesPage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[18px]">
               <Image
                 src="/wearables-city-color.jpeg"
-                alt="Smart glasses worn on the head with a phone in hand, illustrating the transition from capture on glasses to continued discovery on the K Scan AI phone app"
+                alt="Woman wearing sunglasses and holding a phone on a colorful shopping street"
                 fill
                 sizes="(max-width: 1024px) 92vw, 42vw"
                 className="object-cover object-top"
@@ -207,7 +206,7 @@ export default function WearablesPage() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[18px]">
               <Image
                 src="/wearables-face-blur.jpeg"
-                alt="Smart glasses HUD view in a lobby showing Privacy Lens active with bystander protection while an outfit is detected for capture"
+                alt="Illustrative privacy concept showing a Smart Glasses view with nearby people visually de-emphasized"
                 fill
                 sizes="(max-width: 1024px) 92vw, 42vw"
                 className="object-cover object-[center_30%]"
@@ -261,9 +260,10 @@ export default function WearablesPage() {
               Want early access to smart glasses experiences?
             </h2>
             <p className="text-[14px] leading-[1.75] text-stone-500">
-              K Scan AI&rsquo;s smart glasses direction is still in controlled testing. If you are
-              interested in product updates or demos, you can view the Demo and follow
-              current platform progress.
+              K Scan AI&rsquo;s smart glasses direction is prototype and pre-production. It is not
+              commercially available, and it is not an indication of hardware-manufacturer support or
+              partnership. If you are interested in product updates or demos, you can view the Demo and
+              follow current platform progress.
             </p>
           </div>
           <div className="flex flex-shrink-0 flex-col items-start gap-4 sm:flex-row sm:items-center">

@@ -559,7 +559,7 @@ export default function Home() {
             How It Works
           </p>
           <h2 className="mb-6 font-display text-4xl font-medium text-stone-900 md:mb-8 md:text-[52px]">
-            From spotted
+            From spotted{" "}
             <br />
             to shoppable.
           </h2>
@@ -650,7 +650,7 @@ export default function Home() {
               <div className="relative aspect-[5/6] w-full min-h-[440px] overflow-hidden rounded-[22px] sm:min-h-0">
                 <Image
                   src="/texture-dinner.png"
-                  alt="Kathleen in a leather-forward look used for the technical Fashion Intelligence section"
+                  alt="Woman in a brown leather wrap dress and blazer seated with a companion at a restaurant table"
                   fill
                   sizes="(max-width: 768px) 92vw, 31rem"
                   className="object-cover object-[center_22%]"
@@ -775,7 +775,7 @@ export default function Home() {
               <div className="relative aspect-[4/5]">
                   <Image
                     src="/white-tan-hat.png"
-                    alt="Editorial pink gown portrait beside the K Scan AI Get the App call to action"
+                    alt="Woman in a wide-brim tan hat and white linen outfit standing on a beach"
                     fill
                     sizes="(max-width: 1024px) 80vw, 32vw"
                     className="object-cover object-[center_20%] opacity-88"
@@ -792,7 +792,7 @@ export default function Home() {
                 <div className="relative aspect-[4/5]">
                   <Image
                     src="/white-tan-hat.png"
-                    alt="Editorial pink gown portrait beside the K Scan AI Get the App call to action"
+                    alt="Woman in a wide-brim tan hat and white linen outfit standing on a beach"
                     fill
                     sizes="80vw"
                     className="object-cover object-[center_20%] opacity-88"

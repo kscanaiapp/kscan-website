@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -18,7 +18,6 @@ const DURATIONS: Record<Stage, number> = {
 
 const BOOT_FOCUS_DURATION = 1.2;
 const ACTIVATION_DELAY = 1.2;
-const ACTIVATION_DURATION = 0.6;
 const SCAN_DURATION = 2.0;
 const SCAN_DELAY = 0.12;
 const CHIP_STAGGER = 0.15;
@@ -32,41 +31,6 @@ const IMAGE_FRAME = {
 
 interface StyleParseHeroProps {
   heroImage?: string;
-}
-
-// ─── Confidence counter (rAF-driven) ─────────────────────────────────────────
-
-function ConfidenceCounter({ active }: { active: boolean }) {
-  const [value, setValue] = useState(0);
-  const reduced = useReducedMotion();
-  const rafRef  = useRef<number>(0);
-
-  useEffect(() => {
-    cancelAnimationFrame(rafRef.current);
-    if (!active) {
-      rafRef.current = requestAnimationFrame(() => setValue(0));
-      return () => cancelAnimationFrame(rafRef.current);
-    }
-    if (reduced) {
-      rafRef.current = requestAnimationFrame(() => setValue(98));
-      return () => cancelAnimationFrame(rafRef.current);
-    }
-
-    const start    = performance.now();
-    const duration = 1950;
-
-    function tick(now: number) {
-      const t      = Math.min((now - start) / duration, 1);
-      const eased  = 1 - Math.pow(1 - t, 3);
-      setValue(Math.round(eased * 98));
-      if (t < 1) rafRef.current = requestAnimationFrame(tick);
-    }
-
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [active, reduced]);
-
-  return <>{value}%</>;
 }
 
 // ─── Viewfinder bracket set ───────────────────────────────────────────────────
@@ -108,29 +72,56 @@ const stageFade = {
 };
 
 const CHIPS = [
-  { label: "Product",  value: "Leather Bomber", side: "left"  as const, top: "36%" },
-  { label: "Brand",    value: "Saint Laurent",  side: "right" as const, top: "50%" },
-  { label: "Material", value: "100% Calfskin",  side: "left"  as const, top: "64%" },
+  { label: "Garment",    value: "Tailored Blazer", side: "left"  as const, top: "36%" },
+  { label: "Silhouette", value: "Structured",       side: "right" as const, top: "50%" },
+  { label: "Palette",    value: "Cream Neutral",    side: "left"  as const, top: "64%" },
 ];
+
+// ─── Pause / Play glyphs ──────────────────────────────────────────────────────
+
+function PlayIcon({ className }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" className={className} fill="currentColor" viewBox="0 0 16 16">
+      <path d="M4 2.5v11l10-5.5-10-5.5Z" />
+    </svg>
+  );
+}
+
+function PauseIcon({ className }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" className={className} fill="currentColor" viewBox="0 0 16 16">
+      <rect x="3.5" y="2.5" width="3" height="11" rx="0.75" />
+      <rect x="9.5" y="2.5" width="3" height="11" rx="0.75" />
+    </svg>
+  );
+}
 
 export default function StyleParseHero({
   heroImage = "/k2-cafe2.png",
 }: StyleParseHeroProps) {
-  const [stage,    setStage]    = useState<Stage>("capturing");
-  const [imgError, setImgError] = useState(false);
+  const [stage,     setStage]     = useState<Stage>("capturing");
+  const [imgError,  setImgError]  = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const reduced = useReducedMotion();
 
-  // Stage progression loop
+  // Stage progression loop — paused for reduced-motion users and whenever the
+  // visible Pause control is engaged (WCAG 2.2.2).
   useEffect(() => {
+    if (reduced || !isPlaying) return;
     const t = setTimeout(() => {
       setStage(prev => STAGES[(STAGES.indexOf(prev) + 1) % STAGES.length]);
     }, DURATIONS[stage]);
     return () => clearTimeout(t);
-  }, [stage]);
+  }, [stage, reduced, isPlaying]);
 
-  const isCapturing = stage === "capturing";
-  const isParsing   = stage === "parsing";
-  const isMatched   = stage === "matched";
+  // Reduced-motion users get a single stable, informative state instead of an
+  // indefinite auto-cycling loop — derived at render time rather than synced
+  // back into state.
+  const displayStage = reduced ? "matched" : stage;
+
+  const isCapturing = displayStage === "capturing";
+  const isParsing   = displayStage === "parsing";
+  const isMatched   = displayStage === "matched";
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-28">
@@ -183,7 +174,6 @@ export default function StyleParseHero({
                     src={heroImage}
                     alt="Fashion editorial image with K Scan AI style analysis overlays"
                     fill
-                    priority
                     sizes="(max-width: 1024px) 100vw, 56vw"
                     className="object-cover object-[center_12%] sm:object-[center_11%] lg:object-[center_10%]"
                     onError={() => setImgError(true)}
@@ -260,21 +250,6 @@ export default function StyleParseHero({
                         }}
                       />
                     </motion.div>
-
-                    {/* Coordinate readout */}
-                    <motion.p
-                      className="absolute font-mono text-[9px] tracking-[0.14em]"
-                      style={{ bottom: "22%", left: "16%", color: "rgba(0,255,255,0.28)" }}
-                      initial={reduced ? { opacity: 0.22 } : { opacity: 0 }}
-                      animate={reduced ? { opacity: 0.22 } : { opacity: [0, 0.34, 0.14, 0.24] }}
-                      transition={{
-                        duration: reduced ? 0 : ACTIVATION_DURATION,
-                        delay: reduced ? 0 : ACTIVATION_DELAY + 0.06,
-                        ease,
-                      }}
-                    >
-                      X:0481 &nbsp;Y:1194
-                    </motion.p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -370,26 +345,6 @@ export default function StyleParseHero({
                         />
                       </motion.div>
                     )}
-
-                    {/* HUD micro coordinates */}
-                    <motion.p
-                      className="absolute font-mono text-[7px] tracking-[0.18em]"
-                      style={{ top: "13%", left: "16%", color: "rgba(0,255,255,0.30)" }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: [0, 0.26, 0.14] }}
-                      transition={{ delay: 0.16, duration: 0.36, ease }}
-                    >
-                      X 0.34
-                    </motion.p>
-                    <motion.p
-                      className="absolute font-mono text-[7px] tracking-[0.18em]"
-                      style={{ top: "49%", right: "16%", color: "rgba(0,255,255,0.28)" }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: [0, 0.22, 0.12] }}
-                      transition={{ delay: 0.44, duration: 0.34, ease }}
-                    >
-                      Y 0.71
-                    </motion.p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -461,7 +416,7 @@ export default function StyleParseHero({
                         >
                           <p
                             className="text-[7px] font-semibold uppercase tracking-[0.24em]"
-                            style={{ color: "rgba(0,255,255,0.52)" }}
+                            style={{ color: "rgba(0,255,255,0.62)" }}
                           >
                             {chip.label}
                           </p>
@@ -472,38 +427,35 @@ export default function StyleParseHero({
                       </motion.div>
                     ))}
 
-                    {/* View Match CTA */}
+                    {/* Illustrative style summary — decorative, non-interactive */}
                     <motion.div
-                      className="absolute bottom-5 left-1/2 -translate-x-1/2"
+                      aria-hidden="true"
+                      className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full px-7 py-[11px] text-[11px] font-medium uppercase tracking-[0.2em] text-white/88"
+                      style={{
+                        background:   "rgba(6,6,10,0.72)",
+                        border:       "1px solid rgba(0,255,255,0.28)",
+                        backdropFilter: "blur(14px)",
+                        WebkitBackdropFilter: "blur(14px)",
+                        boxShadow:    "0 0 22px rgba(0,255,255,0.08), 0 6px 20px rgba(0,0,0,0.45)",
+                      }}
                       initial={reduced ? { opacity: 0 } : { opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
                       transition={{ delay: 0.88, duration: 0.5, ease }}
                     >
-                      <button
-                        className="rounded-full px-7 py-[11px] text-[11px] font-medium uppercase tracking-[0.2em] text-white/88 transition-colors hover:bg-white/[0.10]"
-                        style={{
-                          background:   "rgba(6,6,10,0.72)",
-                          border:       "1px solid rgba(0,255,255,0.28)",
-                          backdropFilter: "blur(14px)",
-                          WebkitBackdropFilter: "blur(14px)",
-                          boxShadow:    "0 0 22px rgba(0,255,255,0.08), 0 6px 20px rgba(0,0,0,0.45)",
-                        }}
-                      >
-                        View Match
-                      </button>
+                      Style Parsed
                     </motion.div>
 
                     {/* Matched-in timing */}
                     <motion.p
                       className="absolute font-mono text-[9px] tracking-[0.16em]"
-                      style={{ bottom: "12%", right: "4%", color: "rgba(0,255,255,0.42)" }}
+                      style={{ bottom: "12%", right: "4%", color: "rgba(0,255,255,0.65)" }}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ delay: 0.55, duration: 0.38 }}
                     >
-                      Match Found
+                      Style Read Complete
                     </motion.p>
                   </motion.div>
                 )}
@@ -513,7 +465,7 @@ export default function StyleParseHero({
               <div className="pointer-events-none absolute left-4 top-4 z-30 sm:left-5 sm:top-5">
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={stage}
+                    key={displayStage}
                     initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 4 }}
@@ -531,7 +483,7 @@ export default function StyleParseHero({
                       <motion.div
                         className="h-[6px] w-[6px] rounded-full"
                         style={{ background: "#00FFFF", boxShadow: "0 0 7px rgba(0,255,255,0.85)" }}
-                        animate={reduced || isMatched ? {} : { opacity: [1, 0.2, 1] }}
+                        animate={reduced || isMatched || !isPlaying ? {} : { opacity: [1, 0.2, 1] }}
                         transition={{ duration: 1.4, repeat: Infinity }}
                       />
                       <span
@@ -543,13 +495,13 @@ export default function StyleParseHero({
                     </div>
                     <p
                       className="mt-[3px] font-mono text-[8px] tracking-[0.12em]"
-                      style={{ color: "rgba(255,255,255,0.28)" }}
+                      style={{ color: "rgba(255,255,255,0.72)" }}
                     >
                       {isCapturing
                         ? "Visual input detected"
                         : isParsing
                         ? "Analyzing garment signature"
-                        : "3 verified attributes identified"}
+                        : "Style attributes identified"}
                     </p>
                   </motion.div>
                 </AnimatePresence>
@@ -562,8 +514,8 @@ export default function StyleParseHero({
                     key={s}
                     className="rounded-full"
                     animate={{
-                      width:   s === stage ? 16 : 4,
-                      opacity: s === stage ? 0.55 : 0.18,
+                      width:   s === displayStage ? 16 : 4,
+                      opacity: s === displayStage ? 0.55 : 0.18,
                       background: "#FFFFFF",
                     }}
                     style={{ height: 3 }}
@@ -571,6 +523,19 @@ export default function StyleParseHero({
                   />
                 ))}
               </div>
+
+              {/* Pause / Play — WCAG 2.2.2, hidden when reduced motion already keeps the demo static */}
+              {!reduced && (
+                <button
+                  type="button"
+                  onClick={() => setIsPlaying(p => !p)}
+                  aria-pressed={isPlaying}
+                  aria-label={isPlaying ? "Pause automatic preview" : "Play automatic preview"}
+                  className="absolute bottom-4 left-4 z-30 flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-black/40 text-white/75 backdrop-blur-sm transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60 sm:left-5"
+                >
+                  {isPlaying ? <PauseIcon className="h-3 w-3" /> : <PlayIcon className="h-3 w-3" />}
+                </button>
+              )}
 
             </div>
           </div>
@@ -583,7 +548,7 @@ export default function StyleParseHero({
             {/* Top label */}
             <p
               className="mb-7 text-[10px] font-medium uppercase tracking-[0.26em]"
-              style={{ color: "rgba(255,255,255,0.16)" }}
+              style={{ color: "rgba(255,255,255,0.50)" }}
             >
               K Scan AI &nbsp;/&nbsp; Fashion Intelligence
             </p>
@@ -592,7 +557,7 @@ export default function StyleParseHero({
             <div className="flex-1">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={stage}
+                  key={displayStage}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
@@ -605,30 +570,22 @@ export default function StyleParseHero({
                       <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white/90 sm:text-[36px]">
                         Capture
                       </h3>
-                      <p className="mb-7 text-[13px] leading-[1.82] text-white/32">
+                      <p className="mb-7 text-[13px] leading-[1.82] text-white/72">
                         Point at any garment: on the street, a screen, or a social feed. K Scan AI starts the match flow from what you see.
                       </p>
-                      <div className="grid grid-cols-2 gap-3">
-                        {[
-                          { label: "Lock Time",   value: "Fast" },
-                          { label: "Input Types", value: "Camera / Upload" },
-                        ].map(m => (
-                          <div
-                            key={m.label}
-                            className="rounded-xl p-4"
-                            style={{
-                              background: "rgba(255,255,255,0.026)",
-                              border:     "1px solid rgba(255,255,255,0.05)",
-                            }}
-                          >
-                            <p className="text-[9px] uppercase tracking-[0.2em] text-white/26">
-                              {m.label}
-                            </p>
-                            <p className="mt-1.5 text-[14px] font-medium text-white/70">
-                              {m.value}
-                            </p>
-                          </div>
-                        ))}
+                      <div
+                        className="rounded-xl p-4"
+                        style={{
+                          background: "rgba(255,255,255,0.026)",
+                          border:     "1px solid rgba(255,255,255,0.05)",
+                        }}
+                      >
+                        <p className="text-[9px] uppercase tracking-[0.2em] text-white/55">
+                          Input Types
+                        </p>
+                        <p className="mt-1.5 text-[14px] font-medium text-white/80">
+                          Camera / Upload
+                        </p>
                       </div>
                     </>
                   )}
@@ -639,10 +596,10 @@ export default function StyleParseHero({
                       <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white/90 sm:text-[36px]">
                         Parse
                       </h3>
-                      <p className="mb-6 text-[13px] leading-[1.82] text-white/32">
+                      <p className="mb-6 text-[13px] leading-[1.82] text-white/72">
                         The engine reads silhouette, material, and brand signal simultaneously. No step-by-step pipeline.
                       </p>
-                      {/* Confidence card */}
+                      {/* Style signal card */}
                       <div
                         className="rounded-xl p-5"
                         style={{
@@ -650,16 +607,16 @@ export default function StyleParseHero({
                           border:     "1px solid rgba(255,255,255,0.05)",
                         }}
                       >
-                        <p className="mb-1 text-[9px] uppercase tracking-[0.22em] text-white/24">
-                          Confidence Score
+                        <p className="mb-1 text-[9px] uppercase tracking-[0.22em] text-white/55">
+                          Style Signal
                         </p>
                         <p
-                          className="font-mono text-[34px] font-medium tabular-nums"
+                          className="font-display text-[26px] font-medium sm:text-[30px]"
                           style={{ color: "#00FFFF", textShadow: "0 0 24px rgba(0,255,255,0.38)" }}
                         >
-                          <ConfidenceCounter active={isParsing} />
+                          Clean Tailoring
                         </p>
-                        {/* Progress bar */}
+                        {/* Processing indicator */}
                         <div
                           className="mt-4 h-[2px] w-full overflow-hidden rounded-full"
                           style={{ background: "rgba(255,255,255,0.06)" }}
@@ -667,7 +624,7 @@ export default function StyleParseHero({
                           <motion.div
                             className="h-full rounded-full"
                             initial={{ width: "0%" }}
-                            animate={{ width: "98%" }}
+                            animate={{ width: "100%" }}
                             transition={{
                               duration: SCAN_DURATION,
                               ease: [0.4, 0, 0.2, 1],
@@ -689,7 +646,7 @@ export default function StyleParseHero({
                       <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white/90 sm:text-[36px]">
                         Match
                       </h3>
-                      <p className="mb-6 text-[13px] leading-[1.82] text-white/32">
+                      <p className="mb-6 text-[13px] leading-[1.82] text-white/72">
                         Shop with your preferred retailer
                       </p>
                       {/* Data rows */}
@@ -708,7 +665,7 @@ export default function StyleParseHero({
                           >
                             <span
                               className="text-[10px] uppercase tracking-[0.18em]"
-                              style={{ color: "rgba(255,255,255,0.26)" }}
+                              style={{ color: "rgba(255,255,255,0.55)" }}
                             >
                               {chip.label}
                             </span>
@@ -732,9 +689,9 @@ export default function StyleParseHero({
                   key={s}
                   className="rounded-full"
                   animate={{
-                    width:      s === stage ? 22 : 6,
-                    background: s === stage ? "#00FFFF" : "rgba(255,255,255,0.12)",
-                    boxShadow:  s === stage ? "0 0 8px rgba(0,255,255,0.60)" : "none",
+                    width:      s === displayStage ? 22 : 6,
+                    background: s === displayStage ? "#00FFFF" : "rgba(255,255,255,0.12)",
+                    boxShadow:  s === displayStage ? "0 0 8px rgba(0,255,255,0.60)" : "none",
                   }}
                   style={{ height: 6 }}
                   transition={{ duration: 0.36, ease }}
@@ -742,9 +699,9 @@ export default function StyleParseHero({
               ))}
               <span
                 className="ml-1.5 font-mono text-[9px] uppercase tracking-[0.22em]"
-                style={{ color: "rgba(255,255,255,0.18)" }}
+                style={{ color: "rgba(255,255,255,0.55)" }}
               >
-                {stage}
+                {displayStage}
               </span>
             </div>
 
@@ -756,10 +713,10 @@ export default function StyleParseHero({
           className="flex items-center justify-between px-6 py-3"
           style={{ borderTop: "1px solid rgba(255,255,255,0.045)" }}
         >
-          <span className="font-mono text-[9px] font-medium uppercase tracking-[0.28em] text-white/18">
+          <span className="font-mono text-[9px] font-medium uppercase tracking-[0.28em] text-white/50">
             K Scan AI
           </span>
-          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/14">
+          <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/45">
             Fashion Intelligence
           </span>
         </div>
