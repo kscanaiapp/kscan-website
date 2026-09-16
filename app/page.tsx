@@ -829,9 +829,9 @@ export default function Home() {
             </div>
 
             <div id="beta-updates" className="mx-auto max-w-sm scroll-mt-32 rounded-[24px] border border-stone-200 bg-[#F5F3EF] p-6 text-left md:scroll-mt-24 lg:mx-0">
-              <h3 className="font-display text-[18px] font-medium text-stone-900">Get Beta Updates</h3>
+              <h3 className="font-display text-[18px] font-medium text-stone-900">Be first to know what’s next</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-stone-500">
-                Be first to hear about upcoming K Scan AI features and opportunities to test what&apos;s next.
+                Hear about new K Scan AI features as they arrive, plus early looks at what we’re building.
               </p>
 
               {submissionState === "success" ? (
