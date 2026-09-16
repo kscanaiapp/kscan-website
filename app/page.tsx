@@ -16,7 +16,8 @@ const coreFlow = [
   {
     step: "01",
     title: "Scan",
-    description: "Capture a look from real life, a photo, or a screenshot.",
+    description:
+      "Capture fashion from real life, a photo, or a screenshot. Start with the visual instead of guessing the right keywords.",
     image: {
       src: "/how-it-works/capture-frame-the-look.png",
       alt: "K Scan AI capture mockup showing a fashion look framed through a camera viewfinder.",
@@ -26,7 +27,7 @@ const coreFlow = [
     step: "02",
     title: "Discover",
     description:
-      "K Scan AI identifies the clothing, color, silhouette, material, and relevant style context.",
+      "K Scan AI reads garment type, silhouette, color, material, layering, and styling context to surface relevant products and useful alternatives.",
     image: {
       src: "/how-it-works/identify-style-parse.png",
       alt: "K Scan AI identify mockup showing fashion attributes detected inside an outfit photo.",
@@ -34,23 +35,23 @@ const coreFlow = [
   },
   {
     step: "03",
-    title: "Save",
+    title: "Organize",
     description:
-      "Keep items you own in Closet, and revisit fashion discoveries in Recent Scans.",
+      "Recent Scans keeps what you discovered, Closet keeps what you own, and Saved Inspiration keeps what you want to come back to.",
     image: null,
   },
   {
     step: "04",
     title: "Style",
     description:
-      "Use Signature Style and Elise to plan outfits, save Looks, and decide together in Dressing Rooms.",
+      "Signature Style adds your preferences to the picture. Ask Elise for outfit guidance and use Dressing Rooms to compare options and make decisions together.",
     image: null,
   },
   {
     step: "05",
     title: "Shop",
     description:
-      "Explore relevant products, alternatives, and retailer-neutral pathways to complete the look.",
+      "Explore retailer-neutral matches and alternatives across price tiers, then continue to the retailer when you're ready to shop.",
     image: {
       src: "/how-it-works/match-shop-results.png",
       alt: "K Scan AI match results mockup showing product results and retailer pathways from a scanned outfit.",
@@ -304,7 +305,7 @@ export default function Home() {
     "@type": "SoftwareApplication",
     name: "K Scan AI",
     applicationCategory: "ShoppingApplication",
-    operatingSystem: "iOS, Android, Web",
+    operatingSystem: "iOS, Android",
     description:
       "AI-powered visual fashion search for identifying clothes from photos, screenshots, and social inspiration.",
     url: "https://kscan.app",
@@ -495,14 +496,7 @@ export default function Home() {
           <FadeUp delay={0.06} className="space-y-5 text-[15px] leading-[1.88] text-stone-500">
             <p>
               K Scan AI helps people find clothes from photos, identify outfits from screenshots, and turn visual
-              inspiration, including inspiration captured with{" "}
-              <a
-                href="/wearables"
-                className="text-violet-600 underline decoration-violet-200 underline-offset-4 transition-colors hover:text-violet-700 hover:decoration-violet-400"
-              >
-                smart glasses
-              </a>
-              , into a practical shopping path. Instead of trying to describe a jacket, dress, sneaker, or
+              inspiration into a practical shopping path. Instead of trying to describe a jacket, dress, sneaker, or
               full look with the right keywords, you can start with the image you already have.
             </p>
             <p>
@@ -562,13 +556,17 @@ export default function Home() {
       <section id="how-it-works" className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-44">
         <FadeUp className="mb-12 md:mb-28">
           <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600 md:mb-5">
-            The Core Flow
+            How It Works
           </p>
-          <h2 className="font-display text-4xl font-medium text-stone-900 md:text-[52px]">
+          <h2 className="mb-6 font-display text-4xl font-medium text-stone-900 md:mb-8 md:text-[52px]">
             From spotted
             <br />
             to shoppable.
           </h2>
+          <p className="max-w-2xl text-[15px] leading-[1.85] text-stone-500 md:text-[16px]">
+            Start with the image. K Scan AI turns what you see into fashion context you can revisit, style, and
+            shop — without forcing you to translate a look into the perfect search terms.
+          </p>
         </FadeUp>
 
         <FadeUp className="mb-8 md:mb-14">
@@ -586,7 +584,7 @@ export default function Home() {
             </div>
             <div className="max-w-md">
               <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
-                Live Product Flow
+                From Inspiration to Action
               </p>
               <p className="text-[14px] leading-[1.78] text-stone-500">
                 No more “I’ll find it later.” K Scan AI closes the gap between inspiration and action.
@@ -626,45 +624,6 @@ export default function Home() {
               )}
             </FadeUp>
           ))}
-        </div>
-      </section>
-
-      {/* Features teaser — full detail lives on /features */}
-      <section id="features" className="bg-white py-20 md:py-32">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <FadeUp className="mb-12 max-w-2xl md:mb-16">
-            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600 md:mb-5">
-              Features
-            </p>
-            <h2 className="font-display text-4xl font-medium leading-[1.06] text-stone-900 md:text-[52px]">
-              Everything between inspiration and the outfit.
-            </h2>
-          </FadeUp>
-
-          <motion.div
-            className="grid gap-x-12 gap-y-9 border-t border-stone-100 pt-10 md:grid-cols-2 md:gap-y-12 lg:grid-cols-4"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-6% 0px" }}
-          >
-            {featureTeasers.map(({ title, body }) => (
-              <motion.article key={title} variants={staggerChild}>
-                <h3 className="mb-3 text-[15px] font-medium text-stone-900">{title}</h3>
-                <p className="text-[14px] leading-[1.82] text-stone-600">{body}</p>
-              </motion.article>
-            ))}
-          </motion.div>
-
-          <FadeUp className="mt-10 md:mt-14">
-            <a
-              href="/features"
-              className="fashion-cursor inline-flex items-center gap-2 rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
-            >
-              Explore All Features
-              <span aria-hidden="true">&rarr;</span>
-            </a>
-          </FadeUp>
         </div>
       </section>
 
@@ -742,11 +701,50 @@ export default function Home() {
         </FadeUp>
       </section>
 
+      {/* Features teaser — full detail lives on /features */}
+      <section id="features" className="bg-white py-20 md:py-32">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          <FadeUp className="mb-12 max-w-2xl md:mb-16">
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600 md:mb-5">
+              Features
+            </p>
+            <h2 className="font-display text-4xl font-medium leading-[1.06] text-stone-900 md:text-[52px]">
+              Everything between inspiration and the outfit.
+            </h2>
+          </FadeUp>
+
+          <motion.div
+            className="grid gap-x-12 gap-y-9 border-t border-stone-100 pt-10 md:grid-cols-2 md:gap-y-12 lg:grid-cols-4"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-6% 0px" }}
+          >
+            {featureTeasers.map(({ title, body }) => (
+              <motion.article key={title} variants={staggerChild}>
+                <h3 className="mb-3 text-[15px] font-medium text-stone-900">{title}</h3>
+                <p className="text-[14px] leading-[1.82] text-stone-600">{body}</p>
+              </motion.article>
+            ))}
+          </motion.div>
+
+          <FadeUp className="mt-10 md:mt-14">
+            <a
+              href="/features"
+              className="fashion-cursor inline-flex items-center gap-2 rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
+            >
+              Explore All Features
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </FadeUp>
+        </div>
+      </section>
+
       <section aria-labelledby="faq-heading" className="bg-white py-16 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:px-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
           <FadeUp>
             <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600">
-              Questions
+              FAQs
             </p>
             <h2 id="faq-heading" className="font-display text-[34px] font-medium leading-[1.08] text-stone-900 md:text-[46px]">
               What shoppers ask before they scan.
@@ -831,7 +829,7 @@ export default function Home() {
             <div id="beta-updates" className="mx-auto max-w-sm scroll-mt-32 rounded-[24px] border border-stone-200 bg-[#F5F3EF] p-6 text-left md:scroll-mt-24 lg:mx-0">
               <h3 className="font-display text-[18px] font-medium text-stone-900">Be first to know what’s next</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-stone-500">
-                Hear about new K Scan AI features as they arrive, plus early looks at what we’re building.
+                Hear about new K Scan AI features as they arrive, plus early access opportunities and first looks at what we’re building.
               </p>
 
               {submissionState === "success" ? (
@@ -885,7 +883,7 @@ export default function Home() {
                 <p className="mt-4 text-[11px] tracking-wide text-stone-600">{submissionMessage}</p>
               ) : (
                 <p className="mt-4 text-[11px] leading-relaxed text-stone-500">
-                  By subscribing, you agree to receive K Scan AI product updates and news about testing upcoming features. You can unsubscribe at any time.{" "}
+                  By subscribing, you agree to receive K Scan AI product updates and information about early access to upcoming features. You can unsubscribe at any time.{" "}
                   <a
                     href="/legal/privacy"
                     className="text-violet-600 underline decoration-violet-200 underline-offset-4 transition-colors hover:text-violet-700 hover:decoration-violet-400"
