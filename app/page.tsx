@@ -647,7 +647,7 @@ export default function Home() {
 
           <div className="w-full flex-shrink-0 lg:w-[31rem]">
             <div className="overflow-hidden rounded-[28px] border border-white/60 bg-white/55 p-4 shadow-[0_16px_36px_rgba(34,28,24,0.06)] backdrop-blur-sm md:p-5">
-              <div className="relative aspect-[5/6] overflow-hidden rounded-[22px]">
+              <div className="relative aspect-[5/6] w-full min-h-[440px] overflow-hidden rounded-[22px] sm:min-h-0">
                 <Image
                   src="/texture-dinner.png"
                   alt="Kathleen in a leather-forward look used for the technical Fashion Intelligence section"
@@ -657,27 +657,27 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(16,16,18,0.1),rgba(16,16,18,0.24))]" />
 
-                <div className="absolute left-4 right-4 top-4 flex items-center justify-between rounded-full border border-white/20 bg-black/20 px-4 py-2 backdrop-blur-sm">
+                <div className="absolute left-4 right-4 top-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-[20px] border border-white/20 bg-black/20 px-4 py-2 backdrop-blur-sm sm:flex-nowrap sm:rounded-full">
                   <span className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/68">
                     Fashion Intelligence
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.18em] text-white/48">Context engine</span>
                 </div>
 
-                <div className="absolute bottom-4 left-4 right-4 space-y-3">
-                  <div className="flex flex-wrap gap-2.5">
+                <div className="absolute bottom-4 left-4 right-4 space-y-2.5 sm:space-y-3">
+                  <div className="flex flex-wrap gap-2 sm:gap-2.5">
                     {parseTags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-white/18 bg-black/28 px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-white/82 backdrop-blur-sm"
+                        className="rounded-full border border-white/18 bg-black/28 px-2.5 py-1.5 text-[10px] uppercase tracking-[0.16em] text-white/82 backdrop-blur-sm sm:px-3 sm:py-2 sm:text-[11px]"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <div className="rounded-[20px] border border-white/16 bg-black/28 p-4 backdrop-blur-sm">
+                  <div className="rounded-[20px] border border-white/16 bg-black/28 p-3.5 backdrop-blur-sm sm:p-4">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-white/52">Technical readout</p>
-                    <p className="mt-2 font-display text-[24px] leading-none text-white">Material, silhouette, and layering resolved together.</p>
+                    <p className="mt-2 font-display text-[16px] leading-tight text-white sm:text-[24px] sm:leading-none">Material, silhouette, and layering resolved together.</p>
                   </div>
                 </div>
               </div>
