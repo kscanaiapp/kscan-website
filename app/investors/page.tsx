@@ -36,7 +36,7 @@ const archSteps = [
 const progressCards = [
   {
     title: "Built",
-    body: "K Scan AI is available on iOS and Android, with visual search and Closet, Dressing Rooms, Share by Link, and the Elise AI Stylist live in the app.",
+    body: "K Scan AI is available on iOS and Android, with visual search, Closet, Dressing Rooms with shared links, and Elise available in the app.",
   },
   {
     title: "In Validation",
