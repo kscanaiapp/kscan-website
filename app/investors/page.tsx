@@ -61,7 +61,7 @@ const roadmapPhases = [
   },
   {
     phase: "Phase 3",
-    title: "Wearable Interface Readiness",
+    title: "Smart Glasses Interface Readiness",
     body: "Extend the same interaction model into devices closer to real-time visual intent.",
   },
 ];
@@ -222,7 +222,7 @@ export default function InvestorsPage() {
             <p className="mt-6 max-w-xl text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
               K Scan AI turns real-world fashion inspiration into ranked retail matches, pricing, and purchase paths.
               Built for fashion-specific intent, architected to stay retailer-neutral, and designed for a mobile-first
-              world moving toward wearables.
+              world moving toward smart glasses.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-start">
               <div className="flex flex-col items-start gap-2.5">
@@ -284,7 +284,7 @@ export default function InvestorsPage() {
               shoppable outcomes across retailers.
             </p>
             <p className="mt-4 text-[15px] leading-[1.9] text-stone-500">
-              The near-term wedge is mobile fashion discovery. The long-term platform opportunity is wearable commerce.
+              The near-term wedge is mobile fashion discovery. The long-term platform opportunity is smart glasses commerce.
             </p>
           </div>
         </div>
@@ -349,7 +349,7 @@ export default function InvestorsPage() {
           ))}
         </div>
         <p className="mt-6 max-w-xl text-[13px] leading-[1.85] text-stone-600">
-          Mobile is the wedge. Wearables deepen the moat by moving the interface closer to the moment of discovery.
+          Mobile is the wedge. Smart glasses deepen the moat by moving the interface closer to the moment of discovery.
         </p>
       </section>
 
@@ -382,7 +382,7 @@ export default function InvestorsPage() {
 
           <p className="mt-8 max-w-2xl text-[14px] leading-[1.85] text-stone-500">
             The architecture is being developed as a modular commerce layer: mobile-first today, API-first by design,
-            and extensible to future wearable interfaces.
+            and extensible to future smart glasses interfaces.
           </p>
         </div>
       </section>
@@ -429,7 +429,7 @@ export default function InvestorsPage() {
             <p className="mt-6 text-[15px] leading-[1.9] text-stone-500">
               The initial monetization path is commerce-linked revenue from successful referral and conversion flows.
               Over time, the platform can expand into premium user functionality and infrastructure licensing for
-              retailer, partner, or wearable ecosystem integrations.
+              retailer, partner, or smart glasses ecosystem integrations.
             </p>
             <p className="mt-4 text-[15px] leading-[1.9] text-stone-500">
               The sequencing matters: user utility first, platform leverage second.

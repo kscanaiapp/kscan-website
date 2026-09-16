@@ -98,8 +98,8 @@ media links, and website structure.
 Do not infer or claim:
 
 - A Meta partnership or Ray-Ban partnership.
-- A public wearable beta or production wearable readiness for Meta, Android
-  XR, or Apple Vision Pro.
+- A public smart glasses beta or production smart glasses readiness for Meta,
+  Android XR, or Apple Vision Pro.
 - Specific launch dates.
 - "World's first" or similar superlative claims.
 - Biometric surveillance, facial-recognition capabilities, or universal
