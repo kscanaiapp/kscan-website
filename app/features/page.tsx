@@ -92,7 +92,7 @@ const AVAILABILITY_ROWS: {
   { feature: "Mirror Selfie", ios: "Available", android: "—", note: "iOS only" },
   { feature: "Closet", ios: "Available", android: "Available", note: "Items you own" },
   { feature: "Recent Scans", ios: "Available", android: "Available", note: "Discoveries, not owned items" },
-  { feature: "Saved Looks", ios: "Available", android: "Available", note: "Saved styling groupings" },
+  { feature: "Saved Inspiration", ios: "Available", android: "Available", note: "Saved, not owned" },
   { feature: "Signature Style", ios: "Available", android: "Available", note: "Personalization signals" },
   { feature: "Elise / StyleChat", ios: "Available", android: "Available", note: "AI stylist conversation" },
   {
@@ -133,9 +133,9 @@ const SCHEMA_FEATURES: { name: string; description: string }[] = [
     description: "Revisit visual searches and the products behind them without digging through your camera roll.",
   },
   {
-    name: "Saved Looks",
+    name: "Saved Inspiration",
     description:
-      "Save styling groupings and inspiration you want to return to, kept distinct from the items you own.",
+      "Save the inspiration you want to return to, kept distinct from the discoveries in Recent Scans and the items you own in Closet.",
   },
   {
     name: "Elise, your AI stylist",
@@ -659,11 +659,11 @@ export default function FeaturesPage() {
               </p>
             </FeatureBlock>
 
-            <FeatureBlock name="Saved Looks" status="Live" platforms="iOS + Android">
+            <FeatureBlock name="Saved Inspiration" status="Live" platforms="iOS + Android">
               <p>Save the inspiration you want to return to without treating it as something you own.</p>
               <p>
-                Saved Looks are styling groupings you create &mdash; they can pull in Closet items, scan-derived
-                items, and occasion context, and they stay distinct from both Recent Scans and Closet.
+                Saving is its own layer. Recent Scans holds what you discovered, Closet holds what you own, and
+                saved inspiration holds what you want to come back to.
               </p>
             </FeatureBlock>
           </div>
