@@ -55,7 +55,7 @@ export function PlatformDownload() {
       id: "android" as const,
       icon: <GooglePlayIcon className="h-8 w-8" />,
       name: "Android",
-      description: "Open testing through Google Play.",
+      description: "Available on Google Play.",
       action: "Get it on Google Play",
       href: "https://play.google.com/store/apps/details?id=com.kscanai.app",
     },
@@ -63,9 +63,9 @@ export function PlatformDownload() {
       id: "ios" as const,
       icon: <AppleMarkIcon className="h-8 w-8 text-stone-900" />,
       name: "iOS",
-      description: "Beta access through TestFlight.",
-      action: "Open in TestFlight",
-      href: "https://testflight.apple.com/join/UcxK6GVm",
+      description: "Available on the App Store.",
+      action: "Download on the App Store",
+      href: "https://apps.apple.com/us/app/k-scan-ai/id6785093920",
     },
   ];
 

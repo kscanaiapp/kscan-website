@@ -689,11 +689,11 @@ export function SharedRoomCollaborationPanel({
           Open in K Scan AI
         </Link>
         <Link
-          href="/test-center"
+          href="/demo"
           className="rounded-full border border-stone-200 bg-white px-8 py-4 text-center text-[13px] font-medium uppercase tracking-[0.16em] text-stone-600 shadow-[0_12px_26px_rgba(35,28,22,0.06)] transition-colors hover:text-stone-950"
-          aria-label="Visit the K Scan AI Test Center"
+          aria-label="View the K Scan AI Demo"
         >
-          Visit Test Center
+          View Demo
         </Link>
       </div>
     </section>

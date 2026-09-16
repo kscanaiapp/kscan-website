@@ -233,12 +233,6 @@ function AvailableRoom({
             >
               Preview K Scan AI
             </Link>
-            <Link
-              href="/test-center"
-              className="fashion-cursor rounded-full border border-stone-200 bg-white px-8 py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-stone-600 shadow-[0_12px_26px_rgba(35,28,22,0.06)] transition-colors hover:text-stone-950"
-            >
-              Visit Test Center
-            </Link>
           </div>
         </div>
 

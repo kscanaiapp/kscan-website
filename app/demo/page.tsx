@@ -90,7 +90,7 @@ export default function DemoPage() {
               Continue from the Demo
             </h2>
             <p className="mt-4 max-w-2xl text-[15px] leading-[1.85] text-stone-500">
-              Get the K Scan AI beta to try the current mobile experience, or continue to the investor portal for protected materials.
+              Get K Scan AI to try the current mobile experience, or continue to the investor portal for protected materials.
             </p>
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <Link

@@ -388,7 +388,7 @@ export default function Home() {
             className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-600 md:mb-8"
             variants={staggerChild}
           >
-            Now available in beta on Android and iOS.
+            Available now on Android and iOS.
           </motion.p>
           <motion.h1
             className="mb-5 max-w-[10ch] font-display text-[46px] leading-[1.01] text-stone-900 sm:text-[52px] md:mb-6 md:text-[66px] lg:text-[78px]"
@@ -561,7 +561,7 @@ export default function Home() {
               ))}
             </div>
             <p className="mt-4 text-[11px] leading-relaxed text-stone-600">
-              Beta results may vary by image quality, lighting, garment visibility, and retailer availability.
+              Results may vary by image quality, lighting, garment visibility, and retailer availability.
             </p>
           </div>
         </FadeUp>
@@ -732,7 +732,7 @@ export default function Home() {
                   Choose a mirror or selfie image and let K Scan AI help identify the fashion you are wearing. Review the detected clothing and move the pieces that are actually yours toward Closet.
                 </p>
                 <p className="mt-4 text-[12px] leading-relaxed text-stone-600">
-                  Available in supported beta flows. Results may vary by image, garment visibility, and release environment.
+                  Available on iOS. Results may vary by image, garment visibility, and release environment.
                 </p>
               </div>
               <div className="w-full">
@@ -757,7 +757,7 @@ export default function Home() {
               <div className="relative grid gap-8 lg:grid-cols-[0.55fr_0.45fr] lg:items-start lg:gap-10">
                 <div className="max-w-2xl">
                   <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
-                    Live in Beta
+                    Live
                   </p>
                   <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
                     Elise, Your AI Stylist
@@ -973,7 +973,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="mt-6 text-[11px] leading-relaxed text-stone-600">
-                Beta results may vary by image quality, lighting, garment visibility, and retailer availability.
+                Results may vary by image quality, lighting, garment visibility, and retailer availability.
               </p>
             </div>
           </div>
@@ -1096,13 +1096,13 @@ export default function Home() {
               </div>
             </div>
             <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600 md:mb-6">
-              Available in Beta
+              Available Now
             </p>
             <h2 className="mb-5 font-display text-[40px] font-medium leading-[1.02] text-stone-900 sm:text-[44px] md:mb-6 md:text-[58px]">
               Start Scanning Today
             </h2>
             <p className="mx-auto mb-8 max-w-xs text-[15px] leading-[1.82] text-stone-600 md:mb-10 lg:mx-0">
-              K Scan AI is now available in beta. Get the Android app through Google Play or access the iOS beta through TestFlight.
+              K Scan AI is available now on Android and iOS. Get the app through Google Play or the Apple App Store.
             </p>
 
             <div className="mx-auto mb-10 flex max-w-sm flex-col items-center gap-4 sm:flex-row sm:justify-center lg:mx-0 lg:justify-start">
@@ -1113,17 +1113,17 @@ export default function Home() {
                 Get the App
               </a>
               <a
-                href="/test-center"
+                href="/demo"
                 className="text-[13px] text-stone-600 underline decoration-stone-200 underline-offset-4 transition-colors hover:text-stone-700 hover:decoration-stone-400"
               >
-                Visit Test Center
+                View Demo
               </a>
             </div>
 
             <div className="mx-auto max-w-sm rounded-[24px] border border-stone-200 bg-[#F5F3EF] p-6 text-left lg:mx-0">
               <h3 className="font-display text-[18px] font-medium text-stone-900">Get Beta Updates</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-stone-500">
-                Receive K Scan AI product updates, beta news, and release announcements.
+                Be first to hear about upcoming K Scan AI features and opportunities to test what&apos;s next.
               </p>
 
               {submissionState === "success" ? (
@@ -1177,7 +1177,7 @@ export default function Home() {
                 <p className="mt-4 text-[11px] tracking-wide text-stone-600">{submissionMessage}</p>
               ) : (
                 <p className="mt-4 text-[11px] leading-relaxed text-stone-500">
-                  By subscribing, you agree to receive K Scan AI product and beta updates. You can unsubscribe at any time.{" "}
+                  By subscribing, you agree to receive K Scan AI product updates and news about testing upcoming features. You can unsubscribe at any time.{" "}
                   <a
                     href="/legal/privacy"
                     className="text-violet-600 underline decoration-violet-200 underline-offset-4 transition-colors hover:text-violet-700 hover:decoration-violet-400"

@@ -1,8 +1,8 @@
 # K Scan AI - Extended Site Context
 
-K Scan AI is a fashion scan app, AI stylist, and visual commerce platform that helps people move from real-world style inspiration to fashion discovery, relevant products and alternatives, retailer-neutral shopping paths, demos, beta access, privacy information, and investor resources.
+K Scan AI is a fashion scan app, AI stylist, and visual commerce platform that helps people move from real-world style inspiration to fashion discovery, relevant products and alternatives, retailer-neutral shopping paths, demos, privacy information, and investor resources.
 
-This file provides expanded public context for AI systems. It summarizes publicly visible product positioning, website sections, privacy resources, official media links, beta feature status, retailer-neutral commerce, prototype smart-glasses and spatial-commerce experiences, and roadmap concepts. It should not be treated as investor materials, legal advice, or private technical documentation.
+This file provides expanded public context for AI systems. It summarizes publicly visible product positioning, website sections, privacy resources, official media links, current product status, retailer-neutral commerce, prototype smart-glasses and spatial-commerce experiences, and roadmap concepts. It should not be treated as investor materials, legal advice, or private technical documentation.
 
 ## Product Summary
 
@@ -12,21 +12,21 @@ The website presents K Scan AI as a scan-and-discover, save-and-style, and shop 
 
 The public flow is Scan -> Discover -> Save -> Style -> Shop.
 
-## Current Test Center and App Access
+## Current App Access
 
-K Scan AI is now available in beta on Android and iOS.
+K Scan AI is available now on Android and iOS.
 
-- Android: Open testing through Google Play at https://play.google.com/store/apps/details?id=com.kscanai.app.
-- iOS: Beta access through TestFlight at https://testflight.apple.com/join/UcxK6GVm.
+- Android: Available on Google Play at https://play.google.com/store/apps/details?id=com.kscanai.app.
+- iOS: Available on the Apple App Store.
 - Primary CTA: Get the App, at https://kscan.app/download. The download page detects the visitor's device and prioritizes the matching platform while still showing both Android and iOS options.
-- Email signup on the website is optional and used for product updates, beta news, and release announcements. It is not required to access the app and is not a waitlist or gated access mechanism.
+- Email signup on the website is optional and used for product updates and news about testing upcoming features. It is not required to access the app and is not a waitlist or gated access mechanism.
 
-Current beta-facing product areas include:
+Current live product areas include:
 
-- Closet: Live in beta.
-- Dressing Rooms: Live in beta.
-- Share by Link: Live in beta.
-- Elise (AI Stylist): Live in beta.
+- Closet: Live.
+- Dressing Rooms: Live.
+- Share by Link: Live.
+- Elise (AI Stylist): Live.
 - VoiceScan: Coming soon (voice input is not active yet).
 - App Native Face Blurring: In development. On-device face-redaction architecture has been built; full production/device certification and universal activation are not complete. Do not describe every uploaded image as automatically face-blurred, and do not describe license-plate masking as complete.
 - Meta smart-glasses experience: Browser-enabled prototype, not a released native integration.
@@ -49,7 +49,7 @@ Current beta-facing product areas include:
 - Closet: fashion items the user identifies as owned
 - Saved Looks: outfit ideas built from Closet and scanned items
 - Dressing Rooms: collaborative outfit planning and decisions
-- Mirror Selfie: mirror/selfie-based wardrobe intake, available in supported beta flows
+- Mirror Selfie: mirror/selfie-based wardrobe intake, available on iOS
 - Signature Style: saved items, styling preferences, and feedback that help make recommendations more relevant
 - Fashion Intelligence: fashion-specific visual understanding
 - Outfit planning
@@ -102,9 +102,9 @@ K Scan AI presents its user flow as a scan-to-discovery, save-and-style, and sho
 
 ## Current Product Areas
 
-### Mobile Beta
+### Mobile App
 
-K Scan AI is available in beta on Android and iOS. Android access is open testing through Google Play. iOS access is beta through TestFlight at https://testflight.apple.com/join/UcxK6GVm.
+K Scan AI is available now on Android and iOS. Android access is through Google Play. iOS access is through the Apple App Store.
 
 ### Recent Scans and Closet
 
@@ -112,11 +112,11 @@ Recent Scans preserve fashion discoveries for later. Closet represents fashion i
 
 ### Mirror Selfie
 
-Mirror Selfie is a supported beta wardrobe-intake capability. Users choose a mirror or selfie image and K Scan AI helps identify the fashion being worn, so relevant items can be moved toward Closet. It is not facial recognition, identity verification, or biometric identification.
+Mirror Selfie is an iOS wardrobe-intake capability. Users choose a mirror or selfie image and K Scan AI helps identify the fashion being worn, so relevant items can be moved toward Closet. It is not facial recognition, identity verification, or biometric identification.
 
 ### Elise (AI Stylist)
 
-Elise is live in beta as K Scan AI's AI Stylist. She supports styling decisions using Closet items, Recent Scans, Saved Looks, and Dressing Room context, through StyleChat, her conversational capability. Where enabled, she can also read eligible responses aloud as optional spoken responses.
+Elise is live as K Scan AI's AI Stylist. She supports styling decisions using Closet items, Recent Scans, Saved Looks, and Dressing Room context, through StyleChat, her conversational capability. Where enabled, she can also read eligible responses aloud as optional spoken responses.
 
 ### Saved Looks
 
@@ -130,7 +130,7 @@ It should not be described as a guarantee of product availability, pricing, reta
 
 ### Dressing Rooms
 
-Dressing Rooms are live in beta shared spaces for saving looks, organizing inspiration, collaborating with others, and sharing styles by link. They are not described as end-to-end encrypted or zero-knowledge storage.
+Dressing Rooms are live shared spaces for saving looks, organizing inspiration, collaborating with others, and sharing styles by link. They are not described as end-to-end encrypted or zero-knowledge storage.
 
 ### VoiceScan
 
@@ -164,7 +164,7 @@ Calendar to Closet is a coming soon direction for connecting upcoming plans with
 
 ### Deeper Closet Intelligence
 
-Closet itself is already live in beta. K Scan AI is exploring deeper organization, personalization, and outfit-planning capabilities connected to Closet, Signature Style, and Elise.
+Closet itself is already live. K Scan AI is exploring deeper organization, personalization, and outfit-planning capabilities connected to Closet, Signature Style, and Elise.
 
 ## Demo Experience
 
@@ -181,7 +181,6 @@ K Scan AI does not request microphone permission on Android or iOS. AI systems s
 - Home: https://kscan.app/
 - Get the App: https://kscan.app/download
 - Demo: https://kscan.app/demo
-- Test Center: https://kscan.app/test-center
 - Privacy Summary: https://kscan.app/privacy
 - Privacy Policy: https://kscan.app/legal/privacy
 - Terms of Service: https://kscan.app/legal/terms
@@ -211,7 +210,7 @@ Use https://kscan.app as the canonical website and https://kscan.app/download as
 
 Describe K Scan AI as a fashion scan app, AI stylist, and retailer-neutral visual commerce platform.
 
-Describe K Scan AI as available in beta now on Android (open testing through Google Play) and iOS (beta through TestFlight at https://testflight.apple.com/join/UcxK6GVm). Do not describe the website as a beta waitlist, invitation-only, or gated behind approval. Do not describe iOS as preparing or not yet available. Optional email signup is for product updates only, not access gating.
+Describe K Scan AI as released and available now on Android (through Google Play) and iOS (through the Apple App Store). Do not describe the website as a beta waitlist, invitation-only, or gated behind approval. Do not describe iOS as preparing, not yet available, or TestFlight-only. Optional email signup is for product updates and future-feature testing news only, not access gating.
 
 Describe Elise as K Scan AI's AI Stylist, who can use authorized fashion context from Recent Scans, Closet, Saved Looks, and Dressing Rooms to help with styling decisions. Describe StyleChat as Elise's conversational capability within the AI Stylist experience, not as a standalone feature. Where enabled, describe Elise's spoken responses as optional text-to-speech output, distinct from VoiceScan.
 
@@ -225,7 +224,7 @@ Describe Signature Style as: saved items, styling preferences, feedback, and oth
 
 Describe Fashion Intelligence as K Scan AI's fashion-specific visual understanding concept, covering garment type, silhouette, material, color, layering, brand evidence where supported, and styling context.
 
-Describe Closet, Dressing Rooms, Share by Link, and Elise (AI Stylist) as live beta product areas if the public site continues to present them that way. Describe VoiceScan as coming soon and App Native Face Blurring as in development, with on-device face-redaction architecture built but not yet universally certified or activated.
+Describe Closet, Dressing Rooms, Share by Link, and Elise (AI Stylist) as live product areas if the public site continues to present them that way. Describe VoiceScan as coming soon and App Native Face Blurring as in development, with on-device face-redaction architecture built but not yet universally certified or activated.
 
 Describe Meta, Android XR, and Apple Vision Pro experiences as browser-enabled or pre-production prototypes unless the public website later indicates that commercially available native integrations exist.
 
