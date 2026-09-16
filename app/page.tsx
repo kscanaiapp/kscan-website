@@ -58,30 +58,22 @@ const coreFlow = [
   },
 ];
 
-const featureList = [
+const featureTeasers = [
   {
-    title: "Fashion-First Intelligence",
-    body: "We do not just identify objects. K Scan AI reads proportion, layering, silhouette, and intent so each piece is understood in context.",
+    title: "Scan & Discover",
+    body: "Capture fashion from real life, photos, screenshots, and supported saved visual sources.",
   },
   {
-    title: "Built for Speed and Context",
-    body: "Designed for photos, screenshots, and saved video frames, K Scan AI turns real-world inspiration into ranked matches. Capture the look and move on.",
+    title: "Organize",
+    body: "Keep discoveries in Recent Scans and owned pieces in Closet.",
   },
   {
-    title: "One View, Multiple Retailers",
-    body: "Explore relevant matches and useful alternatives across indexed retailers. Compare relevant matches and alternatives across retailer pathways in one view.",
+    title: "Style",
+    body: "Use Signature Style, Elise, and Dressing Rooms to turn ideas into decisions.",
   },
   {
-    title: "Price Tier Awareness",
-    body: "Explore relevant options across price tiers, including lower-priced alternatives when available.",
-  },
-  {
-    title: "Personalized Recall",
-    body: "Saved scans, saved items, and styling preferences help K Scan AI understand your taste over time.",
-  },
-  {
-    title: "Dressing Rooms",
-    body: "Plan looks together. Save outfit ideas in Dressing Rooms, compare options, share a link, and keep reactions and conversations connected to the looks being considered. Whether you are planning for a trip, event, or night out, every option stays organized in one place. Signature Style helps make future suggestions more relevant to the preferences you share.",
+    title: "Shop",
+    body: "Compare product matches and alternatives across retailer pathways.",
   },
 ];
 
@@ -637,273 +629,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Signature Style */}
+      {/* Features teaser — full detail lives on /features */}
       <section id="features" className="bg-white py-20 md:py-32">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <FadeUp className="mb-12 max-w-lg md:mb-28">
+          <FadeUp className="mb-12 max-w-2xl md:mb-16">
             <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-stone-600 md:mb-5">
-              What Sets It Apart
+              Features
             </p>
-            <h2 className="font-display text-4xl font-medium text-stone-900 md:text-[52px]">
-              Built for fashion.
-              <br />
-              Designed for discovery.
+            <h2 className="font-display text-4xl font-medium leading-[1.06] text-stone-900 md:text-[52px]">
+              Everything between inspiration and the outfit.
             </h2>
           </FadeUp>
 
-          <FadeUp className="mb-10 grid gap-8 md:mb-16 md:grid-cols-[1.15fr_0.85fr] md:items-end md:gap-10">
-            <div className="relative overflow-hidden rounded-[30px] bg-[#F5F1EB] shadow-[0_18px_50px_rgba(28,22,16,0.07)] ring-1 ring-black/5">
-              <div className="relative aspect-[5/4]">
-                <Image
-                  src="/group-street.jpeg"
-                  alt="Kathleen in a white leisure set illustrating K Scan AI's fashion-first feature system"
-                  fill
-                  sizes="(max-width: 768px) 92vw, 48vw"
-                  className="object-cover object-[center_25%]"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(244,240,233,0.02),rgba(34,28,24,0.12))]" />
-              </div>
-            </div>
-            <div className="max-w-md">
-              <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.18em] text-stone-600">
-                Fashion-first signal
-              </p>
-              <p className="font-display text-[30px] leading-[1.15] text-stone-900 md:text-[36px]">
-                A commerce layer for fashion, not another browse-and-search workflow.
-              </p>
-            </div>
-          </FadeUp>
-
-          <FadeUp>
-            <div className="mb-4 overflow-hidden rounded-[30px] border border-stone-200 bg-stone-50 shadow-[0_18px_48px_rgba(28,22,16,0.08)] md:mb-5 md:rounded-[34px]">
-              <div className="relative aspect-[7/2] lg:aspect-[4/1]">
-                <Image
-                  src="/images/shoes_and_bag_hero.png"
-                  alt="K Scan AI fashion product preview with leather shoes and a structured bag"
-                  fill
-                  sizes="(max-width: 768px) 92vw, (max-width: 1280px) 86vw, 1200px"
-                  className="object-cover object-[center_85%]"
-                />
-              </div>
-            </div>
-          </FadeUp>
-
-          <FadeUp>
-            <div className="grid gap-9 rounded-[30px] border border-white/5 bg-zinc-950 px-6 py-10 shadow-[0_24px_70px_rgba(28,22,16,0.12)] md:gap-10 md:rounded-[34px] md:px-10 md:py-12 lg:grid-cols-[0.45fr_0.55fr] lg:items-center lg:px-12">
-              <div>
-                <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.15em] text-indigo-300/85 md:mb-5">
-                  Signature Style
-                </p>
-                <h2 className="mb-5 max-w-xl font-display text-4xl font-medium leading-[1.05] text-white md:text-[52px]">
-                  Style signals that make recommendations more relevant.
-                </h2>
-                <p className="max-w-xl text-[15px] leading-[1.82] text-stone-300/75">
-                  Saved items, styling preferences, and feedback can help K Scan AI tailor future recommendations without turning style into personal identity.
-                </p>
-                <span className="mt-7 inline-flex rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-[13px] font-medium leading-relaxed text-stone-100 shadow-[0_18px_48px_rgba(0,0,0,0.18)]">
-                  Built from style signals, not personal identity.
-                </span>
-              </div>
-
-              <div className="divide-y divide-white/10 border-y border-white/10 lg:border-y-0">
-                {[featureList[0], featureList[1], featureList[4]].map(({ title, body }) => (
-                  <div
-                    key={title}
-                    className="py-5 first:pt-0 last:pb-0 lg:py-6"
-                  >
-                    <h3 className="mb-3 text-[15px] font-medium text-white">{title}</h3>
-                    <p className="text-[14px] leading-[1.82] text-stone-300/65">{body}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </FadeUp>
-
-          <FadeUp className="mt-12 md:mt-16">
-            <div className="grid gap-8 border-t border-stone-100 pt-10 md:gap-10 lg:grid-cols-[minmax(320px,0.42fr)_minmax(0,0.58fr)] lg:items-center">
-              <div className="max-w-md">
-                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-600">
-                  Mirror Selfie
-                </p>
-                <h3 className="mb-3 font-display text-[26px] leading-[1.15] text-stone-900 md:text-[30px]">
-                  Turn the mirror into a Closet starting point.
-                </h3>
-                <p className="text-[15px] leading-[1.82] text-stone-500">
-                  Choose a mirror or selfie image and let K Scan AI help identify the fashion you are wearing. Review the detected clothing and move the pieces that are actually yours toward Closet.
-                </p>
-                <p className="mt-4 text-[12px] leading-relaxed text-stone-600">
-                  Available on iOS. Results may vary by image, garment visibility, and release environment.
-                </p>
-              </div>
-              <div className="w-full">
-                <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-stone-50 shadow-[0_18px_50px_rgba(28,22,16,0.08)]">
-                  <div className="relative aspect-[4/5]">
-                    <Image
-                      src="/mirror-selfie.jpeg"
-                      alt="Fashionable person taking a mirror selfie to illustrate K Scan AI Mirror Selfie wardrobe intake."
-                      fill
-                      sizes="(max-width: 1024px) 92vw, 40vw"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </FadeUp>
+          <motion.div
+            className="grid gap-x-12 gap-y-9 border-t border-stone-100 pt-10 md:grid-cols-2 md:gap-y-12 lg:grid-cols-4"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-6% 0px" }}
+          >
+            {featureTeasers.map(({ title, body }) => (
+              <motion.article key={title} variants={staggerChild}>
+                <h3 className="mb-3 text-[15px] font-medium text-stone-900">{title}</h3>
+                <p className="text-[14px] leading-[1.82] text-stone-600">{body}</p>
+              </motion.article>
+            ))}
+          </motion.div>
 
           <FadeUp className="mt-10 md:mt-14">
-            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
-              <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
-              <div className="relative grid gap-8 lg:grid-cols-[0.55fr_0.45fr] lg:items-start lg:gap-10">
-                <div className="max-w-2xl">
-                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
-                    Live
-                  </p>
-                  <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
-                    Elise, Your AI Stylist
-                  </h3>
-                  <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    Elise helps turn a scan into a styling decision. Ask how to wear an item, style something from Closet, refine a Saved Look, or use fashion shared through a Dressing Room as context.
-                  </p>
-                  <p className="mt-4 max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    StyleChat is how you talk with her. Where spoken responses are enabled, Elise can also read eligible styling responses aloud.
-                  </p>
-                </div>
-                <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2">
-                  {[
-                    { title: "Style This Item", body: "Turn a scan or Closet item into styling ideas." },
-                    { title: "Closet Context", body: "Use the fashion you own as context for outfit suggestions." },
-                    { title: "Dressing Room Context", body: "Refine shared fashion choices with the items being discussed." },
-                    { title: "Spoken Responses", body: "Hear eligible Elise styling responses where voice is enabled." },
-                  ].map(({ title, body }) => (
-                    <div key={title} className="bg-stone-950 p-5">
-                      <h4 className="mb-2 text-[13px] font-medium text-white">{title}</h4>
-                      <p className="text-[12px] leading-[1.6] text-stone-400">{body}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <a
+              href="/features"
+              className="fashion-cursor inline-flex items-center gap-2 rounded-full bg-violet-600 px-8 py-4 text-[14px] font-medium text-white shadow-[0_14px_30px_rgba(124,58,237,0.18)] transition-colors hover:bg-violet-700"
+            >
+              Explore All Features
+              <span aria-hidden="true">&rarr;</span>
+            </a>
           </FadeUp>
-
-          <FadeUp className="mt-5 md:mt-6">
-            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
-              <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
-              <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
-                <div className="max-w-2xl">
-                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
-                    Coming Soon
-                  </p>
-                  <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
-                    Calendar to Closet
-                  </h3>
-                  <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    A planned way to help connect upcoming plans with Closet and Saved Looks, so Elise can help you think ahead about what to wear.
-                  </p>
-                </div>
-                <div className="hidden h-20 w-20 flex-shrink-0 rounded-full border border-cyan-200/20 bg-cyan-200/5 shadow-[0_0_44px_rgba(125,211,252,0.12)] md:block" />
-              </div>
-            </div>
-          </FadeUp>
-
-          <FadeUp className="mt-5 md:mt-6">
-            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
-              <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
-              <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
-                <div className="max-w-2xl">
-                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
-                    Exploring
-                  </p>
-                  <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
-                    A More Present Elise
-                  </h3>
-                  <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    We are continuing to explore richer ways for Elise to feel present across the K Scan AI experience.
-                  </p>
-                </div>
-                <div className="hidden h-20 w-20 flex-shrink-0 rounded-full border border-cyan-200/20 bg-cyan-200/5 shadow-[0_0_44px_rgba(125,211,252,0.12)] md:block" />
-              </div>
-            </div>
-          </FadeUp>
-
-          <FadeUp className="mt-12 md:mt-16">
-            <div className="grid gap-8 border-t border-stone-100 pt-10 md:gap-10 lg:grid-cols-[minmax(0,0.62fr)_minmax(320px,0.38fr)] lg:items-center">
-              <div className="w-full lg:max-w-[800px]">
-                <div className="relative overflow-hidden rounded-[28px] border border-stone-200 bg-stone-50 shadow-[0_18px_50px_rgba(28,22,16,0.08)]">
-                  <div className="relative aspect-[1672/941]">
-                    <Image
-                      src="/images/dressing-rooms-v6.png"
-                      alt="K Scan AI Dressing Rooms preview showing shared styling and link sharing"
-                      fill
-                      sizes="(max-width: 1024px) 92vw, 56vw"
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="max-w-md lg:ml-auto">
-                <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-600">
-                  {featureList[5].title}
-                </p>
-                <p className="text-[15px] leading-[1.82] text-stone-500">
-                  {featureList[5].body}
-                </p>
-              </div>
-            </div>
-          </FadeUp>
-
-          <FadeUp className="mt-10 md:mt-14">
-            <div className="grid gap-x-12 gap-y-8 border-t border-stone-100 pt-9 md:grid-cols-2 md:gap-x-16 md:pt-10">
-              {[featureList[2], featureList[3]].map(({ title, body }) => (
-                <article key={title}>
-                  <h3 className="mb-3 text-[15px] font-medium text-stone-900">{title}</h3>
-                  <p className="text-[14px] leading-[1.82] text-stone-600">{body}</p>
-                </article>
-              ))}
-            </div>
-          </FadeUp>
-
-          <FadeUp className="mt-10 md:mt-14">
-            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
-              <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
-              <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
-                <div className="max-w-2xl">
-                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
-                    Coming Soon
-                  </p>
-                  <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
-                    K Scan AI Web Lens
-                  </h3>
-                  <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    A browser-first visual search experience designed to move from inspiration to discovery across desktop and mobile, with future-ready try-on pathways.
-                  </p>
-                </div>
-                <div className="hidden h-20 w-20 flex-shrink-0 rounded-full border border-cyan-200/20 bg-cyan-200/5 shadow-[0_0_44px_rgba(125,211,252,0.12)] md:block" />
-              </div>
-            </div>
-          </FadeUp>
-
-          <FadeUp className="mt-5 md:mt-6">
-            <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-stone-950 px-6 py-7 shadow-[0_22px_60px_rgba(28,22,16,0.14)] md:rounded-[36px] md:px-9 md:py-8">
-              <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(125,211,252,0.42),transparent)]" />
-              <div className="relative flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-10">
-                <div className="max-w-2xl">
-                  <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.2em] text-cyan-200/70">
-                    Coming Soon
-                  </p>
-                  <h3 className="mb-3 font-display text-[30px] font-medium leading-[1.05] text-white md:text-[38px]">
-                    Outfit Remix
-                  </h3>
-                  <p className="max-w-3xl text-[14px] leading-[1.82] text-stone-300 md:text-[15px]">
-                    Recreate inspiration from your own closet. K Scan AI will help reinterpret favorite looks using pieces you already own, with smart substitutions, layering ideas, and remix guidance when there is no exact match.
-                  </p>
-                </div>
-                <div className="hidden h-20 w-20 flex-shrink-0 rounded-full border border-cyan-200/20 bg-cyan-200/5 shadow-[0_0_44px_rgba(125,211,252,0.12)] md:block" />
-              </div>
-            </div>
-          </FadeUp>
-
         </div>
       </section>
 
@@ -1067,10 +828,10 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mx-auto max-w-sm rounded-[24px] border border-stone-200 bg-[#F5F3EF] p-6 text-left lg:mx-0">
-              <h3 className="font-display text-[18px] font-medium text-stone-900">Get Beta Updates</h3>
+            <div id="beta-updates" className="mx-auto max-w-sm scroll-mt-32 rounded-[24px] border border-stone-200 bg-[#F5F3EF] p-6 text-left md:scroll-mt-24 lg:mx-0">
+              <h3 className="font-display text-[18px] font-medium text-stone-900">Be first to know what’s next</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-stone-500">
-                Be first to hear about upcoming K Scan AI features and opportunities to test what&apos;s next.
+                Hear about new K Scan AI features as they arrive, plus early looks at what we’re building.
               </p>
 
               {submissionState === "success" ? (
