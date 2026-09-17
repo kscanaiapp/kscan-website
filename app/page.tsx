@@ -37,7 +37,7 @@ const coreFlow = [
     step: "03",
     title: "Organize",
     description:
-      "Recent Scans keeps what you discovered, Closet keeps what you own, and Saved Inspiration keeps what you want to come back to.",
+      "Recent Scans keeps what you discovered, Closet keeps what you own, and Inspiration keeps what you want to come back to.",
     image: null,
   },
   {

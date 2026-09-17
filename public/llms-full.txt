@@ -31,10 +31,7 @@ K Scan AI is available now.
 
 The standard K Scan AI app is publicly available and should not be
 described as beta, in production testing, invite-only, or gated behind
-approval. A separate pre-release build (for example,
-TestFlight) may exist for a small number of testers; it is not the public
-app, and initial response times and feature behavior can vary for that
-channel.
+approval.
 
 ## How K Scan AI Works
 
@@ -252,9 +249,7 @@ the App route.
 Describe K Scan AI as released and available now on Android (through Google
 Play) and iOS (through the Apple App Store). Do not describe the standard
 public app as beta, production testing, waiting for approval, invite-only,
-or TestFlight-only. A separate pre-release channel for a small number of
-testers is distinct from the public app and should never be presented as
-the standard experience.
+or TestFlight-only.
 
 Distinguish Recent Scans, Closet, Saved Inspiration, and Saved Looks as
 described in "Saved Content and Ownership" above. Do not collapse Saved

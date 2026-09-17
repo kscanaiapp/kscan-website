@@ -98,7 +98,7 @@ const SCHEMA_FEATURES: { name: string; description: string }[] = [
     description: "Revisit visual searches and the products behind them without digging through your camera roll.",
   },
   {
-    name: "Saved Inspiration",
+    name: "Inspiration",
     description:
       "Save the inspiration you want to return to, kept distinct from the discoveries in Recent Scans and the items you own in Closet.",
   },
@@ -601,11 +601,11 @@ export default function FeaturesPage() {
               </p>
             </FeatureBlock>
 
-            <FeatureBlock name="Saved Inspiration">
+            <FeatureBlock name="Inspiration">
               <p>Save the inspiration you want to return to without treating it as something you own.</p>
               <p>
                 Saving is its own layer. Recent Scans holds what you discovered, Closet holds what you own, and
-                saved inspiration holds what you want to come back to.
+                Inspiration holds what you want to come back to.
               </p>
             </FeatureBlock>
           </div>
