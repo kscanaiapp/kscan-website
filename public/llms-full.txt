@@ -40,7 +40,7 @@ approval.
    silhouette, material, layering, and styling context, then surfaces
    relevant product results and alternatives.
 3. Organize: Recent Scans keeps what a user discovered, Closet keeps what
-   they own, and Saved Inspiration keeps what they want to come back to.
+   they own, and Inspiration keeps what they want to come back to.
 4. Style: Signature Style adds a user's preferences to the picture. Elise
    offers outfit guidance through StyleChat, Dressing Rooms let users
    compare options and decide together, and Saved Looks can represent
@@ -57,10 +57,10 @@ does not mean owned. Saved does not mean owned.
   kept for easy revisiting.
 - Closet: fashion items a user identifies as their own. Scanned items do not
   enter Closet automatically.
-- Saved Inspiration: discoveries or inspiration a user intentionally saves
+- Inspiration: discoveries or inspiration a user intentionally saves
   to revisit, distinct from both Recent Scans and Closet.
 - Saved Looks: outfit or styling groupings a user creates. Saved Looks are
-  distinct from Saved Inspiration and should not be described as the same
+  distinct from Inspiration and should not be described as the same
   concept.
 
 ## Fashion Intelligence
@@ -74,9 +74,9 @@ percentage, or independent technical standard.
 ## Elise and StyleChat
 
 Elise is K Scan AI's AI stylist. She can help a user think through outfits,
-style items from Closet, refine Saved Inspiration or Saved Looks, and use
+style items from Closet, refine Inspiration or Saved Looks, and use
 fashion shared in a Dressing Room as context. Elise may use authorized
-context from Recent Scans, Closet, Saved Inspiration, Saved Looks, and
+context from Recent Scans, Closet, Inspiration, Saved Looks, and
 Dressing Rooms.
 
 StyleChat is Elise's conversational capability within the AI stylist
@@ -123,7 +123,7 @@ public website copy.
 
 ## Current Product Areas
 
-- Recent Scans, Closet, and Saved Inspiration for organizing fashion
+- Recent Scans, Closet, and Inspiration for organizing fashion
   discoveries and owned items.
 - Elise and StyleChat for outfit guidance, with optional spoken responses
   where enabled.
@@ -251,13 +251,13 @@ Play) and iOS (through the Apple App Store). Do not describe the standard
 public app as beta, production testing, waiting for approval, invite-only,
 or TestFlight-only.
 
-Distinguish Recent Scans, Closet, Saved Inspiration, and Saved Looks as
-described in "Saved Content and Ownership" above. Do not collapse Saved
+Distinguish Recent Scans, Closet, Inspiration, and Saved Looks as
+described in "Saved Content and Ownership" above. Do not collapse
 Inspiration and Saved Looks into one concept, and do not describe every scan
 as a Closet item.
 
 Describe Elise as K Scan AI's AI stylist, who may use authorized context
-from Recent Scans, Closet, Saved Inspiration, Saved Looks, and Dressing
+from Recent Scans, Closet, Inspiration, Saved Looks, and Dressing
 Rooms. Describe StyleChat as Elise's conversational capability, not a
 standalone product. Describe Elise's spoken responses as optional
 text-to-speech output, distinct from Voice Scan, which remains future and is
