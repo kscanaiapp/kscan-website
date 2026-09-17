@@ -169,7 +169,7 @@ export default function PrivacyPage() {
                   <li>whether an item is owned, scanned, saved, or shared</li>
                 </ul>
                 <p className="mt-3">
-                  Elise may use authorized information from your Closet, Style Library, Saved Looks, or Dressing
+                  Elise may use authorized information from your Closet, Inspiration, Saved Looks, or Dressing
                   Rooms when you intentionally use those items as styling context.
                 </p>
                 <p className="mt-3">
@@ -420,7 +420,7 @@ export default function PrivacyPage() {
               <li>Recent Scans may remain locally on your device.</li>
               <li>Elise and StyleChat history may be retained to operate and reopen conversations.</li>
               <li>
-                account-backed Closet, Style Library, Saved Look, and Dressing Room information may remain while
+                account-backed Closet, Inspiration, Saved Look, and Dressing Room information may remain while
                 your account or the relevant content is active.
               </li>
               <li>

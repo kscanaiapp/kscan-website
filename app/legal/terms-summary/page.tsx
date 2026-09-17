@@ -7,14 +7,14 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Terms Summary",
   description:
-    "Review a plain-language summary of key K Scan AI terms, beta limitations, user responsibilities, and third-party shopping disclosures.",
+    "Review a plain-language summary of key K Scan AI terms, shopping limits, user responsibilities, and third-party shopping disclosures.",
   alternates: {
     canonical: "https://kscan.app/legal/terms-summary",
   },
   openGraph: {
     title: "Terms Summary | K Scan AI",
     description:
-      "Review a plain-language summary of key K Scan AI terms, beta limitations, user responsibilities, and third-party shopping disclosures.",
+      "Review a plain-language summary of key K Scan AI terms, shopping limits, user responsibilities, and third-party shopping disclosures.",
     url: "https://kscan.app/legal/terms-summary",
     siteName: "K Scan AI",
     locale: "en_US",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Terms Summary | K Scan AI",
     description:
-      "Review a plain-language summary of key K Scan AI terms, beta limitations, user responsibilities, and third-party shopping disclosures.",
+      "Review a plain-language summary of key K Scan AI terms, shopping limits, user responsibilities, and third-party shopping disclosures.",
   },
 };
 

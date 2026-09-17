@@ -381,7 +381,7 @@ export default function Home() {
             className="mb-5 text-[11px] font-medium uppercase tracking-[0.2em] text-stone-600 md:mb-8"
             variants={staggerChild}
           >
-            Available now on Android and iOS.
+            Available now.
           </motion.p>
           <motion.h1
             className="mb-5 max-w-[10ch] font-display text-[46px] leading-[1.01] text-stone-900 sm:text-[52px] md:mb-6 md:text-[66px] lg:text-[78px]"
@@ -808,7 +808,7 @@ export default function Home() {
               Start Scanning Today
             </h2>
             <p className="mx-auto mb-8 max-w-xs text-[15px] leading-[1.82] text-stone-600 md:mb-10 lg:mx-0">
-              K Scan AI is available now on Android and iOS. Get the app through Google Play or the Apple App Store.
+              Get K Scan AI from Google Play or the Apple App Store.
             </p>
 
             <div className="mx-auto mb-10 flex max-w-sm flex-col items-center gap-4 sm:flex-row sm:justify-center lg:mx-0 lg:justify-start">

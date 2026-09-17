@@ -8,7 +8,7 @@ import { buttons, surfaces } from "@/lib/theme";
 
 const PAGE_TITLE = "K Scan AI Features | Visual Fashion Search, AI Styling & Shopping";
 const PAGE_DESCRIPTION =
-  "Scan fashion from real life, photos, and screenshots. Organize what you own in Closet, style it with Elise, and explore product matches and alternatives across retailers. Available now on iOS and Android.";
+  "Scan fashion from real life, photos, and screenshots. Organize what you own in Closet, style it with Elise, and explore product matches and alternatives across retailers. Available now.";
 
 export const metadata: Metadata = {
   title: { absolute: PAGE_TITLE },
@@ -58,7 +58,7 @@ type Status = "Coming Soon" | "Exploring" | "Preview";
 
 /** Verified, non-numeric product facts. No usage metrics are published here. */
 const PROOF_POINTS = [
-  "Available on iOS + Android",
+  "Available now",
   "AI-powered fashion search",
   "Retailer-neutral discovery",
 ];
@@ -419,13 +419,9 @@ export default function FeaturesPage() {
               retailers &mdash; all in one app.
             </p>
 
-            <p className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-[13px] font-medium text-violet-800">
+            <p className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-violet-200 bg-violet-50 px-4 py-2 text-[13px] font-medium text-violet-800">
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-violet-600" />
-              Available now on iOS and Android.
-            </p>
-
-            <p className="mb-8 max-w-xl text-[15px] leading-[1.7] text-stone-600">
-              K Scan AI is available today on the App Store and Google Play.
+              Available now.
             </p>
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -507,7 +503,6 @@ export default function FeaturesPage() {
           <div className="space-y-14 md:space-y-20">
             <FeatureBlock
               name="Visual Search"
-              platforms="iOS + Android"
               image={{
                 src: "/how-it-works/identify-style-parse.png",
                 alt: "K Scan AI detecting garment type, color, and silhouette inside an outfit photo.",
@@ -526,7 +521,6 @@ export default function FeaturesPage() {
 
             <FeatureBlock
               name="Screenshots & Saved Frames"
-              platforms="iOS + Android"
               reverse
               image={{
                 src: "/how-it-works/capture-frame-the-look.png",
@@ -591,7 +585,7 @@ export default function FeaturesPage() {
           </div>
 
           <div className="space-y-14 md:space-y-20">
-            <FeatureBlock name="Closet" platforms="iOS + Android">
+            <FeatureBlock name="Closet">
               <p>Closet is for the fashion you own.</p>
               <p>
                 Keep owned pieces organized so they can become useful context for styling and outfit planning.
@@ -599,7 +593,7 @@ export default function FeaturesPage() {
               </p>
             </FeatureBlock>
 
-            <FeatureBlock name="Recent Scans" platforms="iOS + Android">
+            <FeatureBlock name="Recent Scans">
               <p>Every discovery has somewhere to go.</p>
               <p>
                 Recent Scans keeps your visual searches available so you can revisit products and ideas without
@@ -607,7 +601,7 @@ export default function FeaturesPage() {
               </p>
             </FeatureBlock>
 
-            <FeatureBlock name="Saved Inspiration" platforms="iOS + Android">
+            <FeatureBlock name="Saved Inspiration">
               <p>Save the inspiration you want to return to without treating it as something you own.</p>
               <p>
                 Saving is its own layer. Recent Scans holds what you discovered, Closet holds what you own, and
@@ -636,7 +630,6 @@ export default function FeaturesPage() {
             <FeatureBlock
               id="elise"
               name="Elise, Your AI Stylist"
-              platforms="iOS + Android"
               image={{
                 src: "/images/stylechat.png",
                 alt: "StyleChat conversation with Elise, the K Scan AI stylist.",
@@ -652,7 +645,7 @@ export default function FeaturesPage() {
               </p>
             </FeatureBlock>
 
-            <FeatureBlock id="signature-style" name="Signature Style" platforms="iOS + Android">
+            <FeatureBlock id="signature-style" name="Signature Style">
               <p>Saved items, styling preferences, and feedback help sharpen future recommendations.</p>
               <p>
                 Signature Style gives K Scan AI more context about the preferences you share over time &mdash; built
@@ -663,7 +656,6 @@ export default function FeaturesPage() {
             <FeatureBlock
               id="dressing-rooms"
               name="Dressing Rooms"
-              platforms="iOS + Android"
               reverse
               image={{
                 src: "/images/dressing-rooms-v6.png",
@@ -725,7 +717,6 @@ export default function FeaturesPage() {
           <div className="space-y-14 md:space-y-20">
             <FeatureBlock
               name="One View, Multiple Retailers"
-              platforms="iOS + Android"
               image={{
                 src: "/how-it-works/match-shop-results.png",
                 alt: "K Scan AI product results showing matches and retailer pathways from a scanned outfit.",
@@ -741,7 +732,6 @@ export default function FeaturesPage() {
 
             <FeatureBlock
               name="Price-Tier Awareness"
-              platforms="iOS + Android"
               reverse
               image={{
                 src: "/images/shoes_and_bag_hero.png",

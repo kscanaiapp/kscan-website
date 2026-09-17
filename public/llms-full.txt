@@ -21,7 +21,7 @@ The current public flow is Scan -> Discover -> Organize -> Style -> Shop.
 
 ## Current App Access
 
-K Scan AI is available now on Android and iOS.
+K Scan AI is available now.
 
 - Android: available on Google Play at
   https://play.google.com/store/apps/details?id=com.kscanai.app.
@@ -29,9 +29,9 @@ K Scan AI is available now on Android and iOS.
   https://apps.apple.com/us/app/k-scan-ai/id6785093920.
 - Primary route: Get the App, at https://kscan.app/download.
 
-The standard K Scan AI app is publicly available on both platforms and
-should not be described as beta, in production testing, invite-only, or
-gated behind approval. A separate pre-release build (for example,
+The standard K Scan AI app is publicly available and should not be
+described as beta, in production testing, invite-only, or gated behind
+approval. A separate pre-release build (for example,
 TestFlight) may exist for a small number of testers; it is not the public
 app, and initial response times and feature behavior can vary for that
 channel.
@@ -182,10 +182,11 @@ Get the App, at https://kscan.app/download.
 
 K Scan AI applies layered security controls across accounts, images, AI
 interactions, and app activity, including secure development practices,
-pre-push security scans, weekly production security audits, access
-controls, monitoring, and a documented vulnerability response process. No
-online service can promise complete or perfect security, and K Scan AI does
-not claim certifications that have not been completed and verified.
+automated security checks during code changes and release workflows,
+access controls, monitoring, and a documented vulnerability response
+process. No online service can promise complete or perfect security, and K
+Scan AI does not claim certifications that have not been completed and
+verified.
 
 K Scan AI provides public privacy and legal resources, including a privacy
 summary, full privacy policy, terms of service, billing and refund
