@@ -49,7 +49,7 @@ export const privacyPolicy: LegalDocumentData = {
             `Images, prompts, Elise messages, style context, and related information may be processed through K Scan AI cloud systems and authorized AI or infrastructure providers. The Service is not device-only or cloud-free.`,
             `Elise may use a bounded recent conversation window, authorized fashion content that you select or reference, and non-sensitive style preferences to personalize responses. K Scan AI is designed not to infer sensitive personal traits from your photographs, wardrobe, name, or voice.`,
             `Elise spoken responses use text-to-speech. The feature does not record your voice, and the mobile apps do not request microphone permission for Elise spoken responses.`,
-            `Recent Scans and their saved shopping snapshots are device-local by default. Cloud Saved Scans synchronization is disabled by default. Account-backed Closet, Style Library, Dressing Room, Shared with Me, and related content may use cloud services where the feature is enabled.`,
+            `Recent Scans and their saved shopping snapshots are device-local by default. Cloud Saved Scans synchronization is disabled by default. Account-backed Closet, Inspiration, Dressing Room, Shared with Me, and related content may use cloud services where the feature is enabled.`,
             `The mobile apps may request foreground location for optional weather-aware styling. Depending on platform and operating-system settings, you may be able to control the precision of the permission you grant. For weather-aware styling, K Scan AI uses approximate, rounded location context rather than storing raw precise GPS coordinates, and K Scan AI does not use background location for this feature.`,
             `K Scan AI does not currently use third-party advertising SDKs or collect Advertising ID for targeted advertising.`,
             `When an account-deletion request is accepted, K Scan AI deactivates the account and uses a limited restoration period of approximately 30 days. If the account is not restored and no legal, security, or technical hold applies, it becomes eligible for permanent deletion. Deletion is not an instantaneous erase operation.`,
@@ -105,7 +105,7 @@ export const privacyPolicy: LegalDocumentData = {
         {
           type: "definition",
           term: "Submitted Visual Data:",
-          text: `Camera captures, selected photos, screenshots, prepared image derivatives, and other visual inputs submitted for fashion scanning, item recognition, style analysis, shopping assistance, Closet or Style Library features, Recent Scans, Saved Looks, Dressing Rooms, or Elise.`,
+          text: `Camera captures, selected photos, screenshots, prepared image derivatives, and other visual inputs submitted for fashion scanning, item recognition, style analysis, shopping assistance, Closet or Inspiration features, Recent Scans, Saved Looks, Dressing Rooms, or Elise.`,
         },
         {
           type: "definition",
@@ -211,7 +211,7 @@ export const privacyPolicy: LegalDocumentData = {
           type: "paragraph",
           text: `Cloud Saved Scans synchronization is disabled by default. Device-local records do not automatically become available on another device. Clearing app data or uninstalling the app may remove device-local records. Account deletion from K Scan AI cloud systems may not erase a local copy that remains on a disconnected device; you may also delete local records through the app, clear app data, or uninstall the app.`,
         },
-        { type: "subheading", text: "4.4 Closet, Style Library, Saved Looks, and Account-Backed Content" },
+        { type: "subheading", text: "4.4 Closet, Inspiration, Saved Looks, and Account-Backed Content" },
         {
           type: "paragraph",
           text: `When you save, own, upload, organize, or attach content to account-backed features, K Scan AI may store the content and related metadata in private cloud storage associated with your account. Depending on the feature, this may include selected images, inspiration uploads, Closet or wardrobe item information, Saved Look information, item metadata, style preferences, timestamps, ownership or relationship status, and references needed to display, organize, retrieve, authorize, or delete the content. Signed or time-limited URLs may be generated to display protected images.`,
@@ -227,7 +227,7 @@ export const privacyPolicy: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `Elise may use authorized information from your Closet, Style Library, Saved Looks, or Dressing Rooms when you invoke Elise from that context or intentionally attach or reference those items. K Scan AI does not describe Elise as automatically reading every Dressing Room message or every piece of account content without a feature context or authorization path.`,
+          text: `Elise may use authorized information from your Closet, Inspiration, Saved Looks, or Dressing Rooms when you invoke Elise from that context or intentionally attach or reference those items. K Scan AI does not describe Elise as automatically reading every Dressing Room message or every piece of account content without a feature context or authorization path.`,
         },
         {
           type: "paragraph",
@@ -318,7 +318,7 @@ export const privacyPolicy: LegalDocumentData = {
             `Provide Elise text responses, spoken responses, bounded recent conversation continuity, authorized fashion context, Signature Style personalization, and related AI functions.`,
             `Use optional rounded approximate location and weather information to provide weather-aware styling when you enable that feature.`,
             `Save and reopen Recent Scans and stored commerce snapshots.`,
-            `Operate Closet, Style Library, Saved Looks, owned Dressing Rooms, Shared with Me, room sharing, messages, and reactions.`,
+            `Operate Closet, Inspiration, Saved Looks, owned Dressing Rooms, Shared with Me, room sharing, messages, and reactions.`,
             `Return retailer-neutral shopping results and route users to third-party product pages.`,
             `Prevent duplicate actions, abuse, fraud, unauthorized access, and cross-account data leakage.`,
             `Enforce block relationships, investigate user or content reports and AI-response reports, moderate objectionable content, and apply safety or policy restrictions.`,
@@ -439,7 +439,7 @@ export const privacyPolicy: LegalDocumentData = {
           items: [
             `Account and contact data: retained while the account is active and, after a deletion request is accepted, during the applicable restoration and deletion-processing lifecycle, subject to legal, security, fraud-prevention, dispute-resolution, and technical requirements.`,
             `Device-local Recent Scans and device-local preference data: retained on the device until deleted in the app, app data is cleared, the applicable local feature removes it, or the app is uninstalled, subject to device and operating-system behavior. Cloud account deletion may not erase local data from an offline or disconnected device.`,
-            `Account-backed Closet, Style Library, Saved Look, and Dressing Room data: retained while the account is active or until the user deletes the applicable content or account, subject to shared-content, backup, security, fraud-prevention, and legal requirements. Content required to preserve an authorized continuing shared Dressing Room may be transferred, detached, or retained for remaining participants as described in Section 13.`,
+            `Account-backed Closet, Inspiration, Saved Look, and Dressing Room data: retained while the account is active or until the user deletes the applicable content or account, subject to shared-content, backup, security, fraud-prevention, and legal requirements. Content required to preserve an authorized continuing shared Dressing Room may be transferred, detached, or retained for remaining participants as described in Section 13.`,
             `Submitted Visual Data used for AI processing: retained only as long as reasonably necessary to process the request, maintain security, troubleshoot, prevent abuse, comply with law, support requested history or saved content, or perform other purposes described in this Policy. Exact provider-side retention may depend on the applicable production configuration and provider terms.`,
             `Prepared Images and temporary local image derivatives: may be retained temporarily on the device for the requested operation and removed through normal temporary-file or cache cleanup. K Scan AI does not promise that every image path uses identical temporary-file behavior.`,
             `Elise and StyleChat messages: retained as needed to operate sessions, preserve requested conversation history, provide authorized styling context, troubleshoot, maintain security, and honor privacy requests. K Scan AI does not publish a fixed lifetime retention period for StyleChat messages unless one is separately established.`,
@@ -477,7 +477,7 @@ export const privacyPolicy: LegalDocumentData = {
         },
         {
           type: "paragraph",
-          text: `If the account is not restored before the applicable deadline and no hold applies, the account becomes eligible for permanent deletion. Permanent deletion is a separate protected process from the Delete Account button. It is designed to remove the authentication account and account-linked personal information registered in the deletion process, including applicable profile data, account-backed scans and saved fashion content, Closet or wardrobe information, Style Library or inspiration items, Saved Looks, Elise or StyleChat conversations, styling preferences or memory, user-owned stored images, device-session records, and other user-bound application data.`,
+          text: `If the account is not restored before the applicable deadline and no hold applies, the account becomes eligible for permanent deletion. Permanent deletion is a separate protected process from the Delete Account button. It is designed to remove the authentication account and account-linked personal information registered in the deletion process, including applicable profile data, account-backed scans and saved fashion content, Closet or wardrobe information, Inspiration items, Saved Looks, Elise or StyleChat conversations, styling preferences or memory, user-owned stored images, device-session records, and other user-bound application data.`,
         },
         {
           type: "paragraph",
@@ -512,7 +512,7 @@ export const privacyPolicy: LegalDocumentData = {
             `Choose whether to use optional weather-aware styling. Denying approximate location does not disable core scanning or Elise text functionality.`,
             `Turn Elise Spoken Responses on or off where the app provides that control.`,
             `Use available controls for Signature Style, feedback, stylist preferences, or optional styling context where those features are enabled.`,
-            `Delete individual Recent Scans, Closet or Style Library items, Saved Looks, Dressing Rooms, or memberships where the app provides those controls.`,
+            `Delete individual Recent Scans, Closet or Inspiration items, Saved Looks, Dressing Rooms, or memberships where the app provides those controls.`,
             `Revoke room share links or remove Shared with Me memberships where available.`,
             `Use available in-app controls to report objectionable Dressing Room users or messages, report AI-generated responses, and block users where supported.`,
             `Request account deletion and, during an applicable restoration period, use the authorized restoration process if you change your mind.`,

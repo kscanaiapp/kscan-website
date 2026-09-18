@@ -6,21 +6,21 @@ export const metadata: Metadata = {
     absolute: "Support | K Scan AI",
   },
   description:
-    "Get help with K Scan AI on iOS and Android, including account support, privacy requests, and data export questions.",
+    "Get help with the K Scan AI app, including account support, privacy requests, deletion, and data export questions.",
   alternates: {
     canonical: "https://kscan.app/support",
   },
   openGraph: {
     title: "Support | K Scan AI",
     description:
-      "Get help with K Scan AI on iOS and Android, including account support, privacy requests, and data export questions.",
+      "Get help with the K Scan AI app, including account support, privacy requests, deletion, and data export questions.",
     url: "https://kscan.app/support",
   },
   twitter: {
     card: "summary_large_image",
     title: "Support | K Scan AI",
     description:
-      "Get help with K Scan AI on iOS and Android, including account support, privacy requests, and data export questions.",
+      "Get help with the K Scan AI app, including account support, privacy requests, deletion, and data export questions.",
   },
 };
 
@@ -38,8 +38,7 @@ export default function SupportPage() {
         </h1>
 
         <p className="mt-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
-          K Scan AI is available on iOS and Android. This page covers support for the K Scan AI app on both
-          platforms.
+          Get help with scanning, account access, privacy, account deletion, and the K Scan AI app.
         </p>
 
         <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
@@ -61,7 +60,7 @@ export default function SupportPage() {
             <ul className="space-y-2 pl-4">
               <li>Confirm camera permission is granted in your device settings.</li>
               <li>Ensure stable network connectivity before scanning.</li>
-              <li>Retry a scan if the backend request times out, especially after inactivity.</li>
+              <li>If a scan stalls or times out, check your connection and try again.</li>
             </ul>
           </section>
 
@@ -102,21 +101,6 @@ export default function SupportPage() {
                 Include device model, operating-system version, K Scan AI app version, and the
                 approximate time of the issue.
               </li>
-            </ul>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              Pre-Release Builds
-            </h2>
-            <ul className="space-y-2 pl-4">
-              <li>
-                The standard K Scan AI app is publicly available on the App Store and Google Play. This
-                section applies only to a small number of testers using a separate pre-release build (such
-                as TestFlight).
-              </li>
-              <li>If you are using a pre-release build, initial response times may vary.</li>
-              <li>Feature behavior may change as reliability and safety updates ship.</li>
             </ul>
           </section>
         </div>
