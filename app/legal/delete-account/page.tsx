@@ -1,157 +1,25 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteNav } from "@/components/ui/SiteNav";
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "Delete Your K Scan AI Account | K Scan AI",
-  },
-  description:
-    "Learn how to delete your K Scan AI account and request support for account deletion, data access, or privacy-related questions.",
+  title: { absolute: "Delete Your K Scan AI Account | K Scan AI" },
+  description: "Delete Your K Scan AI Account for K Scan AI, operated by Forest Hills Media Inc.",
+  alternates: { canonical: "/legal/delete-account" },
   robots: { index: false, follow: true },
-  alternates: {
-    canonical: "https://kscan.app/legal/delete-account",
-  },
-  openGraph: {
-    title: "Delete Your K Scan AI Account | K Scan AI",
-    description:
-      "Learn how to delete your K Scan AI account and request support for account deletion, data access, or privacy-related questions.",
-    url: "https://kscan.app/legal/delete-account",
-    siteName: "K Scan AI",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Delete Your K Scan AI Account | K Scan AI",
-    description:
-      "Learn how to delete your K Scan AI account and request support for account deletion, data access, or privacy-related questions.",
-  },
 };
 
-export default function DeleteAccountPage() {
-  const linkClassName =
-    "text-stone-700 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-500";
+export default function Page() {
+  return <main id="main-content" className="min-h-screen bg-[#FAFAF8]">
+    <SiteNav />
+    <article className="mx-auto max-w-3xl px-6 py-16 md:px-10 md:py-24">
+      <h1 className="font-display text-[38px] leading-[1.05] text-stone-900 sm:text-[46px] md:text-[56px]">Delete Your K Scan AI Account</h1>
 
-  return (
-    <main id="main-content" className="min-h-screen bg-[#FAFAF8]">
-      <SiteNav />
-
-      <section className="mx-auto max-w-3xl px-6 py-16 md:px-10 md:py-24">
-        <h1 className="font-display text-[38px] leading-[1.05] text-stone-900 sm:text-[46px] md:text-[56px]">
-          Delete Your K Scan AI Account
-        </h1>
-
-        <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
-          <p>
-            You can request deletion of your K Scan AI account and associated personal data. Account deletion is handled
-            through a request workflow and is not immediate.
-          </p>
-
-          <p>
-            Want a copy of your account data before deletion? Request a data export before deleting
-            your account.{" "}
-            <Link href="/support" className={linkClassName}>
-              Request Data Export
-            </Link>
-          </p>
-
-          <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              Sign in with Apple
-            </h2>
-            <p>
-              Where applicable, K Scan AI will revoke or disconnect Sign in with Apple credentials as part of account
-              deletion in accordance with Apple&apos;s account-deletion requirements.
-            </p>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              How to Request Deletion
-            </h2>
-            <ul className="space-y-2 pl-4">
-              <li>In app: Sign in to K Scan AI, then go to Privacy and choose Delete Account.</li>
-              <li>
-                Email: Send a request to{" "}
-                <a href="mailto:kscanai.app@gmail.com?subject=Account%20Deletion%20Request" className={linkClassName}>
-                  kscanai.app@gmail.com
-                </a>{" "}
-                with the subject &ldquo;Account Deletion Request&rdquo; and include the email address associated with
-                your account.
-              </li>
-            </ul>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              Data Deleted
-            </h2>
-            <p>
-              Deletion covers account and profile data, privacy preferences, saved style scans, scan history, Dressing
-              Room contents, Dressing Room share links, and user-linked app data where applicable.
-            </p>
-            <ul className="space-y-2 pl-4">
-              <li>StyleChat conversations, saved style preferences, Signature Style information, and personalization context connected to your account.</li>
-            </ul>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              Data Retained
-            </h2>
-            <p>
-              K Scan AI may retain information where required or permitted for legal compliance, security, fraud
-              prevention, dispute resolution, accounting or tax obligations, or de-identified and aggregated analytics.
-            </p>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              Processing Time
-            </h2>
-            <p>
-              A verified deletion request deactivates your account and begins an approximately 30-day recovery
-              period, during which your account may be restored. If the account is not restored and no legal,
-              security, or technical exception applies, it becomes eligible for permanent deletion. If you have
-              shared Dressing Room links, account deletion processing will revoke those share tokens and make the
-              links inaccessible to anyone who has them, where technically available.
-            </p>
-          </section>
-
-          <section className="space-y-4">
-            <h2 className="mt-10 text-[11px] font-semibold uppercase tracking-widest text-stone-600">
-              Related Resources
-            </h2>
-            <p>
-              You can also review our{" "}
-              <Link href="/legal/delete-policy" className={linkClassName}>
-                Deletion Policy
-              </Link>
-              , the{" "}
-              <Link href="/legal/privacy" className={linkClassName}>
-                Privacy Policy
-              </Link>
-              , or visit{" "}
-              <Link href="/support" className={linkClassName}>
-                Support
-              </Link>{" "}
-              for account help.
-            </p>
-          </section>
-
-          <section className="space-y-2 pt-4">
-            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-stone-600">Contact</h2>
-            <p>
-              For account deletion requests or questions, contact{" "}
-              <a href="mailto:kscanai.app@gmail.com?subject=Account%20Deletion%20Request" className={linkClassName}>
-                kscanai.app@gmail.com
-              </a>
-              .
-            </p>
-          </section>
-        </div>
-      </section>
-    </main>
-  );
+      <div className="mt-10 space-y-10 text-[15px] leading-8 text-stone-600 md:text-base">
+      <section><h2 className="mb-3 text-lg font-semibold text-stone-900">Before You Delete</h2><p>Account deletion begins with deactivation and may provide an approximately 30-day restoration opportunity. If the account is not restored, it proceeds to permanent deletion processing subject to lawful retention and technical exceptions. Deactivation is not the same as completed erasure. Some data on an offline device or copies made by other people can remain outside our direct control.</p></section>
+<section><h2 className="mb-3 text-lg font-semibold text-stone-900">Important Subscription Warning</h2><p>Deleting the K Scan AI account will not cancel your Apple or Google K+ subscription. Cancel first at <a className="break-words text-violet-700 underline underline-offset-4" href="https://apps.apple.com/account/subscriptions/">https://apps.apple.com/account/subscriptions/</a> or <a className="break-words text-violet-700 underline underline-offset-4" href="https://play.google.com/store/account/subscriptions">https://play.google.com/store/account/subscriptions</a> if you want to prevent future charges.</p></section>
+<section><h2 className="mb-3 text-lg font-semibold text-stone-900">Request and Verification</h2><p>You can request deletion from the Privacy or Account settings inside K Scan AI. If you cannot or do not wish to use the app, email <a className="break-words text-violet-700 underline underline-offset-4" href="mailto:kscanai.app@gmail.com?subject=Account%20Deletion%20Request">kscanai.app@gmail.com</a> with the subject Account Deletion Request. Do not send account passwords or payment-card numbers. We may need to verify account ownership. You can also request privacy help or access your deletion status through available app controls.</p></section>
+<section><h2 className="mb-3 text-lg font-semibold text-stone-900">Additional Information</h2><p>See the full Account Deletion and Restoration Policy at <a className="break-words text-violet-700 underline underline-offset-4" href="https://kscan.app/legal/delete-policy">https://kscan.app/legal/delete-policy</a> and Privacy Policy at <a className="break-words text-violet-700 underline underline-offset-4" href="https://kscan.app/legal/privacy">https://kscan.app/legal/privacy</a> for account, cloud, local, shared content, legal exceptions and deletion rights.</p></section>
+      </div>
+    </article>
+  </main>;
 }
