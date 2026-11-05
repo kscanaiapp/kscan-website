@@ -36,11 +36,11 @@ const archSteps = [
 const progressCards = [
   {
     title: "Built",
-    body: "K Scan AI is available on iOS and Android, with visual search, Closet, Dressing Rooms with shared links, and Elise available in the app.",
+    body: "K Scan AI is available now, with visual search, Closet, Dressing Rooms with shared links, and Elise available in the app.",
   },
   {
     title: "In Validation",
-    body: "K Scan AI is validating scan reliability, product-result quality, saved-scan behavior, collaboration workflows, and user retention across Android and iOS.",
+    body: "K Scan AI is validating scan reliability, product-result quality, saved-scan behavior, collaboration workflows, and user retention.",
   },
   {
     title: "Next",

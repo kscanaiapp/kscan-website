@@ -51,9 +51,15 @@ export default function BillingPage() {
         </p>
 
         <div className="mt-8 space-y-6 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
+          <p className="rounded-md border border-stone-200 bg-white px-5 py-4 font-medium text-stone-700">
+            K Scan AI is currently free to use. The current shipping product has no in-app purchases or paid
+            subscriptions. K+ is not currently sold as a paid membership.
+          </p>
+
           <p>
-            K Scan AI may offer subscription access, including K+, through supported billing platforms. This page
-            summarizes how cancellations, refunds, no-charge access, and app-store purchases are handled. The full{" "}
+            If K Scan AI offers subscription access in the future, including K+, through supported billing
+            platforms, this page explains how cancellations, refunds, no-charge access, and app-store purchases
+            would be handled. The full{" "}
             <Link href="/legal/refund-policy" className={legalLinkClassName}>
               Refund and Cancellation Policy
             </Link>{" "}

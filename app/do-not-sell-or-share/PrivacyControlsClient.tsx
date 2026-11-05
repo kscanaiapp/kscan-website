@@ -218,18 +218,18 @@ export function PrivacyControlsClient() {
   // ─── Render ───────────────────────────────────────────────────────────────
   return (
     <>
-      <h1 className="font-display text-[38px] leading-[1.05] text-stone-900 sm:text-[46px] md:text-[56px]">
-        Do Not Sell or Share My Personal Information
-      </h1>
+      <h2 className="font-display text-3xl text-stone-900">
+        Website Privacy Controls
+      </h2>
 
       <div className="mt-8 space-y-12 text-[15px] leading-[1.9] text-stone-500 md:text-[16px]">
 
         {/* ── Intro ─────────────────────────────────────────────────────── */}
         <div className="space-y-4">
           <p>
-            K Scan AI may use, sell, share, license, or disclose certain non-sensitive commercial, analytics,
-            preference, marketing, and inference data where permitted by law and subject to applicable privacy
-            rights, consent requirements, and opt-out controls.
+            These website controls record supported preferences for this browser. They do not withdraw Google
+            Gemini permission in the app or block all necessary service processing. Applicable opt-out rights
+            depend on the law and the data activity involved.
           </p>
           <p>
             Raw uploaded scans and images are not sold. K Scan AI does not use uploaded scan content for facial

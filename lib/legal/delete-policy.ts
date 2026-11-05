@@ -72,7 +72,7 @@ export const deletePolicy: LegalDocumentData = {
         {
           type: "bullets",
           items: [
-            `Account and authentication information; scans and saved items; Style Library uploads; Dressing Room content; Looks, collections, and attachments.`,
+            `Account and authentication information; Recent Scans and Closet items; Inspiration uploads; Dressing Room content; Saved Looks, collections, and attachments.`,
             `StyleChat or Elise messages, prompts, image context, and style preferences.`,
             `Approximate or precise location context linked to the account or included in account, StyleChat, diagnostic, or security records.`,
           ],
