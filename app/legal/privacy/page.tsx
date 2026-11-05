@@ -30,7 +30,7 @@ export default function LegalPrivacyPage() {
       <SiteNav />
       <LegalDocument
         document={privacyPolicy}
-        downloadHref="https://wyyuqfdxucjksghsmhry.supabase.co/storage/v1/object/public/legal-documents/kscan-privacy-policy.pdf?v=2026-08-20"
+        downloadHref="https://wyyuqfdxucjksghsmhry.supabase.co/storage/v1/object/public/legal-documents/kscan-privacy-policy.pdf?v=2026-11-05"
         downloadLabel="Download Privacy Policy PDF"
       />
     </main>
